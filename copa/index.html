@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Bolão Copa 2026 · Fase de Grupos</title>
+<meta name="description" content="Balanço do bolão da Copa do Mundo 2026 — pontuação e posição de cada apostador ao longo da fase de grupos.">
+<meta name="theme-color" content="#09090B">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bolão Copa 2026 · Fase de Grupos">
+<meta property="og:description" content="Pontuação e posição de cada apostador ao longo da fase de grupos.">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="%2315151A"/><circle cx="16" cy="16" r="7.5" fill="none" stroke="%23E3A52E" stroke-width="3"/><circle cx="16" cy="16" r="2.4" fill="%23E23A3A"/></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<style>
+/* =========================================================
+   TOKENS
+   ========================================================= */
+:root{
+  --bg:#09090B; --bg2:#101013; --card:#15151A; --card2:#1C1C22; --raise:#222229;
+  --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.05);
+  --tx:#F4F4F2; --mut:#9A9AA2; --mut2:#74757C;
+  --gold:#E3A52E; --gold-d:#B5821F; --gold-soft:rgba(227,165,46,.16);
+  --red:#E23A3A; --white:#FFFFFF; --g3:#CACBD1; --g4:#7E7F87; --avg:#9C9DA6; --faint:#34343B;
+  --disp:'Oswald',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --r:14px; --tap:44px;
+  --pad-l:max(14px, env(safe-area-inset-left));
+  --pad-r:max(14px, env(safe-area-inset-right));
+  --kb:0px;
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; overflow-x:hidden; }
+@supports (overflow:clip){ html{ overflow-x:clip } }
+html,body{margin:0;padding:0}
+body{
+  background:radial-gradient(120% 60% at 50% -8%, #18181f 0%, var(--bg) 55%) fixed, var(--bg);
+  color:var(--tx); font-family:var(--body); font-size:15px; line-height:1.45;
+  -webkit-font-smoothing:antialiased; min-height:100svh;
+  padding-block-end:calc(40px + env(safe-area-inset-bottom));
+}
+body.sheet-open{ overflow:hidden; }
+::selection{background:var(--gold);color:#000}
+:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; border-radius:6px; }
+button{ font:inherit; color:inherit; }
+.sr-only{ position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0 }
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+.wrap{ width:100%; max-width:860px; margin-inline:auto;
+  padding-inline:var(--pad-l) var(--pad-r);
+  padding-block-start:max(18px, env(safe-area-inset-top));
+  display:flex; flex-direction:column; gap:14px; }
+
+.head{ padding-block:6px 2px; }
+.kicker{ font-family:var(--disp); font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  font-size:11px; color:var(--gold); margin:0 0 6px; }
+.title{ font-family:var(--disp); font-weight:700; line-height:1.0; letter-spacing:.01em;
+  font-size:clamp(28px, 9vw, 44px); margin:0; }
+.title b{ color:var(--gold); font-weight:700; }
+.subtitle{ color:var(--mut); margin:8px 0 0; font-size:clamp(13px,3.6vw,15px); }
+.rule{ height:3px; width:74px; border-radius:3px; margin:14px 0 12px;
+  background:linear-gradient(90deg,var(--red),var(--gold)); }
+.pills{ display:flex; flex-wrap:wrap; gap:8px; }
+.pill{ display:inline-flex; align-items:center; gap:7px; background:var(--card2);
+  border:1px solid var(--line); border-radius:999px; padding:7px 12px; font-size:12.5px; color:var(--mut); }
+.pill b{ color:var(--tx); font-weight:600; }
+.pill .dot{ width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold) }
+
+.card{ background:var(--card); border:1px solid var(--line); border-radius:var(--r);
+  padding:clamp(14px,4vw,20px); position:relative; }
+.card-h{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-block-end:14px; }
+.card-t{ font-family:var(--disp); font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+  font-size:clamp(13px,3.7vw,15px); margin:0; color:var(--tx); }
+.card-s{ font-size:11.5px; color:var(--mut2); }
+
+/* =========================================================
+   YOU CARD + KPIs
+   ========================================================= */
+.you-top{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-block-end:12px; }
+.you-badge{ font-family:var(--disp); font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  font-size:11px; color:#0a0a0a; background:var(--gold); padding:5px 11px; border-radius:7px; }
+.you-hint{ font-size:12px; color:var(--mut); }
+
+.kpis{ display:flex; flex-wrap:wrap; gap:8px; margin-block-start:16px; }
+.kpi{ flex:1 1 calc(50% - 4px); min-width:96px; background:var(--card2); border:1px solid var(--line);
+  border-radius:12px; padding:13px 10px 12px; text-align:center; display:flex; flex-direction:column; align-items:center; }
+.kpi .v{ font-family:var(--disp); font-weight:700; font-size:clamp(20px,6vw,26px); color:#fff; line-height:1; }
+.kpi .v.gold{ color:var(--gold) }
+.kpi .sub2{ font-size:10.5px; color:var(--mut2); margin-block-start:3px; line-height:1.1; font-variant-numeric:tabular-nums; }
+.kpi .l{ font-size:10px; color:var(--mut); text-transform:uppercase; letter-spacing:.06em; margin-block-start:auto; padding-block-start:9px; line-height:1.25; }
+
+/* =========================================================
+   COMBOBOX (field = button; popup = dropdown / sheet)
+   ========================================================= */
+.cmp-grid{ display:grid; grid-template-columns:1fr; gap:10px; }
+.combo{ position:relative; }
+.combo-field{ display:flex; align-items:center; gap:10px; width:100%; min-height:var(--tap);
+  background:var(--card2); border:1px solid var(--line); border-radius:12px; padding:8px 12px; cursor:pointer;
+  text-align:left; transition:border-color .15s, box-shadow .15s; }
+.combo-field:hover{ border-color:rgba(255,255,255,.16); }
+.combo-field[aria-expanded="true"]{ border-color:var(--gold); box-shadow:0 0 0 3px var(--gold-soft); }
+.combo.lead .combo-field{ padding-block:11px; }
+.swatch{ width:13px;height:13px;border-radius:50%;flex:0 0 auto; box-shadow:0 0 0 2px var(--card2); }
+.swatch.ring{ box-shadow:0 0 0 1px rgba(255,255,255,.35) inset, 0 0 0 2px var(--card2); }
+.combo-val{ flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  font-size:15px; color:var(--tx); }
+.combo-val.ph{ color:var(--mut2); }
+.combo-clear{ flex:0 0 auto; width:30px;height:30px; display:none; align-items:center; justify-content:center;
+  border-radius:8px; color:var(--mut2); font-size:18px; line-height:1; background:transparent; border:0; cursor:pointer; }
+.combo-clear:hover{ color:var(--tx); background:var(--raise); }
+.combo.has-val .combo-clear{ display:flex; }
+.combo-caret{ flex:0 0 auto; color:var(--mut2); font-size:11px; transition:transform .15s; }
+.combo-field[aria-expanded="true"] .combo-caret{ transform:rotate(180deg); }
+
+/* popup shell (shared) */
+.combo-pop{ background:var(--card); border:1px solid var(--line2); display:flex; flex-direction:column;
+  box-shadow:0 24px 60px -18px rgba(0,0,0,.8); }
+.pop-head{ display:flex; align-items:center; gap:8px; padding:10px; border-block-end:1px solid var(--line);
+  position:sticky; top:0; background:var(--card); z-index:1; }
+.pop-search{ flex:1 1 auto; min-width:0; min-height:40px; font-size:16px; /* >=16 prevents iOS zoom */
+  background:var(--card2); border:1px solid var(--line); border-radius:10px; color:var(--tx); padding:8px 12px; }
+.pop-search::placeholder{ color:var(--mut2); }
+.pop-search:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 3px var(--gold-soft); }
+.pop-close{ flex:0 0 auto; min-height:44px; padding:0 14px; border-radius:10px; background:var(--raise);
+  border:1px solid var(--line); color:var(--tx); font-family:var(--disp); font-weight:600; letter-spacing:.04em;
+  text-transform:uppercase; font-size:12px; cursor:pointer; }
+.sheet-grip{ position:absolute; top:6px; left:50%; transform:translateX(-50%); width:38px; height:4px;
+  border-radius:3px; background:var(--raise); }
+.pop-list{ list-style:none; margin:0; padding:6px; overflow-y:auto; -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain; }
+.opt{ display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:var(--tap);
+  padding:9px 11px; border-radius:9px; cursor:pointer; }
+.opt:hover{ background:var(--card2); }
+.opt.act{ background:var(--raise); }
+.opt .nm{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:14.5px; }
+.opt .nm b{ color:var(--gold); font-weight:700; }
+.opt .pos{ flex:0 0 auto; font-family:var(--disp); font-weight:500; font-size:12px; color:var(--mut2); }
+.opt[aria-disabled="true"]{ opacity:.42; }
+.opt[aria-disabled="true"] .pos::after{ content:" · escolhido"; color:var(--gold); }
+.opt-empty{ padding:14px 12px; color:var(--mut2); font-size:14px; text-align:center; }
+
+/* anchored (tablet/desktop) */
+.combo-pop.anchored{ position:absolute; inset-inline:0; top:calc(100% + 6px); z-index:60;
+  border-radius:14px; max-height:min(54dvh,360px); }
+.combo-pop.anchored .pop-list{ max-height:min(46dvh,300px); }
+
+/* bottom sheet (phones) */
+.combo-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:900;
+  animation:fade .18s ease; }
+.combo-pop.sheet{ position:fixed; inset-inline:0; bottom:var(--kb); z-index:910;
+  border-radius:18px 18px 0 0; padding-block-start:14px;
+  max-height:min(85dvh, 620px);
+  padding-block-end:env(safe-area-inset-bottom);
+  animation:slideup .22s cubic-bezier(.22,.61,.36,1); }
+.combo-pop.sheet .pop-list{ max-height:min(64dvh,460px); padding-inline:10px 10px; }
+@keyframes fade{ from{opacity:0} to{opacity:1} }
+@keyframes slideup{ from{transform:translateY(100%)} to{transform:translateY(0)} }
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+.ctrl-stack{ display:flex; flex-direction:column; gap:10px; }
+.seg{ display:flex; background:var(--card2); border:1px solid var(--line); border-radius:12px; padding:4px; width:100%; }
+.seg button{ flex:1 1 0; min-width:0; min-height:40px; border:0; cursor:pointer; background:transparent; color:var(--mut);
+  font-family:var(--disp); font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+  font-size:clamp(11px,3.1vw,12.5px); padding:8px 6px; border-radius:9px; transition:background .15s, color .15s; white-space:nowrap; }
+.seg button.on{ background:var(--gold); color:#0a0a0a; box-shadow:0 6px 16px -8px var(--gold-d); }
+.seg.sub{ background:transparent; border:0; padding:0; gap:8px; }
+.seg.sub button{ background:var(--card2); border:1px solid var(--line); color:var(--mut); min-height:40px;
+  font-size:clamp(11px,3vw,12px); letter-spacing:.02em; }
+.seg.sub button.on{ background:var(--raise); border-color:rgba(227,165,46,.5); color:var(--gold); box-shadow:none; }
+.seg.sub[hidden]{ display:none; }
+.toggles{ display:flex; flex-direction:column; gap:10px; }
+.toggle{ display:flex; align-items:center; gap:11px; width:100%; min-height:var(--tap);
+  background:var(--card2); border:1px solid var(--line); border-radius:12px; padding:8px 14px; cursor:pointer; }
+.toggle .tx{ flex:1 1 auto; font-size:13px; color:var(--mut); text-align:left; }
+.toggle .sw{ flex:0 0 auto; width:42px;height:24px;border-radius:999px;background:var(--raise); position:relative; transition:background .18s; }
+.toggle .sw::after{ content:""; position:absolute; top:2px; left:2px; width:20px;height:20px;border-radius:50%;
+  background:#cfcfd6; transition:transform .18s; box-shadow:0 1px 3px rgba(0,0,0,.5); }
+.toggle[aria-pressed="true"] .sw{ background:var(--gold); }
+.toggle[aria-pressed="true"] .sw::after{ transform:translateX(18px); background:#0a0a0a; }
+.toggle[aria-pressed="true"] .tx{ color:var(--tx); }
+
+/* =========================================================
+   CHARTS
+   ========================================================= */
+.legend{ display:flex; flex-wrap:wrap; gap:7px 14px; margin-block-end:12px; }
+.lg-it{ display:inline-flex; align-items:center; gap:7px; font-size:12.5px; color:var(--mut); max-width:100%; }
+.lg-it.act{ color:var(--tx); }
+.lg-it .nm{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:42vw; }
+.lg-it .ln{ width:16px;height:3px;border-radius:2px; flex:0 0 auto; }
+.lg-it.you-it .ln{ height:4px; }
+.lg-it .ln.dash{ height:0; border-radius:0; border-top:2px dashed var(--avg); background:none!important; }
+.lg-it .ln.sw{ width:13px;height:13px;border-radius:50%; }
+
+.chart-scroll{ position:relative; width:100%; min-height:240px;
+  overflow-x:hidden; overscroll-behavior-x:contain; -webkit-overflow-scrolling:touch; }
+.chart-scroll.scrollable{ overflow-x:auto; cursor:grab; }
+.chart-scroll svg{ display:block; }
+.chart-scroll.scrollable::-webkit-scrollbar{ height:8px; }
+.chart-scroll.scrollable::-webkit-scrollbar-thumb{ background:var(--raise); border-radius:8px; }
+.scroll-hint{ display:none; font-size:11px; color:var(--mut2); text-align:center; margin-block-start:8px; }
+.chart-scroll.scrollable + .scroll-hint{ display:block; }
+
+.axis-base{ stroke:var(--line); stroke-width:1.2; }
+.gtick{ stroke:rgba(255,255,255,.045); stroke-width:1; }
+.gsep{ stroke:rgba(255,255,255,.06); stroke-width:1; stroke-dasharray:2 4; }
+.tlbl{ fill:var(--mut2); font-family:var(--body); }
+.tlbl.y{ text-anchor:end; }
+.tlbl.x{ text-anchor:middle; }
+.glbl{ fill:var(--mut); font-family:var(--disp); font-weight:500; text-anchor:middle; letter-spacing:.04em; }
+.line-faint{ fill:none; stroke:var(--faint); stroke-width:1; opacity:.6; }
+.line-avg{ fill:none; stroke:var(--avg); stroke-width:1.7; stroke-dasharray:6 5; opacity:.95; stroke-linecap:round; }
+.dot-h{ stroke:#0a0a0a; stroke-width:1.5; }
+.cross{ stroke:var(--gold); stroke-width:1; stroke-dasharray:3 4; opacity:.7; }
+.empty-t{ fill:var(--mut2); font-family:var(--body); text-anchor:middle; }
+.note{ color:var(--mut2); font-size:11.5px; text-align:center; margin-block:12px 0; line-height:1.5; }
+.note b{ color:var(--mut); }
+
+/* =========================================================
+   TOOLTIP
+   ========================================================= */
+.tip{ position:absolute; z-index:40; pointer-events:none; min-width:172px; max-width:min(86vw,300px);
+  background:rgba(20,20,25,.97); border:1px solid var(--line); border-radius:12px; padding:10px 12px;
+  box-shadow:0 18px 44px -16px rgba(0,0,0,.85); opacity:0; transition:opacity .12s; }
+.tip.show{ opacity:1; }
+.tip.pinned{ left:8px; right:8px; bottom:8px; top:auto; min-width:0; max-width:none; pointer-events:auto; }
+.tip-h{ font-family:var(--disp); font-weight:600; letter-spacing:.03em; font-size:12.5px; color:var(--gold);
+  display:flex; flex-direction:column; gap:2px; padding-block-end:7px; margin-block-end:7px; border-block-end:1px solid var(--line); }
+.tip-h .sc{ font-family:var(--body); font-weight:400; font-size:11.5px; color:var(--mut); letter-spacing:0; }
+.tip-h .sc b{ color:#fff; }
+.tip-close{ display:none; position:absolute; top:6px; right:8px; width:30px;height:30px; border:0; background:transparent;
+  color:var(--mut); font-size:18px; cursor:pointer; border-radius:8px; }
+.tip.pinned .tip-close{ display:block; }
+.tip-r{ display:flex; align-items:center; gap:8px; padding-block:3px; }
+.tip-r.you-r .nm{ color:var(--gold); font-weight:600; }
+.tip-r .d{ width:9px;height:9px;border-radius:50%; flex:0 0 auto; box-shadow:0 0 0 1px rgba(255,255,255,.2); }
+.tip-r .nm{ flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; }
+.tip-r .vv{ flex:0 0 auto; font-family:var(--disp); font-weight:600; font-size:13px; text-align:right; }
+.tip-r .vv .sub{ display:block; font-family:var(--body); font-weight:400; font-size:10.5px; color:var(--mut2); }
+
+.foot{ color:var(--mut2); font-size:11.5px; text-align:center; line-height:1.6; padding-block:4px 0; }
+.foot b{ color:var(--mut); }
+
+/* =========================================================
+   RESPONSIVE (min-width, mobile-first)
+   ========================================================= */
+@media (min-width:480px){
+  .cmp-grid{ grid-template-columns:1fr 1fr; }
+  .toggles{ flex-direction:row; }
+  .toggle{ flex:1 1 0; }
+}
+@media (min-width:520px){
+  .kpi{ flex-basis:calc(33.333% - 6px); }
+}
+@media (min-width:760px){
+  .kpi{ flex-basis:0; }
+  .lg-it .nm{ max-width:200px; }
+}
+@media (min-width:900px){
+  .cmp-grid{ grid-template-columns:repeat(4,1fr); }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{ transition:none!important; animation:none!important; scroll-behavior:auto!important; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <p class="kicker">Bolão Copa do Mundo 2026</p>
+    <h1 class="title">Balanço da<br><b>Fase de Grupos</b></h1>
+    <p class="subtitle" id="subtitle">Sua trajetória ao longo do torneio — pontos e posição</p>
+    <div class="rule"></div>
+    <div class="pills">
+      <span class="pill"><span class="dot"></span> <b id="p-jogos"></b>&nbsp;jogos apurados</span>
+      <span class="pill"><b id="p-apost"></b>&nbsp;apostadores</span>
+    </div>
+  </header>
+
+  <!-- VOCÊ -->
+  <section class="card" aria-labelledby="you-badge">
+    <div class="you-top">
+      <span class="you-badge" id="you-badge">Você</span>
+      <span class="you-hint">toque para escolher seu nome e personalizar o painel</span>
+    </div>
+    <div class="combo lead" data-slot="you" id="combo-you"></div>
+    <div class="kpis" id="kpis" aria-live="polite"></div>
+  </section>
+
+  <!-- COMPARAÇÕES -->
+  <section class="card" aria-labelledby="cmp-h">
+    <div class="card-h">
+      <h2 class="card-t" id="cmp-h">Comparar com</h2>
+      <span class="card-s">até 4 apostadores</span>
+    </div>
+    <div class="cmp-grid" id="cmp-grid"></div>
+  </section>
+
+  <!-- CONTROLES -->
+  <section class="card" aria-labelledby="ctrl-h">
+    <div class="card-h"><h2 class="card-t" id="ctrl-h">Como ver os gráficos</h2></div>
+    <div class="ctrl-stack">
+      <div class="seg" id="seg-view" role="group" aria-label="Granularidade da visão">
+        <button type="button" data-v="rodada">Por rodada</button>
+        <button type="button" data-v="dia">Por dia</button>
+        <button type="button" data-v="jogo">Jogo a jogo</button>
+      </div>
+      <div class="seg sub" id="seg-jogo" role="group" aria-label="Ordem dos jogos" hidden>
+        <button type="button" data-j="crono">Cronológico</button>
+        <button type="button" data-j="grupo">Por grupo</button>
+      </div>
+      <div class="toggles">
+        <button type="button" class="toggle" id="tg-others" aria-pressed="true">
+          <span class="tx">Mostrar demais apostadores</span><span class="sw" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="toggle" id="tg-avg" aria-pressed="true">
+          <span class="tx">Linha da média (todos)</span><span class="sw" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRÁFICO 1 -->
+  <section class="card" aria-labelledby="acc-h">
+    <div class="card-h">
+      <h2 class="card-t" id="acc-h">Pontuação acumulada</h2>
+      <span class="card-s" id="acc-sub"></span>
+    </div>
+    <div class="legend" id="legend1"></div>
+    <div class="chart-scroll" id="cw-acc">
+      <svg id="svg-acc" role="img" aria-label="Gráfico de pontuação acumulada"></svg>
+    </div>
+    <p class="scroll-hint">deslize na horizontal para ver todos os jogos →</p>
+    <div class="tip" id="tip-acc"></div>
+  </section>
+
+  <!-- GRÁFICO 2 -->
+  <section class="card" aria-labelledby="pos-h">
+    <div class="card-h">
+      <h2 class="card-t" id="pos-h">Posição no campeonato</h2>
+      <span class="card-s">1º no topo</span>
+    </div>
+    <div class="legend" id="legend2"></div>
+    <div class="chart-scroll" id="cw-pos">
+      <svg id="svg-pos" role="img" aria-label="Gráfico de posição"></svg>
+    </div>
+    <p class="scroll-hint">deslize na horizontal para ver todos os jogos →</p>
+    <div class="tip" id="tip-pos"></div>
+    <p class="note" id="pos-note"></p>
+  </section>
+
+  <p class="foot">
+    Pontuação: <b>8</b> placar exato · <b>6</b> placar do vencedor · <b>5</b> placar do perdedor · <b>4</b> saldo de gols · <b>3</b> só o resultado<br>
+    Visão por dia e cronológica seguem o calendário oficial da Copa 2026 (horário do leste dos EUA). Bônus dos classificados e mata-mata ainda não contabilizados.
+  </p>
+
+</div>
+
+<script>
+"use strict";
+/* ============================================================
+   DATA  (inline — do not modify)
+   ============================================================ */
+const DATA = {"meta":{"totalGames":72,"finalizedGames":66,"totalBetters":125,"rules":{"exato":8,"venc":6,"perd":5,"difg":4,"result":3,"erro":0}},"games":[{"id":1,"g":"A","md":1,"a":"México","b":"África do Sul","ga":2,"gb":0,"dt":"06-11","dd":11,"mn":900,"wd":"Qui"},{"id":2,"g":"A","md":1,"a":"Coréia do Sul","b":"Rep. Tcheca","ga":2,"gb":1,"dt":"06-11","dd":11,"mn":1320,"wd":"Qui"},{"id":3,"g":"A","md":2,"a":"Rep. Tcheca","b":"África do Sul","ga":1,"gb":1,"dt":"06-18","dd":18,"mn":720,"wd":"Qui"},{"id":4,"g":"A","md":2,"a":"México","b":"Coréia do Sul","ga":1,"gb":0,"dt":"06-18","dd":18,"mn":1260,"wd":"Qui"},{"id":5,"g":"A","md":3,"a":"Rep. Tcheca","b":"México","ga":0,"gb":3,"dt":"06-24","dd":24,"mn":1260,"wd":"Qua"},{"id":6,"g":"A","md":3,"a":"África do Sul","b":"Coréia do Sul","ga":1,"gb":0,"dt":"06-24","dd":24,"mn":1260,"wd":"Qua"},{"id":7,"g":"B","md":1,"a":"Canadá","b":"Bósnia","ga":1,"gb":1,"dt":"06-12","dd":12,"mn":900,"wd":"Sex"},{"id":8,"g":"B","md":1,"a":"Catar","b":"Suíça","ga":1,"gb":1,"dt":"06-13","dd":13,"mn":900,"wd":"Sáb"},{"id":9,"g":"B","md":2,"a":"Suíça","b":"Bósnia","ga":4,"gb":1,"dt":"06-18","dd":18,"mn":900,"wd":"Qui"},{"id":10,"g":"B","md":2,"a":"Canadá","b":"Catar","ga":6,"gb":0,"dt":"06-18","dd":18,"mn":1080,"wd":"Qui"},{"id":11,"g":"B","md":3,"a":"Suíça","b":"Canadá","ga":2,"gb":1,"dt":"06-24","dd":24,"mn":900,"wd":"Qua"},{"id":12,"g":"B","md":3,"a":"Bósnia","b":"Catar","ga":3,"gb":1,"dt":"06-24","dd":24,"mn":900,"wd":"Qua"},{"id":13,"g":"C","md":1,"a":"Brasil","b":"Marrocos","ga":1,"gb":1,"dt":"06-13","dd":13,"mn":1080,"wd":"Sáb"},{"id":14,"g":"C","md":1,"a":"Haiti","b":"Escócia","ga":0,"gb":1,"dt":"06-13","dd":13,"mn":1260,"wd":"Sáb"},{"id":15,"g":"C","md":2,"a":"Escócia","b":"Marrocos","ga":0,"gb":1,"dt":"06-19","dd":19,"mn":1080,"wd":"Sex"},{"id":16,"g":"C","md":2,"a":"Brasil","b":"Haiti","ga":3,"gb":0,"dt":"06-19","dd":19,"mn":1230,"wd":"Sex"},{"id":17,"g":"C","md":3,"a":"Escócia","b":"Brasil","ga":0,"gb":3,"dt":"06-24","dd":24,"mn":1080,"wd":"Qua"},{"id":18,"g":"C","md":3,"a":"Marrocos","b":"Haiti","ga":4,"gb":2,"dt":"06-24","dd":24,"mn":1080,"wd":"Qua"},{"id":19,"g":"D","md":1,"a":"EEUU","b":"Paraguai","ga":4,"gb":1,"dt":"06-12","dd":12,"mn":1260,"wd":"Sex"},{"id":20,"g":"D","md":1,"a":"Austrália","b":"Turquia","ga":2,"gb":0,"dt":"06-14","dd":13,"mn":0,"wd":"Sáb"},{"id":21,"g":"D","md":2,"a":"Turquia","b":"Paraguai","ga":0,"gb":1,"dt":"06-19","dd":19,"mn":1380,"wd":"Sex"},{"id":22,"g":"D","md":2,"a":"EEUU","b":"Austrália","ga":2,"gb":0,"dt":"06-19","dd":19,"mn":900,"wd":"Sex"},{"id":23,"g":"D","md":3,"a":"Turquia","b":"EEUU","ga":3,"gb":2,"dt":"06-25","dd":25,"mn":1320,"wd":"Qui"},{"id":24,"g":"D","md":3,"a":"Paraguai","b":"Austrália","ga":0,"gb":0,"dt":"06-25","dd":25,"mn":1320,"wd":"Qui"},{"id":25,"g":"E","md":1,"a":"Alemanha","b":"Curaçau","ga":7,"gb":1,"dt":"06-14","dd":14,"mn":780,"wd":"Dom"},{"id":26,"g":"E","md":1,"a":"Costa do Marfim","b":"Equador","ga":1,"gb":0,"dt":"06-14","dd":14,"mn":1140,"wd":"Dom"},{"id":27,"g":"E","md":2,"a":"Equador","b":"Curaçau","ga":0,"gb":0,"dt":"06-20","dd":20,"mn":1200,"wd":"Sáb"},{"id":28,"g":"E","md":2,"a":"Alemanha","b":"Costa do Marfim","ga":2,"gb":1,"dt":"06-20","dd":20,"mn":960,"wd":"Sáb"},{"id":29,"g":"E","md":3,"a":"Equador","b":"Alemanha","ga":2,"gb":1,"dt":"06-25","dd":25,"mn":960,"wd":"Qui"},{"id":30,"g":"E","md":3,"a":"Curaçau","b":"Costa do Marfim","ga":0,"gb":2,"dt":"06-25","dd":25,"mn":960,"wd":"Qui"},{"id":31,"g":"F","md":1,"a":"Holanda","b":"Japão","ga":2,"gb":2,"dt":"06-14","dd":14,"mn":960,"wd":"Dom"},{"id":32,"g":"F","md":1,"a":"Suécia","b":"Tunísia","ga":5,"gb":1,"dt":"06-14","dd":14,"mn":1320,"wd":"Dom"},{"id":33,"g":"F","md":2,"a":"Tunísia","b":"Japão","ga":0,"gb":4,"dt":"06-21","dd":20,"mn":0,"wd":"Sáb"},{"id":34,"g":"F","md":2,"a":"Holanda","b":"Suécia","ga":5,"gb":1,"dt":"06-20","dd":20,"mn":780,"wd":"Sáb"},{"id":35,"g":"F","md":3,"a":"Tunísia","b":"Holanda","ga":1,"gb":3,"dt":"06-25","dd":25,"mn":1140,"wd":"Qui"},{"id":36,"g":"F","md":3,"a":"Japão","b":"Suécia","ga":1,"gb":1,"dt":"06-25","dd":25,"mn":1140,"wd":"Qui"},{"id":37,"g":"G","md":1,"a":"Bélgica","b":"Egito","ga":1,"gb":1,"dt":"06-15","dd":15,"mn":900,"wd":"Seg"},{"id":38,"g":"G","md":1,"a":"Irã","b":"Nova Zelândia","ga":2,"gb":2,"dt":"06-15","dd":15,"mn":1260,"wd":"Seg"},{"id":39,"g":"G","md":2,"a":"Nova Zelândia","b":"Egito","ga":1,"gb":3,"dt":"06-21","dd":21,"mn":1260,"wd":"Dom"},{"id":40,"g":"G","md":2,"a":"Bélgica","b":"Irã","ga":0,"gb":0,"dt":"06-21","dd":21,"mn":900,"wd":"Dom"},{"id":41,"g":"G","md":3,"a":"Nova Zelândia","b":"Bélgica","ga":1,"gb":5,"dt":"06-26","dd":26,"mn":1380,"wd":"Sex"},{"id":42,"g":"G","md":3,"a":"Egito","b":"Irã","ga":1,"gb":1,"dt":"06-26","dd":26,"mn":1380,"wd":"Sex"},{"id":43,"g":"H","md":1,"a":"Espanha","b":"Cabo Verde","ga":0,"gb":0,"dt":"06-15","dd":15,"mn":720,"wd":"Seg"},{"id":44,"g":"H","md":1,"a":"Arábia Saudita","b":"Uruguai","ga":1,"gb":1,"dt":"06-15","dd":15,"mn":1080,"wd":"Seg"},{"id":45,"g":"H","md":2,"a":"Uruguai","b":"Cabo Verde","ga":2,"gb":2,"dt":"06-21","dd":21,"mn":1080,"wd":"Dom"},{"id":46,"g":"H","md":2,"a":"Espanha","b":"Arábia Saudita","ga":4,"gb":0,"dt":"06-21","dd":21,"mn":720,"wd":"Dom"},{"id":47,"g":"H","md":3,"a":"Uruguai","b":"Espanha","ga":0,"gb":1,"dt":"06-26","dd":26,"mn":1200,"wd":"Sex"},{"id":48,"g":"H","md":3,"a":"Cabo Verde","b":"Arábia Saudita","ga":0,"gb":0,"dt":"06-26","dd":26,"mn":1200,"wd":"Sex"},{"id":49,"g":"I","md":1,"a":"França","b":"Senegal","ga":3,"gb":1,"dt":"06-16","dd":16,"mn":900,"wd":"Ter"},{"id":50,"g":"I","md":1,"a":"Iraque","b":"Noruega","ga":1,"gb":4,"dt":"06-16","dd":16,"mn":1080,"wd":"Ter"},{"id":51,"g":"I","md":2,"a":"Noruega","b":"Senegal","ga":3,"gb":2,"dt":"06-22","dd":22,"mn":1200,"wd":"Seg"},{"id":52,"g":"I","md":2,"a":"França","b":"Iraque","ga":3,"gb":0,"dt":"06-22","dd":22,"mn":1020,"wd":"Seg"},{"id":53,"g":"I","md":3,"a":"Noruega","b":"França","ga":1,"gb":4,"dt":"06-26","dd":26,"mn":900,"wd":"Sex"},{"id":54,"g":"I","md":3,"a":"Senegal","b":"Iraque","ga":5,"gb":0,"dt":"06-26","dd":26,"mn":900,"wd":"Sex"},{"id":55,"g":"J","md":1,"a":"Áustria","b":"Jordânia","ga":3,"gb":1,"dt":"06-17","dd":16,"mn":0,"wd":"Ter"},{"id":56,"g":"J","md":1,"a":"Argentina","b":"Argélia","ga":3,"gb":0,"dt":"06-16","dd":16,"mn":1260,"wd":"Ter"},{"id":57,"g":"J","md":2,"a":"Argélia","b":"Jordânia","ga":2,"gb":1,"dt":"06-22","dd":22,"mn":1380,"wd":"Seg"},{"id":58,"g":"J","md":2,"a":"Áustria","b":"Argentina","ga":0,"gb":2,"dt":"06-22","dd":22,"mn":780,"wd":"Seg"},{"id":61,"g":"K","md":1,"a":"Portugal","b":"Congo","ga":1,"gb":1,"dt":"06-17","dd":17,"mn":780,"wd":"Qua"},{"id":62,"g":"K","md":1,"a":"Uzbequistão","b":"Colômbia","ga":1,"gb":3,"dt":"06-17","dd":17,"mn":1320,"wd":"Qua"},{"id":63,"g":"K","md":2,"a":"Colômbia","b":"Congo","ga":1,"gb":0,"dt":"06-23","dd":23,"mn":1320,"wd":"Ter"},{"id":64,"g":"K","md":2,"a":"Portugal","b":"Uzbequistão","ga":5,"gb":0,"dt":"06-23","dd":23,"mn":780,"wd":"Ter"},{"id":67,"g":"L","md":1,"a":"Inglaterra","b":"Croácia","ga":4,"gb":2,"dt":"06-17","dd":17,"mn":960,"wd":"Qua"},{"id":68,"g":"L","md":1,"a":"Gana","b":"Panamá","ga":1,"gb":0,"dt":"06-17","dd":17,"mn":1140,"wd":"Qua"},{"id":69,"g":"L","md":2,"a":"Panamá","b":"Croácia","ga":0,"gb":1,"dt":"06-23","dd":23,"mn":1140,"wd":"Ter"},{"id":70,"g":"L","md":2,"a":"Inglaterra","b":"Gana","ga":0,"gb":0,"dt":"06-23","dd":23,"mn":960,"wd":"Ter"}],"betters":[{"c":"JOGA001","n":"Binho","p":[6,0,0,5,3,0,8,0,3,3,6,3,8,4,4,8,3,4,5,0,0,8,0,0,3,4,0,6,0,6,0,3,3,5,5,8,0,0,3,0,5,0,0,0,0,5,4,0,5,3,0,8,3,3,3,8,0,6,0,4,4,5,0,4,8,0],"bt":[[2,1],[0,1],[1,2],[2,0],[1,2],[1,1],[1,1],[0,1],[1,0],[2,1],[2,0],[1,0],[1,1],[1,2],[1,2],[3,0],[1,2],[3,1],[2,1],[0,1],[2,1],[2,0],[1,1],[2,1],[4,0],[2,1],[2,0],[2,0],[1,3],[1,2],[1,0],[1,0],[1,2],[2,1],[1,2],[1,1],[3,1],[1,0],[0,1],[2,0],[1,3],[2,1],[4,1],[1,2],[2,1],[3,0],[1,2],[2,1],[2,1],[0,1],[2,2],[3,0],[0,2],[2,1],[1,0],[3,0],[1,1],[1,2],[4,1],[0,2],[2,1],[4,0],[1,1],[2,1],[0,1],[2,1]]},{"c":"JOGA002","n":"Bel","p":[0,0,0,5,0,8,8,4,0,5,0,5,8,5,5,8,5,6,0,0,0,0,0,0,3,0,0,5,0,8,0,0,5,3,4,0,8,0,4,0,3,4,0,0,0,4,4,8,8,5,0,4,5,5,4,6,0,5,0,6,5,5,0,0,5,0],"bt":[[1,1],[1,2],[1,2],[2,0],[2,1],[1,0],[1,1],[0,0],[2,2],[1,0],[0,1],[2,1],[1,1],[0,2],[0,2],[3,0],[0,2],[4,0],[0,1],[0,0],[1,1],[0,1],[1,1],[2,1],[4,0],[2,2],[2,0],[3,1],[1,3],[0,2],[1,3],[0,0],[0,3],[2,0],[0,2],[2,1],[1,1],[1,0],[0,2],[2,1],[0,3],[2,2],[4,1],[0,3],[3,1],[5,1],[2,3],[0,0],[3,1],[1,3],[2,2],[4,1],[1,3],[2,0],[2,0],[3,1],[1,1],[0,3],[4,0],[0,3],[2,0],[4,0],[1,1],[0,0],[0,2],[2,0]]},{"c":"JOGA003","n":"Biel","p":[5,0,0,8,5,0,0,0,3,5,4,3,0,5,8,8,5,4,3,0,0,5,0,4,3,0,0,4,0,8,4,3,5,3,3,8,0,0,3,0,3,0,0,0,0,5,8,4,3,3,0,5,5,5,4,5,6,8,0,3,5,5,3,8,8,0],"bt":[[1,0],[1,1],[1,0],[1,0],[0,1],[0,1],[1,0],[0,2],[1,0],[1,0],[1,0],[1,0],[1,0],[0,2],[0,1],[3,0],[0,2],[2,0],[1,0],[0,1],[1,1],[1,0],[1,1],[1,1],[3,0],[0,0],[2,0],[1,0],[0,1],[0,2],[1,1],[1,0],[0,1],[1,0],[0,1],[1,1],[1,0],[1,0],[0,1],[1,0],[0,2],[1,0],[3,0],[0,1],[1,0],[2,0],[0,1],[1,1],[1,0],[0,2],[1,1],[2,0],[1,2],[1,0],[2,0],[2,0],[2,0],[0,2],[2,0],[0,1],[2,0],[2,0],[1,0],[1,0],[0,1],[2,0]]},{"c":"JOGA004","n":"Pepê","p":[8,0,0,8,0,0,4,0,5,5,0,6,0,0,5,6,5,4,5,0,0,6,4,4,3,0,0,6,0,5,0,0,3,3,6,4,0,0,0,4,4,4,0,0,0,5,3,4,6,5,4,4,5,0,0,3,6,4,0,6,4,6,4,5,0,0],"bt":[[2,0],[0,1],[2,0],[1,0],[1,1],[0,3],[0,0],[0,3],[2,1],[1,0],[2,2],[3,2],[1,2],[1,1],[0,2],[3,2],[0,2],[3,1],[2,1],[0,3],[2,0],[2,1],[2,1],[1,1],[4,0],[1,2],[3,0],[2,0],[1,2],[0,3],[3,1],[0,0],[1,2],[2,0],[0,3],[2,2],[2,0],[2,0],[1,1],[1,1],[0,4],[2,2],[5,0],[1,2],[2,0],[3,0],[1,3],[1,1],[3,0],[1,2],[1,0],[4,1],[1,3],[1,1],[0,0],[2,1],[2,0],[1,3],[4,0],[0,3],[2,1],[5,1],[2,0],[3,0],[1,1],[3,1]]},{"c":"JOGA005","n":"Bela","p":[6,0,0,4,3,0,0,0,3,3,0,0,0,0,4,3,5,3,5,0,0,6,4,0,3,4,0,8,0,6,0,3,3,5,5,0,8,0,5,0,5,0,0,0,0,5,4,0,5,5,0,8,5,3,3,5,8,6,0,5,5,5,3,5,4,0],"bt":[[2,1],[1,1],[1,2],[2,1],[1,2],[1,1],[1,0],[0,1],[1,0],[2,1],[1,1],[0,1],[2,1],[2,1],[1,2],[2,1],[0,2],[2,1],[2,1],[1,2],[1,1],[2,1],[2,1],[2,1],[4,0],[2,1],[2,0],[2,1],[1,3],[1,2],[1,2],[1,0],[1,2],[2,1],[1,2],[2,1],[1,1],[2,1],[1,2],[2,1],[1,2],[2,1],[4,0],[1,2],[2,0],[2,0],[2,3],[0,2],[2,1],[1,2],[1,2],[3,0],[1,2],[2,1],[1,0],[2,0],[2,1],[1,2],[3,0],[1,2],[2,0],[4,0],[2,1],[2,0],[1,2],[2,1]]},{"c":"JOGA006","n":"Nildinha e Jorge","p":[5,6,0,0,5,4,0,0,5,5,0,0,0,5,0,8,6,4,0,0,5,8,4,0,3,0,0,6,0,5,0,3,3,0,5,0,0,0,5,0,0,0,0,0,0,5,0,0,8,5,0,8,5,0,8,5,0,8,0,4,3,5,3,8,0,0],"bt":[[1,0],[2,0],[0,1],[1,1],[0,1],[2,1],[1,0],[0,2],[2,1],[2,0],[0,2],[0,2],[2,0],[0,2],[3,1],[3,0],[1,3],[2,0],[0,2],[1,2],[0,2],[2,0],[2,1],[2,0],[2,0],[1,2],[3,1],[2,0],[1,3],[0,1],[2,0],[2,0],[1,2],[1,2],[1,2],[2,0],[1,3],[0,2],[1,2],[2,0],[2,1],[2,0],[3,0],[2,0],[3,0],[2,0],[2,0],[0,2],[3,1],[1,3],[0,2],[3,0],[1,3],[0,2],[3,1],[2,0],[1,3],[0,2],[3,1],[0,2],[3,1],[2,0],[3,0],[1,0],[3,0],[2,0]]},{"c":"JOGA007","n":"Oswaldo","p":[6,4,0,0,3,0,4,0,5,0,0,0,0,4,3,8,3,4,0,0,0,5,3,0,3,4,0,0,0,8,0,0,0,5,0,0,0,0,5,4,3,0,0,0,0,3,0,0,0,0,0,5,0,3,5,0,6,6,0,4,5,5,0,5,4,0],"bt":[[2,1],[1,0],[1,3],[1,2],[1,2],[1,1],[0,0],[2,1],[2,1],[0,1],[1,1],[1,3],[2,1],[1,2],[1,3],[3,0],[1,2],[2,0],[0,2],[1,2],[2,2],[1,0],[2,0],[2,1],[4,0],[2,1],[3,1],[1,1],[1,2],[0,2],[1,2],[0,2],[1,1],[3,1],[1,1],[1,0],[1,2],[2,0],[1,2],[1,1],[0,3],[2,1],[3,1],[1,2],[2,1],[2,1],[1,1],[1,2],[2,2],[2,1],[1,2],[1,0],[1,1],[2,1],[2,1],[1,1],[2,0],[1,2],[2,1],[0,2],[2,0],[2,0],[1,1],[2,0],[1,2],[1,2]]},{"c":"JOGA008","n":"Clara & Sylvia","p":[0,4,0,0,5,0,4,8,3,0,8,0,0,0,5,5,8,4,0,0,0,0,3,8,3,0,0,5,0,5,0,0,5,3,4,0,0,0,0,0,3,0,0,0,0,3,3,0,5,3,0,8,3,5,0,8,4,5,0,3,5,8,3,8,5,0],"bt":[[1,1],[1,0],[0,1],[1,1],[0,1],[0,1],[0,0],[1,1],[2,0],[1,1],[2,1],[0,1],[2,1],[1,1],[0,2],[2,0],[0,3],[2,0],[0,1],[0,1],[3,1],[1,1],[2,0],[0,0],[4,0],[2,2],[2,0],[3,1],[1,3],[0,1],[2,1],[0,0],[0,2],[3,0],[0,2],[2,1],[2,1],[2,0],[1,1],[2,1],[0,2],[1,0],[4,0],[1,2],[2,0],[3,1],[2,4],[0,1],[2,1],[0,1],[0,2],[3,0],[0,2],[2,0],[0,0],[3,0],[1,0],[0,4],[3,0],[0,4],[2,0],[5,0],[2,1],[1,0],[0,2],[3,0]]},{"c":"JOGA009","n":"Alice Dias","p":[6,3,0,0,5,0,0,0,0,0,4,5,4,8,0,8,5,3,5,0,0,5,0,8,3,8,0,5,0,0,4,3,5,0,6,8,0,0,6,0,3,4,0,0,0,5,0,8,5,5,0,6,6,5,3,5,0,6,0,3,5,5,4,5,4,0],"bt":[[2,1],[3,0],[1,2],[2,3],[0,1],[0,1],[1,0],[0,2],[1,1],[1,2],[3,2],[4,1],[2,2],[0,1],[1,1],[3,0],[0,2],[1,0],[3,1],[0,2],[1,0],[3,0],[1,2],[0,0],[4,0],[1,0],[1,0],[4,1],[1,2],[0,0],[1,1],[2,0],[0,2],[1,1],[0,3],[1,1],[0,1],[2,0],[0,3],[2,0],[0,1],[2,2],[2,0],[0,1],[3,0],[2,0],[1,1],[0,0],[4,1],[1,2],[0,0],[3,1],[2,4],[1,0],[1,0],[1,0],[0,0],[1,2],[5,0],[0,4],[2,0],[2,0],[3,1],[2,0],[2,3],[3,1]]},{"c":"JOGA010","n":"Regina Afonso","p":[8,0,0,4,0,0,8,0,0,0,0,3,0,3,8,5,5,6,0,0,0,6,3,0,3,0,0,3,0,6,0,0,0,5,6,0,8,0,8,0,3,0,0,0,0,0,0,0,4,0,0,0,5,0,3,5,5,6,0,3,8,3,0,8,3,0],"bt":[[2,0],[0,1],[3,1],[3,2],[1,1],[0,2],[1,1],[0,1],[1,1],[2,2],[1,3],[1,0],[2,1],[1,3],[0,1],[4,0],[0,2],[4,1],[1,1],[0,1],[2,1],[2,1],[2,0],[1,0],[4,0],[1,1],[3,0],[3,0],[1,3],[1,2],[2,1],[2,2],[2,2],[3,1],[0,3],[1,0],[1,1],[1,0],[1,3],[2,0],[0,2],[2,1],[4,1],[0,2],[2,0],[2,2],[1,1],[1,2],[2,0],[2,0],[1,1],[2,2],[1,3],[1,2],[1,0],[2,0],[3,1],[1,2],[2,0],[0,1],[1,0],[3,1],[1,1],[1,0],[1,4],[2,0]]},{"c":"JOGA011","n":"Marcelo Heluy","p":[6,0,8,3,5,0,4,0,0,5,0,0,4,5,4,5,3,6,0,0,0,6,8,0,8,0,0,0,0,8,0,0,0,0,0,8,4,0,4,8,3,0,0,0,0,3,0,0,6,6,0,5,0,5,0,6,3,6,4,3,0,5,0,3,3,4],"bt":[[2,1],[1,2],[1,1],[3,1],[0,2],[1,1],[3,3],[1,2],[1,2],[1,0],[1,1],[2,2],[2,2],[0,3],[1,2],[6,0],[1,2],[4,1],[1,1],[1,3],[2,1],[2,1],[3,2],[2,0],[7,1],[2,2],[3,0],[2,2],[1,1],[0,2],[2,1],[1,2],[1,1],[0,0],[1,1],[1,1],[2,2],[2,1],[0,2],[0,0],[0,3],[2,0],[5,0],[0,2],[3,0],[3,1],[2,2],[1,3],[3,2],[0,4],[2,3],[4,0],[2,2],[3,0],[1,1],[3,2],[3,0],[1,2],[2,2],[0,4],[2,2],[4,0],[3,3],[4,2],[1,3],[1,1]]},{"c":"JOGA012","n":"Bilú","p":[8,0,0,8,0,4,8,0,5,5,0,5,0,0,0,6,5,4,0,0,4,8,0,4,3,8,0,4,0,5,4,0,3,3,5,0,0,0,3,4,3,8,0,8,0,5,5,4,8,3,0,5,3,5,4,5,6,8,0,6,4,5,0,5,4,0],"bt":[[2,0],[1,1],[1,0],[1,0],[0,0],[2,1],[1,1],[0,2],[2,1],[1,0],[1,1],[2,1],[1,2],[0,0],[1,1],[3,1],[0,1],[2,0],[1,1],[0,1],[1,2],[2,0],[0,1],[2,2],[4,0],[1,0],[2,0],[1,0],[1,1],[0,3],[1,1],[0,1],[1,2],[1,0],[1,2],[2,1],[2,1],[2,0],[0,1],[1,1],[0,2],[1,1],[2,1],[1,1],[1,0],[3,0],[0,2],[1,1],[3,1],[0,2],[1,1],[4,0],[0,2],[1,0],[2,0],[1,0],[2,0],[0,2],[2,0],[0,3],[2,1],[3,0],[0,0],[2,0],[1,2],[1,0]]},{"c":"JOGA013","n":"Lili","p":[8,4,0,8,0,4,0,8,0,0,4,0,0,4,5,5,5,3,3,0,0,8,4,0,3,0,0,8,0,5,0,3,5,0,4,0,0,0,4,0,3,0,0,0,0,5,5,0,3,5,3,8,5,5,0,5,4,8,0,4,5,5,3,5,5,0],"bt":[[2,0],[1,0],[1,2],[1,0],[1,1],[2,1],[2,1],[1,1],[1,2],[1,2],[1,0],[1,2],[1,2],[1,2],[0,2],[2,0],[0,1],[3,0],[2,0],[0,3],[2,0],[2,0],[2,1],[2,0],[4,0],[1,2],[3,0],[2,1],[1,3],[0,3],[2,0],[2,0],[0,1],[1,1],[0,2],[1,2],[2,0],[1,0],[0,2],[2,0],[0,3],[2,0],[5,0],[1,2],[2,0],[3,0],[0,2],[1,2],[4,0],[1,3],[2,0],[3,0],[1,3],[2,0],[1,1],[4,0],[1,0],[0,2],[3,0],[0,2],[2,0],[3,0],[2,1],[2,0],[0,2],[2,1]]},{"c":"JOGA014","n":"Maria Rita","p":[4,6,0,5,4,0,0,0,3,3,8,5,0,5,0,4,3,3,3,0,0,4,0,0,6,5,0,6,0,8,0,3,5,5,5,0,0,0,4,0,5,0,0,0,0,5,3,0,5,3,4,5,3,5,4,8,8,6,0,5,3,5,4,4,4,0],"bt":[[3,1],[2,0],[1,2],[2,0],[1,4],[1,2],[2,1],[0,3],[2,0],[3,1],[2,1],[2,1],[1,0],[0,3],[2,1],[4,1],[1,2],[3,0],[2,0],[1,2],[2,0],[3,1],[1,2],[2,1],[7,0],[2,0],[3,0],[2,0],[1,4],[0,2],[1,2],[2,0],[0,3],[2,1],[1,2],[2,1],[3,0],[1,0],[0,2],[2,1],[1,3],[2,1],[4,0],[0,3],[2,0],[3,0],[1,3],[1,3],[2,1],[0,2],[2,1],[4,0],[0,2],[3,0],[2,0],[3,0],[2,1],[1,2],[5,0],[1,2],[3,1],[3,0],[2,0],[2,1],[1,2],[2,1]]},{"c":"JOGA015","n":"Fabrício","p":[5,0,0,4,0,0,0,0,5,5,0,4,0,0,4,5,3,4,5,0,0,0,0,0,3,0,0,8,8,8,0,3,5,0,6,4,0,4,4,0,5,8,4,0,0,5,3,0,5,4,0,6,0,5,3,5,8,4,0,4,4,5,3,5,5,4],"bt":[[3,0],[1,1],[2,0],[2,1],[1,1],[0,2],[1,2],[0,2],[3,1],[2,0],[1,1],[2,0],[3,1],[1,1],[1,2],[4,0],[1,2],[2,0],[2,1],[1,1],[1,0],[2,2],[0,3],[1,2],[3,0],[1,1],[2,0],[2,1],[2,1],[0,2],[2,1],[1,0],[0,1],[2,2],[0,3],[2,2],[2,0],[1,1],[0,2],[3,1],[1,2],[1,1],[1,1],[1,2],[2,1],[2,0],[1,3],[0,1],[2,1],[0,3],[2,2],[3,1],[1,1],[2,0],[1,0],[2,0],[2,1],[1,3],[3,1],[0,2],[2,1],[2,0],[2,1],[2,0],[0,2],[2,2]]},{"c":"JOGA016","n":"Celso Girafa","p":[6,0,0,3,0,0,0,8,0,0,4,4,8,5,4,8,0,3,0,0,4,6,0,0,5,0,0,8,0,8,4,5,3,0,6,0,8,0,3,0,6,8,0,0,0,5,0,0,5,5,0,4,5,5,4,6,4,6,0,6,5,5,3,3,5,4],"bt":[[2,1],[0,1],[2,1],[3,1],[2,2],[1,2],[0,2],[1,1],[0,1],[1,1],[1,0],[2,0],[1,1],[0,2],[1,2],[3,0],[1,1],[2,1],[0,2],[0,1],[1,2],[2,1],[1,2],[2,0],[9,1],[2,2],[3,0],[2,1],[1,1],[0,2],[1,1],[3,1],[1,2],[2,2],[0,3],[1,2],[1,1],[3,0],[0,4],[2,1],[0,5],[1,1],[4,1],[1,5],[4,1],[3,0],[2,2],[0,2],[2,1],[1,2],[1,1],[5,2],[1,3],[2,0],[2,0],[3,1],[1,0],[1,2],[4,0],[0,3],[3,0],[4,0],[2,1],[3,1],[0,2],[2,2]]},{"c":"JOGA017","n":"Caio Girafa","p":[5,0,8,0,3,0,8,0,3,5,6,4,0,5,8,5,5,6,5,0,0,5,0,0,3,0,0,8,0,5,0,3,5,3,4,0,4,0,4,0,3,0,0,0,0,5,4,0,8,4,0,8,5,5,4,3,6,8,0,3,4,5,0,5,5,0],"bt":[[1,0],[1,1],[1,1],[2,2],[1,2],[0,2],[1,1],[0,2],[1,0],[1,0],[2,0],[2,0],[2,1],[0,2],[0,1],[5,0],[0,2],[4,0],[2,1],[0,2],[2,1],[1,0],[1,1],[1,0],[5,0],[0,2],[3,0],[2,1],[0,0],[0,3],[2,1],[2,0],[0,2],[1,0],[0,2],[2,1],[2,2],[1,0],[0,2],[2,0],[0,3],[1,0],[4,0],[0,2],[3,1],[3,0],[1,2],[2,0],[3,1],[0,3],[2,2],[3,0],[1,2],[2,0],[2,0],[2,1],[2,0],[0,2],[2,0],[0,1],[2,1],[3,0],[1,1],[2,0],[0,2],[3,1]]},{"c":"JOGA018","n":"Vinicius Girafa","p":[6,0,4,4,0,4,0,8,0,3,0,5,0,0,4,3,0,3,0,0,4,6,4,0,5,4,0,8,0,6,8,5,0,5,5,0,0,0,5,4,5,0,0,0,0,5,0,0,0,0,0,3,0,0,5,3,8,6,0,5,4,3,3,4,4,0],"bt":[[2,1],[1,2],[2,2],[2,1],[2,2],[2,1],[1,0],[1,1],[1,2],[2,1],[1,1],[2,1],[1,2],[2,2],[1,2],[2,1],[2,2],[2,1],[1,2],[1,3],[1,2],[2,1],[2,1],[2,1],[3,1],[2,1],[2,1],[2,1],[2,2],[1,2],[2,2],[2,1],[2,1],[2,1],[1,2],[2,1],[2,1],[2,1],[1,2],[2,2],[1,2],[1,2],[3,0],[1,3],[3,1],[2,0],[2,2],[2,1],[2,2],[2,1],[1,2],[2,1],[2,2],[2,2],[2,1],[2,1],[2,1],[1,2],[2,1],[1,2],[2,1],[3,1],[2,1],[2,1],[1,2],[2,1]]},{"c":"JOGA019","n":"Victor Girafa","p":[6,0,0,8,0,8,8,0,0,5,0,3,4,8,8,4,3,3,0,0,0,0,3,0,3,4,0,0,0,8,0,3,5,3,4,0,0,4,3,0,3,0,0,0,0,5,4,0,8,3,0,5,8,5,3,3,0,0,0,3,8,5,0,5,8,0],"bt":[[2,1],[0,1],[1,0],[1,0],[1,1],[1,0],[1,1],[0,1],[1,1],[1,0],[1,1],[1,0],[2,2],[0,1],[0,1],[4,1],[1,2],[3,0],[0,1],[0,2],[1,1],[1,1],[2,0],[1,0],[5,0],[3,2],[2,0],[2,2],[2,2],[0,2],[1,0],[2,0],[0,1],[2,0],[0,2],[2,1],[2,1],[0,0],[0,1],[1,0],[0,1],[2,0],[5,0],[0,2],[1,0],[3,0],[1,2],[0,1],[3,1],[0,2],[1,1],[4,0],[1,4],[3,0],[1,0],[2,1],[0,0],[1,1],[2,1],[0,1],[1,0],[3,0],[1,1],[3,0],[0,1],[1,2]]},{"c":"JOGA020","n":"Glauco Girafa","p":[0,0,0,4,0,8,8,0,0,3,0,0,0,3,4,5,0,4,0,0,0,5,4,0,5,0,0,5,8,5,8,0,0,3,8,8,4,0,4,0,0,4,0,0,0,5,4,0,8,0,0,8,8,0,3,3,0,3,0,8,8,5,0,8,5,0],"bt":[[2,2],[0,0],[1,0],[2,1],[1,1],[1,0],[1,1],[1,2],[0,1],[2,1],[0,0],[1,1],[2,1],[1,3],[1,2],[4,0],[1,1],[3,1],[1,2],[0,2],[1,1],[3,0],[2,1],[2,0],[8,1],[1,1],[4,0],[4,1],[2,1],[0,3],[2,2],[1,2],[1,1],[3,2],[1,3],[1,1],[2,2],[1,0],[0,2],[1,0],[0,0],[2,2],[6,0],[1,2],[3,1],[3,0],[2,3],[0,2],[3,1],[1,0],[1,2],[3,0],[1,4],[1,1],[1,0],[2,1],[3,3],[1,4],[3,1],[1,3],[1,0],[2,0],[0,0],[1,0],[0,3],[3,0]]},{"c":"JOGA021","n":"Ricardo Tavares","p":[5,4,0,5,5,8,0,0,3,5,0,3,0,8,4,8,3,4,0,5,8,0,0,0,3,0,0,3,0,0,0,3,5,5,4,0,0,4,5,0,3,0,0,0,0,5,5,0,6,3,4,5,5,5,5,8,4,4,0,4,5,5,3,8,8,0],"bt":[[1,0],[1,0],[0,1],[2,0],[0,2],[1,0],[1,0],[0,2],[1,0],[1,0],[1,1],[1,0],[2,1],[0,1],[1,2],[3,0],[1,2],[2,0],[0,1],[1,0],[0,1],[1,1],[0,1],[2,1],[5,0],[0,1],[3,0],[3,0],[0,2],[0,0],[2,0],[2,0],[0,2],[2,1],[0,2],[2,1],[2,0],[1,1],[1,2],[4,0],[0,2],[3,0],[4,0],[0,2],[4,0],[3,0],[0,2],[0,2],[3,0],[0,1],[2,1],[4,0],[1,3],[2,0],[2,1],[3,0],[1,0],[1,3],[3,0],[0,2],[2,0],[4,0],[2,1],[1,0],[0,1],[1,0]]},{"c":"JOGA022","n":"Ludma Thomé","p":[6,4,0,0,0,5,8,0,4,0,0,0,0,5,4,5,3,5,0,6,5,0,0,0,5,0,8,5,0,6,0,5,5,3,5,4,0,0,0,0,3,0,0,0,0,3,0,4,5,0,0,5,4,3,0,6,8,4,0,5,4,5,3,5,4,0],"bt":[[2,1],[1,0],[2,0],[1,1],[0,0],[2,0],[1,1],[2,0],[3,0],[0,2],[0,1],[0,1],[2,1],[0,2],[1,2],[2,0],[1,2],[3,2],[1,3],[2,1],[0,2],[1,2],[0,1],[3,2],[2,1],[1,1],[0,0],[3,1],[0,2],[1,2],[2,1],[2,1],[0,2],[2,0],[1,2],[2,2],[2,1],[1,2],[2,1],[0,1],[0,2],[2,1],[3,1],[0,2],[2,1],[3,1],[2,1],[1,1],[2,1],[1,1],[1,2],[2,0],[0,3],[2,1],[1,1],[3,1],[2,1],[1,3],[3,1],[1,2],[2,1],[3,0],[2,1],[2,0],[1,2],[2,0]]},{"c":"JOGA023","n":"Dudu Lachtermacher","p":[8,8,0,0,0,0,0,0,0,0,0,5,4,8,3,5,6,6,0,0,0,0,4,0,3,0,0,0,0,5,8,0,3,3,8,0,8,0,5,0,3,0,0,0,0,3,4,0,0,8,0,5,0,3,4,3,5,6,0,5,5,5,4,5,4,4],"bt":[[2,0],[2,1],[2,0],[3,3],[2,2],[1,1],[1,2],[0,3],[2,2],[1,1],[2,2],[4,1],[2,2],[0,1],[1,3],[5,0],[1,3],[4,1],[1,1],[1,3],[2,0],[1,1],[2,1],[2,0],[5,0],[1,1],[3,1],[1,2],[1,3],[0,3],[2,2],[1,2],[1,2],[4,2],[1,3],[3,2],[1,1],[3,0],[1,4],[2,0],[0,3],[2,1],[5,0],[1,2],[3,1],[3,1],[1,2],[1,2],[2,2],[1,4],[2,2],[4,0],[3,3],[3,1],[2,0],[4,3],[3,1],[1,2],[5,1],[1,2],[3,0],[4,0],[2,0],[3,0],[1,2],[2,2]]},{"c":"JOGA024","n":"Rafael Bastos","p":[5,8,8,4,6,0,8,0,3,5,0,5,8,0,3,8,6,4,0,0,0,5,8,0,3,0,0,0,0,4,0,5,3,5,6,4,0,4,4,0,5,0,0,0,0,3,4,4,0,3,0,8,5,5,3,3,4,8,0,5,5,3,0,8,5,0],"bt":[[1,0],[2,1],[1,1],[2,1],[1,3],[1,2],[1,1],[0,2],[1,0],[1,0],[1,1],[2,1],[1,1],[0,0],[1,3],[3,0],[1,3],[2,0],[1,2],[1,2],[2,2],[1,0],[3,2],[2,0],[3,0],[2,2],[2,0],[1,1],[2,2],[1,3],[1,2],[2,1],[1,3],[2,1],[0,3],[2,2],[1,0],[0,0],[0,2],[2,0],[1,2],[3,1],[3,1],[0,1],[2,0],[3,1],[1,2],[1,1],[1,1],[0,2],[1,1],[3,0],[1,2],[2,0],[1,0],[2,1],[1,0],[0,2],[2,0],[1,2],[3,0],[2,1],[1,1],[1,0],[0,2],[2,1]]},{"c":"JOGA025","n":"Roberto Bastos","p":[6,0,0,0,0,0,0,0,5,0,8,0,0,0,4,5,5,4,0,0,0,6,0,0,3,0,0,0,0,8,0,3,3,5,6,0,8,4,5,0,5,0,0,0,0,3,8,4,5,0,0,5,5,5,0,0,6,5,0,4,4,3,0,4,4,4],"bt":[[2,1],[1,2],[2,1],[1,2],[1,0],[1,2],[1,2],[0,2],[2,1],[1,1],[2,1],[1,1],[3,1],[1,1],[1,2],[4,0],[0,2],[2,0],[1,1],[1,2],[2,2],[2,1],[2,2],[2,1],[2,0],[1,1],[2,0],[1,2],[1,1],[0,2],[0,1],[1,0],[1,2],[2,1],[0,3],[2,1],[1,1],[1,1],[1,2],[3,0],[1,3],[2,0],[3,0],[0,2],[2,0],[2,1],[0,1],[1,1],[2,1],[1,1],[1,2],[2,0],[1,3],[2,0],[0,0],[1,1],[2,0],[0,3],[2,1],[0,2],[2,1],[3,1],[2,2],[2,1],[1,2],[1,1]]},{"c":"JOGA026","n":"PG Lyra","p":[4,0,0,0,3,0,4,0,3,5,4,5,0,5,5,5,5,3,3,0,0,6,0,4,3,0,0,8,0,8,4,3,5,3,8,8,0,0,4,0,3,0,0,0,0,5,4,0,6,3,0,5,3,5,4,5,8,6,0,4,5,5,0,5,5,0],"bt":[[3,1],[1,1],[2,1],[1,1],[1,2],[0,1],[0,0],[0,3],[1,0],[2,0],[1,0],[2,1],[2,1],[0,3],[0,2],[5,0],[0,2],[3,0],[2,0],[0,2],[2,1],[2,1],[1,1],[1,1],[4,0],[1,1],[2,0],[2,1],[1,2],[0,2],[1,1],[1,0],[0,2],[2,0],[1,3],[1,1],[2,0],[1,0],[0,2],[2,1],[0,2],[1,0],[4,0],[0,2],[3,0],[2,0],[1,2],[1,2],[3,0],[0,2],[1,1],[2,0],[0,1],[2,0],[2,0],[2,0],[2,1],[1,2],[3,0],[0,2],[2,0],[4,0],[1,1],[2,0],[0,3],[2,0]]},{"c":"JOGA027","n":"Leo Hildebrandt","p":[8,0,0,0,0,0,0,0,0,5,0,5,8,5,8,8,5,4,5,0,0,8,0,0,3,0,0,8,0,8,4,0,0,5,3,0,0,0,0,4,3,0,0,0,0,5,0,4,5,3,0,8,5,5,4,5,8,0,0,5,5,5,0,4,5,0],"bt":[[2,0],[1,1],[2,0],[1,1],[1,1],[0,1],[2,1],[0,2],[1,1],[2,0],[1,1],[2,1],[1,1],[0,2],[0,1],[3,0],[0,2],[2,0],[2,1],[1,2],[1,1],[2,0],[1,2],[2,1],[3,0],[1,1],[2,0],[2,1],[1,1],[0,2],[1,1],[1,1],[1,1],[2,1],[0,1],[2,1],[2,0],[2,0],[1,1],[1,1],[0,2],[1,2],[2,0],[1,2],[2,0],[1,0],[2,1],[1,1],[2,1],[0,2],[1,1],[3,0],[1,2],[2,0],[2,0],[2,0],[2,1],[1,1],[2,0],[1,2],[2,0],[1,0],[1,1],[2,1],[0,2],[2,1]]},{"c":"JOGA028","n":"Thiago do Couto","p":[6,3,0,4,3,0,8,0,0,3,8,5,4,5,4,4,6,4,0,0,0,4,4,0,3,0,0,8,0,6,4,5,3,3,4,0,0,0,3,0,3,0,0,0,0,6,4,0,5,6,0,5,5,3,8,3,8,8,0,6,5,3,5,3,5,0],"bt":[[2,1],[4,2],[1,0],[2,1],[1,2],[0,1],[1,1],[0,3],[1,1],[3,1],[2,1],[2,1],[2,2],[0,3],[1,2],[4,1],[1,3],[2,0],[1,2],[1,3],[2,0],[3,1],[2,1],[3,1],[4,0],[1,1],[3,1],[2,1],[2,2],[1,2],[1,1],[3,1],[1,3],[2,0],[0,2],[2,1],[1,0],[1,0],[0,1],[3,1],[0,2],[2,1],[2,0],[0,2],[3,0],[4,1],[2,3],[0,2],[2,1],[0,4],[1,1],[4,0],[1,2],[3,1],[3,1],[2,1],[2,1],[0,2],[3,1],[2,3],[2,0],[3,1],[3,2],[3,1],[0,2],[1,0]]},{"c":"JOGA029","n":"Gui Oliveira","p":[0,8,0,4,0,0,0,0,5,5,0,5,8,5,0,5,0,3,0,0,0,4,3,0,4,3,0,0,0,3,8,0,5,5,5,0,0,0,6,0,4,4,0,0,0,5,5,4,5,5,0,5,3,5,8,3,6,0,0,5,5,5,0,3,4,4],"bt":[[1,1],[2,1],[2,0],[2,1],[1,1],[0,0],[1,0],[0,2],[2,1],[3,0],[2,2],[2,1],[1,1],[0,3],[1,1],[5,0],[0,0],[3,0],[1,1],[0,3],[2,1],[3,1],[2,0],[2,0],[6,0],[3,1],[3,0],[1,1],[1,2],[1,4],[2,2],[0,0],[0,1],[2,1],[1,2],[2,1],[3,0],[2,0],[0,3],[2,0],[0,4],[2,2],[7,0],[1,3],[4,0],[3,0],[0,2],[2,2],[2,1],[1,2],[1,1],[4,0],[0,2],[2,0],[3,1],[2,1],[2,0],[0,0],[6,1],[1,4],[3,0],[4,0],[1,1],[3,1],[1,2],[2,2]]},{"c":"JOGA030","n":"Monica Xavier","p":[8,0,0,4,0,0,0,0,3,5,0,3,0,8,0,8,5,4,3,0,0,8,0,4,3,0,0,6,0,8,0,3,5,5,4,8,0,0,3,0,3,0,0,0,0,5,5,4,5,3,4,8,5,5,4,5,4,0,0,4,5,5,3,0,4,0],"bt":[[2,0],[1,1],[2,0],[2,1],[1,1],[0,1],[2,1],[0,2],[2,0],[2,0],[1,1],[1,0],[2,0],[0,1],[1,1],[3,0],[0,2],[2,0],[2,0],[1,1],[2,1],[2,0],[1,2],[1,1],[3,0],[1,1],[2,0],[2,0],[0,2],[0,2],[2,1],[2,0],[0,1],[2,1],[0,2],[1,1],[2,0],[1,0],[0,1],[3,0],[0,2],[1,0],[3,0],[0,2],[2,0],[2,0],[0,2],[1,1],[2,1],[0,2],[2,1],[3,0],[1,2],[2,0],[2,0],[2,0],[1,0],[1,1],[3,0],[0,2],[2,0],[2,0],[2,1],[1,1],[1,2],[3,0]]},{"c":"JOGA031","n":"Pedro Mansur","p":[6,0,0,4,3,0,0,0,5,3,8,4,0,4,4,8,3,4,5,0,0,6,0,0,3,0,0,6,0,8,0,5,3,5,4,0,0,0,6,0,3,0,0,0,0,5,4,0,5,4,4,8,5,5,4,5,6,6,0,4,5,5,3,4,5,0],"bt":[[2,1],[1,2],[2,1],[2,1],[1,2],[1,2],[2,1],[0,2],[2,1],[2,1],[2,1],[2,0],[2,1],[1,2],[1,2],[3,0],[1,2],[2,0],[2,1],[1,2],[2,1],[2,1],[1,2],[2,1],[3,0],[1,2],[3,0],[2,0],[1,2],[0,2],[2,1],[2,1],[1,2],[2,1],[0,2],[2,1],[2,1],[2,1],[0,3],[2,0],[0,3],[2,1],[3,0],[1,2],[3,0],[2,0],[1,2],[0,2],[2,1],[0,3],[2,1],[3,0],[1,2],[2,0],[2,0],[2,0],[2,0],[1,2],[3,0],[0,2],[2,0],[3,0],[2,1],[2,1],[0,2],[2,0]]},{"c":"JOGA032","n":"Caroline Hildebrandt","p":[4,0,8,5,5,0,0,0,0,0,4,3,0,8,5,8,5,4,0,0,0,8,0,0,3,0,0,3,0,8,4,0,0,5,8,0,0,0,4,0,4,0,0,0,0,5,4,4,5,6,6,8,0,5,4,6,0,8,0,6,5,3,3,5,4,0],"bt":[[3,1],[0,2],[1,1],[2,0],[0,2],[1,1],[1,0],[0,1],[1,1],[0,1],[1,0],[1,0],[2,0],[0,1],[0,2],[3,0],[0,2],[2,0],[1,2],[0,1],[1,1],[2,0],[1,2],[2,1],[4,0],[1,2],[2,0],[3,0],[1,3],[0,2],[1,1],[0,1],[1,1],[2,1],[1,3],[2,1],[3,0],[1,0],[0,2],[3,0],[0,4],[3,1],[3,0],[0,2],[2,0],[3,0],[2,3],[2,2],[2,1],[0,4],[3,1],[3,0],[2,1],[2,0],[2,0],[3,1],[1,1],[0,2],[3,0],[0,3],[4,0],[4,1],[1,0],[3,0],[1,2],[3,1]]},{"c":"JOGA033","n":"Luiz Mansur","p":[6,0,0,4,0,0,0,0,0,3,8,5,0,4,4,5,3,3,5,0,0,6,4,0,4,0,0,8,0,5,0,5,3,5,5,0,0,0,5,0,5,0,0,0,0,3,4,0,5,5,4,3,5,3,5,3,8,6,0,5,4,3,3,4,4,0],"bt":[[2,1],[1,2],[2,1],[2,1],[2,1],[1,2],[1,2],[1,2],[1,2],[2,1],[2,1],[2,1],[2,1],[1,2],[1,2],[4,0],[1,2],[2,1],[2,1],[1,2],[2,1],[2,1],[2,1],[2,1],[6,0],[1,2],[3,0],[2,1],[1,2],[0,3],[2,1],[2,1],[1,2],[2,1],[1,2],[1,2],[2,1],[2,1],[1,2],[2,1],[1,2],[2,1],[4,0],[1,2],[3,0],[2,1],[1,2],[1,2],[2,1],[1,2],[2,1],[2,1],[1,2],[2,1],[2,1],[2,1],[2,1],[1,2],[2,1],[1,2],[2,1],[2,1],[2,1],[2,1],[1,2],[2,1]]},{"c":"JOGA034","n":"Carlos Mansur","p":[8,0,0,4,8,0,8,0,0,5,0,3,0,5,0,5,5,3,3,0,0,8,0,8,3,0,0,5,0,3,8,5,5,0,6,0,0,0,3,0,3,0,0,0,0,8,3,0,3,4,4,5,0,5,4,8,8,5,0,6,5,5,3,0,0,0],"bt":[[2,0],[1,2],[0,1],[2,1],[0,3],[1,2],[1,1],[1,2],[1,2],[3,0],[1,1],[1,0],[2,0],[0,2],[1,1],[5,0],[0,4],[3,0],[2,0],[1,2],[2,0],[2,0],[0,2],[0,0],[5,0],[1,1],[4,0],[3,1],[1,1],[1,6],[2,2],[3,1],[0,3],[1,1],[0,3],[2,1],[2,1],[2,0],[0,4],[2,0],[0,7],[2,1],[6,0],[0,3],[5,0],[4,0],[1,3],[1,4],[1,0],[0,3],[2,1],[4,0],[2,2],[3,0],[2,0],[3,0],[2,1],[0,3],[4,0],[0,3],[4,0],[6,0],[2,1],[1,2],[1,1],[2,0]]},{"c":"JOGA035","n":"João Paulo Hildebrandt","p":[5,0,4,4,0,5,0,4,0,0,8,0,0,5,3,5,6,3,0,0,0,5,0,0,3,0,0,8,0,5,8,3,3,0,5,0,0,0,0,0,5,0,0,0,0,5,0,4,8,4,0,5,5,3,8,5,8,4,0,6,5,3,4,5,5,4],"bt":[[1,0],[1,2],[2,2],[2,1],[1,1],[2,0],[0,1],[0,0],[1,3],[0,2],[2,1],[1,1],[2,1],[0,2],[1,3],[4,0],[1,3],[3,0],[1,2],[1,2],[2,2],[3,0],[1,2],[2,1],[4,0],[2,2],[3,1],[2,1],[1,3],[0,3],[2,2],[2,0],[1,2],[2,2],[1,2],[1,2],[2,1],[2,1],[2,1],[2,0],[1,3],[2,0],[3,0],[1,2],[3,0],[3,0],[2,2],[1,1],[3,1],[0,3],[2,2],[4,0],[1,3],[2,1],[3,1],[2,0],[2,1],[1,3],[3,1],[0,3],[2,0],[3,1],[3,1],[2,0],[0,4],[2,2]]},{"c":"JOGA036","n":"Afonso Hildebrandt","p":[6,0,0,0,8,0,0,4,0,0,0,3,0,0,5,6,5,3,5,8,5,0,0,0,3,0,0,8,0,8,0,0,5,0,8,0,0,0,4,4,5,0,0,0,0,5,0,0,5,4,4,8,0,5,5,5,0,4,0,5,0,5,0,5,4,0],"bt":[[2,1],[0,1],[1,2],[1,1],[0,3],[1,1],[2,0],[2,2],[0,3],[1,1],[1,2],[4,0],[1,2],[1,1],[0,3],[3,1],[0,4],[1,0],[3,1],[2,0],[0,2],[1,1],[1,4],[1,2],[5,0],[1,1],[3,0],[2,1],[2,2],[0,2],[2,0],[1,1],[0,2],[1,1],[1,3],[1,2],[2,0],[2,1],[0,2],[1,1],[1,2],[3,1],[3,0],[2,1],[2,1],[2,0],[1,1],[0,3],[2,1],[0,3],[2,1],[3,0],[2,2],[2,0],[2,1],[2,0],[1,2],[1,3],[3,1],[1,2],[1,1],[2,0],[1,1],[2,0],[1,2],[3,0]]},{"c":"JOGA037","n":"José Carlos Machado","p":[6,0,0,0,6,0,8,0,3,5,0,3,0,5,5,4,0,3,3,0,0,0,0,8,3,0,0,0,0,6,0,3,3,0,5,0,0,0,6,0,3,0,0,0,0,5,5,8,5,5,0,6,0,0,8,8,6,0,0,8,5,5,0,5,4,0],"bt":[[2,1],[2,2],[2,1],[1,1],[2,3],[2,2],[1,1],[0,2],[1,0],[3,0],[1,1],[1,0],[2,1],[0,4],[0,2],[4,1],[2,2],[3,0],[2,0],[1,3],[2,1],[1,1],[1,1],[0,0],[3,0],[1,3],[2,0],[2,2],[1,1],[1,2],[1,0],[1,0],[1,2],[2,2],[1,2],[1,2],[1,2],[2,0],[0,3],[3,1],[0,2],[2,0],[3,0],[0,2],[3,0],[2,0],[0,2],[0,0],[2,1],[1,3],[2,2],[3,1],[1,1],[1,2],[3,1],[3,0],[2,0],[1,1],[3,0],[1,3],[2,0],[2,0],[1,1],[2,0],[1,2],[2,0]]},{"c":"JOGA038","n":"Mariana França","p":[4,0,0,8,3,0,0,0,0,0,0,0,0,0,4,5,5,4,5,0,0,8,0,0,3,0,0,3,0,6,0,3,3,3,3,4,0,4,5,0,3,0,0,0,0,3,4,0,6,5,0,8,5,5,4,5,4,4,0,4,5,5,0,5,3,0],"bt":[[3,1],[1,1],[2,1],[1,0],[1,2],[2,3],[2,0],[3,0],[1,1],[1,2],[1,3],[0,1],[3,1],[0,0],[1,2],[4,0],[0,2],[2,0],[3,1],[0,1],[2,2],[2,0],[1,1],[1,0],[4,0],[1,1],[2,0],[3,0],[1,3],[1,2],[2,0],[1,0],[1,2],[2,0],[0,4],[2,2],[3,1],[0,0],[1,2],[3,0],[0,2],[2,1],[5,0],[1,2],[2,0],[3,1],[2,3],[0,2],[3,0],[1,2],[1,2],[3,0],[1,2],[1,0],[2,0],[2,0],[1,0],[1,3],[4,0],[0,2],[3,0],[4,0],[2,2],[2,0],[1,3],[2,0]]},{"c":"JOGA039","n":"Ivan Furtado","p":[4,0,0,0,0,4,0,0,3,0,8,0,4,5,3,3,8,6,3,0,0,8,0,0,3,0,0,5,0,0,0,0,6,3,3,0,0,0,8,0,4,4,0,0,0,4,0,4,5,3,0,5,5,0,8,8,4,4,0,6,4,6,0,0,5,0],"bt":[[3,1],[0,2],[2,1],[1,1],[1,1],[2,1],[3,0],[1,3],[2,0],[0,0],[2,1],[2,3],[2,2],[0,3],[1,3],[6,1],[0,3],[4,0],[2,0],[2,2],[2,2],[2,0],[0,1],[1,2],[5,0],[2,3],[3,1],[4,1],[1,2],[2,2],[3,0],[0,0],[2,4],[3,0],[0,4],[3,1],[2,1],[2,0],[1,3],[4,2],[0,4],[2,2],[6,0],[1,3],[4,1],[5,1],[2,2],[2,2],[4,1],[0,2],[1,2],[4,0],[1,3],[3,3],[3,1],[3,0],[1,0],[1,3],[4,2],[0,3],[3,2],[5,1],[2,2],[1,3],[0,2],[2,0]]},{"c":"JOGA040","n":"Débora","p":[0,0,0,0,6,0,0,0,0,0,0,0,0,0,4,5,0,0,0,0,5,0,0,0,0,0,0,0,0,8,0,0,0,0,4,8,0,4,6,0,0,0,4,0,0,0,4,0,4,3,4,0,3,0,0,0,0,3,0,0,0,0,0,0,5,4],"bt":[[1,1],[2,3],[2,0],[1,1],[2,3],[0,2],[2,3],[0,2],[1,1],[2,3],[0,2],[1,1],[2,0],[1,1],[2,3],[2,0],[1,1],[2,3],[1,1],[2,3],[0,2],[1,1],[2,3],[0,2],[1,1],[2,3],[0,2],[1,1],[2,3],[0,2],[2,3],[0,2],[1,1],[2,3],[0,2],[1,1],[0,2],[1,1],[2,3],[0,2],[1,1],[2,3],[1,1],[2,3],[0,2],[1,1],[2,3],[0,2],[2,0],[2,3],[1,0],[1,1],[2,3],[0,2],[2,3],[0,2],[1,1],[2,3],[0,2],[1,1],[2,3],[0,2],[1,1],[2,3],[0,2],[1,1]]},{"c":"JOGA041","n":"Jorge Melém","p":[6,0,0,5,0,3,0,0,0,0,0,3,0,5,0,8,5,6,0,0,8,0,3,4,3,0,0,3,0,0,0,0,3,5,3,0,0,0,0,0,5,4,0,0,0,3,0,0,8,3,0,5,5,5,3,6,4,8,0,5,5,5,0,0,5,0],"bt":[[2,1],[0,2],[0,1],[2,0],[1,1],[3,1],[2,1],[0,1],[1,1],[2,2],[0,1],[1,0],[2,1],[0,2],[1,1],[3,0],[0,1],[4,1],[1,2],[1,1],[0,1],[0,1],[2,0],[1,1],[5,0],[1,3],[1,0],[3,0],[1,2],[2,0],[2,0],[1,1],[1,2],[3,1],[0,1],[2,0],[2,0],[1,0],[1,1],[2,0],[1,3],[2,2],[4,0],[1,2],[2,0],[3,1],[2,1],[0,1],[3,1],[0,1],[2,2],[2,0],[1,2],[2,0],[1,0],[3,1],[1,0],[0,2],[4,1],[1,2],[3,0],[2,0],[2,2],[0,1],[0,2],[3,0]]},{"c":"JOGA042","n":"Leo Barberes","p":[8,0,8,5,8,8,0,0,3,5,0,0,0,5,4,5,5,4,3,0,0,5,0,0,3,0,0,3,0,5,0,3,3,3,5,8,0,0,3,0,3,4,0,0,0,3,4,8,8,3,4,6,3,0,0,6,4,4,0,4,5,5,0,0,4,0],"bt":[[2,0],[0,0],[1,1],[2,0],[0,3],[1,0],[1,0],[0,2],[2,0],[1,0],[1,1],[0,1],[3,1],[0,3],[1,2],[4,0],[0,2],[2,0],[1,0],[1,3],[1,1],[1,0],[1,1],[1,0],[3,0],[0,1],[2,0],[4,0],[2,3],[0,1],[2,1],[2,0],[1,2],[3,2],[1,2],[1,1],[2,0],[1,0],[0,1],[2,0],[0,1],[0,0],[3,0],[1,2],[2,0],[2,1],[1,2],[0,0],[3,1],[2,3],[1,0],[3,1],[0,2],[0,1],[1,1],[3,1],[1,0],[1,3],[2,0],[0,2],[3,0],[3,0],[1,2],[1,1],[1,2],[2,0]]},{"c":"JOGA043","n":"Laís Malek","p":[0,6,0,0,0,0,0,0,5,3,5,4,0,0,5,3,5,3,0,0,8,0,0,4,3,4,0,0,0,5,4,3,6,0,3,4,0,4,5,0,5,0,0,8,0,3,3,4,5,3,4,5,5,5,0,5,0,6,0,4,5,5,0,5,3,0],"bt":[[1,1],[2,0],[0,1],[1,3],[0,0],[1,1],[3,2],[0,2],[2,1],[3,1],[3,1],[2,0],[3,2],[1,1],[0,2],[5,1],[0,2],[3,0],[0,0],[1,1],[0,1],[1,2],[0,2],[2,2],[3,0],[2,1],[2,0],[2,2],[1,2],[0,3],[1,1],[2,0],[1,4],[0,0],[0,1],[2,2],[3,0],[1,1],[1,2],[3,0],[1,4],[0,1],[3,0],[1,1],[1,0],[3,2],[1,3],[1,1],[4,1],[0,2],[2,1],[5,0],[1,3],[1,0],[0,0],[2,0],[0,0],[1,2],[2,0],[0,2],[3,0],[2,0],[1,1],[2,0],[1,3],[2,1]]},{"c":"JOGA044","n":"Lucas William","p":[8,0,0,4,0,0,4,0,5,5,8,8,4,0,5,6,5,4,3,0,0,0,4,4,3,0,0,8,0,3,0,0,5,5,4,0,0,0,0,0,3,0,0,8,0,5,3,0,3,5,0,6,6,0,0,5,0,4,0,4,3,5,3,5,5,0],"bt":[[2,0],[1,1],[1,0],[2,1],[1,1],[1,3],[0,0],[0,2],[3,1],[3,0],[2,1],[3,1],[2,2],[1,1],[0,2],[3,1],[0,2],[2,0],[2,0],[2,3],[3,1],[1,1],[2,1],[1,1],[5,0],[2,2],[2,0],[2,1],[0,2],[1,4],[2,1],[0,0],[0,1],[3,1],[0,2],[1,0],[2,0],[1,0],[2,2],[2,1],[0,3],[2,1],[4,0],[1,1],[3,0],[2,0],[1,3],[1,2],[4,0],[1,2],[2,2],[3,1],[2,4],[1,1],[0,0],[2,0],[2,2],[1,3],[4,1],[0,2],[3,1],[4,0],[2,1],[2,0],[0,2],[3,1]]},{"c":"JOGA045","n":"Eurípedes Júnior","p":[4,0,0,8,0,8,8,0,3,0,4,5,0,5,3,5,5,6,0,0,0,0,6,4,3,0,0,5,0,4,0,0,3,3,8,4,0,0,4,0,3,0,0,0,0,8,0,0,0,4,3,6,0,5,3,3,3,5,0,6,4,5,3,4,5,0],"bt":[[3,1],[2,2],[3,2],[1,0],[1,1],[1,0],[1,1],[0,3],[2,0],[0,0],[1,0],[2,1],[2,1],[0,2],[1,3],[4,0],[0,2],[4,0],[1,2],[1,2],[2,0],[1,2],[3,1],[2,2],[3,0],[0,3],[3,1],[4,1],[2,2],[1,3],[1,2],[2,2],[1,3],[3,2],[1,3],[2,2],[2,1],[2,1],[0,2],[2,0],[0,3],[2,1],[4,0],[1,3],[3,0],[4,0],[2,2],[1,2],[1,1],[0,3],[2,0],[3,1],[1,1],[2,0],[1,0],[2,1],[4,0],[0,3],[3,0],[0,3],[2,1],[4,0],[2,1],[2,1],[0,3],[1,2]]},{"c":"JOGA046","n":"Luis Antonio Palmeira","p":[3,0,0,0,3,0,0,0,3,3,0,5,8,5,0,5,8,3,0,0,0,8,0,0,6,4,0,5,0,4,0,3,5,3,3,0,0,0,6,0,3,4,0,8,0,5,5,0,6,6,3,5,0,3,6,8,5,0,0,4,3,5,0,0,0,0],"bt":[[4,1],[1,1],[2,0],[2,2],[1,2],[1,3],[2,1],[0,3],[2,0],[4,1],[1,1],[2,1],[1,1],[0,2],[1,1],[4,0],[0,3],[3,0],[1,1],[1,1],[0,0],[2,0],[0,2],[2,0],[7,0],[3,2],[3,0],[3,1],[2,2],[1,3],[2,1],[2,0],[0,2],[2,0],[0,4],[2,1],[1,2],[3,1],[0,3],[2,0],[0,3],[2,2],[4,0],[1,1],[2,1],[3,0],[0,4],[1,3],[3,0],[0,4],[2,0],[5,0],[2,2],[3,2],[3,0],[3,0],[3,1],[2,1],[4,0],[0,2],[3,1],[3,0],[2,2],[0,2],[1,1],[5,0]]},{"c":"JOGA047","n":"Natasha Medici","p":[8,8,0,0,5,0,8,0,5,5,8,4,0,5,0,4,5,3,5,0,0,5,0,0,3,0,0,0,0,6,0,5,5,5,0,0,0,0,5,0,5,8,0,0,0,5,4,0,0,5,0,5,5,5,4,4,8,8,0,8,4,3,4,4,5,4],"bt":[[2,0],[2,1],[1,0],[1,1],[0,2],[1,3],[1,1],[0,2],[3,1],[1,0],[2,1],[2,0],[2,0],[0,3],[1,1],[4,1],[0,2],[2,1],[2,1],[0,2],[2,0],[1,0],[0,0],[2,0],[5,0],[1,2],[3,1],[2,2],[1,3],[1,2],[2,1],[2,1],[0,2],[3,1],[0,0],[2,0],[2,0],[3,2],[1,2],[3,0],[1,2],[1,1],[5,1],[0,3],[4,0],[2,0],[1,2],[0,1],[0,0],[1,2],[2,3],[4,0],[1,2],[2,0],[2,0],[4,1],[2,1],[0,2],[3,0],[1,3],[2,1],[3,1],[3,1],[2,1],[0,2],[1,1]]},{"c":"JOGA048","n":"Marcelo Medici","p":[6,0,0,4,5,0,8,0,5,5,8,0,0,5,0,8,0,4,0,0,5,6,0,0,3,0,0,5,0,8,0,0,5,5,8,8,8,0,4,0,3,8,0,0,0,3,0,4,5,3,0,8,3,5,0,6,0,6,0,5,0,3,0,5,3,0],"bt":[[2,1],[1,2],[1,0],[2,1],[0,2],[1,1],[1,1],[1,3],[2,1],[1,0],[2,1],[1,1],[2,1],[0,3],[1,1],[3,0],[1,1],[2,0],[1,2],[1,1],[0,2],[2,1],[1,1],[3,1],[4,0],[1,1],[3,1],[3,1],[1,2],[0,2],[2,1],[1,1],[0,1],[2,1],[1,3],[1,1],[1,1],[1,0],[0,2],[2,1],[0,2],[1,1],[3,1],[1,2],[3,0],[2,1],[2,1],[1,1],[2,1],[0,2],[1,2],[3,0],[2,3],[1,0],[1,1],[3,1],[1,1],[1,2],[2,1],[1,2],[2,2],[2,1],[2,2],[2,0],[1,3],[3,1]]},{"c":"JOGA049","n":"Humberto Trebbi","p":[6,0,8,4,0,8,0,0,3,3,0,0,0,5,0,8,3,4,3,0,0,5,0,0,3,0,0,3,0,0,0,3,3,5,6,4,4,4,5,0,5,4,0,4,0,3,3,0,6,5,3,5,5,0,4,5,0,0,0,5,5,5,0,0,5,0],"bt":[[2,1],[0,1],[1,1],[2,1],[2,1],[1,0],[2,0],[0,1],[2,0],[2,1],[1,2],[1,1],[2,1],[0,3],[2,1],[3,0],[1,2],[2,0],[2,0],[1,1],[1,1],[1,0],[1,2],[1,0],[3,0],[0,2],[2,0],[3,0],[1,2],[1,1],[3,2],[2,0],[1,2],[2,1],[0,3],[2,2],[2,2],[0,0],[1,2],[3,1],[1,2],[2,2],[3,0],[2,2],[2,0],[3,1],[1,3],[0,2],[3,0],[1,2],[2,0],[2,0],[1,3],[1,1],[2,0],[2,0],[1,1],[2,2],[3,0],[1,2],[2,0],[3,0],[2,2],[1,2],[0,2],[3,0]]},{"c":"JOGA050","n":"Linhares","p":[8,4,8,4,5,0,0,4,0,5,0,0,0,5,0,5,3,4,3,0,0,4,0,4,3,0,0,3,0,4,4,5,5,3,5,0,0,0,3,0,3,0,0,0,0,3,0,0,8,5,0,5,5,5,6,8,6,4,0,6,5,5,3,0,5,0],"bt":[[2,0],[1,0],[1,1],[2,1],[0,2],[1,2],[2,1],[0,0],[1,1],[1,0],[1,1],[0,1],[3,0],[0,3],[2,1],[4,0],[1,2],[3,1],[2,0],[1,2],[1,1],[3,1],[1,2],[1,1],[5,0],[1,2],[3,0],[4,0],[1,4],[1,3],[1,1],[2,1],[0,3],[2,0],[1,2],[2,1],[2,0],[2,0],[0,1],[2,0],[0,3],[1,0],[4,0],[1,3],[3,0],[3,1],[1,1],[0,2],[3,1],[1,2],[1,2],[4,0],[1,3],[3,0],[3,0],[3,0],[2,0],[1,3],[4,0],[0,3],[3,0],[3,0],[2,1],[1,1],[0,2],[3,0]]},{"c":"JOGA051","n":"Bernardo Rothe","p":[5,6,0,4,3,0,0,0,5,0,5,0,4,8,3,5,5,3,5,0,0,8,0,0,3,5,0,8,0,5,0,0,3,5,5,0,0,0,6,0,3,0,0,0,0,5,3,0,5,5,0,5,5,5,5,5,3,6,0,8,5,5,0,5,3,0],"bt":[[1,0],[2,0],[1,2],[2,1],[1,2],[1,2],[2,1],[1,3],[3,1],[1,1],[3,1],[1,1],[2,2],[0,1],[1,3],[4,0],[0,2],[3,0],[2,1],[0,2],[2,1],[2,0],[1,1],[3,1],[5,0],[2,0],[2,0],[2,1],[1,2],[0,3],[2,3],[1,2],[1,2],[2,1],[1,2],[2,1],[2,0],[2,0],[0,3],[1,0],[0,3],[2,1],[4,1],[1,2],[2,1],[3,0],[1,3],[1,2],[2,1],[1,2],[1,2],[4,0],[1,2],[3,0],[2,1],[2,0],[3,0],[1,2],[3,0],[1,3],[3,0],[3,0],[1,1],[3,0],[1,3],[2,1]]},{"c":"JOGA052","n":"Satoru","p":[4,0,0,0,5,0,4,0,3,3,4,4,0,5,4,5,3,4,0,0,0,5,0,4,5,0,0,0,0,6,8,3,5,3,6,0,0,4,4,0,4,0,0,0,0,5,4,0,5,3,0,4,3,5,4,5,8,6,0,3,5,5,0,0,4,0],"bt":[[3,1],[1,1],[2,1],[0,0],[0,1],[0,2],[0,0],[0,2],[2,0],[2,1],[1,0],[2,0],[1,2],[0,2],[1,2],[2,0],[1,2],[2,0],[1,1],[1,1],[1,1],[1,0],[1,2],[1,1],[3,1],[1,1],[2,1],[1,1],[1,2],[1,2],[2,2],[1,0],[0,2],[2,0],[0,3],[1,0],[2,1],[1,1],[0,2],[3,0],[0,4],[2,1],[5,0],[0,2],[3,0],[3,0],[1,2],[1,2],[2,1],[0,2],[1,2],[4,1],[0,2],[2,0],[2,0],[2,0],[2,1],[1,2],[3,1],[0,4],[3,0],[3,0],[1,1],[0,1],[1,2],[3,0]]},{"c":"JOGA053","n":"Izamara","p":[6,4,0,5,5,0,0,0,0,5,0,4,0,5,4,8,5,3,5,0,4,5,0,0,3,5,0,3,0,8,0,3,5,5,4,4,0,0,6,0,4,4,0,0,0,5,4,4,6,3,3,5,5,5,4,5,6,6,0,5,4,5,3,0,5,0],"bt":[[2,1],[1,0],[1,0],[2,0],[0,2],[0,2],[2,1],[0,2],[1,1],[2,0],[1,2],[2,0],[3,1],[0,2],[1,2],[3,0],[0,2],[3,0],[2,1],[1,2],[1,2],[1,0],[1,2],[1,0],[3,0],[2,0],[2,0],[4,0],[0,3],[0,2],[2,1],[2,0],[0,2],[2,1],[0,2],[2,2],[2,1],[3,0],[0,3],[2,1],[0,4],[2,2],[3,0],[1,2],[2,0],[2,0],[1,2],[1,1],[3,0],[0,2],[2,0],[2,0],[1,2],[1,0],[2,0],[2,0],[2,0],[1,2],[2,0],[1,2],[2,1],[2,0],[2,1],[1,1],[0,2],[3,0]]},{"c":"JOGA054","n":"Sybelle","p":[8,0,0,4,0,0,0,0,5,5,0,3,0,4,4,5,3,3,5,0,0,0,4,0,3,0,0,5,0,8,8,3,5,3,6,4,0,0,4,0,3,8,0,0,0,5,0,4,6,4,6,8,5,5,4,8,6,6,0,4,4,5,3,5,5,0],"bt":[[2,0],[1,1],[2,0],[2,1],[1,1],[0,1],[1,0],[0,3],[2,1],[1,0],[1,1],[1,0],[2,1],[1,2],[1,2],[4,0],[1,2],[2,1],[2,1],[1,2],[1,1],[1,1],[2,1],[1,0],[4,0],[1,1],[3,0],[3,1],[1,2],[0,2],[2,2],[1,0],[0,2],[2,0],[0,3],[2,2],[1,0],[2,0],[0,2],[2,1],[0,3],[1,1],[3,0],[0,2],[2,0],[2,0],[1,1],[1,1],[3,0],[0,3],[3,1],[3,0],[1,2],[1,0],[2,0],[3,0],[2,0],[1,2],[2,0],[0,2],[2,1],[3,0],[2,1],[2,0],[0,2],[2,1]]},{"c":"JOGA055","n":"Herbert Zampier","p":[8,0,0,5,3,0,0,0,0,0,5,4,0,5,5,5,6,3,0,0,0,6,6,0,6,3,0,8,0,5,0,3,5,5,6,0,0,0,6,0,3,4,0,0,0,5,4,0,5,5,0,5,5,5,4,6,6,4,0,6,4,5,0,5,5,0],"bt":[[2,0],[0,1],[2,1],[2,0],[1,2],[1,1],[1,3],[0,2],[2,2],[1,1],[3,1],[2,0],[2,1],[0,2],[0,2],[5,0],[1,3],[3,0],[1,1],[0,3],[2,1],[2,1],[3,0],[2,0],[7,0],[3,1],[3,0],[2,1],[0,2],[0,5],[2,1],[2,0],[0,3],[3,1],[0,3],[2,0],[2,0],[2,1],[0,3],[3,0],[0,3],[2,2],[5,0],[0,2],[3,0],[3,0],[1,2],[0,2],[2,1],[1,3],[1,2],[5,0],[1,2],[3,0],[2,0],[3,1],[2,0],[1,3],[2,1],[0,3],[2,1],[4,0],[2,2],[3,0],[0,3],[2,1]]},{"c":"JOGA056","n":"Anderson Titoneli","p":[8,0,0,5,3,0,0,0,3,5,4,4,0,5,8,8,5,4,5,0,0,8,0,0,3,0,0,6,0,8,0,3,5,3,4,0,0,0,4,0,3,0,0,0,0,5,5,4,5,3,0,5,5,3,4,5,4,5,0,4,5,5,3,8,5,0],"bt":[[2,0],[1,1],[2,1],[2,0],[1,2],[1,2],[2,0],[0,2],[2,0],[2,0],[1,0],[2,0],[2,1],[0,2],[0,1],[3,0],[0,2],[2,0],[2,1],[1,2],[1,0],[2,0],[1,1],[1,0],[4,0],[1,1],[2,0],[2,0],[0,2],[0,2],[2,1],[2,0],[0,1],[1,0],[0,2],[1,0],[2,0],[1,0],[0,2],[2,0],[0,3],[1,0],[2,0],[0,1],[2,0],[2,0],[0,2],[1,1],[2,1],[0,2],[1,1],[2,0],[1,2],[2,1],[2,0],[2,0],[1,0],[0,1],[2,0],[0,2],[2,0],[3,0],[1,0],[1,0],[0,2],[1,0]]},{"c":"JOGA057","n":"Alessandra Teixeira","p":[5,4,4,8,5,0,0,0,3,5,0,0,0,5,0,8,5,4,0,0,0,0,4,0,3,0,0,6,0,8,0,3,5,3,3,0,0,0,3,0,3,4,0,0,0,5,0,0,6,0,0,5,3,5,3,5,0,5,0,4,5,5,4,8,8,0],"bt":[[1,0],[1,0],[0,0],[1,0],[0,1],[0,1],[2,0],[0,1],[1,0],[2,0],[1,1],[0,0],[2,0],[0,3],[2,0],[3,0],[0,1],[2,0],[1,1],[0,1],[1,1],[0,0],[1,0],[1,0],[4,0],[0,1],[2,0],[2,0],[0,1],[0,2],[2,0],[1,0],[0,1],[1,0],[0,1],[0,1],[1,0],[1,0],[0,1],[1,0],[0,1],[0,0],[2,0],[0,2],[2,0],[2,0],[1,1],[0,1],[3,0],[0,0],[0,1],[2,0],[0,2],[1,0],[1,0],[2,0],[0,0],[0,1],[2,0],[0,2],[2,0],[3,0],[2,0],[1,0],[0,1],[2,0]]},{"c":"JOGA058","n":"Eleine Ramos","p":[0,0,8,4,5,0,0,0,3,0,0,3,0,0,5,5,5,4,3,0,0,0,0,0,3,5,4,0,0,0,0,0,5,0,0,0,8,0,3,0,0,0,0,8,0,5,8,4,5,3,0,8,0,3,4,5,0,6,0,3,4,5,3,8,4,0],"bt":[[1,1],[0,0],[1,1],[2,1],[0,1],[0,1],[2,1],[0,1],[1,0],[1,1],[1,1],[1,0],[1,2],[1,1],[0,2],[2,0],[0,1],[2,0],[2,0],[1,1],[2,0],[1,1],[1,1],[0,1],[4,0],[2,0],[1,1],[1,1],[0,1],[1,1],[0,1],[1,1],[0,1],[1,1],[0,0],[1,0],[1,1],[0,1],[0,1],[2,1],[1,1],[2,0],[3,0],[1,1],[1,0],[2,0],[0,1],[1,1],[2,1],[0,1],[1,1],[3,0],[1,1],[2,1],[2,0],[1,0],[1,1],[1,2],[2,0],[0,1],[2,1],[3,0],[2,1],[1,0],[1,2],[2,1]]},{"c":"JOGA059","n":"França","p":[8,4,8,0,5,0,0,0,0,0,4,3,0,8,4,8,3,4,0,0,8,5,0,0,3,0,0,4,0,5,0,0,0,3,0,8,0,0,3,0,0,0,0,0,0,5,8,4,4,0,0,5,3,5,3,5,0,6,0,3,8,5,3,0,5,0],"bt":[[2,0],[1,0],[1,1],[1,1],[0,1],[0,1],[0,1],[0,1],[1,1],[1,2],[1,0],[1,0],[2,1],[0,1],[1,2],[3,0],[1,2],[2,0],[1,1],[0,1],[0,1],[1,0],[0,1],[1,0],[2,0],[0,1],[1,0],[1,0],[0,1],[0,1],[1,0],[0,1],[1,0],[1,0],[1,1],[1,1],[0,1],[1,0],[0,1],[0,1],[1,1],[1,0],[1,0],[0,1],[1,0],[1,0],[0,1],[1,1],[2,0],[1,1],[0,1],[2,0],[0,2],[1,0],[1,0],[2,0],[1,1],[1,2],[1,0],[0,1],[1,0],[1,0],[2,1],[1,1],[0,2],[2,0]]},{"c":"JOGA060","n":"Nikolas","p":[4,8,0,0,0,0,8,0,5,0,8,0,0,4,4,8,3,3,0,0,0,0,3,0,3,0,0,8,0,4,8,0,3,5,4,8,8,0,8,0,5,0,0,8,0,3,0,0,0,5,4,5,5,5,4,6,6,0,0,8,3,5,0,4,4,0],"bt":[[3,1],[2,1],[2,0],[1,1],[1,1],[1,2],[1,1],[0,2],[2,1],[0,0],[2,1],[0,0],[3,1],[1,2],[1,2],[3,0],[1,2],[1,0],[1,1],[0,2],[2,1],[1,1],[2,0],[2,0],[4,0],[1,2],[2,0],[2,1],[2,2],[1,3],[2,2],[0,0],[1,2],[3,1],[0,2],[1,1],[1,1],[2,0],[1,3],[2,0],[1,3],[2,0],[6,0],[1,1],[2,0],[3,1],[2,2],[0,1],[2,2],[1,3],[2,1],[5,0],[1,2],[2,0],[2,0],[3,2],[2,0],[1,1],[3,0],[1,3],[3,1],[2,0],[2,2],[2,1],[1,2],[2,1]]},{"c":"JOGA061","n":"Lauro Salles - 1","p":[8,0,4,8,5,0,0,0,3,5,0,0,8,5,5,8,8,4,5,0,0,8,0,8,3,0,0,4,0,4,0,0,3,5,8,0,0,0,5,0,3,0,0,8,0,5,5,4,8,4,4,6,5,3,6,3,6,6,0,5,0,5,3,8,3,0],"bt":[[2,0],[1,1],[0,0],[1,0],[0,1],[1,2],[2,0],[0,1],[1,0],[1,0],[0,0],[1,2],[1,1],[0,3],[0,2],[3,0],[0,3],[3,1],[2,1],[1,3],[2,0],[2,0],[0,0],[0,0],[4,0],[1,2],[2,0],[1,0],[1,2],[1,3],[3,2],[0,1],[1,2],[3,1],[1,3],[2,1],[2,1],[2,1],[1,2],[4,1],[0,3],[3,1],[4,1],[1,1],[2,0],[2,0],[0,2],[1,1],[3,1],[0,3],[2,1],[3,1],[1,3],[2,1],[3,0],[2,1],[2,0],[1,2],[3,0],[1,2],[1,1],[4,0],[1,0],[1,0],[1,3],[3,1]]},{"c":"JOGA062","n":"Luiz Lana","p":[4,0,0,5,0,4,4,0,0,3,5,4,0,4,4,5,0,3,3,6,4,0,0,4,3,0,0,5,0,3,0,5,3,5,8,0,0,0,0,0,3,4,0,0,0,3,4,0,5,5,6,8,5,0,5,8,0,4,0,8,3,5,5,0,3,0],"bt":[[3,1],[2,2],[1,2],[2,0],[1,1],[2,1],[2,2],[0,2],[2,2],[3,2],[3,1],[2,0],[3,1],[1,2],[1,2],[2,0],[1,1],[2,1],[3,2],[2,1],[2,3],[1,1],[2,3],[1,1],[5,0],[0,2],[3,0],[4,1],[1,2],[2,3],[2,1],[2,1],[1,3],[3,1],[1,3],[1,2],[4,1],[1,2],[2,1],[3,1],[0,2],[2,2],[5,0],[2,3],[3,1],[3,1],[1,2],[1,3],[4,1],[1,3],[3,1],[3,0],[1,3],[1,1],[2,1],[3,0],[1,1],[2,4],[4,0],[1,3],[4,1],[3,0],[3,2],[1,1],[1,3],[4,0]]},{"c":"JOGA063","n":"Gael Fujii","p":[6,5,4,4,0,0,0,0,3,5,0,0,0,5,3,8,3,3,0,0,0,0,0,4,5,0,0,4,0,8,0,0,0,5,5,4,0,4,3,0,5,4,0,0,0,6,3,0,3,5,0,5,5,3,4,6,4,8,0,6,3,5,4,0,3,0],"bt":[[2,1],[3,1],[0,0],[2,1],[2,2],[1,1],[3,1],[0,2],[2,0],[2,0],[2,2],[0,0],[2,1],[0,2],[1,3],[3,0],[1,2],[1,0],[1,2],[0,2],[2,1],[1,1],[2,2],[1,1],[4,1],[1,2],[2,0],[3,2],[1,2],[0,2],[2,1],[1,1],[1,1],[3,1],[1,2],[2,2],[2,0],[1,1],[0,1],[3,1],[1,2],[0,0],[5,0],[2,3],[3,1],[4,2],[1,3],[0,2],[5,2],[1,2],[1,2],[4,0],[1,3],[3,1],[2,0],[3,1],[1,0],[0,2],[3,0],[0,3],[3,1],[2,0],[2,0],[1,2],[1,3],[3,0]]},{"c":"JOGA064","n":"Mario Fujii","p":[8,0,0,8,0,0,0,0,3,3,0,0,8,5,5,8,3,4,0,0,0,8,0,0,3,8,0,8,0,5,0,3,3,3,6,4,8,0,4,0,5,0,0,0,0,5,8,0,4,4,4,5,5,5,4,0,4,5,0,4,4,5,0,5,8,0],"bt":[[2,0],[0,0],[1,0],[1,0],[1,1],[1,2],[0,1],[0,2],[1,0],[2,1],[1,1],[1,2],[1,1],[0,2],[0,2],[3,0],[1,2],[2,0],[1,1],[1,2],[1,0],[2,0],[0,0],[2,1],[4,0],[1,0],[2,0],[2,1],[0,1],[0,3],[2,1],[2,0],[1,3],[2,0],[0,3],[2,2],[1,1],[1,0],[0,2],[2,0],[1,2],[2,1],[4,0],[1,2],[3,0],[2,0],[0,1],[1,2],[2,0],[0,3],[2,1],[4,0],[1,2],[2,0],[2,0],[1,1],[1,0],[0,1],[3,0],[0,2],[2,1],[3,0],[1,1],[2,0],[0,1],[2,1]]},{"c":"JOGA065","n":"Rafael Anaruma","p":[6,4,8,0,8,0,0,0,0,0,3,5,4,8,4,5,5,3,0,0,0,6,4,0,3,8,0,6,0,4,0,3,3,0,3,4,0,0,4,0,3,8,0,4,0,5,4,0,0,3,0,8,3,3,3,5,4,8,0,4,5,5,0,5,5,0],"bt":[[2,1],[1,0],[1,1],[2,2],[0,3],[1,1],[0,2],[0,3],[1,1],[0,0],[3,0],[2,1],[2,2],[0,1],[1,2],[4,0],[0,1],[3,0],[1,1],[0,3],[2,2],[2,1],[1,0],[2,0],[5,0],[1,0],[3,0],[2,0],[0,2],[1,3],[3,1],[1,0],[1,2],[2,2],[0,1],[2,2],[2,1],[1,2],[0,2],[3,0],[0,2],[1,1],[4,0],[2,2],[2,0],[2,0],[2,3],[0,1],[2,2],[0,2],[2,2],[3,0],[0,2],[2,1],[1,0],[2,0],[1,0],[0,2],[3,0],[0,2],[2,0],[2,0],[0,1],[2,0],[0,3],[0,1]]},{"c":"JOGA066","n":"Vinicius Sanches Machado","p":[8,0,0,4,0,0,0,0,5,0,8,4,0,5,0,5,3,3,5,0,0,8,0,0,3,0,0,8,0,6,0,0,0,5,4,8,0,4,0,0,5,8,0,8,0,5,0,0,8,3,4,5,5,5,4,8,8,6,0,5,5,5,3,4,0,0],"bt":[[2,0],[1,1],[2,1],[2,1],[1,1],[1,2],[2,1],[0,2],[2,1],[1,1],[2,1],[2,0],[3,1],[0,2],[1,1],[4,0],[1,2],[3,0],[2,1],[1,1],[2,1],[2,0],[1,1],[2,1],[4,0],[1,1],[2,0],[2,1],[1,2],[1,2],[2,0],[1,1],[1,1],[2,1],[0,2],[1,1],[2,0],[1,1],[1,0],[3,1],[1,2],[1,1],[3,0],[1,1],[2,0],[2,0],[1,1],[1,2],[3,1],[0,2],[2,1],[4,0],[1,2],[2,0],[2,0],[3,0],[2,1],[1,2],[3,0],[1,2],[2,0],[2,0],[2,1],[2,1],[1,1],[3,0]]},{"c":"JOGA067","n":"Felipe Gomes","p":[8,4,0,0,4,0,4,0,5,5,0,6,0,5,0,5,3,4,4,0,0,3,4,0,3,4,0,0,0,5,0,5,5,0,5,4,0,0,4,0,5,4,0,8,0,3,8,0,0,6,0,6,3,3,8,3,4,3,0,4,5,5,0,3,5,0],"bt":[[2,0],[3,2],[3,1],[1,1],[1,4],[2,2],[2,2],[1,3],[3,1],[2,0],[1,2],[3,0],[3,0],[0,3],[2,2],[6,0],[1,2],[3,1],[3,0],[2,2],[2,0],[3,2],[1,0],[4,2],[5,0],[3,2],[6,0],[2,2],[1,3],[0,3],[3,2],[2,1],[0,3],[1,1],[1,4],[0,0],[3,0],[2,1],[0,2],[0,1],[1,3],[2,2],[4,0],[1,1],[3,0],[3,1],[0,1],[1,2],[2,2],[0,4],[1,1],[3,1],[0,1],[3,2],[3,1],[2,1],[1,0],[2,3],[4,1],[0,2],[3,0],[2,0],[2,2],[3,1],[0,2],[1,0]]},{"c":"JOGA068","n":"Marianne Lessa","p":[6,0,0,0,5,0,0,0,4,5,0,0,0,5,5,5,8,4,3,0,0,5,0,4,3,0,0,6,0,6,0,5,5,0,6,0,0,0,8,0,3,0,0,0,0,8,4,8,8,3,0,5,8,5,3,8,3,4,0,6,5,5,0,5,5,4],"bt":[[2,1],[1,1],[1,3],[2,2],[0,2],[1,1],[2,0],[0,2],[3,0],[2,0],[2,2],[2,2],[3,1],[0,2],[0,3],[2,0],[0,3],[2,0],[2,0],[1,2],[0,0],[1,0],[1,2],[1,1],[4,0],[0,0],[1,0],[2,0],[1,4],[1,2],[3,2],[2,1],[0,2],[1,1],[0,3],[3,1],[2,1],[2,0],[1,3],[2,1],[0,2],[2,1],[3,0],[0,2],[2,0],[4,0],[2,3],[0,0],[3,1],[0,2],[1,2],[4,0],[1,4],[1,0],[1,0],[3,0],[3,0],[1,3],[2,0],[0,3],[2,0],[2,0],[2,2],[3,0],[0,3],[2,2]]},{"c":"JOGA069","n":"Teresa Maia","p":[8,0,0,4,5,0,0,0,4,3,4,0,0,5,4,5,8,3,0,0,0,6,3,0,4,0,0,3,0,6,4,3,5,3,4,0,0,4,4,0,3,0,0,0,0,5,3,0,5,4,4,5,3,5,4,5,4,8,0,3,5,5,3,5,3,0],"bt":[[2,0],[1,1],[1,0],[2,1],[0,2],[1,2],[2,0],[0,2],[3,0],[2,1],[1,0],[1,1],[3,1],[0,2],[1,2],[5,0],[0,3],[3,0],[1,1],[1,3],[2,1],[2,1],[2,0],[2,0],[6,0],[1,2],[3,0],[3,0],[0,2],[1,2],[1,1],[2,0],[0,2],[1,0],[0,2],[1,0],[3,1],[1,1],[0,2],[3,0],[0,3],[1,0],[6,0],[0,2],[4,0],[3,0],[1,3],[0,1],[2,1],[0,3],[2,1],[5,0],[0,2],[2,0],[2,0],[1,0],[1,0],[0,2],[3,0],[0,4],[3,0],[6,0],[1,0],[2,0],[1,3],[2,1]]},{"c":"JOGA070","n":"Mario Damico","p":[8,0,0,4,0,0,0,0,5,5,8,4,0,5,3,5,6,3,5,0,0,5,4,0,3,0,0,3,4,5,4,3,5,5,4,0,4,0,3,0,6,0,0,0,0,8,0,0,0,4,0,8,5,3,4,6,6,0,0,6,5,3,4,3,5,4],"bt":[[2,0],[1,2],[0,1],[2,1],[1,1],[2,2],[2,1],[0,4],[2,1],[2,0],[2,1],[2,0],[2,1],[0,2],[1,3],[6,0],[1,3],[5,0],[2,1],[0,3],[0,0],[3,0],[2,1],[2,0],[8,0],[1,3],[6,0],[3,0],[1,0],[0,4],[1,1],[2,0],[0,3],[2,1],[0,2],[3,1],[0,0],[2,0],[0,4],[2,0],[0,5],[2,1],[4,1],[1,3],[2,0],[4,0],[1,0],[1,3],[1,1],[0,3],[2,2],[3,0],[1,2],[3,1],[2,0],[3,1],[2,0],[1,1],[6,1],[0,3],[3,0],[3,1],[2,0],[3,1],[0,2],[1,1]]},{"c":"JOGA071","n":"Bruno Barroso","p":[8,4,0,8,3,0,0,0,3,0,6,0,0,5,4,8,8,3,0,0,8,0,4,0,3,0,0,6,0,8,0,5,5,5,6,0,0,0,5,0,3,0,0,0,0,5,4,0,4,3,4,8,3,3,5,8,8,5,0,4,5,5,3,8,5,0],"bt":[[2,0],[1,0],[1,0],[1,0],[1,2],[1,2],[0,1],[0,2],[2,0],[0,1],[2,0],[1,1],[2,1],[0,2],[1,2],[3,0],[0,3],[3,0],[0,1],[2,2],[0,1],[0,1],[2,1],[0,1],[3,0],[0,1],[2,0],[2,0],[0,2],[0,2],[2,1],[2,1],[0,2],[2,1],[0,3],[1,0],[2,0],[2,1],[1,2],[2,0],[0,3],[2,1],[3,0],[0,3],[3,0],[3,0],[1,2],[1,0],[2,0],[0,2],[1,0],[3,0],[0,2],[2,1],[2,1],[3,0],[2,1],[0,3],[3,0],[0,2],[3,0],[3,0],[2,1],[1,0],[0,3],[3,0]]},{"c":"JOGA072","n":"Dudu Barroso","p":[5,4,0,0,5,0,0,0,4,3,0,0,0,5,4,8,5,4,3,0,0,6,0,0,3,0,0,6,0,0,0,0,3,5,4,8,0,0,4,0,3,8,0,0,0,3,4,0,8,3,0,5,5,5,0,8,0,4,0,5,5,3,0,5,5,0],"bt":[[1,0],[1,0],[2,0],[1,1],[0,1],[0,3],[2,0],[1,2],[3,0],[2,1],[2,2],[0,1],[2,0],[0,2],[1,2],[3,0],[0,2],[2,0],[1,0],[1,1],[1,0],[2,1],[1,2],[0,1],[3,0],[1,2],[1,0],[2,0],[1,3],[0,0],[3,1],[1,1],[1,2],[2,1],[0,2],[1,1],[2,0],[1,0],[0,2],[1,0],[0,3],[1,1],[3,0],[1,2],[2,0],[3,1],[1,2],[0,2],[3,1],[0,2],[1,2],[4,0],[1,2],[2,0],[1,1],[3,0],[0,0],[1,3],[3,0],[1,2],[2,0],[3,1],[2,2],[2,0],[0,3],[2,0]]},{"c":"JOGA073","n":"Gabriel Barroso","p":[8,0,8,0,3,0,0,8,3,0,0,0,0,4,0,8,5,4,5,0,0,8,0,4,3,0,0,6,0,0,0,0,3,3,5,0,0,4,0,0,0,0,0,0,0,3,4,0,8,5,4,8,3,3,0,8,0,4,0,4,4,5,3,0,5,0],"bt":[[2,0],[1,1],[1,1],[1,1],[1,2],[1,2],[2,0],[1,1],[1,0],[2,2],[1,2],[1,2],[2,0],[1,2],[1,1],[3,0],[0,2],[2,0],[2,1],[1,1],[1,1],[2,0],[1,2],[1,1],[3,0],[1,2],[2,0],[2,0],[1,3],[1,1],[3,2],[1,1],[1,2],[2,0],[1,2],[2,0],[2,0],[1,1],[1,1],[2,0],[2,0],[2,1],[3,0],[1,2],[2,0],[3,1],[1,2],[1,2],[3,1],[1,2],[2,1],[3,0],[2,3],[2,1],[1,1],[3,0],[1,1],[1,3],[3,0],[0,2],[2,1],[3,0],[2,1],[1,1],[0,2],[3,1]]},{"c":"JOGA074","n":"Leo Nitta","p":[8,0,0,4,5,0,0,0,0,0,4,0,0,8,3,8,5,6,3,0,0,4,0,0,3,0,0,5,0,5,0,5,5,5,8,0,0,0,4,0,3,0,0,0,0,3,4,0,6,4,4,5,5,3,6,5,0,6,0,3,5,5,3,5,5,0],"bt":[[2,0],[1,1],[2,1],[2,1],[0,1],[0,2],[1,2],[0,2],[0,0],[0,1],[1,0],[1,1],[2,1],[0,1],[1,3],[3,0],[0,2],[4,0],[1,0],[1,2],[1,0],[3,1],[2,2],[2,1],[4,0],[1,2],[3,0],[3,1],[1,2],[0,3],[2,3],[2,1],[0,2],[2,1],[1,3],[1,0],[2,0],[1,0],[0,2],[3,1],[0,2],[2,1],[6,0],[1,2],[2,0],[3,1],[1,2],[0,1],[3,0],[0,3],[2,1],[4,0],[1,2],[2,1],[3,0],[4,0],[0,0],[1,2],[2,0],[0,1],[2,0],[2,0],[2,1],[2,0],[0,2],[1,0]]},{"c":"JOGA075","n":"Carlos Mota","p":[6,0,8,5,0,8,0,0,0,5,4,6,0,5,4,5,5,3,3,0,0,0,4,0,3,0,0,3,0,8,0,3,5,3,8,0,0,0,3,0,3,8,0,0,0,5,5,0,4,3,0,8,5,0,4,8,8,8,0,4,5,5,3,0,5,0],"bt":[[2,1],[1,2],[1,1],[2,0],[0,0],[1,0],[1,0],[0,2],[1,1],[3,0],[1,0],[3,0],[1,0],[0,3],[1,2],[5,0],[0,1],[3,0],[1,0],[0,2],[2,1],[1,1],[2,1],[2,0],[5,0],[0,1],[3,0],[4,0],[0,1],[0,2],[2,0],[3,0],[0,1],[1,0],[1,3],[1,2],[2,0],[1,0],[0,1],[2,0],[0,2],[1,1],[4,0],[0,1],[3,0],[3,0],[0,2],[1,0],[2,0],[0,1],[1,1],[3,0],[1,2],[1,1],[2,0],[3,0],[2,1],[0,2],[4,0],[0,2],[3,0],[3,0],[1,0],[1,1],[0,2],[4,0]]},{"c":"JOGA076","n":"Antonio Cláudio","p":[8,0,0,0,0,0,4,8,3,0,4,3,8,8,4,5,5,3,0,0,0,6,4,0,3,4,0,0,0,8,4,3,3,3,4,0,0,0,5,0,3,0,0,4,0,5,4,0,0,3,0,8,5,5,4,8,8,6,0,4,5,5,0,4,8,0],"bt":[[2,0],[1,2],[2,0],[1,1],[0,0],[1,3],[0,0],[1,1],[1,0],[1,1],[1,0],[1,0],[1,1],[0,1],[1,2],[4,0],[0,2],[3,0],[1,1],[0,2],[1,1],[2,1],[1,0],[2,0],[4,0],[2,1],[3,0],[1,1],[0,2],[0,2],[1,1],[1,0],[1,2],[2,0],[0,2],[2,0],[2,0],[2,0],[1,2],[2,1],[0,2],[1,0],[4,0],[2,2],[3,0],[2,0],[1,2],[0,2],[1,1],[0,2],[1,1],[3,0],[1,2],[2,0],[2,0],[3,0],[2,1],[1,2],[3,0],[0,2],[3,0],[2,0],[0,0],[2,1],[0,1],[2,0]]},{"c":"JOGA077","n":"Rodrigo Fonai","p":[4,8,0,4,3,0,0,0,5,5,0,3,0,8,4,5,5,4,0,0,4,8,3,0,6,5,0,4,0,5,0,3,3,3,8,0,0,0,6,0,6,4,0,0,0,3,4,0,5,5,4,8,5,3,5,8,4,6,0,5,5,3,3,0,5,0],"bt":[[3,1],[2,1],[2,0],[3,2],[1,2],[0,3],[2,1],[0,2],[2,1],[4,0],[1,2],[1,0],[2,1],[0,1],[1,2],[4,0],[0,1],[2,0],[1,2],[0,2],[1,2],[2,0],[2,0],[3,0],[7,0],[2,0],[2,1],[3,2],[1,3],[0,3],[2,1],[2,0],[1,2],[3,2],[1,3],[2,1],[2,1],[3,0],[0,3],[2,0],[0,5],[2,2],[6,0],[2,0],[2,1],[3,1],[1,2],[0,2],[2,1],[1,2],[2,1],[3,0],[1,2],[2,1],[2,1],[3,0],[1,0],[1,2],[5,0],[1,2],[2,0],[3,1],[2,1],[0,1],[0,2],[3,0]]},{"c":"JOGA078","n":"Vania Araújo","p":[6,0,0,5,5,8,8,0,0,0,0,0,0,0,0,5,5,0,5,0,5,4,0,0,3,0,0,5,0,0,0,5,5,5,8,0,0,0,5,0,3,8,0,0,0,6,0,0,8,5,0,6,5,5,0,4,0,4,0,4,0,5,0,0,5,0],"bt":[[2,1],[1,3],[2,3],[2,0],[0,2],[1,0],[1,1],[1,2],[0,0],[1,2],[1,1],[0,1],[3,1],[2,0],[1,1],[1,0],[0,1],[1,2],[2,1],[1,1],[0,2],[3,1],[0,2],[2,0],[4,0],[0,2],[2,0],[3,1],[1,3],[1,1],[3,1],[2,1],[0,2],[4,1],[1,3],[2,0],[3,1],[0,1],[1,2],[2,1],[0,3],[1,1],[3,1],[0,4],[3,2],[4,1],[2,2],[1,0],[3,1],[1,2],[0,0],[3,1],[1,2],[2,0],[1,3],[4,1],[1,2],[1,3],[2,0],[0,2],[1,1],[2,0],[2,2],[1,1],[0,2],[3,1]]},{"c":"JOGA079","n":"Claudio Gazaneo","p":[6,0,8,4,5,8,8,0,3,0,6,3,8,5,5,8,3,6,5,6,0,5,0,4,3,0,0,6,0,8,0,3,0,3,4,0,0,4,4,0,3,0,0,0,0,3,4,0,5,5,0,8,3,3,3,6,6,8,0,4,3,5,0,4,5,0],"bt":[[2,1],[1,1],[1,1],[2,1],[0,2],[1,0],[1,1],[0,2],[1,0],[1,1],[2,0],[1,0],[1,1],[0,2],[0,2],[3,0],[1,2],[4,1],[2,1],[2,1],[1,1],[1,0],[0,2],[1,1],[4,0],[2,2],[3,1],[2,0],[1,2],[0,2],[2,1],[1,0],[1,1],[1,0],[0,2],[1,2],[2,1],[1,1],[0,2],[2,0],[0,2],[1,0],[5,0],[0,2],[3,0],[3,1],[1,2],[1,2],[4,1],[1,2],[1,2],[3,0],[0,2],[2,1],[1,0],[3,1],[2,0],[0,2],[4,0],[0,2],[3,1],[3,0],[1,1],[2,1],[0,2],[1,2]]},{"c":"JOGA080","n":"Mateus Girafa","p":[8,6,0,4,5,0,0,0,0,5,8,4,0,5,5,5,5,3,0,0,0,0,3,0,0,0,0,3,0,5,0,0,3,5,0,0,0,0,4,0,3,0,0,0,0,3,0,0,0,4,0,5,4,5,0,8,0,8,0,6,3,5,0,5,5,0],"bt":[[2,0],[2,0],[1,2],[2,1],[0,1],[1,2],[1,0],[0,2],[1,1],[3,0],[2,1],[2,0],[2,1],[0,2],[0,3],[4,0],[0,2],[3,0],[0,1],[0,2],[2,1],[0,1],[2,0],[2,1],[1,1],[1,2],[2,0],[3,0],[1,1],[0,3],[2,1],[1,2],[1,2],[2,1],[1,1],[1,0],[2,0],[2,1],[0,2],[2,0],[0,2],[0,1],[4,0],[0,2],[3,0],[3,1],[1,1],[0,2],[1,1],[0,3],[1,2],[4,0],[0,3],[2,0],[1,2],[3,0],[2,2],[0,2],[2,0],[0,3],[3,1],[3,0],[1,2],[2,0],[0,2],[2,1]]},{"c":"JOGA081","n":"Gui Oliveira 2","p":[8,0,0,4,3,0,0,0,3,0,0,4,0,5,4,8,5,3,3,0,0,6,0,0,3,0,4,8,0,6,0,3,5,3,4,0,0,0,0,0,3,8,0,0,0,5,4,0,5,3,0,8,5,5,3,8,4,8,0,4,5,5,3,8,5,0],"bt":[[2,0],[1,1],[2,0],[2,1],[1,2],[0,1],[2,1],[0,2],[2,0],[1,1],[1,1],[2,0],[2,1],[0,2],[1,2],[3,0],[0,2],[3,0],[2,0],[1,1],[2,1],[2,1],[1,2],[1,0],[3,0],[1,1],[1,1],[2,1],[0,2],[1,2],[2,1],[1,0],[0,2],[2,0],[0,2],[2,1],[3,0],[1,0],[1,1],[2,1],[0,2],[1,1],[3,0],[1,2],[2,0],[2,0],[1,2],[0,2],[2,1],[0,2],[1,1],[3,0],[1,2],[2,0],[1,0],[3,0],[1,0],[0,2],[3,0],[0,2],[2,0],[2,0],[2,1],[1,0],[0,2],[3,0]]},{"c":"JOGA082","n":"Jonas","p":[8,0,0,8,3,0,0,0,5,3,0,4,8,5,8,4,5,3,3,0,0,0,0,4,3,0,0,8,0,6,8,0,5,3,5,0,0,0,0,0,3,0,0,0,0,3,0,8,5,3,4,4,5,5,6,5,8,8,0,4,5,6,0,4,5,0],"bt":[[2,0],[1,1],[3,1],[1,0],[1,2],[0,2],[1,0],[0,3],[2,1],[4,1],[0,0],[2,0],[1,1],[0,2],[0,1],[4,1],[0,2],[3,0],[2,0],[1,2],[1,0],[0,0],[1,2],[2,2],[4,0],[2,3],[2,1],[2,1],[1,1],[1,2],[2,2],[1,1],[0,2],[3,0],[1,2],[2,1],[3,2],[1,0],[1,1],[3,2],[0,3],[1,2],[4,0],[1,2],[3,1],[3,1],[1,1],[0,0],[2,1],[0,2],[1,0],[4,1],[1,3],[2,0],[3,0],[2,0],[2,1],[0,2],[3,0],[0,2],[2,0],[5,1],[2,2],[2,1],[0,3],[4,2]]},{"c":"JOGA083","n":"Vitoria Hoff","p":[8,0,0,0,3,0,8,0,3,5,6,3,0,5,0,5,5,4,3,0,0,6,0,4,3,0,0,8,0,5,0,0,0,5,4,8,0,0,3,0,3,8,0,0,0,5,4,0,4,3,4,8,5,5,4,5,6,8,0,4,5,3,3,0,8,0],"bt":[[2,0],[1,1],[2,0],[1,1],[1,2],[0,1],[1,1],[0,2],[1,0],[1,0],[2,0],[1,0],[2,1],[0,2],[1,1],[4,0],[0,2],[2,0],[2,0],[1,1],[1,0],[2,1],[1,2],[1,1],[4,0],[2,2],[3,0],[2,1],[1,2],[0,3],[2,0],[1,1],[1,0],[2,1],[0,2],[1,1],[2,1],[1,0],[0,1],[3,1],[0,2],[1,1],[3,0],[0,2],[2,0],[3,0],[1,2],[2,1],[2,0],[0,2],[2,1],[3,0],[1,2],[1,0],[2,0],[2,0],[2,0],[0,2],[3,0],[0,2],[2,0],[3,1],[2,1],[1,1],[0,1],[2,0]]},{"c":"JOGA084","n":"Amaro","p":[8,0,0,4,5,3,0,0,3,5,4,0,0,5,0,5,5,0,5,0,0,8,0,8,3,0,0,6,0,4,0,3,5,0,4,8,0,0,5,0,4,8,0,0,0,5,4,0,4,3,0,5,5,5,4,5,6,0,0,4,5,5,3,0,4,0],"bt":[[2,0],[1,1],[2,0],[2,1],[0,2],[4,2],[2,1],[0,2],[2,0],[2,0],[1,0],[1,2],[1,0],[0,2],[1,1],[4,0],[0,2],[2,2],[2,1],[0,2],[3,1],[2,0],[2,2],[0,0],[4,0],[1,1],[3,0],[2,0],[1,2],[1,3],[2,1],[2,0],[0,1],[1,1],[0,2],[1,1],[2,0],[2,1],[1,2],[2,1],[0,4],[1,1],[3,0],[1,2],[3,1],[3,0],[1,2],[0,2],[2,0],[0,2],[1,1],[4,0],[1,2],[2,0],[2,0],[2,0],[2,0],[1,1],[3,0],[0,2],[2,0],[2,0],[2,1],[1,1],[1,2],[2,0]]},{"c":"JOGA085","n":"Scyra","p":[8,6,0,5,5,0,0,0,3,5,6,4,0,5,5,8,5,4,3,0,0,8,0,0,3,0,0,6,0,8,0,3,5,3,4,0,0,0,4,0,3,0,0,0,0,5,5,0,4,3,3,5,3,5,4,5,4,5,0,4,8,5,4,5,5,0],"bt":[[2,0],[2,0],[2,0],[2,0],[0,2],[0,2],[2,0],[0,2],[2,0],[2,0],[2,0],[2,0],[2,0],[0,2],[0,2],[3,0],[0,2],[2,0],[2,0],[0,2],[2,0],[2,0],[0,2],[2,0],[4,0],[0,1],[2,0],[2,0],[0,2],[0,2],[2,0],[2,0],[0,2],[2,0],[0,2],[2,0],[2,0],[2,0],[0,2],[2,0],[0,2],[2,0],[3,0],[0,2],[2,0],[2,0],[0,2],[0,2],[2,0],[0,2],[2,0],[2,0],[0,2],[2,0],[2,0],[1,0],[1,0],[0,1],[2,0],[0,2],[1,0],[2,0],[2,0],[2,0],[0,2],[2,0]]},{"c":"JOGA086","n":"Matheus Guerra","p":[8,4,0,0,3,0,0,0,5,5,4,4,0,5,0,5,5,3,5,0,0,8,0,0,3,0,0,8,0,8,4,0,5,5,3,0,0,0,3,0,3,0,0,0,0,5,4,0,5,5,0,5,0,5,4,5,4,6,0,4,5,5,0,4,5,0],"bt":[[2,0],[1,0],[2,1],[1,1],[1,2],[0,2],[0,1],[0,2],[2,1],[2,0],[1,0],[2,0],[2,1],[0,2],[1,1],[4,0],[0,2],[3,0],[2,1],[0,2],[2,1],[2,0],[1,1],[2,1],[4,0],[1,1],[2,0],[2,1],[1,1],[0,2],[1,1],[1,1],[0,1],[2,1],[0,1],[1,0],[2,1],[1,0],[0,1],[2,0],[0,3],[0,1],[4,0],[0,2],[3,0],[2,0],[1,2],[0,2],[2,1],[1,2],[1,1],[2,0],[1,1],[1,0],[2,0],[2,0],[1,0],[1,2],[4,0],[0,2],[3,0],[3,0],[1,1],[2,1],[0,2],[3,1]]},{"c":"JOGA087","n":"Nara","p":[6,0,0,0,5,0,0,0,5,5,0,3,0,5,4,5,3,4,5,0,0,8,0,0,3,0,0,8,0,8,0,3,0,0,4,0,0,0,4,0,3,8,0,0,0,5,0,0,8,3,4,5,5,5,4,8,8,6,0,5,5,3,3,5,5,0],"bt":[[2,1],[1,1],[1,2],[1,1],[0,2],[1,1],[2,0],[0,2],[2,1],[1,0],[1,1],[1,0],[3,1],[0,2],[1,2],[4,0],[1,2],[2,0],[2,1],[1,1],[2,1],[2,0],[1,1],[1,0],[3,0],[1,1],[2,0],[2,1],[1,2],[0,2],[2,1],[2,0],[1,1],[1,1],[0,2],[1,2],[3,1],[2,0],[0,2],[2,1],[0,3],[1,1],[3,0],[1,2],[2,0],[2,0],[1,1],[0,1],[3,1],[0,2],[2,1],[4,0],[1,2],[2,0],[2,0],[3,0],[2,1],[1,2],[3,0],[1,2],[2,0],[2,1],[2,1],[2,0],[0,2],[2,0]]},{"c":"JOGA088","n":"Thiago Medeiros","p":[8,0,0,8,0,0,8,0,3,5,4,4,0,4,8,5,5,4,3,0,0,5,4,0,3,0,0,6,0,8,0,0,5,3,5,0,0,0,3,0,3,8,0,0,0,5,4,0,3,3,4,8,0,5,4,5,6,8,0,4,5,5,3,4,8,0],"bt":[[2,0],[1,1],[1,0],[1,0],[1,1],[0,2],[1,1],[0,2],[2,0],[2,0],[1,0],[2,0],[2,1],[1,2],[0,1],[2,0],[0,1],[2,0],[1,0],[0,1],[1,0],[1,0],[1,0],[1,0],[3,0],[0,1],[3,0],[2,0],[0,1],[0,2],[2,1],[0,1],[0,1],[1,0],[1,2],[1,0],[1,0],[1,0],[0,1],[1,0],[0,1],[1,1],[3,0],[1,2],[2,0],[2,0],[1,2],[0,1],[1,0],[0,2],[1,0],[3,0],[1,1],[1,0],[2,0],[2,0],[2,0],[0,2],[2,0],[0,2],[2,0],[3,0],[2,1],[2,1],[0,1],[2,0]]},{"c":"JOGA089","n":"Arnaldo Gonzaga","p":[8,0,0,4,0,0,0,0,4,3,8,0,0,5,3,5,6,6,0,0,4,6,0,0,4,0,0,5,0,5,0,5,5,5,3,8,0,0,3,0,3,0,0,0,0,3,3,0,8,4,0,8,5,5,4,6,8,8,0,3,3,8,3,5,3,4],"bt":[[2,0],[1,1],[2,0],[2,1],[2,2],[0,2],[3,0],[0,2],[3,0],[2,1],[2,1],[0,1],[2,1],[0,2],[1,3],[5,0],[1,3],[4,0],[2,2],[2,2],[1,2],[2,1],[1,1],[3,1],[6,0],[1,2],[4,0],[3,1],[1,2],[0,3],[2,1],[3,1],[0,2],[2,1],[0,4],[1,1],[3,1],[3,0],[0,5],[3,1],[0,7],[2,1],[3,0],[1,2],[4,1],[3,1],[1,3],[1,3],[3,1],[0,3],[2,2],[3,0],[1,2],[3,0],[2,0],[3,1],[2,1],[0,2],[4,0],[0,4],[4,1],[5,0],[2,1],[2,0],[1,3],[1,1]]},{"c":"JOGA090","n":"Bernardo Rothe 2","p":[0,5,8,0,5,0,8,0,3,3,0,5,0,3,5,3,5,6,3,0,0,5,0,0,8,4,0,0,0,5,0,5,3,0,0,8,4,0,5,0,3,0,0,0,0,8,5,4,0,6,4,5,5,5,3,6,6,5,0,3,5,5,0,4,5,0],"bt":[[1,2],[3,1],[1,1],[2,2],[0,1],[2,2],[1,1],[0,2],[1,0],[2,1],[1,1],[2,1],[1,0],[1,3],[0,2],[5,1],[0,1],[4,0],[1,0],[1,3],[1,1],[1,0],[1,2],[2,0],[7,1],[3,2],[4,0],[2,2],[2,3],[0,5],[0,1],[2,1],[1,3],[2,3],[1,0],[1,1],[2,2],[2,1],[1,4],[3,0],[0,2],[3,0],[2,0],[0,3],[1,0],[4,0],[0,2],[1,1],[2,2],[0,4],[2,1],[5,0],[1,3],[2,0],[1,0],[3,2],[2,0],[0,1],[4,0],[0,4],[2,0],[4,0],[1,2],[2,1],[0,2],[3,1]]},{"c":"JOGA091","n":"Fred Barreto","p":[6,0,0,8,0,0,0,0,5,5,0,5,0,5,0,5,5,4,5,0,0,8,0,0,3,0,0,6,0,8,0,3,3,3,4,8,0,0,4,0,3,8,0,0,0,5,0,4,4,3,0,5,5,3,4,6,6,6,0,4,4,5,0,5,5,0],"bt":[[2,1],[1,1],[2,0],[1,0],[1,1],[0,2],[2,1],[0,2],[2,1],[2,0],[1,1],[2,1],[2,1],[0,2],[1,1],[4,0],[0,2],[2,0],[2,1],[1,1],[1,1],[2,0],[1,1],[1,0],[4,0],[1,1],[2,0],[2,0],[1,2],[0,2],[2,1],[2,0],[1,2],[1,0],[0,2],[1,1],[2,1],[2,0],[0,2],[2,0],[0,3],[1,1],[3,0],[0,2],[3,1],[2,0],[1,1],[1,1],[2,0],[0,2],[1,1],[4,0],[1,2],[2,1],[2,0],[3,1],[2,0],[1,2],[2,0],[0,2],[2,1],[3,0],[1,1],[2,0],[0,3],[2,1]]},{"c":"JOGA092","n":"Artur","p":[8,0,0,0,3,0,0,0,3,5,0,0,0,8,4,5,3,6,5,0,0,5,0,4,4,4,0,8,0,5,0,0,3,5,4,0,0,0,0,4,3,8,0,8,0,5,4,4,8,0,0,5,4,3,5,3,6,8,0,5,0,5,3,4,8,0],"bt":[[2,0],[1,1],[2,1],[1,1],[1,2],[0,1],[2,1],[1,2],[2,0],[1,0],[1,1],[1,1],[1,2],[0,1],[1,2],[4,0],[1,2],[4,0],[2,1],[1,2],[1,1],[1,0],[1,1],[1,1],[6,0],[2,1],[2,0],[2,1],[1,2],[0,3],[2,1],[1,1],[1,2],[2,1],[0,2],[2,1],[2,1],[2,1],[1,1],[1,1],[0,2],[1,1],[3,0],[1,1],[2,0],[3,0],[1,2],[1,1],[3,1],[1,1],[0,1],[4,0],[0,3],[2,1],[2,1],[2,1],[2,0],[0,2],[3,1],[1,2],[1,1],[3,0],[1,0],[2,1],[0,1],[2,1]]},{"c":"JOGA093","n":"Felipinho","p":[6,4,8,5,5,0,0,0,3,0,4,0,0,5,5,5,5,4,3,0,0,6,0,4,3,8,0,0,0,8,4,0,5,3,3,0,0,4,0,0,5,8,0,0,0,5,4,4,6,5,0,5,4,3,4,5,6,4,0,5,8,5,3,5,5,4],"bt":[[2,1],[1,0],[1,1],[2,0],[0,1],[0,1],[1,0],[1,2],[1,0],[1,1],[1,0],[1,1],[2,1],[0,2],[0,2],[2,0],[0,1],[2,0],[1,0],[1,1],[1,0],[2,1],[1,1],[1,1],[3,0],[1,0],[2,0],[1,1],[0,1],[0,2],[1,1],[1,1],[0,1],[2,0],[0,1],[2,1],[1,0],[1,1],[2,1],[1,0],[1,2],[1,1],[4,0],[1,2],[2,0],[3,0],[1,2],[1,1],[3,0],[1,2],[1,1],[2,0],[0,3],[2,1],[2,0],[2,0],[2,0],[1,3],[1,0],[1,2],[1,0],[3,0],[2,1],[2,0],[0,2],[1,1]]},{"c":"JOGA094","n":"Rosa Afonso","p":[5,0,0,8,5,0,0,0,3,0,0,0,0,8,5,8,5,6,0,0,0,5,6,8,3,0,0,6,0,0,0,0,3,0,0,0,0,0,4,0,3,8,0,0,0,5,3,4,6,3,3,8,5,5,4,5,0,6,0,8,5,5,4,0,5,0],"bt":[[1,0],[0,0],[0,1],[1,0],[0,2],[0,1],[1,0],[0,1],[2,0],[1,1],[1,1],[0,3],[2,0],[0,1],[0,3],[3,0],[0,2],[4,0],[0,1],[0,0],[2,1],[1,0],[3,0],[0,0],[3,0],[0,2],[2,0],[2,0],[0,0],[1,1],[1,3],[1,1],[1,2],[1,1],[1,1],[2,0],[2,1],[2,0],[0,2],[0,1],[0,2],[1,1],[3,0],[1,2],[3,0],[2,0],[1,3],[1,1],[3,0],[0,2],[2,0],[3,0],[1,3],[1,0],[2,0],[2,0],[1,1],[1,2],[2,0],[1,3],[3,0],[3,0],[2,0],[1,1],[0,2],[3,1]]},{"c":"JOGA095","n":"Rafael Schiamarela","p":[8,8,8,4,5,0,0,0,3,3,0,0,0,5,4,5,5,3,5,0,0,0,0,4,3,0,0,5,0,6,0,5,3,5,4,0,0,0,3,0,3,4,0,0,0,3,5,0,8,5,0,8,5,5,4,8,8,8,0,4,5,3,4,0,5,0],"bt":[[2,0],[2,1],[1,1],[2,1],[0,1],[1,2],[2,0],[0,2],[1,0],[2,1],[1,1],[1,2],[2,1],[0,2],[1,2],[4,0],[0,2],[3,0],[2,1],[1,2],[2,1],[1,1],[1,1],[1,1],[4,0],[0,2],[2,0],[3,1],[0,2],[1,2],[2,1],[2,1],[1,2],[2,1],[0,2],[1,0],[2,0],[1,0],[0,1],[2,1],[0,3],[0,0],[4,0],[1,2],[2,0],[3,1],[0,2],[1,2],[3,1],[1,3],[1,1],[3,0],[1,3],[2,0],[2,0],[3,0],[2,1],[0,2],[3,0],[0,2],[2,0],[3,1],[3,1],[1,1],[0,2],[3,1]]},{"c":"JOGA096","n":"Lauro Salles - 2","p":[4,8,4,4,3,0,0,0,3,3,0,0,0,5,4,4,5,3,3,0,0,4,0,4,3,0,0,8,0,6,0,0,0,3,5,0,0,0,6,0,4,0,0,0,0,3,3,0,5,3,0,4,5,3,4,6,5,4,0,4,4,8,3,4,5,0],"bt":[[3,1],[2,1],[2,2],[2,1],[1,2],[1,1],[2,1],[1,2],[2,0],[3,1],[1,1],[1,1],[2,1],[0,2],[1,2],[4,1],[0,2],[3,0],[2,0],[1,2],[1,0],[3,1],[1,1],[1,1],[5,0],[2,2],[3,1],[2,1],[0,2],[1,2],[2,1],[1,1],[1,1],[2,0],[1,2],[1,0],[2,1],[3,1],[0,3],[3,0],[0,4],[2,0],[5,0],[1,2],[3,1],[3,1],[1,3],[1,3],[2,1],[0,2],[2,2],[4,1],[1,2],[2,1],[2,0],[3,1],[3,1],[1,3],[3,1],[0,2],[2,1],[5,0],[2,1],[2,1],[0,2],[4,1]]},{"c":"JOGA097","n":"Lauro Salles - 3","p":[6,4,0,5,6,0,0,4,3,3,0,0,0,5,8,5,6,4,4,0,0,6,0,0,3,0,0,5,0,5,8,0,5,3,6,0,0,4,3,0,3,0,0,0,0,8,0,8,6,3,0,5,5,5,3,6,6,8,0,6,5,3,0,8,3,0],"bt":[[2,1],[1,0],[0,1],[2,0],[1,3],[0,1],[1,0],[0,0],[1,0],[4,1],[1,2],[0,0],[2,0],[0,2],[0,1],[4,0],[1,3],[3,1],[3,0],[1,2],[1,1],[2,1],[1,2],[0,1],[5,0],[0,2],[2,0],[3,1],[1,2],[0,3],[2,2],[0,0],[0,2],[1,0],[0,3],[2,0],[2,1],[0,0],[0,1],[2,1],[0,1],[1,0],[6,0],[0,2],[3,0],[4,0],[2,2],[0,0],[3,2],[0,1],[1,2],[2,0],[1,3],[2,0],[1,0],[3,1],[2,0],[0,2],[2,0],[0,3],[2,0],[4,1],[2,2],[1,0],[1,3],[1,0]]},{"c":"JOGA098","n":"Ivan Furtado - 2","p":[5,6,4,3,8,0,0,0,4,0,8,0,4,5,3,3,8,6,3,0,0,8,0,0,6,3,0,3,0,4,0,3,0,5,8,0,0,0,5,0,8,4,0,0,0,5,3,4,3,0,0,3,5,3,8,8,6,5,0,6,3,6,3,0,3,0],"bt":[[4,0],[2,0],[2,2],[3,1],[0,3],[1,3],[3,1],[0,3],[3,0],[0,0],[2,1],[2,3],[2,2],[0,3],[1,3],[6,1],[0,3],[4,0],[2,0],[2,2],[2,2],[2,0],[0,1],[1,2],[7,0],[3,1],[3,1],[4,0],[1,3],[2,4],[3,1],[1,0],[2,1],[4,1],[1,3],[3,1],[3,1],[3,0],[1,2],[4,2],[1,5],[2,2],[5,1],[1,3],[3,0],[5,0],[2,4],[1,1],[4,3],[2,2],[1,2],[4,2],[1,3],[3,2],[3,1],[3,0],[2,0],[0,3],[3,1],[0,3],[3,1],[5,1],[2,1],[1,3],[1,3],[2,0]]},{"c":"JOGA099","n":"Luiz Fernando (Lefê)","p":[6,4,8,4,0,0,0,0,3,5,0,0,0,4,4,6,3,4,0,0,0,8,0,4,3,0,0,0,0,8,0,0,5,0,5,0,0,0,4,0,3,4,0,0,0,3,4,0,8,5,3,5,3,3,5,3,5,8,0,4,0,5,3,0,5,0],"bt":[[2,1],[1,0],[1,1],[2,1],[1,1],[2,3],[2,1],[1,3],[2,0],[2,0],[1,1],[1,2],[2,0],[1,2],[1,2],[3,1],[1,2],[2,0],[1,1],[1,2],[1,1],[2,0],[1,1],[2,2],[3,0],[1,1],[2,1],[2,2],[1,2],[0,2],[2,1],[1,1],[0,2],[1,1],[1,2],[2,1],[2,0],[3,1],[0,2],[2,1],[0,3],[2,2],[4,0],[1,2],[2,1],[3,1],[1,2],[1,2],[3,1],[1,3],[2,0],[2,0],[2,3],[2,1],[2,1],[2,1],[3,1],[0,2],[2,1],[0,2],[1,1],[2,0],[1,0],[1,1],[0,2],[2,0]]},{"c":"JOGA100","n":"Leonardo Carvalho","p":[4,0,0,0,5,0,4,0,3,3,4,4,0,5,4,5,3,4,0,0,0,5,0,4,5,0,0,0,0,6,8,3,5,3,6,0,0,4,4,0,4,0,0,0,0,5,4,0,5,3,0,4,3,5,4,5,8,6,0,3,5,5,0,0,4,0],"bt":[[2,0],[0,1],[2,0],[2,1],[0,1],[0,1],[1,1],[0,2],[1,1],[2,0],[2,1],[3,0],[1,2],[0,2],[1,2],[3,0],[1,1],[3,0],[1,2],[0,3],[1,1],[2,1],[2,0],[3,0],[3,0],[1,1],[2,0],[1,1],[1,1],[0,2],[1,1],[2,1],[1,2],[2,1],[1,2],[2,1],[1,2],[2,0],[0,2],[1,1],[0,3],[0,2],[3,0],[1,1],[2,0],[2,0],[1,2],[0,1],[3,0],[1,2],[1,1],[3,0],[1,2],[2,0],[2,1],[1,1],[1,1],[1,2],[3,0],[1,2],[3,0],[3,0],[1,1],[3,0],[0,3],[1,1]]},{"c":"JOGA101","n":"Luiz Gustavo","p":[6,0,8,4,0,0,0,0,0,0,6,0,8,5,5,5,6,3,0,0,0,8,4,0,3,0,0,5,0,5,0,0,3,5,5,0,0,4,3,0,3,0,0,0,0,5,4,0,8,4,4,5,5,5,3,5,6,5,0,3,4,5,3,5,5,0],"bt":[[2,1],[1,1],[1,1],[2,1],[2,2],[0,0],[1,2],[1,2],[2,2],[0,1],[2,0],[1,1],[1,1],[0,3],[0,2],[4,0],[1,3],[3,0],[1,1],[1,2],[2,2],[2,0],[2,1],[1,0],[5,0],[2,2],[3,0],[3,1],[1,2],[0,3],[2,0],[1,1],[1,2],[2,1],[1,2],[1,0],[2,1],[1,1],[0,1],[2,0],[0,3],[2,0],[4,0],[0,2],[5,0],[3,0],[1,2],[0,1],[3,1],[0,3],[2,1],[4,0],[1,2],[2,0],[1,0],[2,0],[2,0],[0,3],[3,1],[0,4],[2,1],[4,0],[2,1],[3,0],[0,3],[3,1]]},{"c":"JOGA102","n":"Vinicus Machado","p":[8,0,0,4,0,0,8,0,0,5,4,6,0,5,8,8,0,3,0,0,0,5,4,4,3,0,0,8,0,5,4,3,5,5,3,0,0,0,4,0,6,0,0,0,0,8,8,0,4,6,3,8,0,5,4,5,3,6,0,3,4,5,0,4,5,0],"bt":[[2,0],[1,2],[1,0],[2,1],[0,0],[1,2],[1,1],[0,2],[1,1],[2,0],[1,0],[3,0],[3,1],[0,2],[0,1],[3,0],[0,0],[3,0],[1,1],[0,2],[1,0],[1,0],[2,1],[1,1],[5,0],[1,2],[4,0],[2,1],[0,0],[0,5],[1,1],[3,0],[0,2],[2,1],[0,4],[2,1],[1,0],[1,0],[0,2],[3,0],[0,5],[1,0],[2,0],[0,2],[2,1],[4,0],[0,1],[2,1],[2,0],[0,4],[2,0],[3,0],[2,2],[3,0],[2,0],[1,0],[3,0],[1,2],[1,0],[0,1],[2,1],[2,0],[1,1],[2,1],[0,2],[2,1]]},{"c":"JOGA103","n":"Rodrigo Alves","p":[5,5,0,4,6,0,0,0,5,5,4,0,0,8,4,8,8,4,5,0,0,8,0,0,3,0,0,5,0,6,8,5,5,5,6,0,0,4,4,0,3,8,0,0,0,3,4,0,5,5,0,8,5,5,5,3,0,6,0,4,5,5,3,4,5,0],"bt":[[3,0],[3,1],[2,1],[2,1],[1,3],[0,2],[2,0],[0,2],[3,1],[2,0],[3,2],[1,1],[2,1],[0,1],[1,2],[3,0],[0,3],[2,0],[2,1],[0,1],[1,1],[2,0],[1,2],[2,0],[4,0],[0,2],[3,0],[3,1],[1,2],[1,2],[2,2],[2,1],[0,2],[3,1],[0,3],[3,2],[2,1],[1,1],[0,2],[2,1],[0,3],[1,1],[5,0],[1,2],[3,1],[3,1],[1,2],[0,1],[2,1],[1,2],[1,2],[3,0],[1,3],[2,0],[2,1],[2,1],[1,1],[1,2],[3,1],[0,2],[2,0],[3,0],[2,1],[2,1],[0,2],[2,0]]},{"c":"JOGA104","n":"Dioclécio","p":[0,0,0,4,0,0,0,0,0,0,8,0,0,3,0,8,5,0,0,8,0,6,4,0,3,3,0,3,0,0,0,5,0,5,6,0,0,4,0,0,3,4,0,0,0,5,0,4,0,5,0,5,5,3,3,6,0,8,0,5,4,5,3,5,5,0],"bt":[[2,2],[0,2],[3,1],[2,1],[1,1],[2,2],[1,2],[1,3],[1,1],[0,1],[2,1],[2,2],[2,1],[1,3],[1,1],[3,0],[0,2],[1,3],[1,2],[2,0],[1,0],[2,1],[2,1],[3,0],[4,0],[3,1],[2,0],[4,0],[0,3],[1,1],[3,1],[2,1],[1,1],[2,1],[0,3],[0,2],[3,1],[1,1],[2,0],[3,0],[0,3],[0,0],[3,1],[0,3],[2,0],[3,0],[2,2],[1,1],[1,1],[1,2],[2,2],[4,0],[1,2],[2,1],[1,0],[3,1],[1,1],[0,2],[3,0],[1,2],[2,1],[4,0],[2,1],[3,0],[0,2],[2,1]]},{"c":"JOGA105","n":"Suzana Coelho","p":[4,4,0,5,3,4,0,0,5,5,5,0,0,5,4,5,6,3,0,6,3,0,4,0,3,3,0,5,0,8,0,5,3,5,5,0,0,0,0,0,5,8,0,0,0,3,4,0,6,5,0,5,8,0,0,4,0,4,0,3,5,5,0,5,5,0],"bt":[[3,1],[1,0],[0,2],[3,0],[1,2],[2,1],[2,0],[0,2],[3,1],[2,0],[3,1],[0,0],[3,1],[0,3],[1,2],[4,0],[1,3],[3,0],[1,3],[2,1],[1,3],[1,1],[2,1],[1,2],[4,0],[3,1],[2,0],[3,1],[1,2],[0,2],[3,1],[2,1],[1,2],[3,1],[1,2],[2,1],[2,1],[1,2],[2,1],[3,0],[1,3],[1,1],[4,0],[1,3],[3,0],[3,1],[2,3],[2,1],[3,0],[1,2],[1,2],[5,0],[1,4],[1,1],[0,0],[4,1],[1,1],[1,3],[2,1],[0,1],[2,0],[3,0],[1,2],[2,0],[0,3],[2,1]]},{"c":"JOGA106","n":"Elizelma Carneiro","p":[6,4,4,0,6,0,0,0,0,0,0,8,0,0,5,8,5,4,0,0,0,0,8,0,3,0,0,6,0,4,0,5,5,3,5,4,0,0,0,0,0,0,0,0,0,3,4,0,5,5,0,6,0,5,3,5,4,4,0,4,0,5,5,0,3,0],"bt":[[2,1],[1,0],[0,0],[1,1],[1,3],[1,3],[3,0],[2,1],[1,1],[2,2],[1,2],[3,1],[2,1],[1,1],[0,2],[3,0],[0,2],[2,0],[1,2],[1,1],[2,2],[0,1],[3,2],[2,1],[3,0],[1,1],[2,1],[2,0],[1,3],[1,3],[3,2],[2,1],[0,2],[3,2],[1,2],[0,0],[2,1],[2,1],[1,0],[3,2],[1,1],[1,3],[3,0],[1,2],[2,0],[2,1],[1,2],[1,0],[2,1],[1,3],[1,1],[3,1],[2,2],[2,0],[1,0],[1,0],[1,0],[1,3],[1,0],[0,2],[0,1],[2,0],[3,2],[0,0],[1,4],[3,0]]},{"c":"JOGA107","n":"Gabor Fonai","p":[6,0,0,4,8,0,0,0,3,5,4,0,0,5,4,5,8,3,3,0,0,5,3,0,3,8,0,5,0,5,0,3,5,5,3,0,4,4,4,0,3,0,0,0,0,5,3,8,6,4,0,5,5,5,4,5,6,6,0,6,5,5,3,5,5,0],"bt":[[2,1],[1,2],[1,0],[2,1],[0,3],[1,2],[2,0],[0,1],[1,0],[1,0],[1,0],[1,1],[3,1],[0,2],[1,2],[7,0],[0,3],[3,0],[1,0],[0,3],[2,1],[1,0],[2,0],[3,0],[5,0],[1,0],[3,0],[3,1],[0,3],[0,4],[2,1],[1,0],[0,1],[3,1],[0,4],[2,1],[2,2],[0,0],[0,2],[5,0],[0,3],[2,0],[4,0],[1,3],[2,0],[3,0],[1,3],[0,0],[3,2],[0,3],[2,2],[6,0],[1,3],[3,0],[2,0],[2,0],[2,0],[1,2],[3,0],[0,3],[2,0],[3,0],[2,1],[2,0],[0,3],[3,1]]},{"c":"JOGA108","n":"Marcia Fonai","p":[8,0,0,0,5,0,0,0,3,0,0,0,0,8,3,8,5,3,5,0,0,6,0,0,5,0,4,3,0,0,0,0,0,0,3,0,0,4,0,0,3,8,0,0,0,5,0,4,0,0,0,5,0,0,0,5,0,5,0,4,8,5,3,0,8,0],"bt":[[2,0],[0,0],[1,0],[1,1],[0,2],[0,0],[1,0],[1,2],[1,0],[0,1],[2,2],[0,0],[2,0],[0,1],[1,3],[3,0],[0,2],[1,0],[2,1],[1,1],[0,0],[2,1],[0,0],[1,2],[3,1],[0,0],[1,1],[3,0],[0,2],[1,1],[2,0],[1,1],[1,0],[2,2],[0,1],[0,1],[1,0],[0,0],[0,0],[1,0],[0,2],[1,1],[2,1],[0,1],[1,0],[2,0],[3,0],[1,1],[1,1],[0,0],[0,0],[1,0],[1,1],[1,1],[0,0],[2,0],[0,1],[0,3],[1,0],[0,2],[1,0],[1,0],[2,1],[1,1],[0,1],[3,0]]},{"c":"JOGA109","n":"Marcio Felipe","p":[5,0,0,4,0,0,0,0,5,5,8,3,0,5,4,5,5,3,0,0,0,4,4,0,4,0,0,8,0,5,0,5,5,5,6,0,0,0,4,0,3,8,0,0,0,5,3,0,5,4,0,5,5,5,6,6,4,6,0,4,5,5,3,5,5,0],"bt":[[3,0],[1,1],[2,0],[2,1],[1,1],[0,2],[2,1],[0,3],[3,1],[2,0],[2,1],[1,0],[2,1],[0,2],[1,2],[4,0],[0,2],[3,0],[1,1],[0,2],[1,0],[3,1],[2,1],[1,0],[6,0],[1,1],[3,0],[2,1],[0,1],[0,3],[2,1],[2,1],[0,2],[3,1],[0,3],[2,1],[3,1],[2,1],[0,2],[2,0],[0,3],[1,1],[5,0],[1,2],[3,1],[3,0],[1,3],[1,2],[2,1],[0,3],[2,2],[4,0],[1,3],[2,0],[3,0],[3,1],[1,0],[1,2],[4,0],[0,2],[3,0],[3,0],[1,0],[2,0],[0,2],[3,1]]},{"c":"JOGA110","n":"Fernando Afonso","p":[5,0,4,4,0,8,0,0,0,0,6,3,0,5,0,5,3,3,5,0,0,6,4,0,6,5,0,0,0,5,8,3,5,0,6,0,0,4,4,0,3,0,0,0,0,5,0,0,0,3,0,8,0,5,6,5,0,0,0,6,5,8,0,5,5,0],"bt":[[1,0],[0,2],[2,2],[2,1],[1,1],[1,0],[0,1],[0,3],[1,1],[0,0],[2,0],[1,0],[2,1],[0,4],[4,0],[6,0],[1,2],[5,0],[2,1],[0,2],[1,1],[2,1],[1,0],[2,0],[7,0],[2,0],[3,0],[2,2],[1,3],[0,3],[2,2],[2,0],[0,1],[1,1],[0,3],[3,1],[1,2],[1,1],[0,2],[3,0],[0,3],[2,1],[5,0],[0,2],[4,0],[3,0],[1,1],[0,1],[2,2],[0,1],[1,1],[3,0],[1,1],[2,0],[3,0],[2,0],[1,1],[1,1],[4,0],[0,3],[3,0],[5,0],[2,2],[2,0],[0,3],[1,2]]},{"c":"JOGA111","n":"Carlos Menezes","p":[8,4,0,8,5,0,0,0,3,3,4,5,0,5,4,5,3,3,5,0,0,6,0,0,3,0,0,3,0,8,0,3,5,5,6,0,0,0,3,0,3,0,0,0,0,5,0,0,5,3,4,8,3,5,4,5,6,6,0,4,8,5,3,8,5,0],"bt":[[2,0],[1,0],[2,1],[1,0],[0,1],[0,1],[2,0],[0,2],[2,0],[2,1],[1,0],[2,1],[2,1],[0,2],[1,2],[4,0],[1,2],[3,0],[2,1],[1,2],[1,0],[2,1],[0,1],[1,0],[4,0],[0,1],[2,0],[3,0],[0,1],[0,2],[2,1],[2,0],[0,1],[2,1],[0,3],[2,1],[2,0],[1,0],[0,1],[2,0],[0,1],[1,0],[3,0],[0,2],[4,0],[2,0],[1,0],[0,1],[2,1],[0,2],[1,0],[3,0],[0,1],[3,0],[2,0],[2,0],[2,0],[1,2],[2,0],[0,2],[1,0],[3,0],[1,0],[1,0],[0,2],[2,1]]},{"c":"JOGA112","n":"Wagner Scorpioni","p":[8,4,8,8,5,0,0,0,3,5,4,0,0,3,4,3,6,6,0,0,0,5,0,0,4,0,0,8,0,6,0,3,5,3,3,8,0,0,5,0,3,0,0,0,0,5,8,0,5,3,3,5,0,5,3,5,4,6,0,5,5,5,3,8,8,0],"bt":[[2,0],[1,0],[1,1],[1,0],[0,1],[1,1],[1,0],[0,1],[2,0],[2,0],[1,0],[1,1],[2,1],[1,3],[1,2],[6,1],[1,3],[4,0],[1,1],[1,1],[1,1],[1,0],[0,1],[1,0],[6,0],[1,1],[2,0],[2,1],[1,3],[1,2],[2,0],[1,0],[0,1],[1,0],[0,1],[1,1],[2,0],[1,2],[1,2],[3,0],[0,2],[3,1],[5,0],[0,1],[2,0],[2,0],[0,1],[0,1],[4,1],[0,2],[2,0],[2,0],[1,1],[1,0],[1,0],[2,0],[1,0],[1,2],[4,1],[1,2],[3,0],[3,0],[1,0],[1,0],[0,1],[2,0]]},{"c":"JOGA113","n":"Murilo Scorpioni","p":[8,5,0,0,3,0,0,0,3,5,0,3,0,5,3,5,5,3,5,0,0,5,0,0,5,0,0,4,4,6,4,3,5,3,8,0,0,0,4,0,3,0,0,0,0,3,4,0,8,3,0,5,0,5,3,6,8,8,0,3,3,3,4,8,5,0],"bt":[[2,0],[3,1],[1,0],[0,0],[1,2],[0,3],[3,1],[1,2],[2,0],[2,0],[0,1],[1,0],[2,1],[0,2],[1,3],[4,0],[0,2],[3,0],[2,1],[1,1],[3,2],[1,0],[2,2],[1,3],[4,1],[0,2],[2,0],[1,0],[3,2],[1,2],[1,1],[2,0],[0,1],[1,0],[1,3],[0,2],[2,0],[1,0],[0,2],[3,1],[0,2],[1,0],[3,0],[1,2],[2,0],[3,1],[1,2],[0,2],[3,1],[0,2],[1,1],[4,0],[2,2],[2,0],[1,0],[3,1],[2,1],[0,2],[4,0],[0,1],[3,1],[3,1],[2,0],[1,0],[0,2],[2,0]]},{"c":"JOGA114","n":"George Carius","p":[8,0,0,5,3,0,4,0,0,3,0,4,0,4,5,5,6,3,0,0,0,0,3,0,6,0,0,6,0,5,0,0,3,5,6,0,4,0,4,0,4,0,0,0,0,8,0,0,6,3,0,8,0,3,4,8,8,5,0,6,5,5,4,8,5,0],"bt":[[2,0],[1,2],[1,0],[2,0],[1,2],[1,1],[2,2],[0,2],[1,1],[2,1],[2,2],[2,0],[2,1],[1,2],[0,2],[5,0],[1,3],[3,0],[1,1],[1,2],[2,2],[1,1],[2,0],[3,2],[7,0],[2,2],[4,0],[2,0],[1,2],[0,3],[2,0],[1,1],[1,2],[3,1],[0,3],[2,1],[2,2],[1,0],[0,2],[3,1],[0,4],[2,0],[8,0],[0,2],[6,1],[4,0],[2,2],[1,3],[3,0],[0,2],[1,1],[3,0],[1,1],[2,1],[2,0],[3,0],[2,1],[0,1],[5,1],[0,3],[3,0],[4,0],[2,0],[1,0],[0,2],[2,0]]},{"c":"JOGA115","n":"Giovanna Jourdan","p":[0,3,0,0,3,0,0,4,5,0,0,0,0,4,0,8,0,0,3,5,0,0,0,0,3,0,0,3,0,0,4,3,3,0,3,0,0,0,0,0,5,8,0,4,0,0,0,0,0,0,0,5,0,3,3,4,0,4,0,4,5,5,0,0,3,0],"bt":[[2,2],[3,0],[1,2],[2,4],[1,2],[2,3],[4,0],[3,3],[3,1],[2,2],[2,2],[0,3],[3,1],[1,2],[2,2],[3,0],[2,2],[1,1],[2,0],[1,0],[1,1],[1,1],[1,1],[0,1],[4,0],[1,1],[1,2],[3,0],[2,4],[2,2],[1,1],[2,0],[1,3],[1,1],[0,4],[2,1],[3,1],[1,2],[2,1],[3,1],[1,4],[1,1],[3,1],[2,2],[4,1],[2,2],[3,2],[0,4],[2,2],[2,1],[1,1],[2,0],[0,0],[2,1],[1,0],[4,1],[0,0],[1,3],[3,0],[0,2],[2,0],[4,0],[2,2],[1,1],[1,3],[2,0]]},{"c":"JOGA116","n":"Rubens Makoto","p":[6,0,0,8,3,0,0,0,5,3,0,4,0,8,4,5,5,3,3,0,0,8,0,0,3,0,0,8,0,8,0,3,5,3,4,8,0,0,5,0,3,4,0,0,0,5,0,0,4,0,0,4,5,5,8,8,0,8,0,5,4,5,3,0,5,0],"bt":[[2,1],[1,1],[2,0],[1,0],[1,2],[1,2],[1,0],[0,2],[2,1],[3,1],[1,1],[2,0],[2,0],[0,1],[1,2],[4,0],[0,2],[3,0],[2,0],[1,2],[1,1],[2,0],[0,2],[1,0],[4,0],[1,1],[3,0],[2,1],[1,2],[0,2],[2,1],[2,0],[0,1],[1,0],[0,2],[1,1],[2,1],[1,0],[1,2],[2,0],[0,3],[0,0],[4,1],[0,2],[3,1],[3,0],[1,1],[1,0],[2,0],[1,0],[2,2],[4,1],[1,3],[2,0],[3,1],[3,0],[1,1],[0,2],[3,1],[1,2],[2,1],[3,0],[1,0],[1,1],[0,2],[1,0]]},{"c":"JOGA117","n":"Rodolfo Prado","p":[4,0,0,0,3,0,4,0,5,5,8,6,0,5,4,5,5,6,5,0,0,4,0,0,3,0,0,0,0,5,8,0,3,5,6,0,0,0,3,0,4,4,0,0,0,3,8,0,5,4,0,5,5,5,3,3,4,0,0,8,5,3,0,3,5,0],"bt":[[3,1],[1,1],[2,0],[2,2],[1,2],[1,3],[2,2],[0,2],[3,1],[4,0],[2,1],[3,0],[3,1],[0,4],[2,3],[6,0],[0,2],[4,0],[2,1],[2,3],[1,0],[3,1],[2,2],[2,0],[9,0],[2,3],[4,0],[2,2],[2,3],[0,4],[2,2],[1,1],[1,2],[3,1],[2,3],[2,1],[3,1],[2,0],[0,4],[1,0],[0,4],[2,2],[6,0],[0,2],[4,0],[2,1],[0,1],[0,3],[2,1],[0,3],[1,1],[5,0],[1,3],[2,0],[4,0],[2,1],[1,0],[2,2],[4,0],[1,3],[3,0],[4,1],[1,1],[3,1],[0,2],[2,1]]},{"c":"JOGA118","n":"Jorge Luiz","p":[8,0,0,3,0,4,0,0,3,3,0,0,8,5,4,8,5,3,3,0,0,8,0,0,3,8,0,8,0,5,4,3,5,0,8,8,0,0,5,0,3,0,0,0,0,5,4,0,6,3,0,5,3,5,4,5,0,0,0,4,8,5,4,5,4,0],"bt":[[2,0],[0,2],[2,1],[3,1],[1,1],[2,1],[2,0],[0,3],[5,0],[2,1],[1,1],[0,0],[1,1],[0,2],[1,2],[3,0],[0,1],[3,0],[1,0],[0,2],[2,1],[2,0],[1,1],[2,1],[5,0],[1,0],[3,0],[2,1],[0,3],[0,4],[1,1],[2,0],[0,2],[2,2],[1,3],[1,1],[2,0],[0,2],[1,2],[3,0],[0,3],[2,0],[3,0],[1,2],[2,0],[2,0],[1,2],[0,1],[3,0],[0,2],[1,2],[5,0],[0,2],[2,0],[2,0],[2,0],[0,0],[1,0],[2,0],[0,2],[1,0],[3,0],[2,0],[3,0],[1,2],[1,0]]},{"c":"JOGA119","n":"Pedro Batalheiro","p":[8,0,0,8,3,0,8,0,5,0,8,0,0,5,3,4,6,4,0,0,0,6,4,0,3,0,0,8,0,5,4,0,5,3,0,0,0,0,3,0,3,0,0,0,0,3,5,0,3,3,0,3,5,3,4,3,6,4,0,4,8,8,5,4,8,0],"bt":[[2,0],[0,0],[1,0],[1,0],[1,2],[0,1],[1,1],[0,2],[2,1],[0,0],[2,1],[0,2],[2,1],[0,4],[1,3],[4,1],[1,3],[3,1],[1,1],[0,2],[2,0],[2,1],[1,0],[1,0],[3,0],[0,1],[2,0],[2,1],[1,1],[0,1],[1,1],[1,1],[0,1],[2,0],[1,0],[0,1],[3,2],[0,1],[0,1],[2,0],[0,2],[2,0],[4,0],[1,3],[2,0],[3,1],[0,2],[0,2],[4,0],[0,2],[1,1],[5,1],[1,3],[2,1],[2,0],[2,1],[2,0],[1,3],[4,0],[2,4],[1,0],[5,0],[3,2],[2,1],[0,1],[2,0]]},{"c":"JOGA120","n":"João Pedro Soares","p":[8,4,8,0,5,4,0,0,3,3,0,5,0,0,3,5,5,4,0,0,0,5,3,0,5,0,0,8,0,0,8,5,5,5,0,0,0,0,3,0,5,0,0,0,0,3,0,4,6,5,0,8,5,0,3,8,0,8,0,3,4,3,4,0,4,0],"bt":[[2,0],[1,0],[1,1],[0,1],[0,2],[2,1],[2,0],[0,1],[1,0],[2,1],[1,1],[2,1],[2,1],[1,1],[1,3],[2,0],[0,1],[2,0],[0,2],[0,2],[1,1],[1,0],[2,0],[0,1],[3,1],[0,2],[1,0],[2,1],[1,2],[2,0],[2,2],[2,1],[0,1],[3,1],[1,1],[1,0],[2,0],[1,0],[0,1],[3,0],[1,2],[1,0],[2,0],[0,2],[2,0],[2,1],[2,2],[1,1],[3,0],[1,2],[0,1],[3,0],[1,2],[0,0],[1,0],[3,0],[1,2],[0,2],[2,0],[0,1],[2,1],[3,1],[2,0],[1,1],[1,2],[1,0]]},{"c":"JOGA121","n":"Davi Machado Gonçalves","p":[6,4,0,0,5,0,8,0,5,0,6,0,0,8,5,5,8,3,0,0,0,5,3,0,3,0,0,0,6,5,0,3,5,0,5,4,0,0,5,0,3,0,0,0,0,8,0,0,3,4,0,5,3,5,3,5,6,8,0,6,5,5,0,4,5,0],"bt":[[2,1],[1,0],[0,2],[1,1],[0,2],[1,2],[1,1],[1,2],[2,1],[1,1],[2,0],[1,1],[2,1],[0,1],[0,2],[4,0],[0,3],[3,0],[1,1],[1,2],[2,0],[1,0],[2,0],[1,0],[2,0],[1,1],[2,0],[1,1],[2,0],[0,1],[2,3],[2,0],[0,1],[1,1],[1,2],[2,2],[2,1],[1,2],[1,2],[2,0],[0,1],[1,0],[4,0],[0,2],[3,0],[4,0],[2,2],[0,1],[4,0],[0,3],[2,2],[4,0],[2,3],[2,0],[1,0],[1,0],[2,0],[0,2],[3,0],[0,3],[2,0],[3,0],[1,1],[2,1],[0,2],[3,0]]},{"c":"JOGA122","n":"Claudinho","p":[5,6,0,5,5,0,0,0,3,5,0,4,0,5,5,8,5,4,3,0,0,8,0,0,3,5,0,6,0,8,0,3,5,3,4,0,0,0,0,0,3,0,0,0,0,5,5,0,4,4,3,8,3,5,6,5,6,8,0,4,5,5,4,5,5,0],"bt":[[3,0],[2,0],[2,0],[2,0],[0,2],[0,2],[2,0],[0,2],[2,0],[2,0],[0,2],[2,0],[2,0],[0,2],[0,2],[3,0],[0,2],[2,0],[2,0],[0,2],[2,0],[2,0],[0,2],[2,0],[3,0],[2,0],[2,0],[2,0],[0,2],[0,2],[2,0],[2,0],[0,2],[2,0],[0,2],[0,2],[3,0],[2,0],[2,0],[2,0],[0,2],[0,2],[3,0],[0,2],[2,0],[2,0],[0,2],[0,2],[2,0],[0,3],[2,0],[3,0],[0,2],[2,0],[3,0],[2,0],[2,0],[0,2],[2,0],[0,2],[2,0],[3,0],[2,0],[2,0],[0,2],[2,0]]},{"c":"JOGA123","n":"Gepeto","p":[8,6,0,5,5,0,0,0,3,5,6,4,0,5,5,5,5,4,3,0,0,8,0,0,3,0,0,6,0,8,0,3,5,3,4,0,0,0,4,0,3,0,0,0,0,5,5,0,4,3,3,5,3,5,4,5,6,8,0,4,5,5,4,5,5,0],"bt":[[2,0],[2,0],[2,0],[2,0],[0,2],[0,2],[2,0],[0,2],[2,0],[2,0],[2,0],[2,0],[2,0],[0,2],[0,2],[2,0],[0,2],[2,0],[2,0],[0,2],[2,0],[2,0],[0,2],[2,0],[2,0],[0,2],[2,0],[2,0],[0,2],[0,2],[2,0],[2,0],[0,2],[2,0],[0,2],[2,0],[2,0],[2,0],[0,2],[2,0],[0,2],[2,0],[2,0],[0,2],[2,0],[2,0],[0,2],[0,2],[2,0],[0,2],[2,0],[2,0],[0,2],[2,0],[2,0],[2,0],[2,0],[0,2],[2,0],[0,2],[2,0],[2,0],[2,0],[2,0],[0,2],[2,0]]},{"c":"JOGA124","n":"João Paulinho Hildebrandt","p":[5,0,4,8,0,0,8,0,3,3,0,4,8,3,0,5,6,3,0,0,0,8,4,4,3,0,0,0,0,4,0,3,5,0,6,4,4,0,5,4,5,8,0,0,0,3,0,0,8,3,0,6,0,0,4,6,6,0,0,5,5,5,3,4,5,0],"bt":[[1,0],[2,2],[0,0],[1,0],[1,0],[1,3],[1,1],[0,2],[1,0],[3,1],[1,1],[4,2],[1,1],[1,3],[1,1],[6,0],[1,3],[3,0],[0,1],[1,3],[1,1],[2,0],[2,1],[2,2],[5,0],[1,2],[4,0],[2,2],[0,0],[1,3],[1,2],[2,0],[0,2],[1,1],[2,3],[2,2],[0,0],[2,0],[1,2],[1,1],[1,3],[1,1],[4,0],[0,2],[3,0],[2,1],[1,1],[1,3],[3,1],[0,2],[2,2],[3,1],[1,1],[1,1],[2,0],[3,1],[2,0],[0,0],[3,0],[1,2],[3,0],[2,0],[2,1],[2,1],[0,2],[3,1]]},{"c":"JOGA125","n":"Eurivaldo","p":[4,8,0,0,5,0,0,0,5,3,6,0,4,4,0,5,0,0,0,0,4,5,3,0,5,0,4,6,0,6,0,5,3,0,5,0,0,0,4,0,0,4,0,0,0,5,4,8,6,5,0,5,5,0,3,5,0,0,0,5,5,3,4,8,3,0],"bt":[[3,1],[2,1],[1,2],[1,1],[0,2],[1,1],[1,0],[1,2],[2,1],[3,1],[2,0],[1,1],[0,0],[1,2],[3,2],[1,0],[1,1],[0,0],[2,3],[1,2],[1,2],[1,0],[2,0],[1,0],[4,1],[2,3],[1,1],[2,0],[1,2],[1,2],[1,2],[3,1],[2,3],[0,0],[1,2],[1,0],[2,0],[1,2],[0,2],[1,0],[2,1],[0,0],[3,2],[2,3],[1,0],[2,0],[1,2],[0,0],[3,0],[1,2],[2,2],[2,0],[1,2],[1,1],[1,0],[2,0],[0,0],[2,2],[3,1],[1,2],[2,0],[3,1],[3,1],[1,0],[1,3],[2,0]]}],"days":[{"n":11,"wd":"Qui","label":"11/06","ids":[1,2]},{"n":12,"wd":"Sex","label":"12/06","ids":[7,19]},{"n":13,"wd":"Sáb","label":"13/06","ids":[8,13,14]},{"n":14,"wd":"Dom","label":"14/06","ids":[20,25,31,26,32]},{"n":15,"wd":"Seg","label":"15/06","ids":[43,37,44,38]},{"n":16,"wd":"Ter","label":"16/06","ids":[49,50,56]},{"n":17,"wd":"Qua","label":"17/06","ids":[55,61,67,68,62]},{"n":18,"wd":"Qui","label":"18/06","ids":[3,9,10,4]},{"n":19,"wd":"Sex","label":"19/06","ids":[22,15,16,21]},{"n":20,"wd":"Sáb","label":"20/06","ids":[34,28,27]},{"n":21,"wd":"Dom","label":"21/06","ids":[33,46,40,45,39]},{"n":22,"wd":"Seg","label":"22/06","ids":[58,52,51,57]},{"n":23,"wd":"Ter","label":"23/06","ids":[64,70,69,63]},{"n":24,"wd":"Qua","label":"24/06","ids":[11,12,17,18,5,6]},{"n":25,"wd":"Qui","label":"25/06","ids":[30,29,36,35,23,24]},{"n":26,"wd":"Sex","label":"26/06","ids":[53,54,48,47,42,41]}],"chrono":[1,2,7,19,8,13,14,20,25,31,26,32,43,37,44,38,49,50,56,55,61,67,68,62,3,9,10,4,22,15,16,21,34,28,27,33,46,40,45,39,58,52,51,57,64,70,69,63,11,12,17,18,5,6,30,29,36,35,23,24,53,54,48,47,42,41]};
+
+/* ============================================================
+   DATA LAYER
+   ============================================================ */
+const norm = s => (s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+const esc  = s => (s+'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ord  = n => n+'º';
+const $    = id => document.getElementById(id);
+
+const G  = DATA.games;             // finalized games, in id (group) order
+const NG = G.length;               // 66
+const B  = DATA.betters;           // 125
+const byCod = {}; B.forEach(b=>byCod[b.c]=b);
+
+/* matchday (rodada) buckets, built from g.md */
+const ROUND_IDX = (()=>{
+  const mds=[...new Set(G.map(g=>g.md))].sort((a,b)=>a-b);
+  return mds.map(md=>{ const idx=[]; G.forEach((g,i)=>{ if(g.md===md) idx.push(i); });
+    return { md, label:md+'ª', full:md+'ª rodada', idx }; });
+})();
+const NR = ROUND_IDX.length;
+
+/* group segments (por grupo x-axis) */
+const GROUP_SEG = (()=>{ const seg=[]; let cur=null;
+  G.forEach((g,i)=>{ if(!cur||cur.g!==g.g){cur={g:g.g,start:i,end:i};seg.push(cur);} else cur.end=i; }); return seg; })();
+
+/* chronological order of positions (real date -> kickoff -> id) */
+const CHRONO = [...Array(NG).keys()].sort((a,b)=>{
+  const ga=G[a], gb=G[b]; return (ga.dd-gb.dd)||(ga.mn-gb.mn)||(ga.id-gb.id); });
+const ORDER_GROUP = [...Array(NG).keys()];
+
+/* day buckets (chronological) */
+const DAY_INFO = (()=>{ const m=new Map();
+  G.forEach((g,i)=>{ if(!m.has(g.dd)) m.set(g.dd,{dd:g.dd,wd:g.wd,idx:[]}); m.get(g.dd).idx.push(i); });
+  return [...m.values()].sort((a,b)=>a.dd-b.dd).map(d=>({...d,label:String(d.dd),full:`${d.wd}, ${d.dd}/jun`})); })();
+const NDAY = DAY_INFO.length;
+
+/* day segments over the CHRONO axis */
+const DAY_SEG = (()=>{ const seg=[]; let cur=null;
+  CHRONO.forEach((pos,j)=>{ const dd=G[pos].dd; if(!cur||cur.dd!==dd){cur={dd,label:String(dd),start:j,end:j};seg.push(cur);} else cur.end=j; }); return seg; })();
+
+/* ---- cumulative / rank / average ---- */
+function ranksFromValues(getV){
+  const arr=B.map(b=>({c:b.c,v:getV(b.c)})).sort((a,b)=>b.v-a.v);
+  const rk={}; let lv=null,lr=0; arr.forEach((o,i)=>{ const r=(o.v===lv)?lr:i+1; rk[o.c]=r; lv=o.v; lr=r; }); return rk;
+}
+function buildCum(order){ const out={}; B.forEach(b=>{ const a=new Array(order.length); let s=0;
+  for(let k=0;k<order.length;k++){ s+=b.p[order[k]]||0; a[k]=s; } out[b.c]=a; }); return out; }
+function buildCumBuckets(buckets){ const out={}; B.forEach(b=>{ const a=new Array(buckets.length); let s=0;
+  for(let k=0;k<buckets.length;k++){ buckets[k].forEach(p=>s+=b.p[p]||0); a[k]=s; } out[b.c]=a; }); return out; }
+function buildRanks(cum,n){ const r=[]; for(let k=0;k<n;k++) r.push(ranksFromValues(c=>cum[c][k])); return r; }
+function buildAvg(cum,n){ const a=new Array(n); for(let k=0;k<n;k++){ let s=0; B.forEach(b=>s+=cum[b.c][k]); a[k]=s/B.length; } return a; }
+
+const cumRound  = buildCumBuckets(ROUND_IDX.map(r=>r.idx));
+const cumDay    = buildCumBuckets(DAY_INFO.map(d=>d.idx));
+const cumChrono = buildCum(CHRONO);
+const cumGroup  = buildCum(ORDER_GROUP);
+const rankRound=buildRanks(cumRound,NR), rankDay=buildRanks(cumDay,NDAY),
+      rankChrono=buildRanks(cumChrono,NG), rankGroup=buildRanks(cumGroup,NG);
+const avgRound=buildAvg(cumRound,NR), avgDay=buildAvg(cumDay,NDAY),
+      avgChrono=buildAvg(cumChrono,NG), avgGroup=buildAvg(cumGroup,NG);
+
+const FINAL_RANK  = rankGroup[NG-1];
+const FINAL_TOTAL = {}; B.forEach(b=>FINAL_TOTAL[b.c]=cumGroup[b.c][NG-1]);
+const STANDINGS   = [...B].sort((a,b)=>FINAL_TOTAL[b.c]-FINAL_TOTAL[a.c]);
+const LEADER_PTS  = FINAL_TOTAL[STANDINGS[0].c];
+const PODIUM_PTS  = FINAL_TOTAL[STANDINGS[Math.min(2,STANDINGS.length-1)].c];
+const FIELD_PPG   = (B.reduce((s,b)=>s+FINAL_TOTAL[b.c],0)/B.length)/NG;
+
+/* ---- per-view model ---- */
+const VIEW = {
+  rodada:{ cum:cumRound,  rank:rankRound,  avg:avgRound,  n:NR,   order:null,        kind:'bucket', bucket:ROUND_IDX },
+  dia:   { cum:cumDay,    rank:rankDay,    avg:avgDay,    n:NDAY, order:null,        kind:'bucket', bucket:DAY_INFO },
+  crono: { cum:cumChrono, rank:rankChrono, avg:avgChrono, n:NG,   order:CHRONO,      kind:'seg',    seg:DAY_SEG },
+  grupo: { cum:cumGroup,  rank:rankGroup,  avg:avgGroup,  n:NG,   order:ORDER_GROUP, kind:'seg',    seg:GROUP_SEG }
+};
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const SLOTS=['you','c1','c2','c3','c4'];
+const COLOR={you:'#E3A52E',c1:'#E23A3A',c2:'#FFFFFF',c3:'#CACBD1',c4:'#7E7F87'};
+const CMP=['c1','c2','c3','c4'];
+const CMP_LBL={c1:'Apostador 2',c2:'Apostador 3',c3:'Apostador 4',c4:'Apostador 5'};
+const codByName = nm => { const b=B.find(x=>x.n===nm); return b?b.c:null; };
+
+const mqCompact = window.matchMedia('(max-width: 639px)');
+const isCompact = () => mqCompact.matches;
+
+const state = {
+  sel:{ you:null, c1:null, c2:null, c3:null, c4:null },
+  primary: isCompact() ? 'rodada' : 'dia',   // 'rodada' | 'dia' | 'jogo'
+  jogoMode:'crono',                          // 'crono' | 'grupo'
+  others: !isCompact(),                      // demais apostadores OFF on phones
+  avg:true
+};
+const curView = () => state.primary==='jogo' ? state.jogoMode : state.primary;  // rodada|dia|crono|grupo
+const V = () => VIEW[curView()];
+const isGameView = () => !!V().order;
+
+state.sel.you = codByName('Binho') || (STANDINGS[0]&&STANDINGS[0].c) || null;
+state.sel.c1  = codByName('Bel');
+state.sel.c2  = codByName('Biel');
+state.sel.c3  = codByName('Pepê');
+state.sel.c4  = codByName('Bela');
+
+/* ============================================================
+   PILLS
+   ============================================================ */
+$('p-jogos').textContent = DATA.meta.finalizedGames+'/'+DATA.meta.totalGames;
+$('p-apost').textContent = DATA.meta.totalBetters;
+
+/* ============================================================
+   COMBOBOX  (field button + dual-mode popup)
+   ============================================================ */
+function fieldHTML(slot){
+  const ring = slot==='c2' ? ' ring' : '';
+  const lbl  = slot==='you' ? 'seu nome' : CMP_LBL[slot];
+  return '<button type="button" class="combo-field" id="cf-'+slot+'" '+
+         'aria-haspopup="listbox" aria-expanded="false" aria-controls="poplist" '+
+         'aria-label="Selecionar '+lbl+'">'+
+         '<span class="swatch'+ring+'" style="background:'+COLOR[slot]+'" aria-hidden="true"></span>'+
+         '<span class="combo-val ph" id="cv-'+slot+'"></span>'+
+         '<span class="combo-clear" id="cc-'+slot+'" role="button" tabindex="0" aria-label="Limpar" title="Limpar">×</span>'+
+         '<span class="combo-caret" aria-hidden="true">▾</span></button>';
+}
+function setField(slot){
+  const c=state.sel[slot], box=document.querySelector('.combo[data-slot="'+slot+'"]');
+  if(!box) return;
+  const cv=$('cv-'+slot);
+  if(c){ cv.textContent=byCod[c].n; cv.classList.remove('ph'); box.classList.add('has-val'); }
+  else { cv.textContent = slot==='you' ? 'Escolha seu nome…' : (CMP_LBL[slot]+'…'); cv.classList.add('ph'); box.classList.remove('has-val'); }
+}
+function selectedExcept(slot){ return SLOTS.filter(s=>s!==slot).map(s=>state.sel[s]).filter(Boolean); }
+
+/* build all combo fields */
+$('combo-you').innerHTML = fieldHTML('you');
+const cmpGrid=$('cmp-grid');
+CMP.forEach(slot=>{ const d=document.createElement('div'); d.className='combo'; d.dataset.slot=slot; d.innerHTML=fieldHTML(slot); cmpGrid.appendChild(d); });
+
+let openSlot=null, popEl=null, backdropEl=null, docDown=null;
+
+function wireField(slot){
+  const field=$('cf-'+slot), clear=$('cc-'+slot);
+  field.addEventListener('click',e=>{ if(e.target===clear) return; toggleCombo(slot); });
+  field.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'||e.key==='Enter'||e.key===' '){ e.preventDefault(); openCombo(slot); }
+  });
+  const doClear=e=>{ e.preventDefault(); e.stopPropagation(); state.sel[slot]=null; setField(slot); rerender(); };
+  clear.addEventListener('click',doClear);
+  clear.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ') doClear(e); });
+  setField(slot);
+}
+SLOTS.forEach(wireField);
+
+function toggleCombo(slot){ if(openSlot===slot) closeCombo(); else openCombo(slot); }
+
+function openCombo(slot){
+  if(openSlot) closeCombo();
+  openSlot=slot;
+  const compact=isCompact();
+  let active=-1, filtered=[];
+
+  popEl=document.createElement('div');
+  popEl.className='combo-pop '+(compact?'sheet':'anchored');
+  popEl.innerHTML =
+    '<div class="pop-head">'+(compact?'<span class="sheet-grip" aria-hidden="true"></span>':'')+
+      '<input class="pop-search" type="text" inputmode="search" autocomplete="off" spellcheck="false" '+
+        'placeholder="Buscar apostador…" aria-label="Buscar apostador" role="combobox" '+
+        'aria-expanded="true" aria-controls="poplist" aria-autocomplete="list">'+
+      (compact?'<button type="button" class="pop-close">Fechar</button>':'')+
+    '</div>'+
+    '<ul class="pop-list" id="poplist" role="listbox" tabindex="-1" aria-label="Apostadores"></ul>';
+
+  if(compact){
+    backdropEl=document.createElement('div'); backdropEl.className='combo-backdrop';
+    document.body.appendChild(backdropEl);
+    document.body.appendChild(popEl);
+    document.body.classList.add('sheet-open');
+    backdropEl.addEventListener('pointerdown', closeCombo);
+    popEl.querySelector('.pop-close').addEventListener('click', closeCombo);
+  } else {
+    document.querySelector('.combo[data-slot="'+slot+'"]').appendChild(popEl);
+  }
+
+  const field=$('cf-'+slot); field.setAttribute('aria-expanded','true');
+  const search=popEl.querySelector('.pop-search');
+  const list  =popEl.querySelector('.pop-list');
+
+  function render(q){
+    const nq=norm(q), taken=new Set(selectedExcept(slot));
+    filtered = B.filter(b=> !nq || norm(b.n).includes(nq)).sort((a,b)=>FINAL_TOTAL[b.c]-FINAL_TOTAL[a.c]).slice(0,80);
+    if(active>=filtered.length) active=filtered.length-1;
+    if(!filtered.length){ list.innerHTML='<li class="opt-empty" role="presentation">Nenhum apostador encontrado</li>'; search.removeAttribute('aria-activedescendant'); return; }
+    const frag=document.createDocumentFragment();
+    filtered.forEach((b,i)=>{
+      const li=document.createElement('li');
+      li.className='opt'+(i===active?' act':''); li.id='opt-'+slot+'-'+b.c; li.setAttribute('role','option');
+      const isYou=state.sel.you===b.c, dup=taken.has(b.c);
+      li.setAttribute('aria-selected', state.sel[slot]===b.c ? 'true':'false');
+      if(dup) li.setAttribute('aria-disabled','true');
+      li.innerHTML='<span class="nm">'+(isYou?'<b>':'')+esc(b.n)+(isYou?'</b>':'')+'</span>'+
+                   '<span class="pos">'+ord(FINAL_RANK[b.c])+' · '+FINAL_TOTAL[b.c]+' pts</span>';
+      li.addEventListener('click',()=>choose(b.c));
+      frag.appendChild(li);
+    });
+    list.innerHTML=''; list.appendChild(frag);
+    syncActive();
+  }
+  function syncActive(){
+    const items=list.querySelectorAll('.opt');
+    items.forEach((el,i)=>el.classList.toggle('act',i===active));
+    if(active>=0 && items[active]){ search.setAttribute('aria-activedescendant',items[active].id); items[active].scrollIntoView({block:'nearest'}); }
+    else search.removeAttribute('aria-activedescendant');
+  }
+  function choose(cod){ state.sel[slot]=cod; closeCombo(); setField(slot); rerender(); }
+
+  search.addEventListener('input',()=>{ active=-1; render(search.value); });
+  search.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'){ e.preventDefault(); active=Math.min(active+1,filtered.length-1); syncActive(); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); active=Math.max(active-1,0); syncActive(); }
+    else if(e.key==='Enter'){ e.preventDefault(); if(filtered[active]) choose(filtered[active].c); else if(filtered.length===1) choose(filtered[0].c); }
+    else if(e.key==='Escape'){ e.preventDefault(); closeCombo(); field.focus(); }
+  });
+
+  render('');
+  if(!compact){
+    setTimeout(()=>search.focus(),0);
+    docDown=ev=>{ if(popEl && !popEl.contains(ev.target) && !field.contains(ev.target)) closeCombo(); };
+    document.addEventListener('pointerdown', docDown, true);
+  }
+}
+function closeCombo(){
+  if(!openSlot) return;
+  const field=$('cf-'+openSlot); if(field) field.setAttribute('aria-expanded','false');
+  if(docDown){ document.removeEventListener('pointerdown', docDown, true); docDown=null; }
+  if(popEl){ popEl.remove(); popEl=null; }
+  if(backdropEl){ backdropEl.remove(); backdropEl=null; }
+  document.body.classList.remove('sheet-open');
+  openSlot=null;
+}
+/* global Escape closes combo */
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && openSlot) closeCombo(); });
+
+/* iOS keyboard: keep the bottom sheet above the keyboard */
+if(window.visualViewport){
+  const onVV=()=>{ const vv=window.visualViewport; const kb=Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+    document.documentElement.style.setProperty('--kb', kb+'px'); };
+  window.visualViewport.addEventListener('resize', onVV);
+  window.visualViewport.addEventListener('scroll', onVV);
+}
+
+/* ============================================================
+   CONTROLS
+   ============================================================ */
+function syncControlsUI(){
+  document.querySelectorAll('#seg-view button').forEach(b=>b.classList.toggle('on', b.dataset.v===state.primary));
+  document.querySelectorAll('#seg-jogo button').forEach(b=>b.classList.toggle('on', b.dataset.j===state.jogoMode));
+  $('seg-jogo').hidden = (state.primary!=='jogo');
+  $('tg-others').setAttribute('aria-pressed', String(state.others));
+  $('tg-avg').setAttribute('aria-pressed', String(state.avg));
+}
+document.querySelectorAll('#seg-view button').forEach(btn=>{
+  btn.addEventListener('click',()=>{ state.primary=btn.dataset.v; syncControlsUI(); rerender(); });
+});
+document.querySelectorAll('#seg-jogo button').forEach(btn=>{
+  btn.addEventListener('click',()=>{ state.jogoMode=btn.dataset.j; syncControlsUI(); rerender(); });
+});
+$('tg-others').addEventListener('click',()=>{ state.others=!state.others; syncControlsUI(); rerender(); });
+$('tg-avg').addEventListener('click',()=>{ state.avg=!state.avg; syncControlsUI(); rerender(); });
+
+/* ============================================================
+   KPIs
+   ============================================================ */
+function renderKPIs(){
+  const box=$('kpis'); if(!box) return;
+  const c=state.sel.you;
+  if(!c){ box.innerHTML='<div class="kpi" style="flex-basis:100%"><span class="l">Escolha seu nome acima para ver pontos, posição e distâncias</span></div>'; return; }
+  const tot=FINAL_TOTAL[c], pos=FINAL_RANK[c], ppg=tot/NG;
+  const kLead = pos<=1 ? '<span class="v gold">Líder</span>' : '<span class="v">−'+(LEADER_PTS-tot)+'</span>';
+  const kPod  = pos<=3 ? '<span class="v gold">No pódio</span>' : '<span class="v">−'+(PODIUM_PTS-tot)+'</span>';
+  box.innerHTML=
+    '<div class="kpi"><span class="v gold">'+tot+'</span><span class="l">Pontos</span></div>'+
+    '<div class="kpi"><span class="v">'+ppg.toFixed(1)+'</span><span class="sub2">(geral '+FIELD_PPG.toFixed(1)+')</span><span class="l">pts / jogo</span></div>'+
+    '<div class="kpi"><span class="v">'+ord(pos)+'</span><span class="l">de '+DATA.meta.totalBetters+'</span></div>'+
+    '<div class="kpi">'+kLead+'<span class="l">p/ o líder</span></div>'+
+    '<div class="kpi">'+kPod+'<span class="l">p/ o pódio</span></div>';
+}
+
+/* ============================================================
+   LEGEND + SUBTITLES
+   ============================================================ */
+function activeSlots(){ return SLOTS.filter(s=>state.sel[s]); }
+function renderLegend(id, withAvg){
+  const box=$(id); if(!box) return; box.innerHTML='';
+  const slots=activeSlots();
+  if(!slots.length){ box.innerHTML='<span class="lg-it">Nenhum apostador selecionado</span>'; }
+  else slots.forEach(slot=>{
+    const b=byCod[state.sel[slot]];
+    const it=document.createElement('span'); it.className='lg-it act'+(slot==='you'?' you-it':'');
+    const sw = slot==='c2' ? 'ln sw' : 'ln';
+    it.innerHTML='<span class="'+sw+'" style="background:'+COLOR[slot]+'"></span><span class="nm" title="'+esc(b.n)+'">'+esc(b.n)+(slot==='you'?' (você)':'')+'</span>';
+    box.appendChild(it);
+  });
+  if(withAvg && state.avg){ const it=document.createElement('span'); it.className='lg-it'; it.innerHTML='<span class="ln dash"></span><span class="nm">média (todos)</span>'; box.appendChild(it); }
+  if(state.others){ const it=document.createElement('span'); it.className='lg-it'; it.innerHTML='<span class="ln" style="background:var(--faint)"></span><span class="nm">demais</span>'; box.appendChild(it); }
+}
+function renderSubs(){
+  const v=curView();
+  const sub = v==='rodada' ? NR+' rodadas' : v==='dia' ? NDAY+' dias' : NG+' jogos';
+  const accSub=$('acc-sub'); if(accSub) accSub.textContent=sub;
+  const c=state.sel.you, pn=$('pos-note'); if(!pn) return;
+  if(c){ pn.innerHTML='Você está em <b>'+ord(FINAL_RANK[c])+'</b> de '+DATA.meta.totalBetters+' apostadores'; }
+  else pn.textContent='';
+}
+
+/* ============================================================
+   CHART ENGINE  (dynamic viewBox; fit or horizontal-scroll)
+   ============================================================ */
+const SVGNS='http://www.w3.org/2000/svg';
+const el=(t,a)=>{ const e=document.createElementNS(SVGNS,t); for(const k in a) e.setAttribute(k,a[k]); return e; };
+const SCROLL_W=900;                 // logical width for game-by-game on phones
+const PAD={l:36,r:13,t:14,b:34};
+
+function niceTop(v){ if(v<=10)return 10; const p=Math.pow(10,Math.floor(Math.log10(v))); const s=v/p;
+  let m=s<=1?1:s<=2?2:s<=2.5?2.5:s<=5?5:10; return Math.ceil(v/(m*p/(m>=5?5:2)))*(m*p/(m>=5?5:2)); }
+function ticks(a,b,n){ const o=[]; for(let i=0;i<=n;i++)o.push(Math.round(a+(b-a)*i/n)); return [...new Set(o)]; }
+function posTicks(mx){ if(mx<=5) return Array.from({length:mx},(_,i)=>i+1);
+  if(mx<=12){ const o=[1]; for(let v=3;v<=mx;v+=3)o.push(v); if(o[o.length-1]!==mx)o.push(mx); return o; }
+  const o=[1]; const step=Math.ceil(mx/5/5)*5||25; for(let v=step;v<mx;v+=step)o.push(v); o.push(mx); return [...new Set(o)]; }
+
+function chartDims(wrap){
+  const fit = !(isCompact() && isGameView());
+  const cw  = Math.max(260, wrap.clientWidth||320);
+  if(fit){ const W=Math.round(cw); const H=Math.round(Math.min(Math.max(W*0.62,240),340)); return {fit,W,H}; }
+  return {fit:false, W:SCROLL_W, H:330};
+}
+
+function drawChart(svgId, mode){          // mode 'acc' | 'pos'
+  const svg=$(svgId); if(!svg) return;
+  const wrap=svg.parentNode;
+  const {fit,W,H}=chartDims(wrap);
+  wrap.classList.toggle('scrollable', !fit);
+
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+  /* iOS Safari collapses inline SVGs sized with height:auto — always set explicit px height */
+  if(fit){ svg.style.width='100%'; svg.style.height=H+'px'; }
+  else   { svg.style.width=W+'px';  svg.style.height=H+'px'; }
+  svg.innerHTML='';
+
+  const view=V(), n=view.n;
+  const PW=W-PAD.l-PAD.r, PH=H-PAD.t-PAD.b;
+  const step = n>1 ? PW/(n-1) : 0;
+  const xs = Array.from({length:n},(_,i)=> PAD.l + (n>1? i*step : PW/2));
+  const slots=activeSlots();
+
+  const vAcc=(cod,i)=>view.cum[cod][i];
+  const vPos=(cod,i)=>view.rank[i][cod];
+
+  /* y domain */
+  let yMin,yMax,yTicks,invert;
+  if(mode==='acc'){
+    let mx=0; B.forEach(b=>{ const v=vAcc(b.c,n-1); if(v>mx)mx=v; });
+    if(!state.others){ mx=0; slots.forEach(s=>{ const v=vAcc(state.sel[s],n-1); if(v>mx)mx=v; }); if(state.avg){ const av=view.avg[n-1]; if(av>mx)mx=av; } }
+    yMax=niceTop(mx||10); yMin=0; invert=false; yTicks=ticks(yMin,yMax,5);
+  } else {
+    let mx=DATA.meta.totalBetters;
+    if(!state.others){ mx=1; slots.forEach(s=>{ for(let i=0;i<n;i++){ const v=vPos(state.sel[s],i); if(v>mx)mx=v; } }); mx=Math.max(mx,5); }
+    yMin=1; yMax=Math.max(mx,2); invert=true; yTicks=posTicks(yMax);
+  }
+  const yPix = v => invert ? PAD.t+(v-yMin)/(yMax-yMin)*PH : PAD.t+(1-(v-yMin)/(yMax-yMin))*PH;
+
+  /* gridlines + y labels */
+  const yfs = Math.max(9, Math.round(W*0.0165));
+  yTicks.forEach(t=>{ const y=yPix(t);
+    svg.appendChild(el('line',{x1:PAD.l,y1:y,x2:PAD.l+PW,y2:y,class:'gtick'}));
+    const lb=el('text',{x:PAD.l-7,y:y+yfs*0.35,class:'tlbl y','font-size':yfs}); lb.textContent=(mode==='pos'?ord(t):t); svg.appendChild(lb); });
+  svg.appendChild(el('line',{x1:PAD.l,y1:PAD.t,x2:PAD.l,y2:PAD.t+PH,class:'axis-base'}));
+  svg.appendChild(el('line',{x1:PAD.l,y1:PAD.t+PH,x2:PAD.l+PW,y2:PAD.t+PH,class:'axis-base'}));
+
+  /* x labels */
+  const xfs=Math.max(9.5, Math.round(W*0.017));
+  const yLab=PAD.t+PH+xfs+9;
+  if(view.kind==='bucket'){
+    const maxLabels=Math.max(3, Math.floor(PW/34));
+    const stepL=Math.max(1, Math.ceil(n/maxLabels));
+    view.bucket.forEach((bk,i)=>{ if(i%stepL!==0 && i!==n-1) return;
+      const t=el('text',{x:xs[i],y:yLab,class:'glbl','font-size':xfs}); t.textContent=bk.label; svg.appendChild(t); });
+  } else {
+    view.seg.forEach(s=>{ const cx=(xs[s.start]+xs[s.end])/2;
+      if(s.start>0){ const x0=(xs[s.start-1]+xs[s.start])/2; svg.appendChild(el('line',{x1:x0,y1:PAD.t,x2:x0,y2:PAD.t+PH,class:'gsep'})); }
+      const t=el('text',{x:cx,y:yLab,class:'glbl','font-size':xfs}); t.textContent=(s.g||s.label); svg.appendChild(t); });
+  }
+
+  /* faint others */
+  if(state.others){
+    const taken=new Set(slots.map(s=>state.sel[s])); const frag=document.createDocumentFragment();
+    B.forEach(b=>{ if(taken.has(b.c))return; let d='';
+      for(let i=0;i<n;i++){ const v=(mode==='acc')?vAcc(b.c,i):vPos(b.c,i); d+=(i?'L':'M')+xs[i].toFixed(1)+' '+yPix(v).toFixed(1)+' '; }
+      frag.appendChild(el('path',{d,class:'line-faint'})); });
+    svg.appendChild(frag);
+  }
+
+  /* average (dashed) — points chart only: mean accumulated points */
+  if(state.avg && mode==='acc'){ let d='';
+    for(let i=0;i<n;i++){ const v=view.avg[i]; d+=(i?'L':'M')+xs[i].toFixed(1)+' '+yPix(v).toFixed(1)+' '; }
+    svg.appendChild(el('path',{d,class:'line-avg'})); }
+
+  /* highlighted lines (você last, on top) */
+  const orderSlots=[...slots.filter(s=>s!=='you'), ...(slots.includes('you')?['you']:[])];
+  const showAll = n<=NDAY+2;
+  orderSlots.forEach(slot=>{
+    const cod=state.sel[slot], col=COLOR[slot], w = slot==='you'?(mode==='acc'?3.8:3.2):2;
+    let d=''; const pts=[];
+    for(let i=0;i<n;i++){ const v=(mode==='acc')?vAcc(cod,i):vPos(cod,i); const x=xs[i],y=yPix(v); pts.push([x,y]); d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' '; }
+    if(slot==='you'){ svg.appendChild(el('path',{d,fill:'none',stroke:col,'stroke-width':w+(mode==='acc'?6:5),'stroke-linejoin':'round','stroke-linecap':'round',opacity:(mode==='acc'?.24:.16)})); }
+    svg.appendChild(el('path',{d,fill:'none',stroke:col,'stroke-width':w,'stroke-linejoin':'round','stroke-linecap':'round'}));
+    pts.forEach((p,i)=>{ if(showAll || i===n-1){ const r=slot==='you'?(showAll?5:5.5):(showAll?4:4.5); svg.appendChild(el('circle',{cx:p[0],cy:p[1],r,fill:col,class:'dot-h'})); } });
+  });
+
+  if(!slots.length){ const t=el('text',{x:W/2,y:H/2,class:'empty-t','font-size':Math.max(12,Math.round(W*0.022))}); t.textContent='Selecione apostadores para traçar as linhas'; svg.appendChild(t); }
+
+  svg._geo={xs,n,mode,yPix,slots:orderSlots,W,H};
+}
+
+/* ============================================================
+   TOOLTIP / TOUCH
+   ============================================================ */
+function attachHover(wrapId, svgId, tipId, mode){
+  const wrap=$(wrapId), svg=$(svgId), tip=$(tipId);
+  if(!wrap||!svg||!tip) return;
+  let crossEls=[];
+  const closeBtn=tip.querySelector('.tip-close');
+  function clearCross(){ crossEls.forEach(e=>e.remove()); crossEls=[]; tip.classList.remove('show'); }
+  if(closeBtn) closeBtn.addEventListener('click', clearCross);
+
+  function nearest(clientX){
+    const geo=svg._geo; if(!geo) return -1;
+    const rect=svg.getBoundingClientRect();           // scroll-aware (full svg rect)
+    const ux=(clientX-rect.left)*(geo.W/rect.width);
+    let i=0,best=1e9; geo.xs.forEach((x,k)=>{ const dd=Math.abs(x-ux); if(dd<best){best=dd;i=k;} }); return i;
+  }
+  function drawCross(i){
+    crossEls.forEach(e=>e.remove()); crossEls=[];
+    const geo=svg._geo; if(!geo) return; const x=geo.xs[i];
+    const ln=el('line',{x1:x,y1:PAD.t,x2:x,y2:geo.H-PAD.b,class:'cross'}); svg.appendChild(ln); crossEls.push(ln);
+    geo.slots.forEach(slot=>{ const cod=state.sel[slot]; const v=(mode==='acc')?V().cum[cod][i]:V().rank[i][cod]; const y=geo.yPix(v);
+      const halo=el('circle',{cx:x,cy:y,r:slot==='you'?7.5:6.5,fill:'none',stroke:COLOR[slot],'stroke-width':2,opacity:.9});
+      const c=el('circle',{cx:x,cy:y,r:slot==='you'?4:3.4,fill:COLOR[slot]});
+      svg.appendChild(halo); svg.appendChild(c); crossEls.push(halo,c); });
+  }
+  function showTip(i){
+    const geo=svg._geo; if(!geo||!geo.slots.length){ clearCross(); return; }
+    drawCross(i);
+    const view=V(), vw=curView(), order=view.order;
+    let head;
+    if(view.kind==='bucket'){ const bk=view.bucket[i];
+      head='<div class="tip-h">'+bk.full+'<span class="sc">'+bk.idx.length+(bk.idx.length===1?' jogo':' jogos')+'</span></div>';
+    } else { const g=G[order[i]];
+      head='<div class="tip-h">J'+g.id+' · Grupo '+g.g+'<span class="sc">'+esc(g.a)+' <b>'+g.ga+'×'+g.gb+'</b> '+esc(g.b)+' · '+g.wd+' '+g.dd+'/jun</span></div>'; }
+    let rows='';
+    geo.slots.slice().sort((s1,s2)=>{ if(s1==='you')return -1; if(s2==='you')return 1;
+      const a=(mode==='acc')?view.cum[state.sel[s2]][i]:-view.rank[i][state.sel[s2]];
+      const b=(mode==='acc')?view.cum[state.sel[s1]][i]:-view.rank[i][state.sel[s1]]; return a-b;
+    }).forEach(slot=>{ const cod=state.sel[slot], b=byCod[cod]; let main,sub='';
+      if(view.kind==='bucket'){ const cum=view.cum[cod][i], prev=i?view.cum[cod][i-1]:0;
+        if(mode==='acc'){ main=cum+' pts'; sub='+'+(cum-prev)+(vw==='dia'?' no dia':' na rodada'); }
+        else { main='#'+view.rank[i][cod]; sub=cum+' pts'; }
+      } else { const pos=order[i], bt=b.bt[pos], pal=(bt&&bt[0]!=null)?bt[0]+'×'+bt[1]:'—';
+        if(mode==='acc'){ main=view.cum[cod][i]+' pts'; sub='palpite '+pal+' · +'+(b.p[pos]||0); }
+        else { main='#'+view.rank[i][cod]; sub='palpite '+pal+' · +'+(b.p[pos]||0); } }
+      rows+='<div class="tip-r'+(slot==='you'?' you-r':'')+'"><span class="d" style="background:'+COLOR[slot]+'"></span>'+
+            '<span class="nm">'+esc(b.n)+'</span><span class="vv">'+main+'<span class="sub">'+sub+'</span></span></div>';
+    });
+    tip.innerHTML='<button type="button" class="tip-close" aria-label="Fechar">×</button>'+head+rows;
+    tip.querySelector('.tip-close').addEventListener('click', clearCross);
+    tip.classList.add('show');
+
+    if(isCompact()){ tip.classList.add('pinned'); tip.style.left=tip.style.top=''; }
+    else {
+      tip.classList.remove('pinned');
+      const card=wrap.closest('.card'); const cardR=card.getBoundingClientRect(); const svgR=svg.getBoundingClientRect();
+      const px = (svgR.left + (geo.xs[i]/geo.W)*svgR.width) - cardR.left;
+      const tw=tip.offsetWidth; let left=px+16; if(left+tw>cardR.width-8) left=px-tw-16; left=Math.max(8,Math.min(left,cardR.width-tw-8));
+      tip.style.left=left+'px'; tip.style.top='10px';
+    }
+  }
+
+  /* desktop: hover scrub */
+  let fine = window.matchMedia('(hover:hover) and (pointer:fine)');
+  wrap.addEventListener('pointermove',e=>{ if(e.pointerType==='mouse' || fine.matches){ const i=nearest(e.clientX); if(i>=0) showTip(i); } }, {passive:true});
+  wrap.addEventListener('pointerleave',()=>{ if(!isCompact()) clearCross(); }, {passive:true});
+
+  /* touch: tap to show nearest (ignore scroll-drags) */
+  let downX=0,downY=0,downT=0,moved=false;
+  wrap.addEventListener('pointerdown',e=>{ if(e.pointerType==='mouse')return; downX=e.clientX; downY=e.clientY; downT=Date.now(); moved=false; }, {passive:true});
+  wrap.addEventListener('pointermove',e=>{ if(e.pointerType==='mouse')return; if(Math.abs(e.clientX-downX)>8||Math.abs(e.clientY-downY)>8) moved=true; }, {passive:true});
+  wrap.addEventListener('pointerup',e=>{ if(e.pointerType==='mouse')return; if(moved||Date.now()-downT>600) return; const i=nearest(e.clientX); if(i>=0) showTip(i); }, {passive:true});
+
+  wrap._clearCross=clearCross;
+}
+
+/* dismiss pinned tooltips when tapping outside the charts */
+document.addEventListener('pointerdown',e=>{
+  if(e.target.closest && e.target.closest('.chart-scroll')) return;
+  ['cw-acc','cw-pos'].forEach(id=>{ const w=$(id); if(w&&w._clearCross) w._clearCross(); });
+}, true);
+
+/* ============================================================
+   RENDER ORCHESTRATION
+   ============================================================ */
+let rafId=null;
+function scheduleDraw(){ if(rafId)cancelAnimationFrame(rafId); rafId=requestAnimationFrame(()=>{ rafId=null; drawChart('svg-acc','acc'); drawChart('svg-pos','pos'); }); }
+function rerender(){
+  SLOTS.forEach(setField);
+  renderKPIs(); renderSubs();
+  renderLegend('legend1', true); renderLegend('legend2', false);
+  ['cw-acc','cw-pos'].forEach(id=>{ const w=$(id); if(w&&w._clearCross) w._clearCross(); });
+  scheduleDraw();
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+function init(){
+  syncControlsUI();
+  attachHover('cw-acc','svg-acc','tip-acc','acc');
+  attachHover('cw-pos','svg-pos','tip-pos','pos');
+  rerender();
+
+  if('ResizeObserver' in window){
+    const ro=new ResizeObserver(scheduleDraw);
+    ['cw-acc','cw-pos'].forEach(id=>{ const w=$(id); if(w) ro.observe(w); });
+  }
+  let rT=null;
+  const onResize=()=>{ if(rT)cancelAnimationFrame(rT); rT=requestAnimationFrame(scheduleDraw); };
+  window.addEventListener('resize', onResize, {passive:true});
+  window.addEventListener('orientationchange', ()=>setTimeout(scheduleDraw,120), {passive:true});
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(scheduleDraw);
+
+  /* breakpoint change: close popups, re-mode charts, re-render */
+  const onMq=()=>{ closeCombo(); scheduleDraw(); };
+  if(mqCompact.addEventListener) mqCompact.addEventListener('change', onMq);
+  else if(mqCompact.addListener) mqCompact.addListener(onMq);
+}
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);
+else init();
+</script>
+</body>
+</html>
