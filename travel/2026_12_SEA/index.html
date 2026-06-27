@@ -1,0 +1,1560 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sudeste Asiático · Roteiro de Viagem — Família Ramos</title>
+<meta name="description" content="Roteiro de 30 dias pelo Sudeste Asiático: Tailândia, Vietnã e Camboja. 25 dez 2026 — 23 jan 2027. 10 viajantes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#1b1813; --ink-2:#252118; --ink-3:#322d22;
+  --paper:#f4ede0; --paper-2:#faf5ec; --card:#ffffff;
+  --th:#c2872e; --th-deep:#8f611a; --th-soft:#f3e4c8;   /* Tailândia — ouro de templo */
+  --vn:#b8385a; --vn-deep:#8a2742; --vn-soft:#f5dde3;   /* Vietnã — laca de lanterna  */
+  --kh:#1e7a8c; --kh-deep:#13586a; --kh-soft:#d3e8ec;   /* Camboja — pedra de Angkor   */
+  --muted:#9b9384; --muted-2:#6f6757;
+  --line:rgba(27,24,19,.13); --line-soft:rgba(27,24,19,.08);
+  --gold:#c2872e;
+  --maxw:1200px;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-weight:400;line-height:1.62;
+  font-size:clamp(15px,1.05vw,16.5px);-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--th);color:#fff}
+
+/* ============ HELPERS ============ */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+.section{padding:clamp(64px,8vw,118px) 0;position:relative}
+.section.dark{background:var(--ink);color:#efe7d8}
+.section.dark-2{background:var(--ink-2);color:#efe7d8}
+.section.paper-2{background:var(--paper-2)}
+.eyebrow{
+  font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--th-deep);display:inline-flex;align-items:center;gap:.7em;margin:0 0 18px
+}
+.dark .eyebrow,.dark-2 .eyebrow{color:var(--th)}
+.eyebrow::before{content:"";width:26px;height:1px;background:currentColor;opacity:.6}
+.h2{
+  font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,3.35rem);
+  line-height:1.04;letter-spacing:-.015em;margin:0 0 .35em;max-width:18ch
+}
+.h2.wide{max-width:24ch}
+.lead{font-size:clamp(1.04rem,1.6vw,1.22rem);color:var(--muted-2);max-width:62ch;margin:0 0 8px;line-height:1.55}
+.dark .lead,.dark-2 .lead{color:#cdc3b0}
+.sec-head{margin-bottom:clamp(40px,5vw,62px)}
+
+/* dotted divider used between major blocks */
+.hr-dots{height:1px;background-image:linear-gradient(90deg,var(--line) 38%,transparent 0);background-size:7px 1px;background-repeat:repeat-x;border:0;margin:0}
+
+/* ============ NAV ============ */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(244,237,224,.86);backdrop-filter:blur(12px) saturate(1.3);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav .row{display:flex;align-items:center;justify-content:space-between;height:60px;gap:18px}
+.brand{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);white-space:nowrap;font-weight:500}
+.brand b{color:var(--th-deep)}
+.nav-links{display:flex;gap:clamp(10px,1.5vw,22px);align-items:center;font-size:13px;font-weight:500}
+.nav-links a{text-decoration:none;color:var(--muted-2);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-toggle{display:none}
+@media(max-width:860px){
+  .nav-links{position:fixed;inset:60px 0 auto 0;flex-direction:column;align-items:flex-start;gap:0;
+    background:var(--paper-2);border-bottom:1px solid var(--line);padding:6px clamp(20px,5vw,56px);
+    max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .nav-links.open{max-height:70vh;padding:14px clamp(20px,5vw,56px) 22px}
+  .nav-links a{padding:10px 0;width:100%;border-bottom:1px solid var(--line-soft)}
+  .nav-toggle{display:inline-flex;flex-direction:column;gap:4px;background:none;border:0;cursor:pointer;padding:8px}
+  .nav-toggle span{width:22px;height:2px;background:var(--ink);display:block;transition:.25s}
+}
+
+/* ============ HERO ============ */
+.hero{position:relative;background:var(--ink);color:#f3ebdc;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-1;opacity:.5}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(120% 90% at 80% 0%,rgba(194,135,46,.16),transparent 55%),
+             linear-gradient(180deg,rgba(27,24,19,.55),var(--ink) 88%)}
+.hero .wrap{padding-top:clamp(54px,9vw,110px);padding-bottom:clamp(56px,8vw,104px)}
+.hero-eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--th);margin:0 0 22px}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(3rem,10vw,7.4rem);line-height:.92;letter-spacing:-.02em;margin:0}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--th)}
+.hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,3vw,2.1rem);color:#e7dcc6;margin:14px 0 0;font-weight:400}
+.hero-meta{font-family:var(--mono);font-size:clamp(12px,1.5vw,14px);letter-spacing:.08em;color:#bcae96;margin:26px 0 0;display:flex;flex-wrap:wrap;gap:8px 20px}
+.hero-meta span{display:inline-flex;align-items:center;gap:9px}
+.hero-meta span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--th)}
+.route{display:flex;flex-wrap:wrap;align-items:center;gap:6px 4px;margin:38px 0 0;max-width:880px}
+.route .stop{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;padding:7px 13px;border:1px solid rgba(243,235,220,.22);border-radius:100px;color:#efe7d8;white-space:nowrap;background:rgba(243,235,220,.04)}
+.route .stop.t{border-color:rgba(194,135,46,.5);color:#f0d29a}
+.route .stop.v{border-color:rgba(184,56,90,.55);color:#f3b6c4}
+.route .stop.k{border-color:rgba(30,122,140,.6);color:#a8d6df}
+.route .sep{color:#6f6757;font-size:14px;padding:0 2px}
+.scroll-cue{margin-top:46px;font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#8a8270;display:inline-flex;align-items:center;gap:10px}
+.scroll-cue::after{content:"↓";font-size:14px;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+/* ============ STAT BAND ============ */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:14px;overflow:hidden;margin:0 0 clamp(40px,5vw,56px)}
+.stat{background:var(--card);padding:24px 20px}
+.stat .n{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4vw,2.9rem);line-height:1;color:var(--ink);letter-spacing:-.02em}
+.stat .n small{font-size:.5em;color:var(--th-deep);font-family:var(--mono);font-weight:500;letter-spacing:.02em}
+.stat .l{font-size:12.5px;color:var(--muted-2);margin-top:9px;letter-spacing:.01em}
+
+/* ============ PILLARS ============ */
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:clamp(16px,2vw,26px)}
+.pillar{position:relative;padding-top:26px}
+.pillar .num{font-family:var(--mono);font-size:12px;color:var(--th-deep);letter-spacing:.1em;position:absolute;top:0;left:0}
+.pillar h3{font-family:var(--serif);font-weight:500;font-size:1.42rem;margin:0 0 8px;line-height:1.12}
+.pillar p{margin:0;color:var(--muted-2);font-size:14.5px}
+.pillar::before{content:"";position:absolute;top:7px;left:0;width:34px;height:2px;background:var(--th)}
+
+/* ============ FAMILY ============ */
+.fam-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(186px,1fr));gap:14px}
+.person{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line-soft);border-radius:13px;padding:15px 16px;transition:transform .25s,box-shadow .25s}
+.person:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(27,24,19,.4)}
+.mono-av{flex:0 0 auto;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:1.05rem;color:#fff;background:var(--th-deep)}
+.person .who{font-weight:600;font-size:15px;line-height:1.18}
+.person .role{font-size:12.5px;color:var(--muted-2);font-family:var(--mono);letter-spacing:.02em;margin-top:2px}
+.person.late{border-color:var(--vn);background:linear-gradient(180deg,#fff,var(--vn-soft))}
+.person.late .mono-av{background:var(--vn)}
+.fam-note{margin-top:22px;display:flex;gap:14px;align-items:flex-start;background:var(--vn-soft);border:1px solid rgba(184,56,90,.3);border-radius:13px;padding:18px 20px}
+.fam-note .ic{font-size:22px;line-height:1}
+.fam-note b{color:var(--vn-deep)}
+.fam-note p{margin:0;font-size:14.5px;color:#5a3340}
+
+/* ============ CHANGES ============ */
+.changes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:rgba(243,235,220,.14);border-radius:14px;overflow:hidden}
+.change{background:var(--ink-2);padding:22px 22px 24px}
+.change h3{font-family:var(--serif);font-weight:500;font-size:1.28rem;margin:0 0 7px;color:#f3ebdc;display:flex;align-items:center;gap:9px}
+.change h3 .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+.change p{margin:0;font-size:13.8px;color:#c3b9a6;line-height:1.5}
+.adjust-banner{margin-top:26px;border:1px solid var(--th);border-radius:14px;padding:22px 24px;background:linear-gradient(100deg,rgba(194,135,46,.16),rgba(194,135,46,.04));display:flex;gap:16px;align-items:flex-start}
+.adjust-banner .ic{font-size:24px}
+.adjust-banner h3{margin:0 0 6px;font-family:var(--serif);font-weight:600;font-size:1.2rem;color:#f6e4c2}
+.adjust-banner p{margin:0;font-size:14px;color:#d8cdb8}
+.adjust-banner b{color:var(--th)}
+
+/* ============ CIRCUIT ============ */
+.circuit{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px}
+.base{position:relative;background:var(--card);border:1px solid var(--line-soft);border-radius:14px;padding:20px 20px 22px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.base:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(27,24,19,.45)}
+.base .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.base .idx{font-family:var(--serif);font-weight:600;font-size:1.5rem;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;color:#fff}
+.base .ctry{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:5px 9px;border-radius:100px;font-weight:600}
+.base h3{font-family:var(--serif);font-weight:500;font-size:1.5rem;margin:0;line-height:1.05}
+.base .tag{font-size:12.5px;color:var(--muted-2);margin:2px 0 14px;font-family:var(--mono);letter-spacing:.02em}
+.base .meta{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line-soft);padding-top:12px}
+.base .nights{font-weight:700;font-size:14px}
+.base .dates{font-family:var(--mono);font-size:12px;color:var(--muted-2)}
+.t-bg{--c:var(--th);--cd:var(--th-deep);--cs:var(--th-soft)}
+.v-bg{--c:var(--vn);--cd:var(--vn-deep);--cs:var(--vn-soft)}
+.k-bg{--c:var(--kh);--cd:var(--kh-deep);--cs:var(--kh-soft)}
+.base .idx{background:var(--cd)} .base .ctry{background:var(--cs);color:var(--cd)} .base .nights{color:var(--cd)}
+.phiphi-note{grid-column:1/-1;margin-top:4px;display:flex;gap:13px;align-items:center;background:var(--th-soft);border-radius:13px;padding:15px 19px;font-size:14px;color:#6b4a16}
+.phiphi-note b{color:var(--th-deep)} .phiphi-note .ic{font-size:20px}
+
+/* ============ CALENDAR ============ */
+.cal-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:24px;font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--muted-2)}
+.cal-legend span{display:inline-flex;align-items:center;gap:8px}
+.cal-legend i{width:13px;height:13px;border-radius:4px;display:inline-block}
+.cal{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:9px}
+.day{background:var(--card);border:1px solid var(--line-soft);border-radius:11px;padding:12px 12px 13px;border-left:4px solid var(--muted);min-height:96px;display:flex;flex-direction:column;transition:transform .2s}
+.day:hover{transform:translateY(-2px)}
+.day.t{border-left-color:var(--th)} .day.v{border-left-color:var(--vn)} .day.k{border-left-color:var(--kh)} .day.x{border-left-color:var(--muted)}
+.day .dn{font-family:var(--mono);font-size:11px;color:var(--muted-2);letter-spacing:.05em;display:flex;justify-content:space-between}
+.day .dn b{color:var(--ink)}
+.day .ttl{font-size:12.8px;font-weight:600;margin-top:7px;line-height:1.25}
+.day .star{color:var(--th-deep);font-weight:700}
+.day.ny{box-shadow:inset 0 0 0 1.5px rgba(184,56,90,.45)}
+.day .nyflag{margin-top:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--vn-deep);padding-top:6px}
+
+/* ============ RECS ============ */
+.recs{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px}
+.rec{background:var(--card);border:1px solid var(--line-soft);border-radius:13px;padding:22px}
+.rec .ic{font-size:22px;margin-bottom:11px;display:block}
+.rec h3{font-family:var(--serif);font-weight:600;font-size:1.16rem;margin:0 0 7px}
+.rec p{margin:0;font-size:13.6px;color:var(--muted-2);line-height:1.5}
+
+/* ============ GROUP LOGISTICS ============ */
+.glog{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:16px}
+.gcard{background:rgba(243,235,220,.05);border:1px solid rgba(243,235,220,.14);border-radius:14px;padding:22px}
+.gcard .hd{display:flex;gap:11px;align-items:center;margin-bottom:11px}
+.gcard .ic{font-size:20px}
+.gcard h3{font-family:var(--serif);font-weight:500;font-size:1.18rem;margin:0;color:#f3ebdc}
+.gcard p{margin:0;font-size:13.8px;color:#c3b9a6;line-height:1.52}
+.gcard.warn{border-color:var(--vn);background:linear-gradient(160deg,rgba(184,56,90,.18),rgba(184,56,90,.04))}
+.gcard.warn h3{color:#f4c0cd} .gcard.warn p{color:#e7c3cc}
+
+/* ============ COUNTRY PROFILES ============ */
+.country{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:16px;overflow:hidden;border:1px solid var(--line-soft);margin-bottom:20px}
+.country .left{background:var(--card);padding:clamp(26px,3.5vw,40px)}
+.country .right{padding:clamp(26px,3.5vw,40px);color:#fff}
+.c-flag{display:inline-flex;align-items:center;gap:13px;margin-bottom:18px}
+.c-flag .fl{width:58px;height:39px;border-radius:5px;overflow:hidden;flex:0 0 auto;box-shadow:0 2px 8px rgba(0,0,0,.18);position:relative}
+.c-flag .name{font-family:var(--serif);font-weight:600;font-size:2rem;line-height:1}
+.c-flag .name small{display:block;font-family:var(--sans);font-weight:400;font-size:.62rem;letter-spacing:.04em;color:var(--muted-2);margin-top:5px}
+.c-desc{font-size:14.5px;color:var(--muted-2);margin:0 0 20px;line-height:1.55}
+.c-facts{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.fact .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.fact .vv{font-weight:600;font-size:14.5px;margin-top:3px}
+.c-num{font-family:var(--serif);font-weight:600;font-size:clamp(3.4rem,7vw,5.2rem);line-height:.85;letter-spacing:-.02em}
+.c-num small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;opacity:.85;margin-top:8px}
+.c-sub{margin-top:22px}
+.c-sub .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.8;margin-bottom:5px}
+.c-sub .val{font-weight:500;font-size:15px}
+.c-high{margin-top:18px;font-size:14px;line-height:1.6;opacity:.95}
+.country.th-bg .right{background:linear-gradient(155deg,var(--th),var(--th-deep))}
+.country.vn-bg .right{background:linear-gradient(155deg,var(--vn),var(--vn-deep))}
+.country.kh-bg .right{background:linear-gradient(155deg,var(--kh),var(--kh-deep))}
+@media(max-width:760px){.country{grid-template-columns:1fr}}
+
+/* ============ DIVIDER (PARTE 2) ============ */
+.part-div .wrap{text-align:center}
+.part-div .kick{font-family:var(--mono);font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--th);margin:0 0 14px}
+.part-div h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,7vw,4.6rem);margin:0;line-height:1}
+.part-div p{color:#c3b9a6;margin:18px auto 0;max-width:48ch;font-size:1.05rem}
+
+/* ============ STAGES / DAY BY DAY ============ */
+.stage{margin-bottom:clamp(40px,5vw,64px);scroll-margin-top:74px}
+.stage-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,34px);align-items:start;margin-bottom:26px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.stage-num{font-family:var(--serif);font-weight:600;font-size:clamp(3.2rem,7vw,5.2rem);line-height:.82;color:#fff;width:clamp(82px,12vw,120px);height:clamp(82px,12vw,120px);border-radius:18px;display:grid;place-items:center}
+.stage-num.t{background:linear-gradient(155deg,var(--th),var(--th-deep))}
+.stage-num.v{background:linear-gradient(155deg,var(--vn),var(--vn-deep))}
+.stage-num.k{background:linear-gradient(155deg,var(--kh),var(--kh-deep))}
+.stage-meta .ek{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.stage-meta .ek .ct{font-weight:600}
+.stage-meta .ct.t{color:var(--th-deep)} .stage-meta .ct.v{color:var(--vn-deep)} .stage-meta .ct.k{color:var(--kh-deep)}
+.stage-meta h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3.4vw,2.7rem);margin:8px 0 4px;line-height:1.02}
+.stage-meta h3 span{color:var(--muted);font-weight:400;font-style:italic;font-size:.62em}
+.stage-meta .nn{font-family:var(--mono);font-size:13px;color:var(--ink);font-weight:500;letter-spacing:.02em}
+.stage-meta .intro{font-size:15px;color:var(--muted-2);margin:10px 0 0;max-width:64ch;line-height:1.55}
+
+.dayrow{display:grid;grid-template-columns:96px 1fr;gap:clamp(14px,2.4vw,30px);padding:22px 0;border-bottom:1px solid var(--line-soft)}
+.dayrow:last-child{border-bottom:0}
+.dayrow .dleft{position:relative}
+.dayrow .dnum{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+.dayrow .ddate{font-family:var(--serif);font-weight:600;font-size:1.6rem;line-height:1;margin-top:3px}
+.dayrow .dweek{font-family:var(--mono);font-size:11px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em;margin-top:5px}
+.dayrow .dpill{margin-top:11px;display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border-radius:100px;font-weight:600}
+.dpill.t{background:var(--th-soft);color:var(--th-deep)} .dpill.v{background:var(--vn-soft);color:var(--vn-deep)} .dpill.k{background:var(--kh-soft);color:var(--kh-deep)} .dpill.x{background:#e9e3d6;color:var(--muted-2)}
+.day-title{font-family:var(--serif);font-weight:600;font-size:1.32rem;line-height:1.12;margin:0 0 4px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.badge-star{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--th-deep);padding:3px 9px;border-radius:100px;font-weight:600;white-space:nowrap}
+.badge-new{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--th-deep);border:1px solid var(--th);padding:2px 8px;border-radius:100px;font-weight:600}
+.periods{display:grid;gap:7px;margin:11px 0 0}
+.per{display:grid;grid-template-columns:64px 1fr;gap:13px;font-size:14px;align-items:start}
+.per .pl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.per .pt{color:#3a3527;line-height:1.5}
+.tipline{margin:13px 0 0;font-size:13px;color:var(--muted-2);display:flex;gap:9px;align-items:flex-start;line-height:1.45}
+.tipline .ic{color:var(--th-deep);flex:0 0 auto}
+
+/* booking chip (Brazuca) */
+.brz{margin:13px 0 0;border:1px dashed var(--th);border-radius:12px;background:linear-gradient(100deg,rgba(194,135,46,.1),rgba(194,135,46,.02));padding:13px 15px;position:relative}
+.brz .hd{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:7px}
+.brz .tk{font-size:15px}
+.brz .op{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--th-deep);font-weight:600}
+.brz .nm{font-weight:700;font-size:14px}
+.brz .meta{display:flex;flex-wrap:wrap;gap:5px 16px;font-family:var(--mono);font-size:11.5px;color:var(--muted-2);letter-spacing:.01em}
+.brz .meta b{color:var(--th-deep)}
+.brz .note{font-size:12.5px;color:#6b4a16;margin:7px 0 0;line-height:1.45}
+.brz.alt{border-style:dotted}
+
+/* NY warning inside day */
+.nywarn{margin:13px 0 0;border:1px solid rgba(184,56,90,.4);border-radius:12px;background:var(--vn-soft);padding:12px 15px;font-size:13px;color:#6a2e3f;display:flex;gap:10px;align-items:flex-start;line-height:1.45}
+.nywarn .ic{font-size:16px;flex:0 0 auto}
+.nywarn b{color:var(--vn-deep)}
+
+/* group flag inside day */
+.grpflag{margin:11px 0 0;border-left:3px solid var(--kh);background:var(--kh-soft);border-radius:0 10px 10px 0;padding:10px 14px;font-size:13px;color:#15485a;display:flex;gap:9px;align-items:flex-start;line-height:1.45}
+.grpflag .ic{flex:0 0 auto}
+.grpflag b{color:var(--kh-deep)}
+
+@media(max-width:620px){
+  .dayrow{grid-template-columns:1fr;gap:6px}
+  .dayrow .dleft{display:flex;align-items:center;gap:12px}
+  .dayrow .ddate{font-size:1.3rem;margin:0}
+  .dayrow .dnum{margin:0}
+  .dayrow .dweek{margin:0}
+  .dayrow .dpill{margin:0 0 0 auto}
+  .per{grid-template-columns:1fr;gap:1px}
+  .per .pl{padding-top:0}
+}
+
+/* ============ ATTRACTIONS ============ */
+.attr-help{display:flex;gap:13px;align-items:flex-start;background:var(--card);border:1px solid var(--line-soft);border-radius:13px;padding:16px 19px;margin-bottom:30px;font-size:13.5px;color:var(--muted-2)}
+.attr-help code{font-family:var(--mono);font-size:12px;background:var(--th-soft);color:var(--th-deep);padding:1px 6px;border-radius:5px}
+.attr{display:grid;grid-template-columns:minmax(0,42%) 1fr;gap:clamp(20px,3vw,40px);align-items:center;margin-bottom:clamp(34px,4.5vw,58px)}
+.attr:nth-child(even){direction:rtl}
+.attr:nth-child(even) > *{direction:ltr}
+.shot{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:var(--th-soft);border:1px solid var(--line-soft)}
+.shot.v-bg{background:var(--vn-soft)} .shot.k-bg{background:var(--kh-soft)}
+.shot img{width:100%;height:100%;object-fit:cover}
+.shot-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:18px}
+.shot-ph .pic{font-size:34px;opacity:.5}
+.shot-ph .fn{font-family:var(--mono);font-size:11px;color:var(--muted-2);background:rgba(255,255,255,.7);padding:5px 10px;border-radius:7px;letter-spacing:.01em;word-break:break-all}
+.shot-ph .hint{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.attr .body .ek{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;display:inline-flex;gap:9px;align-items:center;margin-bottom:11px}
+.attr .body .ek i{width:9px;height:9px;border-radius:50%}
+.attr .body.t .ek{color:var(--th-deep)} .attr .body.t .ek i{background:var(--th)}
+.attr .body.v .ek{color:var(--vn-deep)} .attr .body.v .ek i{background:var(--vn)}
+.attr .body.k .ek{color:var(--kh-deep)} .attr .body.k .ek i{background:var(--kh)}
+.attr .body h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.8vw,2.1rem);margin:0 0 5px;line-height:1.05}
+.attr .body .from{font-family:var(--mono);font-size:12.5px;color:var(--muted-2);margin:0 0 13px;display:flex;align-items:center;gap:8px}
+.attr .body .from b{color:var(--ink)}
+.attr .body p{margin:0;color:var(--muted-2);font-size:14.6px;line-height:1.56}
+@media(max-width:720px){
+  .attr,.attr:nth-child(even){grid-template-columns:1fr;direction:ltr}
+}
+
+/* ============ HIGHLIGHTS BAND ============ */
+.imperd{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1px;background:rgba(243,235,220,.13);border-radius:14px;overflow:hidden}
+.imp{background:var(--ink-2);padding:26px 24px}
+.imp .ic{font-size:24px;display:block;margin-bottom:12px}
+.imp h3{font-family:var(--serif);font-weight:500;font-size:1.34rem;margin:0 0 7px;color:#f3ebdc;line-height:1.08}
+.imp p{margin:0;font-size:13.8px;color:#c3b9a6;line-height:1.5}
+
+/* ============ ECONOMICS ============ */
+.eco-top{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,56px);align-items:center;margin-bottom:clamp(34px,4vw,48px)}
+.eco-hero{font-family:var(--serif);font-weight:600;font-size:clamp(3rem,8vw,5.6rem);line-height:.82;color:var(--th-deep);letter-spacing:-.02em}
+.eco-hero small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);font-weight:500;margin-top:10px}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tier{background:var(--card);border:1px solid var(--line-soft);border-radius:13px;padding:18px 20px}
+.tier.base{border-color:var(--th);background:linear-gradient(180deg,#fff,var(--th-soft))}
+.tier .lv{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+.tier .pp{font-family:var(--serif);font-weight:600;font-size:1.75rem;margin-top:5px}
+.tier .tot{font-size:12px;color:var(--muted-2);margin-top:3px;font-family:var(--mono)}
+.tier.base .lv{color:var(--th-deep)}
+.eco-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+.eco-table th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;padding:10px 12px;border-bottom:1px solid var(--line)}
+.eco-table th.r,.eco-table td.r{text-align:right;font-variant-numeric:tabular-nums}
+.eco-table td{padding:11px 12px;border-bottom:1px solid var(--line-soft);color:#3a3527}
+.eco-table td.r{font-family:var(--mono);font-size:13px}
+.eco-table tr.sum td{font-weight:700;border-top:2px solid var(--line);border-bottom:0;color:var(--ink)}
+.eco-table tr.sum td.r{color:var(--th-deep)}
+.eco-note{margin-top:20px;display:flex;gap:13px;align-items:flex-start;background:var(--th-soft);border-radius:13px;padding:16px 19px;font-size:13.5px;color:#6b4a16}
+.eco-note b{color:var(--th-deep)}
+@media(max-width:680px){.eco-top{grid-template-columns:1fr}.tiers{grid-template-columns:1fr}.eco-table .hide-sm{display:none}}
+
+/* ============ CLOSING ============ */
+.closing .wrap{text-align:center}
+.closing .kick{font-family:var(--mono);font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--th);margin:0 0 16px}
+.closing h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1;margin:0 0 26px}
+.closing h2 em{font-style:italic;color:var(--th)}
+.close-route{font-family:var(--mono);font-size:clamp(12px,1.5vw,14px);letter-spacing:.06em;color:#cdc3b0;line-height:2;max-width:70ch;margin:0 auto 26px}
+.close-route b{color:var(--th)}
+.close-meta{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:#8a8270}
+
+/* ============ FOOTER ============ */
+.foot{background:#161310;color:#8a8270;padding:34px 0;border-top:1px solid rgba(243,235,220,.08)}
+.foot .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em}
+.foot a{color:#bcae96;text-decoration:none}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.scroll-cue::after{animation:none}}
+
+/* print */
+@media print{
+  .nav,.scroll-cue{display:none}
+  .section{padding:24px 0;break-inside:avoid}
+  body{background:#fff;color:#000;font-size:11px}
+  .hero,.section.dark,.section.dark-2,.part-div,.closing,.imperd .imp,.change,.gcard{background:#fff!important;color:#000!important}
+  .reveal{opacity:1;transform:none}
+  .country .right{color:#000!important;background:#fff!important;border-left:1px solid #ccc}
+  .stage{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="wrap row">
+    <a href="#topo" class="brand" style="text-decoration:none">SUDESTE ASIÁTICO · <b>FAMÍLIA RAMOS</b></a>
+    <button class="nav-toggle" aria-label="Menu" id="navToggle"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="#resumo">Resumo</a>
+      <a href="#familia">Família</a>
+      <a href="#circuito">Circuito</a>
+      <a href="#calendario">Calendário</a>
+      <a href="#grupo">Grupo</a>
+      <a href="#paises">Países</a>
+      <a href="#roteiro">Dia a dia</a>
+      <a href="#atracoes">Atrações</a>
+      <a href="#orcamento">Orçamento</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="topo">
+  <div class="hero-bg"><img src="img/hero.jpg" alt="" onerror="this.parentElement.style.display='none'"></div>
+  <div class="wrap">
+    <p class="hero-eyebrow">Roteiro de viagem · 2026 — 2027</p>
+    <h1>Sudeste<br><em>Asiático</em></h1>
+    <p class="hero-sub">Tailândia · Vietnã · Camboja</p>
+    <div class="hero-meta">
+      <span>30 dias</span>
+      <span>25 dez 2026 — 23 jan 2027</span>
+      <span>28 noites</span>
+      <span>9 bases + Phi Phi</span>
+      <span>10 viajantes</span>
+    </div>
+    <div class="route">
+      <span class="stop t">Bangkok</span><span class="sep">›</span>
+      <span class="stop t">Chiang Mai</span><span class="sep">›</span>
+      <span class="stop v">Hanói</span><span class="sep">›</span>
+      <span class="stop v">Hoi An</span><span class="sep">›</span>
+      <span class="stop v">Saigon</span><span class="sep">›</span>
+      <span class="stop k">Phnom Penh</span><span class="sep">›</span>
+      <span class="stop k">Siem Reap</span><span class="sep">›</span>
+      <span class="stop t">Krabi</span><span class="sep">›</span>
+      <span class="stop t">Bangkok</span>
+    </div>
+    <div class="scroll-cue">role para o roteiro</div>
+  </div>
+</header>
+
+<!-- ============ RESUMO EXECUTIVO ============ -->
+<section class="section paper-2" id="resumo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Resumo executivo</p>
+      <h2 class="h2 wide">Um grande loop pelo Sudeste Asiático, sem repetir trajeto</h2>
+      <p class="lead">Da efervescência de Bangkok ao Réveillon em Chiang Mai, pelas lanternas de Hoi An e os templos de Angkor — fechando nas praias de Krabi. Três países, um circuito fluido em sentido horário, com a família toda reunida em Saigon.</p>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat"><div class="n">30</div><div class="l">dias de viagem</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">países</div></div>
+      <div class="stat"><div class="n">9 <small>+1</small></div><div class="l">bases + Phi Phi bate-volta</div></div>
+      <div class="stat"><div class="n">28</div><div class="l">noites</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">voos (8 reg. + 2 intl)</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">viajantes</div></div>
+    </div>
+
+    <div class="pillars reveal">
+      <div class="pillar"><span class="num">01</span><h3>Loop de 3 países</h3><p>Tailândia → Vietnã → Camboja → Tailândia, em sentido horário e sem voltar pelo mesmo caminho. Laos ficou de fora.</p></div>
+      <div class="pillar"><span class="num">02</span><h3>Réveillon em Chiang Mai</h3><p>A virada do ano no Tha Phae Gate, entre templos e lanternas khom loi, é o ponto alto do roteiro.</p></div>
+      <div class="pillar"><span class="num">03</span><h3>Final na praia</h3><p>Krabi como base única (4N) com bate-volta de barco a Phi Phi — Maya Bay, Pileh e Bamboo sem trocar de hotel.</p></div>
+      <div class="pillar"><span class="num">04</span><h3>Reencontro em Saigon</h3><p>A décima viajante, Clara, chega direto em Saigon no dia 09/01 — o grupo se completa para a reta final.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A FAMÍLIA ============ -->
+<section class="section" id="familia">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Os viajantes</p>
+      <h2 class="h2 wide">Dez pessoas, três gerações, um roteiro</h2>
+      <p class="lead">Uma viagem de família grande pede ritmo flexível, quartos bem distribuídos e reservas sempre para o grupo todo. Nove partem juntos do Rio; a décima entra em cena em Saigon.</p>
+    </div>
+
+    <div class="fam-grid reveal">
+      <div class="person"><div class="mono-av">GR</div><div><div class="who">Gabriel Ramos</div><div class="role">organizador</div></div></div>
+      <div class="person"><div class="mono-av">IA</div><div><div class="who">Isabela Afonso</div><div class="role">esposa</div></div></div>
+      <div class="person"><div class="mono-av">IR</div><div><div class="who">Isabel Ramos</div><div class="role">mãe</div></div></div>
+      <div class="person"><div class="mono-av">EC</div><div><div class="who">Eurivo Cruz</div><div class="role">pai</div></div></div>
+      <div class="person"><div class="mono-av">PR</div><div><div class="who">Pedro Ramos da Cruz</div><div class="role">irmão</div></div></div>
+      <div class="person"><div class="mono-av">RA</div><div><div class="who">Rosa Afonso</div><div class="role">sogra</div></div></div>
+      <div class="person"><div class="mono-av">RA</div><div><div class="who">Regina Afonso</div><div class="role">tia da Isabela</div></div></div>
+      <div class="person"><div class="mono-av">OR</div><div><div class="who">Oswaldo Ramos</div><div class="role">tio</div></div></div>
+      <div class="person"><div class="mono-av">LT</div><div><div class="who">Ludma Thomé</div><div class="role">tia</div></div></div>
+      <div class="person late"><div class="mono-av">CR</div><div><div class="who">Clara Ramos</div><div class="role">prima · chega depois</div></div></div>
+    </div>
+
+    <div class="fam-note reveal">
+      <div class="ic">✈️</div>
+      <p><b>Clara chega direto em Saigon no dia 09/01.</b> Ela não faz a perna Tailândia–Vietnã do começo da viagem e se junta ao grupo na chegada a Ho Chi Minh — daí em diante somos dez até o fim. Vale combinar antecipadamente o hotel e o transfer do aeroporto para ela, já que desembarca sozinha.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ O QUE MUDOU ============ -->
+<section class="section dark">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Da versão anterior para esta</p>
+      <h2 class="h2 wide">O que mudou no roteiro</h2>
+      <p class="lead">Ajustes que enxugaram o trajeto, deram mais fôlego onde importa e eliminaram conexões frágeis. O resultado é um arco mais limpo, em 30 dias e 28 noites.</p>
+    </div>
+
+    <div class="changes reveal">
+      <div class="change"><h3><span class="dot" style="background:var(--muted)"></span>Laos ficou de fora</h3><p>O loop foi concentrado em Tailândia, Vietnã e Camboja. Menos voos, menos fronteiras e mais tempo em cada base.</p></div>
+      <div class="change"><h3><span class="dot" style="background:var(--th)"></span>Chiang Mai ganhou uma noite</h3><p>De 4 para 5 noites, abrindo espaço para o Réveillon, o santuário de elefantes e um bate-volta a Chiang Rai sem correria.</p></div>
+      <div class="change"><h3><span class="dot" style="background:var(--th)"></span>Chiang Rai como bate-volta</h3><p>Os templos Branco, Azul e Negro entram como excursão de um dia a partir de Chiang Mai, sem trocar de hotel.</p></div>
+      <div class="change"><h3><span class="dot" style="background:var(--th)"></span>Krabi virou base de praia</h3><p>De 2 para 4 noites como única base no sul, com Phi Phi e as ilhas feitas em bate-volta de barco.</p></div>
+      <div class="change"><h3><span class="dot" style="background:var(--vn)"></span>Ninh Binh no lugar de Ha Long</h3><p>A "Ha Long em terra" — Trang An e Mua Cave — substitui o cruzeiro, como bate-volta saindo de Hanói.</p></div>
+      <div class="change"><h3><span class="dot" style="background:var(--th)"></span>Bangkok dividida em duas pontas</h3><p>Início e fim na capital somam 6 noites, com Ayutthaya encaixada como bate-volta na primeira etapa.</p></div>
+      <div class="change"><h3><span class="dot" style="background:var(--vn)"></span>Voo direto Chiang Mai → Hanói</h3><p>A conexão antiga deu lugar a um trecho direto, cortando tempo morto entre Tailândia e Vietnã.</p></div>
+    </div>
+
+    <div class="adjust-banner reveal">
+      <div class="ic">🔧</div>
+      <div>
+        <h3>Ajuste para o reencontro em Saigon</h3>
+        <p>Para garantir a chegada a Saigon em <b>09/01</b> — quando Clara desembarca —, Hoi An passou de 3 para <b>2 noites</b> e Saigon subiu de 2 para <b>3 noites</b>. Nada mais muda adiante: seguem os mesmos 30 dias e o retorno em 23/01. A noite extra em Saigon ainda abre espaço para um bate-volta ao Delta do Mekong com o grupo já completo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ O CIRCUITO ============ -->
+<section class="section paper-2" id="circuito">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Visão geral</p>
+      <h2 class="h2 wide">O circuito, base a base</h2>
+      <p class="lead">Nove bases em sentido horário, começando e terminando em Bangkok. As cores acompanham cada país por todo o roteiro.</p>
+    </div>
+
+    <div class="circuit reveal">
+      <div class="base t-bg"><div class="top"><div class="idx">1</div><div class="ctry">Tailândia</div></div><h3>Bangkok</h3><div class="tag">início · templos & mercados</div><div class="meta"><span class="nights">4 noites</span><span class="dates">26–30 dez</span></div></div>
+      <div class="base t-bg"><div class="top"><div class="idx">2</div><div class="ctry">Tailândia</div></div><h3>Chiang Mai</h3><div class="tag">Réveillon · elefantes · Chiang Rai</div><div class="meta"><span class="nights">5 noites</span><span class="dates">30 dez–4 jan</span></div></div>
+      <div class="base v-bg"><div class="top"><div class="idx">3</div><div class="ctry">Vietnã</div></div><h3>Hanói</h3><div class="tag">capital & Ninh Binh</div><div class="meta"><span class="nights">3 noites</span><span class="dates">4–7 jan</span></div></div>
+      <div class="base v-bg"><div class="top"><div class="idx">4</div><div class="ctry">Vietnã</div></div><h3>Hoi An</h3><div class="tag">lanternas & alfaiates</div><div class="meta"><span class="nights">2 noites</span><span class="dates">7–9 jan</span></div></div>
+      <div class="base v-bg"><div class="top"><div class="idx">5</div><div class="ctry">Vietnã</div></div><h3>Saigon</h3><div class="tag">reencontro · Cu Chi · Mekong</div><div class="meta"><span class="nights">3 noites</span><span class="dates">9–12 jan</span></div></div>
+      <div class="base k-bg"><div class="top"><div class="idx">6</div><div class="ctry">Camboja</div></div><h3>Phnom Penh</h3><div class="tag">história & memória</div><div class="meta"><span class="nights">2 noites</span><span class="dates">12–14 jan</span></div></div>
+      <div class="base k-bg"><div class="top"><div class="idx">7</div><div class="ctry">Camboja</div></div><h3>Siem Reap</h3><div class="tag">Angkor ao amanhecer</div><div class="meta"><span class="nights">3 noites</span><span class="dates">14–17 jan</span></div></div>
+      <div class="base t-bg"><div class="top"><div class="idx">8</div><div class="ctry">Tailândia</div></div><h3>Krabi</h3><div class="tag">praia · Phi Phi · ilhas</div><div class="meta"><span class="nights">4 noites</span><span class="dates">17–21 jan</span></div></div>
+      <div class="base t-bg"><div class="top"><div class="idx">9</div><div class="ctry">Tailândia</div></div><h3>Bangkok</h3><div class="tag">final · rooftop & despedida</div><div class="meta"><span class="nights">2 noites</span><span class="dates">21–23 jan</span></div></div>
+      <div class="phiphi-note"><span class="ic">🛥️</span><p><b>Phi Phi entra como bate-volta de barco a partir de Krabi</b> — Maya Bay, Pileh e Bamboo em um dia, sem trocar de hotel nem perder a base de praia</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALENDÁRIO ============ -->
+<section class="section" id="calendario">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Linha do tempo</p>
+      <h2 class="h2 wide">Os 30 dias de uma olhada</h2>
+      <p class="lead">Cada quadradinho é um dia; a barra colorida indica o país. As estrelas marcam os pontos altos e a moldura rosada, a virada do ano em Chiang Mai.</p>
+    </div>
+
+    <div class="cal-legend reveal">
+      <span><i style="background:var(--th)"></i>Tailândia</span>
+      <span><i style="background:var(--vn)"></i>Vietnã</span>
+      <span><i style="background:var(--kh)"></i>Camboja</span>
+      <span><i style="background:var(--muted)"></i>Trânsito</span>
+      <span><span class="star">★</span> Destaque</span>
+    </div>
+
+    <div class="cal reveal">
+      <div class="day x"><div class="dn"><b>D1</b><span>sex 25/12</span></div><div class="ttl">Embarque Rio → Bangkok</div></div>
+      <div class="day t"><div class="dn"><b>D2</b><span>sáb 26/12</span></div><div class="ttl">Chegada · Chinatown</div></div>
+      <div class="day t"><div class="dn"><b>D3</b><span>dom 27/12</span></div><div class="ttl"><span class="star">★</span> Templos reais</div></div>
+      <div class="day t"><div class="dn"><b>D4</b><span>seg 28/12</span></div><div class="ttl">Cultura & mercados</div></div>
+      <div class="day t"><div class="dn"><b>D5</b><span>ter 29/12</span></div><div class="ttl">Ayutthaya bate-volta</div></div>
+      <div class="day t"><div class="dn"><b>D6</b><span>qua 30/12</span></div><div class="ttl">Voo a Chiang Mai</div></div>
+      <div class="day t ny"><div class="dn"><b>D7</b><span>qui 31/12</span></div><div class="ttl"><span class="star">★</span> Réveillon Tha Phae</div><div class="nyflag">Virada do ano</div></div>
+      <div class="day t ny"><div class="dn"><b>D8</b><span>sex 01/01</span></div><div class="ttl"><span class="star">★</span> Santuário de elefantes</div><div class="nyflag">Feriado</div></div>
+      <div class="day t ny"><div class="dn"><b>D9</b><span>sáb 02/01</span></div><div class="ttl"><span class="star">★</span> Chiang Rai bate-volta</div><div class="nyflag">Feriado</div></div>
+      <div class="day t"><div class="dn"><b>D10</b><span>dom 03/01</span></div><div class="ttl">Nimman & cozinha thai</div></div>
+      <div class="day v"><div class="dn"><b>D11</b><span>seg 04/01</span></div><div class="ttl">Voo a Hanói · Hoan Kiem</div></div>
+      <div class="day v"><div class="dn"><b>D12</b><span>ter 05/01</span></div><div class="ttl">Food tour Old Quarter</div></div>
+      <div class="day v"><div class="dn"><b>D13</b><span>qua 06/01</span></div><div class="ttl"><span class="star">★</span> Ninh Binh & Trang An</div></div>
+      <div class="day v"><div class="dn"><b>D14</b><span>qui 07/01</span></div><div class="ttl">Voo a Hoi An · lanternas</div></div>
+      <div class="day v"><div class="dn"><b>D15</b><span>sex 08/01</span></div><div class="ttl">Alfaiates & An Bang</div></div>
+      <div class="day v"><div class="dn"><b>D16</b><span>sáb 09/01</span></div><div class="ttl"><span class="star">★</span> Saigon · chega Clara</div></div>
+      <div class="day v"><div class="dn"><b>D17</b><span>dom 10/01</span></div><div class="ttl">Cu Chi & War Remnants</div></div>
+      <div class="day v"><div class="dn"><b>D18</b><span>seg 11/01</span></div><div class="ttl">Delta do Mekong</div></div>
+      <div class="day k"><div class="dn"><b>D19</b><span>ter 12/01</span></div><div class="ttl">Voo a Phnom Penh</div></div>
+      <div class="day k"><div class="dn"><b>D20</b><span>qua 13/01</span></div><div class="ttl">Palácio & memória</div></div>
+      <div class="day k"><div class="dn"><b>D21</b><span>qui 14/01</span></div><div class="ttl">Voo a Siem Reap</div></div>
+      <div class="day k"><div class="dn"><b>D22</b><span>sex 15/01</span></div><div class="ttl"><span class="star">★</span> Angkor ao amanhecer</div></div>
+      <div class="day k"><div class="dn"><b>D23</b><span>sáb 16/01</span></div><div class="ttl">Banteay Srei ou Tonle Sap</div></div>
+      <div class="day t"><div class="dn"><b>D24</b><span>dom 17/01</span></div><div class="ttl">Voo a Krabi · Ao Nang</div></div>
+      <div class="day t"><div class="dn"><b>D25</b><span>seg 18/01</span></div><div class="ttl">Railay & Phra Nang</div></div>
+      <div class="day t"><div class="dn"><b>D26</b><span>ter 19/01</span></div><div class="ttl"><span class="star">★</span> Phi Phi & Maya Bay</div></div>
+      <div class="day t"><div class="dn"><b>D27</b><span>qua 20/01</span></div><div class="ttl">Hong & Quatro Ilhas</div></div>
+      <div class="day t"><div class="dn"><b>D28</b><span>qui 21/01</span></div><div class="ttl">Voo a Bangkok · rooftop</div></div>
+      <div class="day t"><div class="dn"><b>D29</b><span>sex 22/01</span></div><div class="ttl"><span class="star">★</span> Mercados & despedida</div></div>
+      <div class="day x"><div class="dn"><b>D30</b><span>sáb 23/01</span></div><div class="ttl">Embarque Bangkok → Rio</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECOMENDAÇÕES ============ -->
+<section class="section paper-2">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Antes de partir</p>
+      <h2 class="h2 wide">Recomendações práticas</h2>
+      <p class="lead">O essencial para chegar leve e sem surpresas — de vistos a bagagem, com o que vale resolver ainda no Brasil.</p>
+    </div>
+
+    <div class="recs reveal">
+      <div class="rec"><span class="ic">🛂</span><h3>Vistos</h3><p>Tailândia isenta brasileiros. Vietnã pede e-visa, melhor solicitado com antecedência. Camboja oferece visto na chegada (US$ 30 + foto 4×6). Levem dez fotos impressas.</p></div>
+      <div class="rec"><span class="ic">💱</span><h3>Moeda</h3><p>Baht (TH), Dong (VN) e Riel (KH) — mas no Camboja o dólar circula normalmente. Levem dólares em espécie em notas boas e troquem aos poucos no destino.</p></div>
+      <div class="rec"><span class="ic">🌤️</span><h3>Quando ir</h3><p>Dezembro a janeiro é estação seca em todo o trajeto — céu limpo e calor moderado. No Norte da Tailândia as noites caem para ~15–18 °C; levem um agasalho.</p></div>
+      <div class="rec"><span class="ic">🍜</span><h3>Comida</h3><p>Comida de rua farta e barata em toda parte. Vale provar com bom senso, preferir lugares movimentados e ter à mão remédio para desconforto intestinal.</p></div>
+      <div class="rec"><span class="ic">💉</span><h3>Saúde</h3><p>Febre amarela é exigida na entrada — levem o certificado internacional impresso. Sigam com seguro-viagem, repelente e a farmacinha básica de sempre.</p></div>
+      <div class="rec"><span class="ic">📶</span><h3>Conectividade</h3><p>Um eSIM regional ou chip local resolve dados em todos os países. Combinem um grupo de WhatsApp para a família e baixem mapas offline das cidades.</p></div>
+      <div class="rec"><span class="ic">🧳</span><h3>Bagagem</h3><p>Voos regionais têm franquia menor — confiram limites antes de comprar. Mala leve facilita as nove trocas de base; deixem espaço para compras em Hoi An.</p></div>
+      <div class="rec"><span class="ic">🏖️</span><h3>Praia</h3><p>Para Krabi e Phi Phi: protetor solar reef-safe, sapatilha de neoprene e roupa de banho que seque rápido. Maya Bay não permite nadar — é só desembarque e foto.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COORDENAÇÃO DE GRUPO GRANDE ============ -->
+<section class="section dark-2" id="grupo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Logística para dez</p>
+      <h2 class="h2 wide">Coordenar um grupo grande</h2>
+      <p class="lead">Viajar em dez muda a operação: reservas sempre para o grupo todo, transporte que comporte a turma e atenção aos ritmos de três gerações. O que vale combinar antes.</p>
+    </div>
+
+    <div class="glog reveal">
+      <div class="gcard"><div class="hd"><span class="ic">🛏️</span><h3>Hospedagem</h3></div><p>Dez pessoas pedem cerca de cinco quartos por noite — reservem cedo, em especial no Réveillon e em Angkor, onde a procura aperta. Hotéis com quartos próximos ou apartamentos facilitam a convivência.</p></div>
+      <div class="gcard"><div class="hd"><span class="ic">🚐</span><h3>Transporte terrestre</h3></div><p>Para a cidade e os bate-voltas, uma van de 12 a 15 lugares acomoda o grupo num só veículo — mais simples e barato por cabeça que vários táxis. Reservem com motorista nos trajetos longos (Chiang Rai, Ninh Binh).</p></div>
+      <div class="gcard"><div class="hd"><span class="ic">🍽️</span><h3>Restaurantes</h3></div><p>Mesa para dez raramente entra sem aviso. Reservem nos jantares principais e, na comida de rua, dividam-se em dois grupos menores para não travar a fila.</p></div>
+      <div class="gcard"><div class="hd"><span class="ic">🎟️</span><h3>Tours privados compensam</h3></div><p>Vários passeios exigem mínimo de 8 pessoas — com dez, o grupo cumpre sozinho e ainda dilui o custo do tour privado, que sai por pessoa parecido com o regular, porém só com a família.</p></div>
+      <div class="gcard"><div class="hd"><span class="ic">⏳</span><h3>Ritmos diferentes</h3></div><p>São três gerações no mesmo roteiro. Alternem dias intensos e leves, deixem manhãs livres após as madrugadas (Angkor, Réveillon) e respeitem o passo dos mais velhos nas caminhadas e escadarias.</p></div>
+      <div class="gcard"><div class="hd"><span class="ic">💳</span><h3>Pagamentos & divisão</h3></div><p>Dólar em espécie resolve o Camboja e serve de reserva. Um app de divisão de contas (tipo Splitwise) mantém o acerto justo entre dez ao longo de 30 dias.</p></div>
+      <div class="gcard"><div class="hd"><span class="ic">📱</span><h3>Comunicação</h3></div><p>Grupo de WhatsApp ativo, ponto de encontro combinado em cada parada e horário-âncora para reagrupar. Em lugares cheios — Tha Phae no Réveillon —, isso evita perder gente.</p></div>
+      <div class="gcard"><div class="hd"><span class="ic">📄</span><h3>Documentos do grupo</h3></div><p>Dez passaportes válidos, e-visa do Vietnã solicitado com antecedência, dez fotos 4×6 para o visto cambojano e os certificados de febre amarela — tudo conferido antes do embarque.</p></div>
+      <div class="gcard warn"><div class="hd"><span class="ic">⚠️</span><h3>Dois pontos de atenção</h3></div><p>Muitas operadoras de lancha rápida não embarcam passageiros acima de 70 anos (nem gestantes) — confiram as idades antes de fechar Phi Phi e as ilhas de Krabi; o barco longtail costuma ser a alternativa sem essa restrição. E lembrem: <b>Clara desembarca sozinha em Saigon</b> — enviem a ela hotel, endereço e transfer com antecedência.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OS PAÍSES ============ -->
+<section class="section" id="paises">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Três destinos</p>
+      <h2 class="h2 wide">Os países do circuito</h2>
+      <p class="lead">Cada país com sua moeda, seu visto e seu fuso — e o que dele guardamos no roteiro.</p>
+    </div>
+
+    <div class="country th-bg reveal">
+      <div class="left">
+        <div class="c-flag">
+          <div class="fl" style="background:linear-gradient(180deg,#a51931 0 16.6%,#fff 16.6% 33.3%,#2d2a4a 33.3% 66.6%,#fff 66.6% 83.3%,#a51931 83.3%)"></div>
+          <div class="name">Tailândia<small>Reino da Tailândia</small></div>
+        </div>
+        <p class="c-desc">Porta de entrada e saída do circuito. Reúne a metrópole frenética de Bangkok, o Norte cultural de Chiang Mai e as praias do Mar de Andaman em Krabi — três faces num só país.</p>
+        <div class="c-facts">
+          <div class="fact"><div class="k">Capital</div><div class="vv">Bangkok</div></div>
+          <div class="fact"><div class="k">Moeda</div><div class="vv">Baht (THB)</div></div>
+          <div class="fact"><div class="k">Idioma</div><div class="vv">Tailandês</div></div>
+          <div class="fact"><div class="k">Fuso</div><div class="vv">UTC+7</div></div>
+          <div class="fact" style="grid-column:1/-1"><div class="k">Visto</div><div class="vv">Isento para brasileiros (turismo)</div></div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="c-num">15<small>noites no total</small></div>
+        <div class="c-sub"><div class="lab">Quando</div><div class="val">26 dez–4 jan · 17–23 jan</div></div>
+        <div class="c-sub"><div class="lab">Bases</div><div class="val">Bangkok · Chiang Mai · Krabi · Bangkok</div></div>
+        <p class="c-high">Réveillon no Tha Phae Gate, santuário ético de elefantes, templos de Chiang Rai, Ayutthaya e o fim de praia em Phi Phi e Railay.</p>
+      </div>
+    </div>
+
+    <div class="country vn-bg reveal">
+      <div class="left">
+        <div class="c-flag">
+          <div class="fl" style="background:#da251d;display:grid;place-items:center"><span style="color:#ff0;font-size:21px;line-height:1">★</span></div>
+          <div class="name">Vietnã<small>República Socialista do Vietnã</small></div>
+        </div>
+        <p class="c-desc">O coração do roteiro, de Norte a Sul. Da Hanói histórica e os carstes de Ninh Binh às lanternas de Hoi An e à energia de Saigon — onde a família finalmente se completa.</p>
+        <div class="c-facts">
+          <div class="fact"><div class="k">Capital</div><div class="vv">Hanói</div></div>
+          <div class="fact"><div class="k">Moeda</div><div class="vv">Dong (VND)</div></div>
+          <div class="fact"><div class="k">Idioma</div><div class="vv">Vietnamita</div></div>
+          <div class="fact"><div class="k">Fuso</div><div class="vv">UTC+7</div></div>
+          <div class="fact" style="grid-column:1/-1"><div class="k">Visto</div><div class="vv">e-Visa — solicitar com antecedência</div></div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="c-num">8<small>noites no total</small></div>
+        <div class="c-sub"><div class="lab">Quando</div><div class="val">4–12 jan</div></div>
+        <div class="c-sub"><div class="lab">Bases</div><div class="val">Hanói · Hoi An · Saigon</div></div>
+        <p class="c-high">Trang An e Mua Cave em Ninh Binh, food tour no Old Quarter, alfaiates de Hoi An, túneis de Cu Chi e o reencontro com Clara em Saigon.</p>
+      </div>
+    </div>
+
+    <div class="country kh-bg reveal">
+      <div class="left">
+        <div class="c-flag">
+          <div class="fl" style="background:linear-gradient(180deg,#032ea1 0 25%,#e00025 25% 75%,#032ea1 75%)"></div>
+          <div class="name">Camboja<small>Reino do Camboja</small></div>
+        </div>
+        <p class="c-desc">O capítulo de história e espiritualidade. Phnom Penh confronta a memória do regime Khmer Rouge; Siem Reap entrega o ápice arquitetônico da viagem nos templos de Angkor.</p>
+        <div class="c-facts">
+          <div class="fact"><div class="k">Capital</div><div class="vv">Phnom Penh</div></div>
+          <div class="fact"><div class="k">Moeda</div><div class="vv">Riel · US$ aceito</div></div>
+          <div class="fact"><div class="k">Idioma</div><div class="vv">Khmer</div></div>
+          <div class="fact"><div class="k">Fuso</div><div class="vv">UTC+7</div></div>
+          <div class="fact" style="grid-column:1/-1"><div class="k">Visto</div><div class="vv">Na chegada — US$ 30 + foto 4×6</div></div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="c-num">5<small>noites no total</small></div>
+        <div class="c-sub"><div class="lab">Quando</div><div class="val">12–17 jan</div></div>
+        <div class="c-sub"><div class="lab">Bases</div><div class="val">Phnom Penh · Siem Reap</div></div>
+        <p class="c-high">Palácio Real e Pagode de Prata, Tuol Sleng e Choeung Ek, e o amanhecer em Angkor Wat com Bayon e Ta Prohm — passe de três dias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIVISÓRIA — PARTE 2 ============ -->
+<section class="section dark part-div">
+  <div class="wrap reveal">
+    <p class="kick">Parte 2</p>
+    <h2>Roteiro dia a dia</h2>
+    <p>Das madrugadas de templo aos pores do sol de praia — os 30 dias detalhados, etapa por etapa, com horários, dicas e os passeios já mapeados.</p>
+  </div>
+</section>
+
+<!-- ============ ROTEIRO DIA A DIA ============ -->
+<section class="section" id="roteiro">
+  <div class="wrap">
+
+    <!-- ETAPA 1 — BANGKOK INÍCIO -->
+    <div class="stage">
+      <div class="stage-head reveal">
+        <div class="stage-num t">1</div>
+        <div class="stage-meta">
+          <div class="ek"><span class="ct t">Tailândia</span> · início do circuito</div>
+          <h3>Bangkok <span>os primeiros dias</span></h3>
+          <div class="nn">4 noites · 26–30 dez</div>
+          <p class="intro">A chegada ao Sudeste Asiático: templos dourados, mercados, canais e a primeira imersão na comida de rua — com Ayutthaya como bate-volta histórico.</p>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D1</div><div class="ddate">25/12</div><div class="dweek">sex</div><span class="dpill x">trânsito</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Embarque no Rio rumo a Bangkok</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">dia</div><div class="pt">Saída do Rio (GIG) com conexão internacional em Doha ou Dubai — a viagem completa leva cerca de 28 a 32 horas porta a porta</div></div>
+            <div class="per"><div class="pl">a bordo</div><div class="pt">Noite no ar; ajustem o relógio para +10h e durmam o quanto puderem para encarar o fuso</div></div>
+          </div>
+          <div class="tipline"><span class="ic">›</span><span>Certificado internacional de febre amarela em mãos, separado do passaporte — pode ser pedido no embarque</span></div>
+          <div class="grpflag"><span class="ic">👥</span><span><b>Dez embarques juntos:</b> cheguem ao aeroporto com folga, façam o check-in em grupo e combinem assentos próximos para a família</span></div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D2</div><div class="ddate">26/12</div><div class="dweek">sáb</div><span class="dpill t">Bangkok</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Chegada a Bangkok</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">tarde</div><div class="pt">Pouso por volta das 13h; transfer ao hotel e check-in para recuperar o fôlego da viagem longa</div></div>
+            <div class="per"><div class="pl">noite</div><div class="pt">Primeiro contato leve com a cidade em Yaowarat, a Chinatown — barracas de comida, neon e o melhor street food da capital</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D3</div><div class="ddate">27/12</div><div class="dweek">dom</div><span class="dpill t">Bangkok</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Templos reais e o rio <span class="badge-star">★ destaque</span></h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Wat Pho e o imenso Buda Reclinado; vale uma massagem tailandesa na escola do próprio templo</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Grand Palace e o Wat Phra Kaew (Buda de Esmeralda); travessia de barco até o Wat Arun na margem oposta</div></div>
+          </div>
+          <div class="brz">
+            <div class="hd"><span class="tk">🎟️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Templos</span></div>
+            <div class="meta"><span>Saída <b>08:30</b></span><span>~13:00</span><span><b>2.000 THB</b> /adulto · 1.600 cça</span><span>guia em inglês</span></div>
+            <div class="note">Cobre os principais templos do centro histórico com guia — versão em português não disponível para este passeio</div>
+          </div>
+          <div class="tipline"><span class="ic">›</span><span>Ombros e joelhos cobertos para entrar nos templos — leve um lenço ou canga na mochila</span></div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D4</div><div class="ddate">28/12</div><div class="dweek">seg</div><span class="dpill t">Bangkok</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Cultura, mercados e khlongs</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Casa-museu de Jim Thompson, oásis de teca e seda em plena cidade</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Mercado Or Tor Kor e passeio de longtail pelos canais (khlongs) de Thonburi, a Bangkok dos bastidores</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D5</div><div class="ddate">29/12</div><div class="dweek">ter</div><span class="dpill t">bate-volta</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Ayutthaya, a antiga capital</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Saída cedo rumo a Ayutthaya, cerca de 1h30 ao norte — as ruínas da capital real do século XIV</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Wat Mahathat (a cabeça de Buda entre raízes), Wat Phra Si Sanphet e o cenográfico Wat Chaiwatthanaram</div></div>
+          </div>
+          <div class="brz">
+            <div class="hd"><span class="tk">🎟️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Ayutthaya + Mercados</span></div>
+            <div class="meta"><span>Saída <b>06:20</b></span><span><b>3.900 THB</b> em português</span><span>ou 1.500 THB em inglês</span></div>
+            <div class="note"><b>Atenção ao dia:</b> a versão em português do Ayutthaya solo roda seg/qua/sex — não opera na terça. Já o combo "Ayutthaya + Mercados" em português roda ter/qui/sáb/dom, portanto cobre o dia 29/12</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ETAPA 2 — CHIANG MAI -->
+    <div class="stage">
+      <div class="stage-head reveal">
+        <div class="stage-num t">2</div>
+        <div class="stage-meta">
+          <div class="ek"><span class="ct t">Tailândia</span> · norte cultural</div>
+          <h3>Chiang Mai <span>+ Chiang Rai</span></h3>
+          <div class="nn">5 noites · 30 dez–4 jan</div>
+          <p class="intro">O coração espiritual do Norte e o palco do Réveillon. Lanternas no céu, elefantes resgatados e os templos coloridos de Chiang Rai — o trecho mais intenso da viagem.</p>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D6</div><div class="ddate">30/12</div><div class="dweek">qua</div><span class="dpill t">Chiang Mai</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Voo a Chiang Mai</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Voo curto de Bangkok a Chiang Mai, cerca de 1h20</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Check-in e primeiro giro pela Cidade Velha murada, entre templos e cafés</div></div>
+            <div class="per"><div class="pl">noite</div><div class="pt">Night Bazaar — artesanato do Norte e praça de alimentação</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D7</div><div class="ddate">31/12</div><div class="dweek">qui</div><span class="dpill t">Réveillon</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Réveillon no Tha Phae Gate <span class="badge-star">★ destaque</span></h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Doi Suthep, o templo na montanha — 309 degraus até o pagode dourado com vista da cidade</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Descanso e preparação para a virada</div></div>
+            <div class="per"><div class="pl">noite</div><div class="pt">Tha Phae Gate na contagem regressiva; à meia-noite, milhares de lanternas khom loi sobem ao céu</div></div>
+          </div>
+          <div class="brz">
+            <div class="hd"><span class="tk">🎟️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Doi Suthep + Wat Pha Lat</span></div>
+            <div class="meta"><span>Saídas <b>05:00</b> · 13:30 · 16:00</span><span><b>1.150 THB</b></span><span>guia em inglês</span></div>
+            <div class="note">A saída das 05:00 pega o nascer do sol no templo; as demais cobrem só a tarde</div>
+          </div>
+          <div class="nywarn"><span class="ic">🎆</span><span><b>Virada do ano:</b> o entorno do Tha Phae fica lotado — combinem um ponto de encontro fixo, leve agasalho (~18 °C à noite) e comprem as lanternas no local (80–150 THB). Reservem o jantar com antecedência</span></div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D8</div><div class="ddate">01/01</div><div class="dweek">sex</div><span class="dpill t">Chiang Mai</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Santuário de elefantes <span class="badge-star">★ destaque</span></h4>
+          <div class="periods">
+            <div class="per"><div class="pl">dia</div><div class="pt">Dia inteiro em santuário ético — sem montaria: alimentar, observar e acompanhar os elefantes resgatados em seu ambiente</div></div>
+          </div>
+          <div class="brz">
+            <div class="hd"><span class="tk">🎟️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Santuário de Elefantes</span></div>
+            <div class="meta"><span>Saídas <b>06:30</b> · 07:30</span><span><b>1.900 THB</b> /adulto · 1.500 cça</span></div>
+            <div class="note">Parceiro é o Elephant Jungle Sanctuary; para o Elephant Nature Park (o mais reputado), reservem direto no site da reserva, com meses de antecedência</div>
+          </div>
+          <div class="nywarn"><span class="ic">📅</span><span><b>Feriado de 1º de janeiro:</b> confirmem que a operação roda normalmente no dia e reservem com antecedência</span></div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D9</div><div class="ddate">02/01</div><div class="dweek">sáb</div><span class="dpill t">bate-volta</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Os templos de Chiang Rai <span class="badge-star">★ destaque</span></h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Estrada cênica de cerca de 3h até Chiang Rai; o Templo Branco (Wat Rong Khun), surreal e fotogênico</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Templo Azul (Wat Rong Suea Ten) e a Casa Negra (Baan Dam); retorno à noite</div></div>
+          </div>
+          <div class="brz">
+            <div class="hd"><span class="tk">🎟️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Templos de Chiang Rai</span></div>
+            <div class="meta"><span>Saída <b>06:50</b></span><span>retorno ~18:30</span><span><b>3.100 THB</b> em português</span></div>
+            <div class="note"><b>Cobertura parcial:</b> o passeio inclui Templo Branco, Templo Azul e o Buda Branco, mas <b>não</b> a Casa Negra — para incluí-la, vale um motorista privado para o grupo</div>
+          </div>
+          <div class="nywarn"><span class="ic">🚗</span><span><b>Ainda feriado:</b> confirmem horários e contem com mais trânsito na estrada — uma van com motorista para os dez é a opção mais confortável e flexível</span></div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D10</div><div class="ddate">03/01</div><div class="dweek">dom</div><span class="dpill t">Chiang Mai</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Nimman e a cozinha thai</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Bairro de Nimman — cafés de especialidade, design e lojinhas independentes</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Curso de culinária tailandesa: do mercado ao prato, aprendendo pad thai e curries</div></div>
+          </div>
+          <div class="brz">
+            <div class="hd"><span class="tk">🎟️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Curso de Culinária</span></div>
+            <div class="meta"><span>Dia inteiro <b>1.400 THB</b></span><span>meio período <b>950 THB</b></span></div>
+            <div class="note">Atividade leve e divertida para o grupo todo, ótima para fechar a etapa do Norte</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ETAPA 3 — HANÓI -->
+    <div class="stage">
+      <div class="stage-head reveal">
+        <div class="stage-num v">3</div>
+        <div class="stage-meta">
+          <div class="ek"><span class="ct v">Vietnã</span> · capital do norte</div>
+          <h3>Hanói <span>+ Ninh Binh</span></h3>
+          <div class="nn">3 noites · 4–7 jan</div>
+          <p class="intro">A capital de mil scooters e charme colonial, com a "Ha Long em terra" de Ninh Binh como bate-volta — carstes, rios e arrozais sem sair do continente.</p>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D11</div><div class="ddate">04/01</div><div class="dweek">seg</div><span class="dpill v">Hanói</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Voo a Hanói</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Voo direto de Chiang Mai a Hanói, cerca de 1h35</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Lago Hoan Kiem e o templo Ngoc Son sobre a água, no centro nevrálgico da cidade</div></div>
+            <div class="per"><div class="pl">noite</div><div class="pt">Old Quarter — o labirinto de ruas-ofício, com cerveja gelada nas calçadas</div></div>
+          </div>
+          <div class="tipline"><span class="ic">›</span><span>Janeiro em Hanói é frio e úmido (13–15 °C) — tragam um agasalho de verdade, diferente do calor do Sul</span></div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D12</div><div class="ddate">05/01</div><div class="dweek">ter</div><span class="dpill v">Hanói</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Food tour pelo Old Quarter</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Templo da Literatura, a primeira universidade do país, e o entorno histórico</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Tour gastronômico a pé: pho, bun cha, banh mi e o famoso egg coffee</div></div>
+            <div class="per"><div class="pl">noite</div><div class="pt">Train Street — o trem que passa rente aos cafés (confiram se está aberta à visitação)</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D13</div><div class="ddate">06/01</div><div class="dweek">qua</div><span class="dpill v">bate-volta</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Ninh Binh, a Ha Long em terra <span class="badge-star">★ destaque</span></h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Cerca de 1h30 de Hanói; passeio de barco a remo por Trang An, entre carstes e grutas inundadas</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Subida de Mua Cave (~500 degraus) para a vista panorâmica do rio Ngo Dong serpenteando os arrozais</div></div>
+          </div>
+          <div class="grpflag"><span class="ic">🚐</span><span><b>Grupo de dez:</b> uma van privada com motorista no bate-volta sai mais barato por pessoa e poupa a logística de transporte público</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ETAPA 4 — HOI AN -->
+    <div class="stage">
+      <div class="stage-head reveal">
+        <div class="stage-num v">4</div>
+        <div class="stage-meta">
+          <div class="ek"><span class="ct v">Vietnã</span> · centro · <span class="badge-new">ajustado · 2N</span></div>
+          <h3>Hoi An <span>+ An Bang</span></h3>
+          <div class="nn">2 noites · 7–9 jan</div>
+          <p class="intro">A cidade-lanterna, Patrimônio Mundial, com alfaiates lendários e praia ao lado. Encurtada para 2 noites no ajuste — o que exige resolver as roupas sob medida logo na chegada.</p>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D14</div><div class="ddate">07/01</div><div class="dweek">qui</div><span class="dpill v">Hoi An</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Voo a Hoi An e a cidade antiga</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Voo de Hanói a Da Nang (~1h20) e transfer de cerca de 40 min a Hoi An</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Ancient Town: casas-mercador centenárias, a Ponte Japonesa e o casario ocre</div></div>
+            <div class="per"><div class="pl">noite</div><div class="pt">Lanternas acesas refletidas no rio Thu Bon; passeio de barquinho soltando velas na correnteza</div></div>
+          </div>
+          <div class="grpflag"><span class="ic">✂️</span><span><b>Meçam o alfaiate hoje:</b> com apenas 2 noites, encomendem as roupas sob medida já na chegada para conseguir provar amanhã e retirar na manhã da partida</span></div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D15</div><div class="ddate">08/01</div><div class="dweek">sex</div><span class="dpill v">Hoi An</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Tra Que, alfaiates e a praia</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Passeio de bike pela vila de hortas de Tra Que, entre canteiros e búfalos</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Provas e ajustes nas alfaiatarias; fim de tarde na praia de An Bang, a 10 min do centro</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ETAPA 5 — SAIGON -->
+    <div class="stage">
+      <div class="stage-head reveal">
+        <div class="stage-num v">5</div>
+        <div class="stage-meta">
+          <div class="ek"><span class="ct v">Vietnã</span> · sul · <span class="badge-new">ajustado · 3N</span></div>
+          <h3>Saigon <span>o reencontro</span></h3>
+          <div class="nn">3 noites · 9–12 jan</div>
+          <p class="intro">Ho Chi Minh, vibrante e moderna, onde a família se completa: Clara chega em 09/01. A noite extra do ajuste abre espaço para o Delta do Mekong com o grupo inteiro.</p>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D16</div><div class="ddate">09/01</div><div class="dweek">sáb</div><span class="dpill v">Saigon</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Chegada a Saigon e o reencontro <span class="badge-star">★ destaque</span></h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Retirada das roupas nos alfaiates de Hoi An e voo de Da Nang a Ho Chi Minh (~1h20)</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Clara desembarca e a família se completa em dez; primeiro giro pelo Distrito 1 — Catedral de Notre-Dame e os Correios Centrais de Saigon</div></div>
+            <div class="per"><div class="pl">noite</div><div class="pt">Jantar de reencontro; a cidade pulsa entre rooftops e ruas movimentadas</div></div>
+          </div>
+          <div class="grpflag"><span class="ic">✈️</span><span><b>Clara chega sozinha:</b> garantam que ela tenha o endereço do hotel, transfer combinado e contato do grupo — e alguém de olho no horário do voo dela para o reencontro</span></div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D17</div><div class="ddate">10/01</div><div class="dweek">dom</div><span class="dpill v">Saigon</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Cu Chi e a memória da guerra</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Túneis de Cu Chi, a ~1h30 da cidade — a rede subterrânea da guerra do Vietnã</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Museu dos Vestígios da Guerra, retrato cru e necessário do conflito</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D18</div><div class="ddate">11/01</div><div class="dweek">seg</div><span class="dpill v">Saigon</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Delta do Mekong</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">dia</div><div class="pt">Bate-volta ao Delta do Mekong: barco pelos braços do rio, vilarejos, pomares e mercado às margens — ou, para quem preferir, um dia mais leve na cidade com o grupo completo</div></div>
+          </div>
+          <div class="grpflag"><span class="ic">➕</span><span><b>Dia ganho no ajuste:</b> esta diária extra em Saigon só existe porque Hoi An cedeu uma noite — aproveitem-na com a família já reunida</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ETAPA 6 — PHNOM PENH -->
+    <div class="stage">
+      <div class="stage-head reveal">
+        <div class="stage-num k">6</div>
+        <div class="stage-meta">
+          <div class="ek"><span class="ct k">Camboja</span> · capital</div>
+          <h3>Phnom Penh <span>história & memória</span></h3>
+          <div class="nn">2 noites · 12–14 jan</div>
+          <p class="intro">A capital às margens do Mekong, entre o esplendor do Palácio Real e o peso da memória do regime Khmer Rouge — uma parada de contrastes profundos.</p>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D19</div><div class="ddate">12/01</div><div class="dweek">ter</div><span class="dpill k">Phnom Penh</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Voo a Phnom Penh</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Voo curto de Saigon a Phnom Penh (~1h); visto emitido na chegada</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Sisowath Quay, a orla à beira do Mekong, para sentir o ritmo da cidade</div></div>
+          </div>
+          <div class="tipline"><span class="ic">›</span><span>Visto na chegada: US$ 30 por pessoa em espécie + uma foto 4×6 — tenham as dez fotos e o dinheiro separados</span></div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D20</div><div class="ddate">13/01</div><div class="dweek">qua</div><span class="dpill k">Phnom Penh</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Palácio Real e os campos da memória</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Palácio Real e o Pagode de Prata, com o piso de ladrilhos de prata maciça</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Museu do Genocídio Tuol Sleng (a antiga prisão S-21) e os Killing Fields de Choeung Ek — visita pesada, porém essencial para entender o país</div></div>
+          </div>
+          <div class="grpflag"><span class="ic">💵</span><span><b>No Camboja o dólar circula:</b> levem notas em bom estado para entradas, refeições e transporte — e mantenham uma reserva em espécie para o grupo</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ETAPA 7 — SIEM REAP -->
+    <div class="stage">
+      <div class="stage-head reveal">
+        <div class="stage-num k">7</div>
+        <div class="stage-meta">
+          <div class="ek"><span class="ct k">Camboja</span> · templos</div>
+          <h3>Siem Reap <span>+ Angkor</span></h3>
+          <div class="nn">3 noites · 14–17 jan</div>
+          <p class="intro">O ápice arquitetônico da viagem. O amanhecer em Angkor Wat, as faces de pedra de Bayon e as raízes que engolem Ta Prohm — três dias de templos e história milenar.</p>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D21</div><div class="ddate">14/01</div><div class="dweek">qui</div><span class="dpill k">Siem Reap</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Voo a Siem Reap</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Voo de Phnom Penh a Siem Reap, cerca de 45 min</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Compra do passe de Angkor (3 dias, US$ 62) e descanso para a madrugada seguinte</div></div>
+            <div class="per"><div class="pl">noite</div><div class="pt">Pub Street e os mercados noturnos, o coração agitado da cidade</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D22</div><div class="ddate">15/01</div><div class="dweek">sex</div><span class="dpill k">Angkor</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Angkor ao amanhecer <span class="badge-star">★ destaque</span></h4>
+          <div class="periods">
+            <div class="per"><div class="pl">madrugada</div><div class="pt">Saída por volta das 04:45 para o nascer do sol refletido nos lagos de Angkor Wat</div></div>
+            <div class="per"><div class="pl">manhã</div><div class="pt">Bayon e suas 216 faces de pedra; Ta Prohm, o templo tomado pelas raízes</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Descanso na piscina — a madrugada foi longa e o calor aperta</div></div>
+          </div>
+          <div class="grpflag"><span class="ic">🌅</span><span><b>Madrugada para dez:</b> alinhem o transporte na véspera, levem lanterna e respeitem o ritmo dos mais velhos no calor e nas escadarias íngremes dos templos</span></div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D23</div><div class="ddate">16/01</div><div class="dweek">sáb</div><span class="dpill k">Siem Reap</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Banteay Srei ou Tonle Sap</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Banteay Srei, o delicado templo de arenito rosa — ou a vila flutuante do lago Tonle Sap</div></div>
+            <div class="per"><div class="pl">noite</div><div class="pt">Espetáculo de dança Apsara com jantar, encerrando a etapa cambojana</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ETAPA 8 — KRABI -->
+    <div class="stage">
+      <div class="stage-head reveal">
+        <div class="stage-num t">8</div>
+        <div class="stage-meta">
+          <div class="ek"><span class="ct t">Tailândia</span> · praia do sul</div>
+          <h3>Krabi <span>base de praia</span></h3>
+          <div class="nn">4 noites · 17–21 jan</div>
+          <p class="intro">O descanso premiado depois das madrugadas de templo. Base única no Andaman, com Railay ao lado e Phi Phi e as ilhas em bate-voltas de barco — sem trocar de hotel.</p>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D24</div><div class="ddate">17/01</div><div class="dweek">dom</div><span class="dpill t">Krabi</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Voo a Krabi</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">dia</div><div class="pt">Trajeto mais longo do roteiro: Siem Reap–Bangkok–Krabi, a única conexão disponível, cerca de 5h no total</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Chegada a Ao Nang e pôr do sol na praia de Phra Nang</div></div>
+          </div>
+          <div class="grpflag"><span class="ic">🧳</span><span><b>Conexão com troca de voo:</b> confirmem no check-in que as bagagens seguem despachadas direto até Krabi (KBV), para não recolher tudo em Bangkok</span></div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D25</div><div class="ddate">18/01</div><div class="dweek">seg</div><span class="dpill t">Krabi</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Railay e Phra Nang</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Longtail de cerca de 15 min até Railay, a península de falésias só acessível por mar</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Praia de Phra Nang, a gruta e a parede de escalada — uma das mais bonitas da Tailândia</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D26</div><div class="ddate">19/01</div><div class="dweek">ter</div><span class="dpill t">bate-volta</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Phi Phi e Maya Bay <span class="badge-star">★ destaque</span></h4>
+          <div class="periods">
+            <div class="per"><div class="pl">dia</div><div class="pt">Bate-volta de lancha pelo arquipélago de Phi Phi: Maya Bay (cenário de "A Praia"), a lagoa de Pileh e Bamboo Island</div></div>
+          </div>
+          <div class="brz">
+            <div class="hd"><span class="tk">🛥️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Lancha privada Krabi → Phi Phi</span></div>
+            <div class="meta"><span>Saída <b>08:00–09:00</b></span><span>~6h</span><span>até 15 pax · <b>20.000 THB</b></span><span>≈ 2.000 /pessoa</span></div>
+            <div class="note">Extras: +1.500 THB guia em inglês · +200 /pessoa refeição · taxa do parque 400 /adulto. Lancha privada para os dez resolve o grupo todo num só barco. Em Maya Bay não é permitido nadar — apenas desembarque e foto</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D27</div><div class="ddate">20/01</div><div class="dweek">qua</div><span class="dpill t">bate-volta</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Hong e as Quatro Ilhas</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">dia</div><div class="pt">Hong Island e o circuito das Quatro Ilhas — lagoas esmeralda e praias escondidas — ou um dia de natureza no interior</div></div>
+          </div>
+          <div class="brz">
+            <div class="hd"><span class="tk">🛥️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Krabi Brazuca · Hong + 4 Ilhas</span></div>
+            <div class="meta"><span><b>09:00–18:30</b></span><span><b>2.400 THB</b> /pessoa</span><span>guia em português</span><span>mín. 8 pax</span></div>
+            <div class="note">Com dez pessoas o grupo já cumpre o mínimo de 8 e qualifica sozinho · alta temporada de 15 out a 30 abr. Alternativa de natureza: Emerald Pool + Hot Springs, van a 3.200 THB para 8 pax</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ETAPA 9 — BANGKOK FINAL -->
+    <div class="stage">
+      <div class="stage-head reveal">
+        <div class="stage-num t">9</div>
+        <div class="stage-meta">
+          <div class="ek"><span class="ct t">Tailândia</span> · reta final</div>
+          <h3>Bangkok <span>a despedida</span></h3>
+          <div class="nn">2 noites · 21–23 jan</div>
+          <p class="intro">O fechamento do circuito de volta à capital: um último rooftop, as compras finais nos grandes mercados e o jantar de despedida antes do longo voo de volta.</p>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D28</div><div class="ddate">21/01</div><div class="dweek">qui</div><span class="dpill t">Bangkok</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Voo a Bangkok e o rooftop</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Voo de Krabi a Bangkok, cerca de 1h30</div></div>
+            <div class="per"><div class="pl">noite</div><div class="pt">Brinde de despedida num rooftop — o Lebua/Sky Bar entrega a cidade iluminada aos pés do grupo</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D29</div><div class="ddate">22/01</div><div class="dweek">sex</div><span class="dpill t">Bangkok</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Mercados e despedida <span class="badge-star">★ destaque</span></h4>
+          <div class="periods">
+            <div class="per"><div class="pl">manhã</div><div class="pt">Mercado flutuante nos arredores ou compras no ICONSIAM e no MBK</div></div>
+            <div class="per"><div class="pl">tarde</div><div class="pt">Últimas lembranças e jantar de despedida fechando os 30 dias</div></div>
+          </div>
+          <div class="tipline"><span class="ic">›</span><span>O mercado de Chatuchak abre só aos fins de semana — como 22/01 cai numa sexta, ele estará fechado; programem ICONSIAM, MBK ou um mercado flutuante no lugar</span></div>
+        </div>
+      </div>
+
+      <div class="dayrow reveal">
+        <div class="dleft"><div class="dnum">D30</div><div class="ddate">23/01</div><div class="dweek">sáb</div><span class="dpill x">trânsito</span></div>
+        <div class="dbody">
+          <h4 class="day-title">Embarque de volta ao Rio</h4>
+          <div class="periods">
+            <div class="per"><div class="pl">dia</div><div class="pt">Tempo livre para arrumar as malas e os últimos passeios pela cidade</div></div>
+            <div class="per"><div class="pl">noite</div><div class="pt">Embarque em Bangkok por volta das 20:45, com chegada ao Rio no dia 24/01 após a conexão</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ ATRAÇÕES & PASSEIOS ============ -->
+<section class="section paper-2" id="atracoes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Galeria do roteiro</p>
+      <h2 class="h2 wide">Atrações &amp; passeios em destaque</h2>
+      <p class="lead">Os pontos altos da viagem, um a um — de onde se sai, o que esperar e, quando existir, o passeio já cotado pela operadora. As fotos entram depois.</p>
+    </div>
+
+    <div class="attr-help reveal">
+      <span style="font-size:20px">🖼️</span>
+      <div>Os espaços de imagem estão prontos. Para preencher, coloquem cada foto na pasta <code>img/</code> do repositório com exatamente o nome indicado em cada quadro (ex.: <code>img/angkor.jpg</code>) — a imagem aparece sozinha no lugar do espaço reservado.</div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot t-bg">
+        <img src="img/grand-palace.jpg" alt="Grand Palace" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">🏯</div><div class="fn">img/grand-palace.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body t">
+        <div class="ek"><i></i>Tailândia</div>
+        <h3>Grand Palace &amp; Wat Pho</h3>
+        <div class="from">📍 <b>Saindo de Bangkok</b></div>
+        <p>O conjunto real mais imponente do país: o Grand Palace, o Buda de Esmeralda no Wat Phra Kaew e, ao lado, o gigantesco Buda Reclinado do Wat Pho. Fechem com a travessia de barco até o Wat Arun.</p>
+        <div class="brz"><div class="hd"><span class="tk">🎟️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Templos</span></div><div class="meta"><span>Saída <b>08:30</b></span><span><b>2.000 THB</b> /adulto</span><span>guia em inglês</span></div></div>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot t-bg">
+        <img src="img/ayutthaya.jpg" alt="Ayutthaya" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">🛕</div><div class="fn">img/ayutthaya.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body t">
+        <div class="ek"><i></i>Tailândia</div>
+        <h3>Ayutthaya</h3>
+        <div class="from">📍 <b>Saindo de Bangkok</b> · ~1h30</div>
+        <p>As ruínas da capital real do século XIV, Patrimônio Mundial. A cabeça de Buda entrelaçada em raízes no Wat Mahathat é a imagem-símbolo — com Wat Phra Si Sanphet e Wat Chaiwatthanaram ao redor.</p>
+        <div class="brz"><div class="hd"><span class="tk">🎟️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Ayutthaya + Mercados</span></div><div class="meta"><span>Saída <b>06:20</b></span><span><b>3.900 THB</b> em português</span><span>roda ter/qui/sáb/dom</span></div></div>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot t-bg">
+        <img src="img/reveillon-chiang-mai.jpg" alt="Réveillon em Chiang Mai" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">🏮</div><div class="fn">img/reveillon-chiang-mai.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body t">
+        <div class="ek"><i></i>Tailândia</div>
+        <h3>Réveillon no Tha Phae &amp; Doi Suthep</h3>
+        <div class="from">📍 <b>Em Chiang Mai</b></div>
+        <p>O ponto alto emocional da viagem: a virada do ano no Tha Phae Gate, quando milhares de lanternas khom loi sobem ao céu à meia-noite. De dia, a subida dos 309 degraus ao templo dourado de Doi Suthep.</p>
+        <div class="brz"><div class="hd"><span class="tk">🎟️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Doi Suthep + Wat Pha Lat</span></div><div class="meta"><span>Saídas <b>05:00</b> · 13:30 · 16:00</span><span><b>1.150 THB</b></span></div></div>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot t-bg">
+        <img src="img/elefantes.jpg" alt="Santuário de elefantes" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">🐘</div><div class="fn">img/elefantes.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body t">
+        <div class="ek"><i></i>Tailândia</div>
+        <h3>Santuário de elefantes</h3>
+        <div class="from">📍 <b>Saindo de Chiang Mai</b></div>
+        <p>Um dia inteiro com elefantes resgatados em santuário ético — sem montaria. Alimentar, observar e caminhar ao lado dos animais em seu ambiente, do jeito responsável de viver essa experiência.</p>
+        <div class="brz"><div class="hd"><span class="tk">🎟️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Santuário de Elefantes</span></div><div class="meta"><span>Saídas <b>06:30</b> · 07:30</span><span><b>1.900 THB</b> /adulto</span></div></div>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot t-bg">
+        <img src="img/chiang-rai.jpg" alt="Templos de Chiang Rai" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">🛕</div><div class="fn">img/chiang-rai.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body t">
+        <div class="ek"><i></i>Tailândia</div>
+        <h3>Os templos de Chiang Rai</h3>
+        <div class="from">📍 <b>Saindo de Chiang Mai</b> · ~3h</div>
+        <p>A trinca surreal do extremo norte: o Templo Branco (Wat Rong Khun), o Templo Azul (Wat Rong Suea Ten) e a sombria Casa Negra (Baan Dam) — arte contemporânea travestida de templo.</p>
+        <div class="brz"><div class="hd"><span class="tk">🎟️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Templos de Chiang Rai</span></div><div class="meta"><span>Saída <b>06:50</b></span><span><b>3.100 THB</b> em português</span><span>não inclui a Casa Negra</span></div></div>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot v-bg">
+        <img src="img/ninh-binh.jpg" alt="Ninh Binh" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">⛰️</div><div class="fn">img/ninh-binh.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body v">
+        <div class="ek"><i></i>Vietnã</div>
+        <h3>Ninh Binh &amp; Trang An</h3>
+        <div class="from">📍 <b>Saindo de Hanói</b> · ~1h30</div>
+        <p>A "Ha Long em terra": um passeio de barco a remo por entre torres de calcário e grutas inundadas em Trang An, coroado pela vista do alto de Mua Cave sobre os arrozais e o rio que serpenteia.</p>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot v-bg">
+        <img src="img/hoi-an-lanternas.jpg" alt="Lanternas de Hoi An" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">🏮</div><div class="fn">img/hoi-an-lanternas.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body v">
+        <div class="ek"><i></i>Vietnã</div>
+        <h3>As lanternas de Hoi An</h3>
+        <div class="from">📍 <b>Em Hoi An</b></div>
+        <p>A cidade antiga inteira iluminada por lanternas de seda ao cair da noite, refletidas no rio Thu Bon. Solte uma vela na correnteza, encomende roupa sob medida e perca-se pelo casario ocre.</p>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot v-bg">
+        <img src="img/saigon.jpg" alt="Saigon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">🏙️</div><div class="fn">img/saigon.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body v">
+        <div class="ek"><i></i>Vietnã</div>
+        <h3>Reencontro em Saigon</h3>
+        <div class="from">📍 <b>Em Ho Chi Minh</b></div>
+        <p>O momento em que a família vira dez: Clara chega e o grupo se completa. Pano de fundo perfeito no Distrito 1 — a Catedral de Notre-Dame, os Correios Centrais e a energia incansável da cidade.</p>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot v-bg">
+        <img src="img/cu-chi.jpg" alt="Túneis de Cu Chi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">🪖</div><div class="fn">img/cu-chi.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body v">
+        <div class="ek"><i></i>Vietnã</div>
+        <h3>Túneis de Cu Chi</h3>
+        <div class="from">📍 <b>Saindo de Saigon</b> · ~1h30</div>
+        <p>A rede subterrânea que sustentou a guerrilha durante a guerra do Vietnã. Descer nos túneis estreitos e entender a engenhosidade do conflito é uma das visitas mais marcantes da etapa vietnamita.</p>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot k-bg">
+        <img src="img/phnom-penh.jpg" alt="Phnom Penh" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">👑</div><div class="fn">img/phnom-penh.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body k">
+        <div class="ek"><i></i>Camboja</div>
+        <h3>Palácio Real &amp; a memória</h3>
+        <div class="from">📍 <b>Em Phnom Penh</b></div>
+        <p>O contraste que define a cidade: o esplendor dourado do Palácio Real e do Pagode de Prata, e o peso de Tuol Sleng e Choeung Ek — a memória do regime Khmer Rouge, dura mas essencial.</p>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot k-bg">
+        <img src="img/angkor.jpg" alt="Angkor Wat ao amanhecer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">🌅</div><div class="fn">img/angkor.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body k">
+        <div class="ek"><i></i>Camboja</div>
+        <h3>Angkor ao amanhecer</h3>
+        <div class="from">📍 <b>Saindo de Siem Reap</b> · saída ~04:45</div>
+        <p>O ápice da viagem: o nascer do sol refletido nos lagos de Angkor Wat, as 216 faces de pedra de Bayon e o Ta Prohm engolido por raízes de figueira. Vale cada minuto da madrugada.</p>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot t-bg">
+        <img src="img/railay.jpg" alt="Railay" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">🧗</div><div class="fn">img/railay.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body t">
+        <div class="ek"><i></i>Tailândia</div>
+        <h3>Railay &amp; Phra Nang</h3>
+        <div class="from">📍 <b>Saindo de Krabi</b> · longtail ~15min</div>
+        <p>A península de falésias acessível só por mar, com uma das praias mais bonitas da Tailândia. Paredes de calcário para escalada, a gruta de Phra Nang e águas turquesa entre os rochedos.</p>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot t-bg">
+        <img src="img/phi-phi.jpg" alt="Phi Phi e Maya Bay" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">🛥️</div><div class="fn">img/phi-phi.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body t">
+        <div class="ek"><i></i>Tailândia</div>
+        <h3>Phi Phi &amp; Maya Bay</h3>
+        <div class="from">📍 <b>Bate-volta de Krabi</b> · ~6h</div>
+        <p>O arquipélago-cartão-postal do Andaman: Maya Bay, cenário de "A Praia", a lagoa esmeralda de Pileh e Bamboo Island. Em Maya não se nada — é desembarque e foto —, mas o visual compensa.</p>
+        <div class="brz"><div class="hd"><span class="tk">🛥️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Lancha privada</span></div><div class="meta"><span>até 15 pax · <b>20.000 THB</b></span><span>≈ 2.000 /pessoa</span><span>08:00–09:00</span></div></div>
+      </div>
+    </div>
+
+    <div class="attr reveal">
+      <div class="shot t-bg">
+        <img src="img/hong-ilhas.jpg" alt="Hong e Quatro Ilhas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="shot-ph" style="display:none"><div class="pic">🏝️</div><div class="fn">img/hong-ilhas.jpg</div><div class="hint">adicione a foto</div></div>
+      </div>
+      <div class="body t">
+        <div class="ek"><i></i>Tailândia</div>
+        <h3>Hong &amp; as Quatro Ilhas</h3>
+        <div class="from">📍 <b>Bate-volta de Krabi</b></div>
+        <p>O outro grande dia de barco: a lagoa escondida de Hong Island e o circuito das Quatro Ilhas, com praias desertas e snorkel em águas calmas — guia em português e grupo de dez qualifica sozinho.</p>
+        <div class="brz"><div class="hd"><span class="tk">🛥️</span><span class="op">Phi Phi Brazuca</span><span class="nm">Krabi Brazuca</span></div><div class="meta"><span><b>2.400 THB</b> /pessoa</span><span>09:00–18:30</span><span>guia em português</span></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ IMPERDÍVEIS ============ -->
+<section class="section dark">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Se nada mais der certo</p>
+      <h2 class="h2 wide">Os seis imperdíveis</h2>
+      <p class="lead">Se a viagem tivesse de caber em seis memórias, seriam estas — os momentos que justificam o roteiro inteiro.</p>
+    </div>
+
+    <div class="imperd reveal">
+      <div class="imp"><span class="ic">🏮</span><h3>Réveillon em Chiang Mai</h3><p>As lanternas khom loi subindo ao céu à meia-noite no Tha Phae Gate — a virada do ano mais bonita que se pode imaginar.</p></div>
+      <div class="imp"><span class="ic">🌅</span><h3>Angkor ao amanhecer</h3><p>O sol nascendo atrás das torres de Angkor Wat, refletido na água. Vale cada minuto da madrugada.</p></div>
+      <div class="imp"><span class="ic">🛥️</span><h3>Phi Phi &amp; Maya Bay</h3><p>O Andaman em seu auge: lagoas esmeralda, falésias e o cenário de "A Praia" num dia de lancha.</p></div>
+      <div class="imp"><span class="ic">⛰️</span><h3>Ninh Binh</h3><p>A "Ha Long em terra" — barco a remo entre carstes e a vista do alto de Mua Cave sobre os arrozais.</p></div>
+      <div class="imp"><span class="ic">🏮</span><h3>Lanternas de Hoi An</h3><p>A cidade antiga inteira acesa, refletida no rio, com velas flutuando na correnteza.</p></div>
+      <div class="imp"><span class="ic">🐘</span><h3>Elefantes resgatados</h3><p>Um dia ético ao lado de elefantes em santuário — observar e cuidar, nunca montar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ECONOMICS ============ -->
+<section class="section" id="orcamento">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Estimativa de custos</p>
+      <h2 class="h2 wide">Quanto custa, por pessoa</h2>
+      <p class="lead">Uma ordem de grandeza para planejar — não um orçamento fechado. Os valores são por pessoa, em reais, com câmbio de referência de R$ 5,20 por dólar.</p>
+    </div>
+
+    <div class="eco-top reveal">
+      <div class="eco-hero">~R$ 40,5 mil<small>por pessoa · estimativa base</small></div>
+      <div class="tiers">
+        <div class="tier"><div class="lv">Econômico</div><div class="pp">~R$ 33 mil</div><div class="tot">grupo ~R$ 330 mil</div></div>
+        <div class="tier base"><div class="lv">Base</div><div class="pp">~R$ 40 mil</div><div class="tot">grupo ~R$ 405 mil</div></div>
+        <div class="tier"><div class="lv">Premium</div><div class="pp">~R$ 49 mil</div><div class="tot">grupo ~R$ 490 mil</div></div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <table class="eco-table">
+        <thead>
+          <tr><th>Item</th><th class="r">Por pessoa</th><th class="r hide-sm">Grupo de 10</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Voo internacional (ida e volta)</td><td class="r">12.000</td><td class="r hide-sm">120.000</td></tr>
+          <tr><td>Voos regionais (8 trechos)</td><td class="r">4.400</td><td class="r hide-sm">44.000</td></tr>
+          <tr><td>Hospedagem padrão (24 noites)</td><td class="r">6.720</td><td class="r hide-sm">67.200</td></tr>
+          <tr><td>Hospedagem de praia (4 noites)</td><td class="r">2.200</td><td class="r hide-sm">22.000</td></tr>
+          <tr><td>Alimentação (US$ 30/dia × 30)</td><td class="r">4.680</td><td class="r hide-sm">46.800</td></tr>
+          <tr><td>Atrações &amp; passeios</td><td class="r">4.500</td><td class="r hide-sm">45.000</td></tr>
+          <tr><td>Transporte local</td><td class="r">3.000</td><td class="r hide-sm">30.000</td></tr>
+          <tr><td>Diversos (vistos, seguro, SIM, compras)</td><td class="r">3.000</td><td class="r hide-sm">30.000</td></tr>
+          <tr class="sum"><td>Total por pessoa</td><td class="r">40.500</td><td class="r hide-sm">405.000</td></tr>
+        </tbody>
+      </table>
+      <div class="eco-note">
+        <span style="font-size:20px">💡</span>
+        <div>Viajar em dez <b>baixa o custo por cabeça</b> em vans, lanchas privadas e tours com mínimo de pessoas — itens que, sozinho, sairiam bem mais caros. O detalhamento completo, com hotéis e alternativas, está na planilha companheira do roteiro.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENCERRAMENTO ============ -->
+<section class="section dark closing">
+  <div class="wrap reveal">
+    <p class="kick">30 dias · 3 países · 10 viajantes</p>
+    <h2>Boa <em>viagem</em></h2>
+    <div class="close-route">
+      <b>Bangkok</b> › Chiang Mai › Chiang Rai › <b>Hanói</b> › Ninh Binh › Hoi An › Saigon › <b>Phnom Penh</b> › Siem Reap › Angkor › <b>Krabi</b> › Phi Phi › Bangkok
+    </div>
+    <p class="close-meta">25 dez 2026 — 23 jan 2027 · Família Ramos</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap row">
+    <span>Roteiro Sudeste Asiático · Família Ramos</span>
+    <span>Detalhamento completo na planilha companheira</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // mobile nav toggle
+  var t = document.getElementById('navToggle');
+  var l = document.getElementById('navLinks');
+  if (t && l){
+    t.addEventListener('click', function(){ l.classList.toggle('open'); });
+    l.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ l.classList.remove('open'); });
+    });
+  }
+  // reveal on scroll
+  var els = document.querySelectorAll('.reveal');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)){
+    els.forEach(function(e){ e.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    els.forEach(function(e){ io.observe(e); });
+  }
+})();
+</script>
+
+</body>
+</html>
