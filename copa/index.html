@@ -19,11 +19,11 @@
    TOKENS
    ========================================================= */
 :root{
-  --bg:#09090B; --bg2:#101013; --card:#15151A; --card2:#1C1C22; --raise:#222229;
-  --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.05);
-  --tx:#F4F4F2; --mut:#9A9AA2; --mut2:#74757C;
-  --gold:#E3A52E; --gold-d:#B5821F; --gold-soft:rgba(227,165,46,.16);
-  --red:#E23A3A; --white:#FFFFFF; --g3:#CACBD1; --g4:#7E7F87; --avg:#9C9DA6; --faint:#34343B;
+  --bg:#15151A; --bg2:#1A1A1F; --card:#1F1F25; --card2:#27272E; --raise:#31313A;
+  --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.06);
+  --tx:#F5F5F3; --mut:#A3A3AB; --mut2:#7D7E86;
+  --gold:#E3A52E; --gold-d:#B5821F; --gold-soft:rgba(227,165,46,.18);
+  --red:#E23A3A; --white:#FFFFFF; --g3:#9A9BA3; --g4:#050507; --avg:#A6A7B0; --faint:#3C3C45;
   --disp:'Oswald',system-ui,-apple-system,'Segoe UI',sans-serif;
   --body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --r:14px; --tap:44px;
@@ -40,7 +40,7 @@ html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; overflow-x:hidden; }
 @supports (overflow:clip){ html{ overflow-x:clip } }
 html,body{margin:0;padding:0}
 body{
-  background:radial-gradient(120% 60% at 50% -8%, #18181f 0%, var(--bg) 55%) fixed, var(--bg);
+  background:radial-gradient(120% 60% at 50% -8%, #24242e 0%, var(--bg) 58%) fixed, var(--bg);
   color:var(--tx); font-family:var(--body); font-size:15px; line-height:1.45;
   -webkit-font-smoothing:antialiased; min-height:100svh;
   padding-block-end:calc(40px + env(safe-area-inset-bottom));
@@ -200,6 +200,7 @@ button{ font:inherit; color:inherit; }
 .lg-it.you-it .ln{ height:4px; }
 .lg-it .ln.dash{ height:0; border-radius:0; border-top:2px dashed var(--avg); background:none!important; }
 .lg-it .ln.sw{ width:13px;height:13px;border-radius:50%; }
+.lg-it .ln.sw.ring{ box-shadow:0 0 0 1px rgba(255,255,255,.45); }
 
 .chart-scroll{ position:relative; width:100%; min-height:240px;
   overflow-x:hidden; overscroll-behavior-x:contain; -webkit-overflow-scrolling:touch; }
@@ -219,7 +220,7 @@ button{ font:inherit; color:inherit; }
 .glbl{ fill:var(--mut); font-family:var(--disp); font-weight:500; text-anchor:middle; letter-spacing:.04em; }
 .line-faint{ fill:none; stroke:var(--faint); stroke-width:1; opacity:.6; }
 .line-avg{ fill:none; stroke:var(--avg); stroke-width:1.7; stroke-dasharray:6 5; opacity:.95; stroke-linecap:round; }
-.dot-h{ stroke:#0a0a0a; stroke-width:1.5; }
+.dot-h{ stroke:var(--card); stroke-width:1.5; }
 .cross{ stroke:var(--gold); stroke-width:1; stroke-dasharray:3 4; opacity:.7; }
 .empty-t{ fill:var(--mut2); font-family:var(--body); text-anchor:middle; }
 .note{ color:var(--mut2); font-size:11.5px; text-align:center; margin-block:12px 0; line-height:1.5; }
@@ -249,6 +250,39 @@ button{ font:inherit; color:inherit; }
 
 .foot{ color:var(--mut2); font-size:11.5px; text-align:center; line-height:1.6; padding-block:4px 0; }
 .foot b{ color:var(--mut); }
+
+/* =========================================================
+   INSIGHTS (sua trajetória)
+   ========================================================= */
+.insights{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px; }
+.insights li{ position:relative; padding-inline-start:20px; font-size:13.5px; line-height:1.5; color:var(--mut); }
+.insights li::before{ content:""; position:absolute; inset-block-start:7px; inset-inline-start:0; width:7px; height:7px;
+  border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--gold-d)); }
+.insights b{ color:#fff; font-weight:600; }       /* destaque branco */
+.insights .g{ color:var(--gold); font-weight:700; } /* destaque dourado */
+
+/* =========================================================
+   PEER GROUP (você vs comparações)
+   ========================================================= */
+.peer-list{ display:flex; flex-direction:column; gap:7px; }
+.peer-lead{ margin:0 0 12px; font-size:13.5px; line-height:1.5; color:var(--mut); }
+.peer-lead b{ color:#fff; font-weight:600; }
+.peer-lead .g{ color:var(--gold); font-weight:700; }
+.peer-row{ display:flex; align-items:center; gap:11px; padding:10px 12px; border-radius:11px;
+  background:var(--card2); border:1px solid var(--line); }
+.peer-row.you{ border-color:rgba(227,165,46,.45); background:rgba(227,165,46,.07); }
+.peer-row .pdot{ width:11px; height:11px; border-radius:50%; flex:0 0 auto; box-shadow:0 0 0 2px var(--card2); }
+.peer-row .pdot.ring{ box-shadow:0 0 0 1px rgba(255,255,255,.45), 0 0 0 2px var(--card2); }
+.peer-row .prank{ font-family:var(--disp); font-weight:700; font-size:13px; color:var(--mut); min-width:34px; text-align:center; flex:0 0 auto; }
+.peer-row.you .prank{ color:var(--gold); }
+.peer-row .pmain{ flex:1 1 auto; min-width:0; display:flex; flex-direction:column; gap:1px; }
+.peer-row .pname{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:14px; color:var(--tx); }
+.peer-row.you .pname{ font-weight:600; }
+.peer-row .psub{ font-size:10.5px; color:var(--mut2); font-variant-numeric:tabular-nums; }
+.peer-row .ppts{ flex:0 0 auto; font-family:var(--disp); font-weight:600; font-size:13.5px; color:var(--tx); }
+.peer-row .pgap{ flex:0 0 auto; font-size:11.5px; color:var(--mut2); min-width:62px; text-align:end; font-variant-numeric:tabular-nums; }
+.peer-row .pgap.up{ color:#7BD389; }
+.peer-row .pgap.down{ color:var(--red); }
 
 /* =========================================================
    RESPONSIVE (min-width, mobile-first)
@@ -296,6 +330,14 @@ button{ font:inherit; color:inherit; }
     </div>
     <div class="combo lead" data-slot="you" id="combo-you"></div>
     <div class="kpis" id="kpis" aria-live="polite"></div>
+  </section>
+
+  <!-- RESUMO DA SUA TRAJETÓRIA -->
+  <section class="card insights-card" id="insights-card" aria-labelledby="ins-h" hidden>
+    <div class="card-h">
+      <h2 class="card-t" id="ins-h">Sua trajetória em 4 pontos</h2>
+    </div>
+    <ul class="insights" id="insights" aria-live="polite"></ul>
   </section>
 
   <!-- COMPARAÇÕES -->
@@ -358,6 +400,16 @@ button{ font:inherit; color:inherit; }
     <p class="scroll-hint">deslize na horizontal para ver todos os jogos →</p>
     <div class="tip" id="tip-pos"></div>
     <p class="note" id="pos-note"></p>
+  </section>
+
+  <!-- VOCÊ vs GRUPO DE COMPARAÇÃO -->
+  <section class="card peer-card" id="peer-card" aria-labelledby="peer-h" hidden>
+    <div class="card-h">
+      <h2 class="card-t" id="peer-h">Você vs. seu grupo</h2>
+      <span class="card-s" id="peer-sub"></span>
+    </div>
+    <p class="peer-lead" id="peer-lead"></p>
+    <div class="peer-list" id="peer-list" aria-live="polite"></div>
   </section>
 
   <p class="foot">
@@ -454,7 +506,8 @@ const VIEW = {
    STATE
    ============================================================ */
 const SLOTS=['you','c1','c2','c3','c4'];
-const COLOR={you:'#E3A52E',c1:'#E23A3A',c2:'#FFFFFF',c3:'#CACBD1',c4:'#7E7F87'};
+const COLOR={you:'#E3A52E',c1:'#E23A3A',c2:'#050507',c3:'#FFFFFF',c4:'#9A9BA3'};
+const needsRing = slot => { const c=(COLOR[slot]||'').toUpperCase(); return c==='#FFFFFF'||c==='#050507'; };
 const CMP=['c1','c2','c3','c4'];
 const CMP_LBL={c1:'Apostador 2',c2:'Apostador 3',c3:'Apostador 4',c4:'Apostador 5'};
 const codByName = nm => { const b=B.find(x=>x.n===nm); return b?b.c:null; };
@@ -489,7 +542,7 @@ $('p-apost').textContent = DATA.meta.totalBetters;
    COMBOBOX  (field button + dual-mode popup)
    ============================================================ */
 function fieldHTML(slot){
-  const ring = slot==='c2' ? ' ring' : '';
+  const ring = needsRing(slot) ? ' ring' : '';
   const lbl  = slot==='you' ? 'seu nome' : CMP_LBL[slot];
   return '<button type="button" class="combo-field" id="cf-'+slot+'" '+
          'aria-haspopup="listbox" aria-expanded="false" aria-controls="poplist" '+
@@ -673,7 +726,7 @@ function renderLegend(id, withAvg){
   else slots.forEach(slot=>{
     const b=byCod[state.sel[slot]];
     const it=document.createElement('span'); it.className='lg-it act'+(slot==='you'?' you-it':'');
-    const sw = slot==='c2' ? 'ln sw' : 'ln';
+    const sw = needsRing(slot) ? 'ln sw ring' : 'ln';
     it.innerHTML='<span class="'+sw+'" style="background:'+COLOR[slot]+'"></span><span class="nm" title="'+esc(b.n)+'">'+esc(b.n)+(slot==='you'?' (você)':'')+'</span>';
     box.appendChild(it);
   });
@@ -687,6 +740,150 @@ function renderSubs(){
   const c=state.sel.you, pn=$('pos-note'); if(!pn) return;
   if(c){ pn.innerHTML='Você está em <b>'+ord(FINAL_RANK[c])+'</b> de '+DATA.meta.totalBetters+' apostadores'; }
   else pn.textContent='';
+}
+
+/* ============================================================
+   INSIGHTS — "Sua trajetória em 4 pontos" (computed per bettor)
+   ============================================================ */
+const Q1 = Math.ceil(DATA.meta.totalBetters/4);   // limite do 1º quartil
+
+function renderInsights(){
+  const card=$('insights-card'), ul=$('insights');
+  if(!card||!ul) return;
+  const you=state.sel.you;
+  if(!you){ card.hidden=true; ul.innerHTML=''; return; }
+  card.hidden=false;
+  const b=byCod[you], p=b.p, bt=b.bt, NB=DATA.meta.totalBetters;
+  const G_ = x=>`<span class="g">${x}</span>`;
+  const out=[];
+
+  /* 1 — posição, consistência e quando entrou no 1º quartil */
+  const finalRk=FINAL_RANK[you], finalInQ1=finalRk<=Q1;
+  let peak=Infinity; for(let k=0;k<NG;k++){ const r=rankChrono[k][you]; if(r<peak)peak=r; }
+  // faixa "estável" ignora o vai-e-vem dos primeiros jogos (ruído de início)
+  const warm=Math.min(8,NG-1); let wMin=Infinity,wMax=0;
+  for(let k=warm;k<NG;k++){ const r=rankChrono[k][you]; if(r<wMin)wMin=r; if(r>wMax)wMax=r; }
+  const wRange=wMax-wMin;
+  const cons = wRange<=10 ? 'Muito consistente' : wRange<=25 ? 'Bastante regular'
+             : wRange<=50 ? 'Com altos e baixos' : 'Bem oscilante';
+  const faixa = wMin===wMax ? G_(wMin+'º') : G_(wMin+'º–'+wMax+'º');
+  let firstQ1=-1; for(let k=0;k<NG;k++){ if(rankChrono[k][you]<=Q1){ firstQ1=k; break; } }
+  let stayedQ1=firstQ1>=0; if(firstQ1>=0){ for(let k=firstQ1;k<NG;k++){ if(rankChrono[k][you]>Q1){ stayedQ1=false; break; } } }
+  const enterRound=firstQ1>=0?G[CHRONO[firstQ1]].md:0;
+  const whenQ1 = enterRound===1?'logo na 1ª rodada':enterRound===2?'na 2ª rodada':'só na reta final (3ª rodada)';
+  const finishStr = finalRk===1 ? 'fechando na <b>liderança</b>' : finalRk<=3 ? `fechando no <b>pódio</b> (${G_(finalRk+'º')})` : `fechando em ${G_(finalRk+'º')} de ${NB}`;
+  if(stayedQ1){
+    out.push(`<b>Muito firme no topo</b>: entrou no ${G_('1º quartil')} (top ${Q1}) <b>${whenQ1}</b> e <b>não saiu mais</b>, ${finishStr} — com auge no ${G_(peak+'º')}`);
+  } else if(peak<=Q1){
+    out.push(`<b>${cons}</b>: ${finishStr} e chegou a entrar no ${G_('1º quartil')} (top ${Q1}) <b>${whenQ1}</b> — auge no ${G_(peak+'º')} —, mas balançou na faixa do ${faixa}`);
+  } else {
+    out.push(`<b>${cons}</b>: rondou a faixa do ${faixa}, com melhor momento no ${G_(peak+'º')}, ${finishStr}`);
+  }
+
+  /* 2 — trajetória por rodada (arrancada / tropeço / regular), com magnitude */
+  const ptsR=ROUND_IDX.map(R=>R.idx.reduce((s,i)=>s+(p[i]||0),0));
+  const rkR =ROUND_IDX.map((_,k)=>rankRound[k][you]);
+  let climb=null, drop=null;
+  for(let k=1;k<rkR.length;k++){ const ch=rkR[k-1]-rkR[k];
+    if(!climb||ch>climb.ch) climb={round:k+1,ch}; if(!drop||ch<drop.ch) drop={round:k+1,ch}; }
+  const bestPtsRound=ptsR.indexOf(Math.max(...ptsR))+1;
+  const climbWord = c => c>=18?'espetacular':c>=9?'forte':'boa';
+  const dropWord  = c => c>=18?'dura':c>=9?'feia':'';
+  if(climb && climb.ch>=3){
+    let s=`Teve uma <b>arrancada ${climbWord(climb.ch)}</b> na <b>${climb.round}ª rodada</b>, subindo ${G_(climb.ch+' posições')}`;
+    if(drop && drop.ch<=-3 && drop.round!==climb.round) s+=`, mas <b>recuou</b> na ${drop.round}ª (${G_(Math.abs(drop.ch)+' a menos')})`;
+    out.push(s);
+  } else if(drop && drop.ch<=-3){
+    const w=dropWord(Math.abs(drop.ch)); out.push(`Sofreu uma <b>queda ${w}</b> na <b>${drop.round}ª rodada</b>, perdendo ${G_(Math.abs(drop.ch)+' posições')}`);
+  } else {
+    out.push(`Manteve um ritmo <b>bastante parelho</b> entre as rodadas, sem solavancos — e pontuou mais na <b>${bestPtsRound}ª</b> (${G_(ptsR[bestPtsRound-1]+' pts')})`);
+  }
+
+  /* 3 — grupos: melhor (+ cravada) e pior, com qualificador */
+  const groups=[...new Set(G.map(g=>g.g))];
+  const ptsG={}, ngG={}; groups.forEach(gr=>{ptsG[gr]=0;ngG[gr]=0;});
+  G.forEach((g,i)=>{ ptsG[g.g]+=(p[i]||0); ngG[g.g]++; });
+  let bestG=groups[0], worstG=groups[0];
+  groups.forEach(gr=>{ if(ptsG[gr]>ptsG[bestG])bestG=gr; if(ptsG[gr]<ptsG[worstG])worstG=gr; });
+  const ppgBest=ptsG[bestG]/ngG[bestG], ppgWorst=ptsG[worstG]/ngG[worstG];
+  let bgi=-1, bgp=-1; G.forEach((g,i)=>{ if(g.g===bestG && (p[i]||0)>bgp){ bgp=p[i]||0; bgi=i; } });
+  const bg=G[bgi];
+  const bestVerb = ppgBest>=6 ? 'Brilhou' : ppgBest>=4.5 ? 'Mandou muito bem' : 'Foi bem';
+  let s3=`${bestVerb} no <b>Grupo ${bestG}</b> (${G_(ptsG[bestG]+' pts')})`;
+  if(bgp>=8) s3+=`, cravando em cheio <b>${esc(bg.a)} ${bg.ga}×${bg.gb} ${esc(bg.b)}</b>`;
+  else if(bgp>=5) s3+=`, com destaque para <b>${esc(bg.a)} ${bg.ga}×${bg.gb} ${esc(bg.b)}</b>`;
+  const worstVerb = ppgWorst<=1.5 ? 'patinou feio' : ppgWorst<=2.5 ? 'patinou' : 'rendeu menos';
+  s3+=`; já no <b>Grupo ${worstG}</b> ${worstVerb} (${G_(ptsG[worstG]+' pts')})`;
+  out.push(s3);
+
+  /* 4 — leitura de seleções: subestimou / superestimou (fallback: pisada) */
+  const teams=[...new Set(G.flatMap(g=>[g.a,g.b]))];
+  const dd={}; teams.forEach(t=>dd[t]={d:0,n:0});
+  G.forEach((g,i)=>{ const gu=bt[i]; if(!gu||gu[0]==null) return;
+    dd[g.a].d+=gu[0]-g.ga; dd[g.a].n++; dd[g.b].d+=gu[1]-g.gb; dd[g.b].n++; });
+  let under=null, over=null;
+  teams.forEach(t=>{ const o=dd[t]; if(!o.n) return;
+    if(!under||o.d<under.d) under={t,...o}; if(!over||o.d>over.d) over={t,...o}; });
+  const mag = d => Math.abs(d)>=5 ? 'muito ' : Math.abs(d)>=3 ? 'bastante ' : '';
+  if(under && over && under.d<=-1 && over.d>=1 && under.t!==over.t){
+    out.push(`Na leitura das seleções, <b>subestimou ${mag(under.d)}${esc(under.t)}</b> (fez mais gols do que você apostou) e <b>superestimou ${mag(over.d)}${esc(over.t)}</b>`);
+  } else {
+    let wi=-1, we=-1; G.forEach((g,i)=>{ const gu=bt[i]; if((p[i]||0)===0 && gu && gu[0]!=null){ const e=Math.abs(gu[0]-g.ga)+Math.abs(gu[1]-g.gb); if(e>we){we=e;wi=i;} } });
+    if(wi>=0){ const g=G[wi], gu=bt[wi];
+      out.push(`Onde mais pisou na bola: apostou <b>${gu[0]}×${gu[1]}</b> em <b>${esc(g.a)} vs ${esc(g.b)}</b>, mas deu <b>${g.ga}×${g.gb}</b>`);
+    } else out.push(`Quase não errou feio: <b>raramente</b> ficou zerado numa partida`);
+  }
+
+  ul.innerHTML = out.map(t=>'<li>'+t+'</li>').join('');
+}
+
+/* ============================================================
+   PEER GROUP — você vs. comparações selecionadas
+   ============================================================ */
+function renderPeers(){
+  const card=$('peer-card'), list=$('peer-list'), sub=$('peer-sub');
+  if(!card||!list) return;
+  const you=state.sel.you, comps=CMP.filter(s=>state.sel[s]);
+  if(!you || !comps.length){ card.hidden=true; list.innerHTML=''; if(sub) sub.textContent=''; return; }
+  card.hidden=false;
+  const seen=new Set(), set=[];
+  [['you',you], ...comps.map(s=>[s,state.sel[s]])].forEach(([slot,cod])=>{ if(seen.has(cod))return; seen.add(cod); set.push({slot,cod}); });
+  set.sort((a,b)=>FINAL_TOTAL[b.cod]-FINAL_TOTAL[a.cod]);
+  const youTot=FINAL_TOTAL[you];
+  const youGroupRk=set.findIndex(x=>x.cod===you)+1;
+  if(sub) sub.textContent = (youGroupRk===1?'você lidera o grupo':youGroupRk+'º de '+set.length+' no grupo');
+
+  // lead sentence (corpo a mais)
+  const lead=$('peer-lead');
+  if(lead){
+    const top=set[0], bottom=set[set.length-1];
+    let txt;
+    if(youGroupRk===1){
+      const second=set[1];
+      txt = second
+        ? `Você <b>lidera</b> o grupo, <span class="g">${youTot-FINAL_TOTAL[second.cod]} pts</span> à frente de <b>${esc(byCod[second.cod].n)}</b>.`
+        : `Você <b>lidera</b> o grupo.`;
+    } else {
+      txt = `No grupo você é o <span class="g">${youGroupRk}º</span> de ${set.length}. Quem manda é <b>${esc(byCod[top.cod].n)}</b> (<span class="g">${FINAL_TOTAL[top.cod]} pts</span>, ${ord(FINAL_RANK[top.cod])} geral), <span class="g">${FINAL_TOTAL[top.cod]-youTot} pts</span> na sua frente.`;
+    }
+    lead.innerHTML = txt;
+  }
+
+  list.innerHTML = set.map(x=>{
+    const b=byCod[x.cod], isYou=x.cod===you, ring=needsRing(x.slot)?' ring':'';
+    const gap=FINAL_TOTAL[x.cod]-youTot, ppg=(FINAL_TOTAL[x.cod]/NG).toFixed(1);
+    let g='';
+    if(isYou) g='<span class="pgap">— você</span>';
+    else if(gap>0) g='<span class="pgap up">+'+gap+' à frente</span>';
+    else if(gap<0) g='<span class="pgap down">'+Math.abs(gap)+' atrás</span>';
+    else g='<span class="pgap">empatado</span>';
+    return '<div class="peer-row'+(isYou?' you':'')+'">'+
+      '<span class="pdot'+ring+'" style="background:'+COLOR[x.slot]+'"></span>'+
+      '<span class="prank">'+ord(FINAL_RANK[x.cod])+'</span>'+
+      '<span class="pmain"><span class="pname">'+esc(b.n)+(isYou?' (você)':'')+'</span>'+
+        '<span class="psub">'+ppg+' pts/jogo</span></span>'+
+      '<span class="ppts">'+FINAL_TOTAL[x.cod]+' pts</span>'+ g +'</div>';
+  }).join('');
 }
 
 /* ============================================================
@@ -805,10 +1002,12 @@ function drawChart(svgId, mode){          // mode 'acc' | 'pos'
 function attachHover(wrapId, svgId, tipId, mode){
   const wrap=$(wrapId), svg=$(svgId), tip=$(tipId);
   if(!wrap||!svg||!tip) return;
-  let crossEls=[];
+  let crossEls=[], lastI=-1, pendingX=null, rafPending=false;
   const closeBtn=tip.querySelector('.tip-close');
-  function clearCross(){ crossEls.forEach(e=>e.remove()); crossEls=[]; tip.classList.remove('show'); }
+  function clearCross(){ crossEls.forEach(e=>e.remove()); crossEls=[]; tip.classList.remove('show'); lastI=-1; }
   if(closeBtn) closeBtn.addEventListener('click', clearCross);
+  function requestShow(clientX){ pendingX=clientX; if(rafPending) return; rafPending=true;
+    requestAnimationFrame(()=>{ rafPending=false; const i=nearest(pendingX); if(i<0) return; if(i!==lastI){ lastI=i; showTip(i); } }); }
 
   function nearest(clientX){
     const geo=svg._geo; if(!geo) return -1;
@@ -862,16 +1061,16 @@ function attachHover(wrapId, svgId, tipId, mode){
     }
   }
 
-  /* desktop: hover scrub */
-  let fine = window.matchMedia('(hover:hover) and (pointer:fine)');
-  wrap.addEventListener('pointermove',e=>{ if(e.pointerType==='mouse' || fine.matches){ const i=nearest(e.clientX); if(i>=0) showTip(i); } }, {passive:true});
+  /* desktop: hover scrub (throttled; only redraws when the nearest point changes) */
+  const fine = window.matchMedia('(hover:hover) and (pointer:fine)');
+  wrap.addEventListener('pointermove',e=>{ if(e.pointerType==='mouse' || fine.matches) requestShow(e.clientX); }, {passive:true});
   wrap.addEventListener('pointerleave',()=>{ if(!isCompact()) clearCross(); }, {passive:true});
 
   /* touch: tap to show nearest (ignore scroll-drags) */
   let downX=0,downY=0,downT=0,moved=false;
   wrap.addEventListener('pointerdown',e=>{ if(e.pointerType==='mouse')return; downX=e.clientX; downY=e.clientY; downT=Date.now(); moved=false; }, {passive:true});
   wrap.addEventListener('pointermove',e=>{ if(e.pointerType==='mouse')return; if(Math.abs(e.clientX-downX)>8||Math.abs(e.clientY-downY)>8) moved=true; }, {passive:true});
-  wrap.addEventListener('pointerup',e=>{ if(e.pointerType==='mouse')return; if(moved||Date.now()-downT>600) return; const i=nearest(e.clientX); if(i>=0) showTip(i); }, {passive:true});
+  wrap.addEventListener('pointerup',e=>{ if(e.pointerType==='mouse')return; if(moved||Date.now()-downT>600) return; const i=nearest(e.clientX); if(i>=0){ lastI=i; showTip(i); } }, {passive:true});
 
   wrap._clearCross=clearCross;
 }
@@ -890,6 +1089,7 @@ function scheduleDraw(){ if(rafId)cancelAnimationFrame(rafId); rafId=requestAnim
 function rerender(){
   SLOTS.forEach(setField);
   renderKPIs(); renderSubs();
+  renderInsights(); renderPeers();
   renderLegend('legend1', true); renderLegend('legend2', false);
   ['cw-acc','cw-pos'].forEach(id=>{ const w=$(id); if(w&&w._clearCross) w._clearCross(); });
   scheduleDraw();
