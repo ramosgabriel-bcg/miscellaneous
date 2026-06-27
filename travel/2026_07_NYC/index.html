@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roteiro Nova York · 14–23 julho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1B2C; --ink2:#17283F; --paper:#FBF8F2; --card:#FFFFFF;
+    --amber:#D99A2B; --amber-lt:#EBB552; --slate:#5C6B7A; --line:#EAE1D2;
+    --sky:#7FA8C9; --ink-06:rgba(14,27,44,.06); --ink-12:rgba(14,27,44,.12);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact;scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;font-size:16px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+  .eyebrow{font:600 12px/1 "Inter";letter-spacing:.2em;text-transform:uppercase;color:var(--amber)}
+  .serif{font-family:"Fraunces",Georgia,serif}
+
+  /* ---------- print button ---------- */
+  .print-btn{
+    position:fixed;top:18px;right:18px;z-index:50;cursor:pointer;
+    background:var(--amber);color:#1a1206;border:none;border-radius:999px;
+    font:600 13px/1 "Inter";letter-spacing:.02em;padding:11px 18px;
+    box-shadow:0 6px 20px rgba(217,154,43,.35);transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .print-btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(217,154,43,.45)}
+  .print-btn:focus-visible{outline:3px solid #1a1206;outline-offset:2px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;color:#fff;
+    background:radial-gradient(120% 120% at 50% 120%, #24416b 0%, var(--ink2) 38%, var(--ink) 78%);
+    padding:96px 24px 0;text-align:center;
+  }
+  .sun{
+    position:absolute;left:50%;bottom:78px;width:520px;height:520px;transform:translateX(-50%);
+    background:radial-gradient(circle, rgba(235,181,82,.55) 0%, rgba(217,154,43,.18) 38%, transparent 64%);
+    pointer-events:none;filter:blur(2px);
+  }
+  .hero-inner{position:relative;z-index:2;max-width:760px;margin:0 auto;padding-bottom:140px}
+  .hero .eyebrow{color:var(--amber-lt);opacity:.95}
+  .hero h1{
+    font-family:"Fraunces",serif;font-weight:500;letter-spacing:-.01em;line-height:.96;
+    font-size:clamp(54px,11vw,116px);margin:.18em 0 .12em;
+  }
+  .hero .tagline{font-family:"Fraunces",serif;font-style:italic;font-weight:400;font-size:clamp(18px,3.4vw,24px);color:#e9eef5;opacity:.92;margin:0}
+  .rule{width:64px;height:2px;background:var(--amber);margin:22px auto 24px;border-radius:2px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px 12px;justify-content:center;margin-top:6px}
+  .chip{
+    font:500 13px/1 "Inter";letter-spacing:.02em;color:#eaf0f7;
+    border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:9px 15px;backdrop-filter:blur(2px);
+  }
+  .chip b{color:var(--amber-lt);font-weight:700;margin-right:4px}
+  .skyline{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:160px;z-index:1;display:block}
+
+  /* ---------- overview ---------- */
+  .section{padding:64px 0 8px}
+  .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px}
+  .section-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(26px,4.4vw,34px);margin:0;letter-spacing:-.01em}
+  .section-head .num{font:600 13px/1 "Inter";color:var(--amber);letter-spacing:.16em}
+
+  .grid{display:grid;grid-template-columns:1fr;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+  .grow{display:grid;grid-template-columns:64px 116px 1fr;align-items:center;gap:0;border-top:1px solid var(--line)}
+  .grow:first-child{border-top:none}
+  .grow:hover{background:#fcfaf5}
+  .grow .gn{font-family:"Fraunces",serif;font-weight:600;font-size:18px;color:var(--amber);text-align:center;padding:13px 0}
+  .grow .gd{font:500 13px/1.3 "Inter";color:var(--slate);padding:13px 8px}
+  .grow .gt{font:500 15px/1.4 "Inter";color:var(--ink);padding:13px 16px 13px 6px}
+  .grow.fam .gn{color:var(--sky)}
+  .grow.fam .gt{color:var(--slate);font-style:italic}
+
+  .legend{margin:14px 2px 0;font:500 13px/1.5 "Inter";color:var(--slate)}
+  .legend .star{color:var(--amber);font-weight:700}
+
+  /* ---------- skyline divider ---------- */
+  .divider{display:flex;justify-content:center;margin:40px 0 8px;opacity:.5}
+  .divider svg{width:240px;height:30px}
+
+  /* ---------- day cards ---------- */
+  .days{display:flex;flex-direction:column;gap:20px}
+  .day{
+    display:grid;grid-template-columns:120px 1fr;background:var(--card);
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    box-shadow:0 1px 0 rgba(14,27,44,.03);transition:transform .18s ease,box-shadow .18s ease;
+    opacity:0;transform:translateY(14px);animation:rise .6s ease forwards;
+  }
+  .day:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(14,27,44,.10)}
+  .rail{
+    background:linear-gradient(165deg,var(--ink) 0%,var(--ink2) 100%);color:#fff;
+    padding:22px 16px;display:flex;flex-direction:column;justify-content:flex-start;gap:6px;position:relative;
+  }
+  .rail::after{content:"";position:absolute;top:22px;right:0;width:3px;height:34px;background:var(--amber);border-radius:3px}
+  .rail .dn{font-family:"Fraunces",serif;font-weight:600;font-size:44px;line-height:.9}
+  .rail .dw{font:600 12px/1.2 "Inter";letter-spacing:.08em;text-transform:uppercase;color:#bcd0e6;margin-top:2px}
+  .day.fam .rail{background:linear-gradient(165deg,#2a3f57 0%,#33506e 100%)}
+  .day.fam .rail::after{background:var(--sky)}
+
+  .body{padding:22px 24px 20px}
+  .body .deyebrow{font:700 11px/1 "Inter";letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
+  .body h3{font-family:"Fraunces",serif;font-weight:600;font-size:22px;line-height:1.12;margin:7px 0 14px;letter-spacing:-.005em}
+
+  .seg{display:grid;grid-template-columns:74px 1fr;gap:10px;padding:8px 0;border-top:1px dashed var(--ink-12)}
+  .seg:first-of-type{border-top:none;padding-top:2px}
+  .seg .sl{font:700 11px/1.5 "Inter";letter-spacing:.12em;text-transform:uppercase;color:var(--amber);padding-top:2px}
+  .seg p{margin:0;font-size:15px;color:#26323f}
+  .fam-block{font-size:15.5px;color:#26323f;margin:2px 0 6px}
+  .fam-ideas{font-size:14px;color:var(--slate);margin:0}
+  .fam-ideas b{color:var(--ink)}
+
+  .dfoot{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:7px}
+  .fi{font-size:13.5px;color:#39424d}
+  .fi .k{font:700 11px/1 "Inter";letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-right:8px}
+  .tip{
+    display:inline-block;align-self:flex-start;margin-top:2px;
+    background:#fdf4e3;border:1px solid #f0dcb4;color:#8a5a14;border-radius:8px;
+    font:500 13px/1.4 "Inter";padding:7px 12px;
+  }
+  .tip.free{background:#eef6ef;border-color:#cfe6cf;color:#2f6b39}
+  .star{color:var(--amber);font-weight:700}
+
+  /* ---------- extras ---------- */
+  .extras{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px}
+  .box h4{font-family:"Fraunces",serif;font-weight:600;font-size:19px;margin:0 0 4px}
+  .box .sub{font:500 12px/1.4 "Inter";color:var(--slate);margin:0 0 14px}
+  .row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px dashed var(--ink-12);font-size:14px}
+  .row:first-of-type{border-top:none}
+  .row .name{color:var(--ink);font-weight:500}
+  .row .meta{color:var(--slate);text-align:right;white-space:nowrap}
+  .row .meta.ok{color:#2f6b39;font-weight:600}
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{background:#f4efe6;border:1px solid var(--line);border-radius:999px;padding:8px 13px;font:500 13px/1 "Inter";color:#3a4450}
+  .budget{grid-column:1/-1;background:linear-gradient(135deg,var(--ink) 0%,var(--ink2) 100%);color:#fff;border:none;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  .budget .big{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(30px,6vw,46px);line-height:1;color:var(--amber-lt)}
+  .budget .lbl{font:600 12px/1.3 "Inter";letter-spacing:.14em;text-transform:uppercase;color:#bcd0e6}
+  .budget .cap{font-size:13.5px;color:#dde6f0;max-width:340px}
+
+  footer{margin:54px 0 60px;text-align:center;color:var(--slate)}
+  footer .fr{width:48px;height:2px;background:var(--amber);margin:0 auto 18px;border-radius:2px}
+  footer .ft{font-family:"Fraunces",serif;font-style:italic;font-size:18px;color:var(--ink)}
+  footer .fs{font-size:13px;margin-top:6px}
+
+  @media (max-width:680px){
+    .day{grid-template-columns:1fr}
+    .rail{flex-direction:row;align-items:center;gap:12px;padding:14px 18px}
+    .rail::after{display:none}
+    .rail .dn{font-size:30px}
+    .grow{grid-template-columns:48px 1fr;grid-auto-rows:auto}
+    .grow .gd{grid-column:2;padding-top:0;padding-bottom:0}
+    .grow .gt{grid-column:1/-1;padding:6px 16px 13px}
+    .extras{grid-template-columns:1fr}
+    .seg{grid-template-columns:1fr}
+    .seg .sl{padding-top:0}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .day{animation:none;opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* ---------- print ---------- */
+  @page{size:A4;margin:13mm}
+  @media print{
+    body{background:#fff;font-size:11.5px}
+    .print-btn{display:none}
+    .wrap{max-width:none;padding:0}
+    .hero{background:#fff;color:var(--ink);padding:8px 0 0}
+    .hero .eyebrow{color:var(--amber)}
+    .hero h1{font-size:46px;color:var(--ink)}
+    .hero .tagline{color:var(--slate)}
+    .hero .chip{color:var(--ink);border-color:var(--ink-12)}
+    .hero .chip b{color:var(--amber)}
+    .sun{display:none}
+    .hero-inner{padding-bottom:64px}
+    .skyline .fill{fill:var(--ink)}
+    .section{padding:18px 0 0}
+    .day{animation:none;opacity:1;transform:none;box-shadow:none;break-inside:avoid;page-break-inside:avoid}
+    .rail{background:#0E1B2C !important}
+    .day.fam .rail{background:#33506e !important}
+    .box,.grid{break-inside:avoid}
+    .budget{background:#0E1B2C !important}
+    footer{margin:24px 0 0}
+  }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Imprimir / Salvar PDF</button>
+
+<header class="hero">
+  <div class="sun"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Roteiro de viagem · 14 – 23 de julho</div>
+    <h1>Nova York</h1>
+    <p class="tagline">Uma viagem a dois</p>
+    <div class="rule"></div>
+    <div class="chips">
+      <span class="chip"><b>10</b> dias</span>
+      <span class="chip"><b>2</b> pessoas</span>
+      <span class="chip"><b>Base</b> White Plains</span>
+      <span class="chip"><b>JFK</b> 14/07 7:45 → 23/07 20:30</span>
+    </div>
+  </div>
+  <svg class="skyline" viewBox="0 0 1200 160" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+    <path class="fill" fill="#D99A2B" d="M0,160 L0,96 L40,96 L40,78 L70,78 L70,104 L96,104 L96,70 L104,70 L104,54 L112,54 L112,70 L120,70 L120,108 L150,108 L150,86 L176,86 L176,60 L182,40 L188,60 L188,86 L210,86 L210,100 L236,100 L236,72 L246,72 L246,112 L286,112 L286,64 L300,64 L300,30 L306,30 L306,64 L320,64 L320,96 L348,96 L348,80 L372,80 L372,108 L398,108 L398,58 L406,58 L406,90 L430,90 L430,104 L470,104 L470,76 L484,76 L484,44 L490,28 L496,44 L496,76 L516,76 L516,100 L544,100 L544,70 L556,70 L556,110 L596,110 L596,52 L604,52 L604,84 L628,84 L628,102 L660,102 L660,74 L676,74 L676,40 L684,16 L692,40 L692,74 L712,74 L712,98 L742,98 L742,80 L766,80 L766,106 L792,106 L792,60 L800,60 L800,92 L824,92 L824,104 L860,104 L860,72 L872,72 L872,108 L908,108 L908,56 L916,56 L916,34 L922,34 L922,56 L930,56 L930,88 L956,88 L956,100 L986,100 L986,70 L1000,70 L1000,110 L1036,110 L1036,64 L1044,64 L1044,90 L1068,90 L1068,104 L1100,104 L1100,78 L1120,78 L1120,50 L1126,50 L1126,78 L1140,78 L1140,98 L1166,98 L1166,84 L1200,84 L1200,160 Z"/>
+  </svg>
+</header>
+
+<main class="wrap">
+
+  <!-- OVERVIEW -->
+  <section class="section">
+    <div class="section-head"><span class="num">01</span><h2>Visão geral</h2></div>
+    <div class="grid">
+<div class="grow"><div class="gn">01</div><div class="gd">14 jul · ter</div><div class="gt">Midtown & Times Square</div></div>
+<div class="grow"><div class="gn">02</div><div class="gd">15 jul · qua</div><div class="gt">Brooklyn → ponte → Wall Street</div></div>
+<div class="grow"><div class="gn">03</div><div class="gd">16 jul · qui</div><div class="gt">Central Park & Upper West Side</div></div>
+<div class="grow"><div class="gn">04</div><div class="gd">17 jul · sex</div><div class="gt">High Line, Little Island & Whitney</div></div>
+<div class="grow fam"><div class="gn">—</div><div class="gd">18 jul · sáb</div><div class="gt">White Plains</div></div>
+<div class="grow fam"><div class="gn">—</div><div class="gd">19 jul · dom</div><div class="gt">White Plains</div></div>
+<div class="grow"><div class="gn">07</div><div class="gd">20 jul · seg</div><div class="gt">Coney Island</div></div>
+<div class="grow"><div class="gn">08</div><div class="gd">21 jul · ter</div><div class="gt">Chinatown, Little Italy & East Village</div></div>
+<div class="grow"><div class="gn">09</div><div class="gd">22 jul · qua</div><div class="gt">Upper East Side & SUMMIT</div></div>
+<div class="grow"><div class="gn">10</div><div class="gd">23 jul · qui</div><div class="gt">Despedida</div></div>
+</div>
+    <p class="legend"><span class="star">★</span> indica lugares e restaurantes que vocês pediram. Os dias 18 e 19 são livres, com a família em White Plains.</p>
+  </section>
+
+  <div class="divider">
+    <svg viewBox="0 0 240 30" aria-hidden="true"><path fill="#0E1B2C" d="M0,30 L0,20 L18,20 L18,14 L30,14 L30,8 L34,8 L34,14 L46,14 L46,22 L62,22 L62,10 L74,10 L74,4 L78,4 L78,10 L90,10 L90,18 L108,18 L108,12 L120,12 L120,2 L124,2 L124,12 L136,12 L136,20 L152,20 L152,8 L164,8 L164,16 L182,16 L182,6 L186,6 L186,16 L198,16 L198,22 L216,22 L216,12 L228,12 L228,18 L240,18 L240,30 Z"/></svg>
+  </div>
+
+  <!-- DAYS -->
+  <section class="section">
+    <div class="section-head"><span class="num">02</span><h2>Dia a dia</h2></div>
+    <div class="days">
+<article class="day" style="animation-delay:0ms"><div class="rail"><span class="dn">01</span><span class="dw">14 jul<br>ter</span></div><div class="body"><div class="deyebrow">Midtown & Times Square</div><h3>Chegada e primeiras luzes</h3><div class="seg"><span class="sl">Manhã</span><p>Chegada em JFK às 7:45, imigração e bagagem; seguir para a cidade. Começo leve por causa do voo.</p></div><div class="seg"><span class="sl">Tarde</span><p>Grand Central, Bryant Park, 5ª Avenida, Rockefeller e Times Square. Loja Ko'llection ★ na Koreatown.</p></div><div class="seg"><span class="sl">Noite</span><p>Times Square iluminada e jantar pela região.</p></div><div class="dfoot"><div class="fi"><span class="k">Como chegar</span>JFK → cidade; depois tudo a pé e de metrô.</div><div class="fi"><span class="k">Onde comer</span>Raising Cane's ★ · Los Tacos No.1 ★</div><div class="tip">Dica · SUMMIT fica para o Dia 9 — fecha às terças.</div></div></div></article>
+<article class="day" style="animation-delay:70ms"><div class="rail"><span class="dn">02</span><span class="dw">15 jul<br>qua</span></div><div class="body"><div class="deyebrow">Brooklyn → ponte → Wall Street</div><h3>Do Brooklyn à ponte, rumo a Wall Street</h3><div class="seg"><span class="sl">Manhã</span><p>Metrô até DUMBO ★: Brooklyn Bridge Park e a foto do skyline entre as pontes. Começar a travessia da Ponte do Brooklyn ★ rumo a Manhattan, com o skyline sempre à frente.</p></div><div class="seg"><span class="sl">Tarde</span><p>Chegando em Manhattan: Wall Street ★, Charging Bull, Trinity Church. Eataly Wall Street ★ para almoço e o 9/11 Memorial com o Oculus.</p></div><div class="seg"><span class="sl">Noite</span><p>Staten Island Ferry ★ (ida e volta): vista grátis da Estátua da Liberdade e do skyline ao entardecer. Jantar no Seaport.</p></div><div class="dfoot"><div class="fi"><span class="k">Como chegar</span>Metrô até DUMBO; volta a pé pela ponte; metrô no FiDi.</div><div class="fi"><span class="k">Onde comer</span>Eataly Wall St ★ · Time Out Market (DUMBO)</div><div class="tip">Dica · Travessia Brooklyn → Manhattan é o melhor sentido para fotos.</div></div></div></article>
+<article class="day" style="animation-delay:140ms"><div class="rail"><span class="dn">03</span><span class="dw">16 jul<br>qui</span></div><div class="body"><div class="deyebrow">Central Park & Upper West Side</div><h3>Central Park de ponta a ponta</h3><div class="seg"><span class="sl">Manhã</span><p>Central Park ★ completo: Bethesda Terrace, Bow Bridge, Belvedere Castle, Strawberry Fields, Reservoir e Sheep Meadow.</p></div><div class="seg"><span class="sl">Tarde</span><p>Upper West Side a pé. Museu de História Natural (opcional).</p></div><div class="seg"><span class="sl">Noite</span><p>Jantar no UWS — Mama's Too ★ (pizza em fatia).</p></div><div class="dfoot"><div class="fi"><span class="k">Como chegar</span>Metrô B/C pelo lado oeste do parque.</div><div class="fi"><span class="k">Onde comer</span>Mama's Too ★ · Levain Bakery (cookie)</div><div class="tip">Dica · Parque enorme — calce tênis e leve água.</div></div></div></article>
+<article class="day" style="animation-delay:210ms"><div class="rail"><span class="dn">04</span><span class="dw">17 jul<br>sex</span></div><div class="body"><div class="deyebrow">High Line, Little Island & Whitney</div><h3>High Line, Little Island e o Whitney de graça</h3><div class="seg"><span class="sl">Manhã</span><p>West Village e início da High Line ★ em Gansevoort.</p></div><div class="seg"><span class="sl">Tarde</span><p>High Line ★ inteira, Little Island ★ e o Chelsea Market (Los Tacos ★).</p></div><div class="seg"><span class="sl">Noite</span><p>Whitney Museum — grátis para todos sexta 17h–22h (reservar). Pôr do sol nos terraços.</p></div><div class="dfoot"><div class="fi"><span class="k">Como chegar</span>Metrô até a 14th St; tudo a pé na região.</div><div class="fi"><span class="k">Onde comer</span>Los Tacos No.1 ★ (Chelsea Market) · Joe's Pizza</div><div class="tip free">Dica · Whitney grátis na sexta — reservar o ingresso online.</div></div></div></article>
+<article class="day fam" style="animation-delay:280ms"><div class="rail"><span class="dn">—</span><span class="dw">18 jul<br>sáb</span></div><div class="body"><div class="deyebrow">White Plains</div><h3>Dia em família</h3><p class="fam-block">Dia livre com a família, passeio de carro com o primo.</p><p class="fam-ideas"><b>Ideias de carro:</b> Sleepy Hollow e Tarrytown, Rye Playland, ou os jardins (PepsiCo, Untermyer).</p></div></article>
+<article class="day fam" style="animation-delay:350ms"><div class="rail"><span class="dn">—</span><span class="dw">19 jul<br>dom</span></div><div class="body"><div class="deyebrow">White Plains</div><h3>Dia em família</h3><p class="fam-block">Mais um dia tranquilo com a família.</p><p class="fam-ideas"><b>Ideias de carro:</b> Cold Spring à beira do Hudson, Bear Mountain ou Dia Beacon.</p></div></article>
+<article class="day" style="animation-delay:420ms"><div class="rail"><span class="dn">07</span><span class="dw">20 jul<br>seg</span></div><div class="body"><div class="deyebrow">Coney Island</div><h3>Praia e calçadão em Coney Island</h3><div class="seg"><span class="sl">Manhã</span><p>Metrô até Coney Island; calçadão e praia.</p></div><div class="seg"><span class="sl">Tarde</span><p>Luna Park (Cyclone), Wonder Wheel e Nathan's Famous.</p></div><div class="seg"><span class="sl">Noite</span><p>Brighton Beach, a 'Little Odessa', e volta.</p></div><div class="dfoot"><div class="fi"><span class="k">Como chegar</span>Metrô D/F/N/Q até Stillwell Av (~50–60 min).</div><div class="fi"><span class="k">Onde comer</span>Nathan's Famous · Totonno's (pizza)</div><div class="tip">Dica · Praia, calçadão e entrada do Luna Park são grátis; brinquedos pagos.</div></div></div></article>
+<article class="day" style="animation-delay:490ms"><div class="rail"><span class="dn">08</span><span class="dw">21 jul<br>ter</span></div><div class="body"><div class="deyebrow">Chinatown, Little Italy & East Village</div><h3>Chinatown, Little Italy e East Village</h3><div class="seg"><span class="sl">Manhã</span><p>Little Italy ★ e Chinatown ★ (Doyers St, Columbus Park). Loja Senti Senti ★ na Mott St.</p></div><div class="seg"><span class="sl">Tarde</span><p>Lower East Side, SoHo e Nolita. Katz's ★ para o pastrami clássico.</p></div><div class="seg"><span class="sl">Noite</span><p>East Village — Nowon ★, o cheeseburger coreano lendário.</p></div><div class="dfoot"><div class="fi"><span class="k">Como chegar</span>Metrô 6 até Canal St / Spring St.</div><div class="fi"><span class="k">Onde comer</span>Katz's ★ · Nowon ★ · Joe's Shanghai</div><div class="tip">Dica · Leve dinheiro — muitos lugares são só cash.</div></div></div></article>
+<article class="day" style="animation-delay:560ms"><div class="rail"><span class="dn">09</span><span class="dw">22 jul<br>qua</span></div><div class="body"><div class="deyebrow">Upper East Side & SUMMIT</div><h3>The Met e o pôr do sol no SUMMIT</h3><div class="seg"><span class="sl">Manhã</span><p>The Met ★ — destaques em 2 a 3 horas.</p></div><div class="seg"><span class="sl">Tarde</span><p>Museum Mile na 5ª Avenida e o lado leste do Central Park.</p></div><div class="seg"><span class="sl">Noite</span><p>SUMMIT One Vanderbilt ★ — slot ~19h para pegar o dia, o pôr do sol (~20h20) e a cidade iluminada.</p></div><div class="dfoot"><div class="fi"><span class="k">Como chegar</span>Metrô até a 86th St; o SUMMIT fica no Grand Central.</div><div class="fi"><span class="k">Onde comer</span>Jantar em Midtown, perto do SUMMIT</div><div class="tip">Dica · SUMMIT por horário e o pôr do sol esgota — reservar já; calça ou short.</div></div></div></article>
+<article class="day" style="animation-delay:560ms"><div class="rail"><span class="dn">10</span><span class="dw">23 jul<br>qui</span></div><div class="body"><div class="deyebrow">Despedida</div><h3>Última manhã e partida</h3><div class="seg"><span class="sl">Manhã</span><p>Manhã livre: repetir um favorito, compras finais ou o MoMA (opcional).</p></div><div class="seg"><span class="sl">Tarde</span><p>Pegar as malas em White Plains e seguir ao JFK (chegar ~17h30).</p></div><div class="seg"><span class="sl">Noite</span><p>Voo às 20:30.</p></div><div class="dfoot"><div class="fi"><span class="k">Como chegar</span>Cidade → White Plains → JFK de carro (~1h–1h30).</div><div class="fi"><span class="k">Onde comer</span>Brunch ou almoço de despedida em Midtown</div><div class="tip">Dica · Estar no JFK 3 horas antes — voo internacional.</div></div></div></article>
+</div>
+  </section>
+
+  <!-- EXTRAS -->
+  <section class="section">
+    <div class="section-head"><span class="num">03</span><h2>Para fechar</h2></div>
+    <div class="extras">
+
+      <div class="box">
+        <h4>Museus &amp; entrada</h4>
+        <p class="sub">Preços para turista (o "pague quanto quiser" vale só para residentes de NY)</p>
+        <div class="row"><span class="name">Whitney</span><span class="meta ok">Grátis sex 17–22h · Dia 4</span></div>
+        <div class="row"><span class="name">Staten Island Ferry</span><span class="meta ok">Grátis · Dia 2</span></div>
+        <div class="row"><span class="name">The Met</span><span class="meta">~US$30 · Dia 9</span></div>
+        <div class="row"><span class="name">História Natural</span><span class="meta">~US$28 · Dia 3</span></div>
+        <div class="row"><span class="name">MoMA</span><span class="meta">~US$30 · opcional</span></div>
+      </div>
+
+      <div class="box">
+        <h4>Lojas que vocês queriam</h4>
+        <p class="sub">As duas vendem beleza coreana / asiática — leve a lista</p>
+        <div class="row"><span class="name">Ko'llection ★</span><span class="meta">315 5th Ave · Dia 1</span></div>
+        <div class="row"><span class="name">Senti Senti ★</span><span class="meta">81 Mott St · Dia 8</span></div>
+        <h4 style="margin-top:18px">Logística essencial</h4>
+        <div class="pills" style="margin-top:10px">
+          <span class="pill">OMNY US$3/viagem · teto US$35/sem</span>
+          <span class="pill">Metro-North WP↔Grand Central ~40 min</span>
+          <span class="pill">Levar dinheiro</span>
+          <span class="pill">Pôr do sol ~20h20</span>
+        </div>
+      </div>
+
+      <div class="box budget">
+        <div>
+          <div class="lbl">Orçamento estimado · casal</div>
+          <div class="big">≈ US$ 2.230</div>
+        </div>
+        <div class="cap">Estimativa para os 10 dias, fora hospedagem (casa do primo) e voos. Detalhe e câmbio editável na planilha.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="fr"></div>
+    <div class="ft">Boa viagem, vocês dois.</div>
+    <div class="fs">Nova York · 14 a 23 de julho · base em White Plains</div>
+  </footer>
+
+</main>
+
+</body>
+</html>
