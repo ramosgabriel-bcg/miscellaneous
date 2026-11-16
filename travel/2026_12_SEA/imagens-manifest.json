@@ -1,0 +1,1386 @@
+[
+  {
+    "id": "bkk-city",
+    "src": "img/bangkok-panorama.webp",
+    "width": 1800,
+    "height": 1350,
+    "alt": "Vista urbana junto ao rio ao entardecer.",
+    "titulo": "Panorama de Bangkok",
+    "foco": "50% 55%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "principal",
+    "origin": "acervo-v12",
+    "original": "01-bangkok-city.webp",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "variants": [
+      {
+        "src": "img/bangkok-panorama-800.webp",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "bytes": 454176,
+    "sha256": "4dc1f66304ea05d0e75c265f22e55732ab760c03d4a02f7d90c6c924da1f7446",
+    "uso": [
+      "Cidade: Bangkok",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "bkk-palace",
+    "src": "img/bangkok-grande-palacio.webp",
+    "width": 800,
+    "height": 500,
+    "alt": "Pavilhão ornamentado e torres douradas em um complexo de templos.",
+    "titulo": "Grande Palácio",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "card",
+    "origin": "acervo-v12",
+    "original": "01-bangkok-grandpalace.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 113060,
+    "sha256": "0ce85ada2949a50dc7d5cb4b363b6c16ecbd0da629519087a205adc1fe2e457b",
+    "uso": [
+      "Atração: Wat Pho, Grande Palácio e Wat Arun (foto principal) — #atr-bangkok-templos",
+      "Destaque da visão geral: Wat Pho, Grande Palácio e Wat Arun",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "bkk-arun",
+    "src": "img/bangkok-wat-arun.webp",
+    "width": 1244,
+    "height": 700,
+    "alt": "Torre branca ornamentada junto ao rio e aos telhados de um templo.",
+    "titulo": "Wat Arun",
+    "foco": "70% 48%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "principal",
+    "origin": "acervo-v12",
+    "original": "01-bangkok-watarun.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "variants": [
+      {
+        "src": "img/bangkok-wat-arun-800.webp",
+        "width": 800,
+        "height": 450
+      }
+    ],
+    "bytes": 197698,
+    "sha256": "f3bfea23996d34ac78d925c7c7d360e2eaae0677a68963465cdbeca11a17a8b2",
+    "uso": [
+      "Atração: Wat Pho, Grande Palácio e Wat Arun (segunda foto) — #atr-bangkok-templos",
+      "Dia 3 (27/12) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "bkk-yaowarat",
+    "src": "img/bangkok-yaowarat.webp",
+    "width": 1800,
+    "height": 982,
+    "alt": "Rua movimentada com letreiros luminosos ao entardecer.",
+    "titulo": "Yaowarat",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "principal",
+    "origin": "acervo-v12",
+    "original": "01-bangkok-yaoarat.webp",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "variants": [
+      {
+        "src": "img/bangkok-yaowarat-800.webp",
+        "width": 800,
+        "height": 436
+      }
+    ],
+    "bytes": 425712,
+    "sha256": "73a687cf75f0aca40d05ecb6e833b60f807e3eeb12b2595d1572a18f7bfad27f",
+    "uso": [
+      "Atração: Chinatown: Yaowarat Road e Mercado Talad Kao (foto principal) — #atr-yaowarat",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "ayutthaya-1",
+    "src": "img/ayutthaya-buda-ruinas.webp",
+    "width": 1500,
+    "height": 800,
+    "alt": "Estátua de Buda diante de ruínas de tijolo.",
+    "titulo": "Ayutthaya",
+    "foco": "55% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "principal",
+    "origin": "acervo-v12",
+    "original": "01-bangkok-ayyuthaya.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "variants": [
+      {
+        "src": "img/ayutthaya-buda-ruinas-800.webp",
+        "width": 800,
+        "height": 427
+      }
+    ],
+    "bytes": 280250,
+    "sha256": "83de355bafd619fe0c28c2002fe8f714818b810dcd4e52e9df76a1a578fe49c0",
+    "uso": [
+      "Atração: Ayutthaya: ruínas da antiga capital (segunda foto) — #atr-ayutthaya",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "ayutthaya-2",
+    "src": "img/ayutthaya-chedis.webp",
+    "width": 1800,
+    "height": 1197,
+    "alt": "Torres antigas entre ruínas de tijolo sob um céu azul.",
+    "titulo": "Ayutthaya: torres e ruínas",
+    "foco": "50% 45%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "principal",
+    "origin": "acervo-v12",
+    "original": "01-bangkok-ayutthaya2.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "variants": [
+      {
+        "src": "img/ayutthaya-chedis-800.webp",
+        "width": 800,
+        "height": 532
+      }
+    ],
+    "bytes": 396836,
+    "sha256": "f25809e2cafb053d45bd1dbd4ab1c2404c5796a6b649446c68b414ab47121434",
+    "uso": [
+      "Atração: Ayutthaya: ruínas da antiga capital (foto principal) — #atr-ayutthaya",
+      "Dia 4 (28/12) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "cm-city",
+    "src": "img/chiang-mai-panorama.webp",
+    "width": 1000,
+    "height": 667,
+    "alt": "Vista urbana junto ao rio com montanhas ao fundo.",
+    "titulo": "Chiang Mai",
+    "foco": "50% 55%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "card",
+    "origin": "acervo-v12",
+    "original": "02-chiangmai-city.webp",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 115808,
+    "sha256": "3ee6dd5915e92026f05c669bb1577d850ee1988e25884474e3c8555bd0e4d3c6",
+    "uso": [
+      "Cidade: Chiang Mai",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "cr-white",
+    "src": "img/chiang-rai-templo-branco.webp",
+    "width": 1800,
+    "height": 900,
+    "alt": "Templo branco ornamentado refletido em um espelho de água.",
+    "titulo": "Templo Branco",
+    "foco": "50% 42%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "principal",
+    "origin": "acervo-v12",
+    "original": "02-chiangmai-chiangrai-watrongkhun.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "variants": [
+      {
+        "src": "img/chiang-rai-templo-branco-800.webp",
+        "width": 800,
+        "height": 400
+      }
+    ],
+    "bytes": 277220,
+    "sha256": "4ee8958a3e1adbafa76482a66b5ab5f6f1d6d7438dcd7b6e462085276e32a14d",
+    "uso": [
+      "Atração: Chiang Rai: Templo Branco, Templo Azul e Casa Negra (foto principal) — #atr-chiang-rai",
+      "Destaque da visão geral: Chiang Rai: Templo Branco, Templo Azul e Casa Negra",
+      "Dia 9 (02/01) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "cr-blue",
+    "src": "img/chiang-rai-templo-azul.webp",
+    "width": 1200,
+    "height": 630,
+    "alt": "Complexo de templo azul e dourado visto do alto.",
+    "titulo": "Templo Azul",
+    "foco": "50% 55%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "principal",
+    "origin": "acervo-v12",
+    "original": "02-chiangmai-chiangrai-watrongsueanten.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "variants": [
+      {
+        "src": "img/chiang-rai-templo-azul-800.webp",
+        "width": 800,
+        "height": 420
+      }
+    ],
+    "bytes": 170654,
+    "sha256": "5e5193b966e4c53b13957ae9b6c88b8b78d61b1a84b3d324f8133087c3b69942",
+    "uso": [
+      "Atração: Chiang Rai: Templo Branco, Templo Azul e Casa Negra (segunda foto) — #atr-chiang-rai",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "cm-doi1",
+    "src": "img/doi-inthanon-chedis.webp",
+    "width": 1080,
+    "height": 810,
+    "alt": "Torres e jardins sobre uma paisagem de montanhas.",
+    "titulo": "Doi Inthanon",
+    "foco": "45% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "card",
+    "origin": "acervo-v12",
+    "original": "02-chiangmai-doiinthanon.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 102450,
+    "sha256": "28dd3f59dadb15c344f1969f3ceaf869c05ab45edd0777a9a1059e64d25fc93b",
+    "uso": [
+      "Atração: Doi Inthanon (foto principal) — #atr-doi-inthanon",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "cm-doi2",
+    "src": "img/doi-inthanon-cachoeira.webp",
+    "width": 669,
+    "height": 446,
+    "alt": "Ponte de bambu diante de uma cachoeira na mata.",
+    "titulo": "Caminho entre cachoeiras",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "secundaria",
+    "origin": "acervo-v12",
+    "original": "02-chiangmai-doiinthanon2.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 112326,
+    "sha256": "b2842a6b96cbbcfc140839ebd336f5c904023dfb68889f80d621de2dba082772",
+    "uso": [
+      "Atração: Doi Inthanon (segunda foto) — #atr-doi-inthanon",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "cm-suthep1",
+    "src": "img/doi-suthep-chedi.webp",
+    "width": 657,
+    "height": 467,
+    "alt": "Chedi dourado cercado por pavilhões de templo.",
+    "titulo": "Doi Suthep",
+    "foco": "50% 45%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "card",
+    "origin": "acervo-v12",
+    "original": "02-chiangmai-doisuthep.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 68954,
+    "sha256": "8482a1d2a40c8d887de0f1a968ed09895cd609c5ebf6349aa8b264fe91c1125e",
+    "uso": [
+      "Atração: Wat Phra That Doi Suthep (foto principal) — #atr-doi-suthep",
+      "Dia 6 (30/12) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "cm-suthep2",
+    "src": "img/doi-suthep-estatuas.webp",
+    "width": 683,
+    "height": 449,
+    "alt": "Estátuas douradas diante de um chedi.",
+    "titulo": "Doi Suthep: detalhes",
+    "foco": "50% 55%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "secundaria",
+    "origin": "acervo-v12",
+    "original": "02-chiangmai-doisuthep2.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 71206,
+    "sha256": "eaffa0a770e32df607051daa4cb7f66ad23cc8d5b34bce87ea6d463fcdb488e0",
+    "uso": [
+      "Atração: Wat Phra That Doi Suthep (segunda foto) — #atr-doi-suthep",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "cm-lanterns",
+    "src": "img/lanternas-ilustrativa.webp",
+    "width": 650,
+    "height": 440,
+    "alt": "Pessoas seguram lanternas de papel durante uma celebração noturna.",
+    "titulo": "Lanternas: imagem ilustrativa",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "contextual",
+    "origin": "acervo-v12",
+    "original": "02-chiangmai-reveillon-thaphaegate.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 32778,
+    "sha256": "22593e8d7d6f5b2502cbffb94855b9c5841b25384734a725b5e1cbd989ae6bfd",
+    "uso": [
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "hn-city",
+    "src": "img/hanoi-panorama.webp",
+    "width": 655,
+    "height": 468,
+    "alt": "Edifícios e avenidas vistos do alto ao entardecer.",
+    "titulo": "Hanói: panorama",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "secundaria",
+    "origin": "acervo-v12",
+    "original": "03-hanoi-city.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 59516,
+    "sha256": "452c878e3dc7e414af74497521bd71f3516f06983d59805ab12b33dd46bde0c0",
+    "uso": [
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "hn-old1",
+    "src": "img/hanoi-old-quarter.webp",
+    "width": 1200,
+    "height": 800,
+    "alt": "Fachadas, letreiros e pequenas mesas em uma rua ao entardecer.",
+    "titulo": "Old Quarter",
+    "foco": "50% 48%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "principal",
+    "origin": "acervo-v12",
+    "original": "03-hanoi-oldquarter.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "variants": [
+      {
+        "src": "img/hanoi-old-quarter-800.webp",
+        "width": 800,
+        "height": 533
+      }
+    ],
+    "bytes": 188520,
+    "sha256": "d56d94018378cb72d8ee3f4358c7edb057bb66ee0e5244bb123208bced52069c",
+    "uso": [
+      "Cidade: Hanói",
+      "Atração: Old Quarter e lago Hoan Kiem (foto principal) — #atr-old-quarter",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "hn-old2",
+    "src": "img/hanoi-old-quarter-rua.webp",
+    "width": 500,
+    "height": 333,
+    "alt": "Pedestres, motos e lojas em uma rua do bairro antigo.",
+    "titulo": "Old Quarter: vida de rua",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "secundaria",
+    "origin": "acervo-v12",
+    "original": "03-hanoi-oldquarter2.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 72894,
+    "sha256": "b06256ee6efd10d1fca04e5557e64b046856cd0a749c1e875b2bb6f6c296034b",
+    "uso": [
+      "Atração: Old Quarter e lago Hoan Kiem (segunda foto) — #atr-old-quarter",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "nb-event",
+    "src": "img/ninh-binh-barcos-ilustrativa.webp",
+    "width": 1024,
+    "height": 699,
+    "alt": "Muitos barcos e um templo entre montanhas junto à água.",
+    "titulo": "Ninh Binh: imagem de referência",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "contextual",
+    "origin": "acervo-v12",
+    "original": "03-hanoi-ninhbinh.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 263566,
+    "sha256": "862282074d1476c596b65d009dac9b824f53f212e17ebbc04bc440977414c46f",
+    "uso": [
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "nb-city",
+    "src": "img/ninh-binh-panorama.webp",
+    "width": 739,
+    "height": 415,
+    "alt": "Vista de casario e água cercados por morros de calcário.",
+    "titulo": "Ninh Binh: paisagem",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "card",
+    "origin": "acervo-v12",
+    "original": "04-ninh-binh-cty.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 72800,
+    "sha256": "462fa45401cd9e133a2fa19770b2540c5c2bd92589627914c20c5a92849f845f",
+    "uso": [
+      "Dia 18 (11/01) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "nb-trangan",
+    "src": "img/ninh-binh-trang-an.webp",
+    "width": 1200,
+    "height": 800,
+    "alt": "Pavilhão junto à água entre paredões cobertos de vegetação.",
+    "titulo": "Trang An",
+    "foco": "55% 48%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "principal",
+    "origin": "acervo-v12",
+    "original": "03-hanoi-ninhbinh-trangan.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "variants": [
+      {
+        "src": "img/ninh-binh-trang-an-800.webp",
+        "width": 800,
+        "height": 533
+      }
+    ],
+    "bytes": 174994,
+    "sha256": "4ddf80b2813f18917c387e9462b35df2ca3ac32b17cb3f0c2c50702a5e174678",
+    "uso": [
+      "Atração: Trang An de barco (foto principal) — #atr-trang-an",
+      "Destaque da visão geral: Trang An de barco",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "ha-city",
+    "src": "img/hoi-an-rio.webp",
+    "width": 547,
+    "height": 365,
+    "alt": "Barcos iluminados e casario junto ao rio no entardecer.",
+    "titulo": "Hoi An junto ao rio",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "card",
+    "origin": "acervo-v12",
+    "original": "04-hoian-city.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 57144,
+    "sha256": "fa1d6c21253c303d460acb0caaa435e7f7115628c0d308bec84a7915fea300b2",
+    "uso": [
+      "Cidade: Hoi An",
+      "Atração: Cidade antiga de Hoi An (segunda foto) — #atr-hoian-antiga",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "ha-river",
+    "src": "img/hoi-an-lanternas-rio.webp",
+    "width": 547,
+    "height": 365,
+    "alt": "Pequenos barcos e luzes flutuantes diante do casario iluminado.",
+    "titulo": "Lanternas no rio",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "card",
+    "origin": "acervo-v12",
+    "original": "04-hoian-lanterns.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 42040,
+    "sha256": "1818a1c8bc6a35ceab246f01d5d7cd31e658a6268b74f047f8f9a34f1668fbe0",
+    "uso": [
+      "Atração: Lanternas no rio Thu Bon (foto principal) — #atr-lanternas",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "ha-street",
+    "src": "img/hoi-an-lanternas-rua.webp",
+    "width": 700,
+    "height": 467,
+    "alt": "Lanternas coloridas suspensas sobre uma rua movimentada.",
+    "titulo": "Ruas de lanternas",
+    "foco": "50% 45%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "card",
+    "origin": "acervo-v12",
+    "original": "04-hoian-lanterns(1).jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 87406,
+    "sha256": "79a811d61ea81ee6fe17238a3506c8f21dda926182f05bfbecb65f4710efc922",
+    "uso": [
+      "Atração: Cidade antiga de Hoi An (foto principal) — #atr-hoian-antiga",
+      "Destaque da visão geral: Cidade antiga de Hoi An",
+      "Dia 22 (15/01) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "dn-bridge",
+    "src": "img/danang-ponte-dragao.webp",
+    "width": 1366,
+    "height": 768,
+    "alt": "Ponte iluminada e escultura junto ao rio à noite.",
+    "titulo": "Da Nang: imagem de contexto",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "contextual",
+    "origin": "acervo-v12",
+    "original": "04-hoian-danang.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "variants": [
+      {
+        "src": "img/danang-ponte-dragao-800.webp",
+        "width": 800,
+        "height": 450
+      }
+    ],
+    "bytes": 124804,
+    "sha256": "fe6a4ce6e973103a0e11e98110ef36ce7685effec24b363721e6c5ece06e3aad",
+    "uso": [
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "sr-city",
+    "src": "img/siem-reap-pub-street.webp",
+    "width": 800,
+    "height": 530,
+    "alt": "Rua com letreiros, guarda-chuvas suspensos e trânsito local.",
+    "titulo": "Pub Street",
+    "foco": "50% 55%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "card",
+    "origin": "acervo-v12",
+    "original": "07-siemreap-city.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 191982,
+    "sha256": "14d4a8b09c8678bd2673062f3bb7f137d73801b0dafb4a9d75e5e41856d1830b",
+    "uso": [
+      "Cidade: Siem Reap",
+      "Atração: Pub Street e Old Market (foto principal) — #atr-pub-street",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "sr-angkor",
+    "src": "img/angkor-wat-luz.webp",
+    "width": 688,
+    "height": 446,
+    "alt": "Torres de um templo em silhueta sob um céu alaranjado.",
+    "titulo": "Angkor Wat",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "card",
+    "origin": "acervo-v12",
+    "original": "07-siemreap-angkorwat.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 27308,
+    "sha256": "7376cfe3fa451ef76a292392c8e500999d6f4e889d7dcb4d0943b6f3f892c2de",
+    "uso": [
+      "Atração: Angkor Wat ao nascer do sol (segunda foto) — #atr-angkor-wat",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "sr-bayon",
+    "src": "img/angkor-bayon.webp",
+    "width": 1360,
+    "height": 1020,
+    "alt": "Torres de pedra com grandes rostos esculpidos.",
+    "titulo": "Bayon",
+    "foco": "50% 45%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "principal",
+    "origin": "acervo-v12",
+    "original": "07-siemreap-bayon.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "variants": [
+      {
+        "src": "img/angkor-bayon-800.webp",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "bytes": 367604,
+    "sha256": "28c5170b9e2e057c15b27d58cc2d3c31d6481bd0be8050b7863cf6712db841e8",
+    "uso": [
+      "Atração: Angkor Thom e o Bayon (segunda foto) — #atr-angkor-thom",
+      "Dia 13 (06/01) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "sr-taprohm",
+    "src": "img/angkor-ta-prohm.webp",
+    "width": 737,
+    "height": 416,
+    "alt": "Raízes de árvores envolvendo paredes de pedra.",
+    "titulo": "Ta Prohm",
+    "foco": "50% 50%",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "rights_status": "Acervo v12 — autoria e direitos não documentados",
+    "papel": "card",
+    "origin": "acervo-v12",
+    "original": "07-siemreap-taprohm.jpg",
+    "identificacao": "Contexto fornecido pelo nome do arquivo; sem geolocalização independente",
+    "bytes": 128368,
+    "sha256": "480982b5ede7704422fc3be95d1897589b3156912cd8741bd1910f690c9c4d4d",
+    "uso": [
+      "Atração: Ta Prohm, Srah Srang e Banteay Kdei (foto principal) — #atr-ta-prohm",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "bkk-watpho",
+    "src": "img/bangkok-wat-pho.webp",
+    "width": 1600,
+    "height": 1066,
+    "alt": "Chedis cobertos de cerâmica colorida no Wat Pho, em Bangkok; dois monges de túnica laranja caminham de costas.",
+    "titulo": "Wat Pho, Bangkok",
+    "foco": "58% 55%",
+    "papel": "capa",
+    "local": "Wat Pho, Bangkok (Tailândia)",
+    "variants": [
+      {
+        "src": "img/bangkok-wat-pho-800.webp",
+        "width": 800,
+        "height": 533
+      }
+    ],
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "origin": "fornecida",
+    "original": "coverphoto.jpg",
+    "rights_status": "Fornecida pelo usuário — autoria e direitos não documentados",
+    "identificacao": "Conferido visualmente: chedis do Wat Pho, Bangkok. Representa Bangkok, não os demais destinos.",
+    "modifications": "Formato original JPEG; redimensionada para 1600 px (e 800 px), convertida para WebP e sem metadados.",
+    "bytes": 304932,
+    "sha256": "af53431e7ded0e873af42793455cb7ec823a608a5dc37d1cebaa084a1bf14960",
+    "uso": [
+      "Capa da visão geral",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "lp-city",
+    "src": "img/luang-prabang-mekong.webp",
+    "width": 1600,
+    "height": 1000,
+    "alt": "Margem do Mekong iluminada ao entardecer, com o morro Phou Si e montanhas ao fundo.",
+    "titulo": "Luang Prabang e o Mekong",
+    "foco": "50% 58%",
+    "papel": "card",
+    "local": "Luang Prabang vista de Wat Chomphet, na outra margem do Mekong (Laos)",
+    "variants": [
+      {
+        "src": "img/luang-prabang-mekong-800.webp",
+        "width": 800,
+        "height": 500
+      }
+    ],
+    "credit": "Foto: Basile Morin · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:View_of_Mount_Phou_Si_and_Mekong_bank_at_sunset_seen_from_Wat_Chomphet_in_Luang_Prabang_Laos.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/View_of_Mount_Phou_Si_and_Mekong_bank_at_sunset_seen_from_Wat_Chomphet_in_Luang_Prabang_Laos.jpg/1920px-View_of_Mount_Phou_Si_and_Mekong_bank_at_sunset_seen_from_Wat_Chomphet_in_Luang_Prabang_Laos.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Basile Morin",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 289280,
+    "sha256": "5d16e2e303f3dc34afa6fc21b92e604c9907a92479e1fd70a6d0e91ef0109b55",
+    "uso": [
+      "Cidade: Luang Prabang",
+      "Dia 10 (03/01) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "lp-phousi",
+    "src": "img/luang-prabang-phousi.webp",
+    "width": 1600,
+    "height": 1067,
+    "alt": "Casas, o rio Mekong e montanhas vistos do alto do Monte Phousi ao anoitecer.",
+    "titulo": "Vista do Monte Phousi",
+    "foco": "50% 55%",
+    "papel": "principal",
+    "local": "Monte Phousi, Luang Prabang (Laos)",
+    "variants": [
+      {
+        "src": "img/luang-prabang-phousi-800.webp",
+        "width": 800,
+        "height": 533
+      }
+    ],
+    "credit": "Foto: Basile Morin · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Mountains_Mekong_river_and_dwellings_seen_from_Mount_Phou_Si_at_dusk_in_Luang_Prabang_Laos.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Mountains_Mekong_river_and_dwellings_seen_from_Mount_Phou_Si_at_dusk_in_Luang_Prabang_Laos.jpg/1920px-Mountains_Mekong_river_and_dwellings_seen_from_Mount_Phou_Si_at_dusk_in_Luang_Prabang_Laos.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Basile Morin",
+    "author_url": "https://commons.wikimedia.org/wiki/User:Basile_Morin",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 254284,
+    "sha256": "278d1c8abbb4a3a2448b3505d80e9803e2522c21b25a00822c1b658e3ee0a259",
+    "uso": [
+      "Atração: Monte Phousi (foto principal) — #atr-phousi",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "lp-kuangsi",
+    "src": "img/kuang-si.webp",
+    "width": 1600,
+    "height": 1067,
+    "alt": "Cachoeira em vários níveis sobre piscinas naturais de água turquesa, cercada de mata.",
+    "titulo": "Cachoeira Kuang Si",
+    "foco": "50% 60%",
+    "papel": "principal",
+    "local": "Kuang Si, província de Luang Prabang (Laos)",
+    "variants": [
+      {
+        "src": "img/kuang-si-800.webp",
+        "width": 800,
+        "height": 533
+      }
+    ],
+    "credit": "Foto: Basile Morin · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Kuang_Si_Falls_and_a_turquoise_water_pool_in_Luang_Prabang_province_Laos.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Kuang_Si_Falls_and_a_turquoise_water_pool_in_Luang_Prabang_province_Laos.jpg/1920px-Kuang_Si_Falls_and_a_turquoise_water_pool_in_Luang_Prabang_province_Laos.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Basile Morin",
+    "author_url": "https://commons.wikimedia.org/wiki/User:Basile_Morin",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 498094,
+    "sha256": "dd6c58c963a08d74684da6cb97b77f74317f493ce91de7535d816811c8d2e3a0",
+    "uso": [
+      "Atração: Kuang Si Falls (foto principal) — #atr-kuang-si",
+      "Destaque da visão geral: Kuang Si Falls",
+      "Dia 11 (04/01) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "lp-pakou",
+    "src": "img/pak-ou.webp",
+    "width": 1600,
+    "height": 1068,
+    "alt": "Paredão de calcário com a entrada das cavernas e barcos atracados no Mekong.",
+    "titulo": "Cavernas de Pak Ou",
+    "foco": "40% 55%",
+    "papel": "principal",
+    "local": "Pak Ou, rio Mekong, ao norte de Luang Prabang (Laos)",
+    "variants": [
+      {
+        "src": "img/pak-ou-800.webp",
+        "width": 800,
+        "height": 534
+      }
+    ],
+    "credit": "Foto: xiquinhosilva · CC BY 2.0",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Mekong_River_-_Pak_Ou_Caves_entrence_1.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Mekong_River_-_Pak_Ou_Caves_entrence_1.jpg/1920px-Mekong_River_-_Pak_Ou_Caves_entrence_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "xiquinhosilva",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 436162,
+    "sha256": "694051c2f3c03d9ad9324219853a70ab456aa94b5a87235160b47472dbd13252",
+    "uso": [
+      "Atração: Cavernas de Pak Ou (foto principal) — #atr-pak-ou",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "lp-xiengthong",
+    "src": "img/wat-xieng-thong.webp",
+    "width": 1600,
+    "height": 952,
+    "alt": "Templo com telhados sobrepostos que descem quase até o chão, cercado de palmeiras.",
+    "titulo": "Wat Xieng Thong",
+    "foco": "55% 60%",
+    "papel": "principal",
+    "local": "Wat Xieng Thong, Luang Prabang (Laos)",
+    "variants": [
+      {
+        "src": "img/wat-xieng-thong-800.webp",
+        "width": 800,
+        "height": 476
+      }
+    ],
+    "credit": "Foto: Basile Morin · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Temple_Wat_Xieng_Thong_-_Luang_Prabang_-_Laos.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Temple_Wat_Xieng_Thong_-_Luang_Prabang_-_Laos.jpg/1920px-Temple_Wat_Xieng_Thong_-_Luang_Prabang_-_Laos.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Basile Morin",
+    "author_url": "https://commons.wikimedia.org/wiki/User:Basile_Morin",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 394876,
+    "sha256": "891534c899cb5f4c47d33a54d4cfe4c58cce41554a74823783fed8ea337f2130",
+    "uso": [
+      "Atração: Wat Xieng Thong e centro histórico (foto principal) — #atr-xieng-thong",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "sr-angkorwat",
+    "src": "img/angkor-wat-lago-norte.webp",
+    "width": 1600,
+    "height": 1071,
+    "alt": "As torres de Angkor Wat refletidas num lago com lótus, sob céu azul.",
+    "titulo": "Angkor Wat visto do lago norte",
+    "foco": "50% 50%",
+    "papel": "principal",
+    "local": "Angkor Wat, Siem Reap (Camboja)",
+    "variants": [
+      {
+        "src": "img/angkor-wat-lago-norte-800.webp",
+        "width": 800,
+        "height": 536
+      }
+    ],
+    "credit": "Foto: Gisling · CC BY-SA 3.0",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Image-Angkor_Wat_from_north_pond_2.JPG",
+    "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Image-Angkor_Wat_from_north_pond_2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "author": "Gisling",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 561770,
+    "sha256": "c418a33c33464b3f46e6e6ef7234255880c617fcf55fcc3d187dd344de32776a",
+    "uso": [
+      "Atração: Angkor Wat ao nascer do sol (foto principal) — #atr-angkor-wat",
+      "Destaque da visão geral: Angkor Wat ao nascer do sol",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "sr-bayon-amplo",
+    "src": "img/angkor-bayon-amplo.webp",
+    "width": 1600,
+    "height": 1066,
+    "alt": "Templo de pedra com várias torres de rostos esculpidos, visto de lado sob céu azul.",
+    "titulo": "Bayon, em Angkor Thom",
+    "foco": "50% 45%",
+    "papel": "principal",
+    "local": "Bayon, Angkor Thom (Camboja)",
+    "variants": [
+      {
+        "src": "img/angkor-bayon-amplo-800.webp",
+        "width": 800,
+        "height": 533
+      }
+    ],
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "origin": "fornecida",
+    "original": "07-siemreap-bayon(1).jpg",
+    "rights_status": "Fornecida pelo usuário — autoria e direitos não documentados",
+    "identificacao": "Conferido visualmente: torres de rostos do Bayon; foto diferente da angkor-bayon.webp do acervo v12.",
+    "modifications": "Formato original JPEG; redimensionada para 1600 px (e 800 px), convertida para WebP e sem metadados.",
+    "bytes": 340692,
+    "sha256": "e90abf659cccac4401d95db83ca35c36d324d2ee76e45e060ebb145415ccb2f2",
+    "uso": [
+      "Atração: Angkor Thom e o Bayon (foto principal) — #atr-angkor-thom",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "sr-banteaysrei",
+    "src": "img/angkor-banteay-srei.webp",
+    "width": 1600,
+    "height": 1068,
+    "alt": "Santuários de arenito rosa ricamente esculpidos, com estátuas guardiãs, sob céu azul.",
+    "titulo": "Banteay Srei",
+    "foco": "55% 50%",
+    "papel": "principal",
+    "local": "Banteay Srei, Angkor (Camboja)",
+    "variants": [
+      {
+        "src": "img/angkor-banteay-srei-800.webp",
+        "width": 800,
+        "height": 534
+      }
+    ],
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "origin": "fornecida",
+    "original": "07-siemreap-banteaysrei.jpg",
+    "rights_status": "Fornecida pelo usuário — autoria e direitos não documentados",
+    "identificacao": "Conferido visualmente: santuários de arenito rosa e guardiões de Banteay Srei.",
+    "modifications": "Formato original JPEG; redimensionada para 1600 px (e 800 px), convertida para WebP e sem metadados.",
+    "bytes": 377436,
+    "sha256": "8901662009e4c6e0e0f2b2fa49212b29989c743a8ae57d453701d3d2bf28607a",
+    "uso": [
+      "Atração: Banteay Srei e Butterfly Centre (foto principal) — #atr-banteay-srei",
+      "Dia 14 (07/01) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "sr-tonlesap",
+    "src": "img/tonle-sap.webp",
+    "width": 589,
+    "height": 392,
+    "alt": "Casas coloridas sobre palafitas à beira d'água, com barcos de madeira atracados.",
+    "titulo": "Vila sobre palafitas no Tonlé Sap",
+    "foco": "50% 50%",
+    "papel": "card",
+    "local": "Região do lago Tonlé Sap (Camboja)",
+    "credit": null,
+    "license": null,
+    "source_url": null,
+    "origin": "fornecida",
+    "original": "07-siemreap-tonlesap.jpg",
+    "rights_status": "Fornecida pelo usuário — autoria e direitos não documentados",
+    "identificacao": "Arquivo recebido como .jpg, mas o formato real é AVIF (589×392 px). Vila específica não identificada.",
+    "modifications": "Formato original AVIF; redimensionada para 589 px, convertida para WebP e sem metadados.",
+    "bytes": 61566,
+    "sha256": "83381d2a5002153bbe17eb1b35e760381a5b4ea5873934d1d3302723522ecfe7",
+    "uso": [
+      "Atração: Tonlé Sap e as vilas flutuantes (foto principal) — #atr-tonle-sap",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "hue-city",
+    "src": "img/hue-rio-perfume.webp",
+    "width": 1600,
+    "height": 1067,
+    "alt": "Rio largo atravessado por uma ponte metálica, com a cidade e montanhas ao fundo.",
+    "titulo": "Hue e o rio Perfume",
+    "foco": "50% 55%",
+    "papel": "card",
+    "local": "Rio Perfume (Hương Giang) e ponte Bach Ho, Hue (Vietnã)",
+    "variants": [
+      {
+        "src": "img/hue-rio-perfume-800.webp",
+        "width": 800,
+        "height": 533
+      }
+    ],
+    "credit": "Foto: CEphoto, Uwe Aranas · CC BY-SA 3.0",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Hue_Vietnam_Perfume-River-01.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Hue_Vietnam_Perfume-River-01.jpg/1920px-Hue_Vietnam_Perfume-River-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "CEphoto, Uwe Aranas",
+    "author_url": "https://commons.wikimedia.org/wiki/User:Cccefalon",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 166090,
+    "sha256": "15f1d11b5d37f638742021b31f59fac527686b99635feb870eadf8b532e9b882",
+    "uso": [
+      "Cidade: Hue",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "tr-phudien",
+    "src": "img/transfer-phu-dien.webp",
+    "width": 1600,
+    "height": 1200,
+    "alt": "Ruína de torre de tijolos protegida por uma cobertura de vidro e metal.",
+    "titulo": "Torre Cham de Phu Dien",
+    "foco": "50% 55%",
+    "papel": "parada",
+    "local": "Phu Dien, Thừa Thiên-Huế (Vietnã)",
+    "variants": [
+      {
+        "src": "img/transfer-phu-dien-800.webp",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "credit": "Foto: Chainwit. · CC BY 4.0",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:2024_-_Phu_Dien_Tower_(Th%C3%A1p_Ph%C3%BA_Di%C3%AAn)_-_img_16.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/2024_-_Phu_Dien_Tower_%28Th%C3%A1p_Ph%C3%BA_Di%C3%AAn%29_-_img_16.jpg/1920px-2024_-_Phu_Dien_Tower_%28Th%C3%A1p_Ph%C3%BA_Di%C3%AAn%29_-_img_16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Chainwit.",
+    "author_url": "https://commons.wikimedia.org/wiki/User:Chainwit.",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 562000,
+    "sha256": "0b30fe400e73e80b3b7e5305c302a13a7145988c3e1ba6e20f45e31f7870b2e4",
+    "uso": [
+      "Transfer 14/01 (trecho-08): Torre Cham / Phu Dien",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "tr-anbang",
+    "src": "img/transfer-an-bang-cemiterio.webp",
+    "width": 1600,
+    "height": 1085,
+    "alt": "Túmulos coloridos e ornamentados, com torres e pavilhões, sob céu azul.",
+    "titulo": "Cemitério de An Bang",
+    "foco": "50% 55%",
+    "papel": "parada",
+    "local": "Comuna de An Bằng, distrito de Phú Vang, Thừa Thiên-Huế (Vietnã)",
+    "variants": [
+      {
+        "src": "img/transfer-an-bang-cemiterio-800.webp",
+        "width": 800,
+        "height": 542
+      }
+    ],
+    "credit": "Foto: Prince Roy · CC BY 2.0",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:An_Bang_Village_Cemetery_05.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/An_Bang_Village_Cemetery_05.jpg/1920px-An_Bang_Village_Cemetery_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Prince Roy",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 319424,
+    "sha256": "474761f7a4ad1d7ada20f475eaee491757a645cd18f900eaa51abdc861c794c7",
+    "uso": [
+      "Transfer 14/01 (trecho-08): Cemitério An Bang",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "tr-lapan",
+    "src": "img/transfer-lap-an.webp",
+    "width": 1600,
+    "height": 1067,
+    "alt": "Barcos de pesca na margem de uma lagoa calma, com montanhas e um viaduto ao fundo.",
+    "titulo": "Lagoa Lap An",
+    "foco": "50% 60%",
+    "papel": "parada",
+    "local": "Lagoa Lập An, Lăng Cô (Vietnã)",
+    "variants": [
+      {
+        "src": "img/transfer-lap-an-800.webp",
+        "width": 800,
+        "height": 533
+      }
+    ],
+    "credit": "Foto: Vyacheslav Argenberg · CC BY 4.0",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Lang_Co_lagoon,_Lap_An_lagoon,_Vietnam.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Lang_Co_lagoon%2C_Lap_An_lagoon%2C_Vietnam.jpg/1920px-Lang_Co_lagoon%2C_Lap_An_lagoon%2C_Vietnam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Vyacheslav Argenberg",
+    "author_url": "https://commons.wikimedia.org/wiki/User:Argenberg",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 118832,
+    "sha256": "3d86a1ed58a3fc99f96ff921d01900bc5f2626194016fa12994151b2ae013a0a",
+    "uso": [
+      "Transfer 14/01 (trecho-08): Lagoa Lap An e praia Lang Co",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "tr-haivan",
+    "src": "img/hai-van-transfer.webp",
+    "width": 1600,
+    "height": 996,
+    "alt": "Encosta verde descendo até o mar, com a baía e a vila de Lăng Cô ao fundo.",
+    "titulo": "Pelo passo Hai Van",
+    "foco": "60% 45%",
+    "papel": "principal",
+    "local": "Passo Hải Vân, com vista para Lăng Cô (Vietnã)",
+    "variants": [
+      {
+        "src": "img/hai-van-transfer-800.webp",
+        "width": 800,
+        "height": 498
+      }
+    ],
+    "credit": "Foto: Steffen Schmitz · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:L%C4%83ng_C%C3%B4,_H%E1%BA%A3i_V%C3%A2n_Pass,_2020-01_CN-04.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/L%C4%83ng_C%C3%B4%2C_H%E1%BA%A3i_V%C3%A2n_Pass%2C_2020-01_CN-04.jpg/1920px-L%C4%83ng_C%C3%B4%2C_H%E1%BA%A3i_V%C3%A2n_Pass%2C_2020-01_CN-04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Steffen Schmitz",
+    "author_url": "https://commons.wikimedia.org/wiki/User:Carschten",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 331844,
+    "sha256": "2e7755c31302f02e217dab786cadf9de968a2fb8f077e9652865409adbc19ffc",
+    "uso": [
+      "Atração: Rota costeira: transfer turístico Hue - Hoi An (foto principal) — #atr-danang",
+      "Destaque da visão geral: Rota costeira: transfer turístico Hue - Hoi An",
+      "Dia 21 (14/01) — detalhes do dia",
+      "Transfer 14/01 (trecho-08): Passo Hai Van",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "tr-marmore",
+    "src": "img/transfer-marble-mountains.webp",
+    "width": 1600,
+    "height": 809,
+    "alt": "Morros de calcário isolados acima da cidade, vistos do alto num dia de céu azul.",
+    "titulo": "Montanhas de Mármore",
+    "foco": "45% 55%",
+    "papel": "parada",
+    "local": "Ngũ Hành Sơn (Montanhas de Mármore), Da Nang (Vietnã)",
+    "variants": [
+      {
+        "src": "img/transfer-marble-mountains-800.webp",
+        "width": 800,
+        "height": 405
+      }
+    ],
+    "credit": "Foto: Kuroczynski · CC BY-SA 4.0",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Da_Nang_Marble_Mountains_2020_IMG_4008.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Da_Nang_Marble_Mountains_2020_IMG_4008.jpg/1920px-Da_Nang_Marble_Mountains_2020_IMG_4008.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Kuroczynski",
+    "author_url": "https://commons.wikimedia.org/w/index.php?title=User:Kuroczynski&action=edit&redlink=1",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 297042,
+    "sha256": "ae90a3bf24932320fa6707668f7088124e8e445ba1238f7d95eeb043b723c536",
+    "uso": [
+      "Transfer 14/01 (trecho-08): Montanhas de Mármore",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "pk-kata",
+    "src": "img/phuket-kata.webp",
+    "width": 1600,
+    "height": 900,
+    "alt": "Baía de água verde-clara com barcos de cauda longa e a faixa de areia ao fundo.",
+    "titulo": "Praia de Kata",
+    "foco": "50% 55%",
+    "papel": "principal",
+    "local": "Kata, Phuket (Tailândia)",
+    "variants": [
+      {
+        "src": "img/phuket-kata-800.webp",
+        "width": 800,
+        "height": 450
+      }
+    ],
+    "credit": "Foto: Radek Kucharski · CC BY 2.0",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Kata_Beach1.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Kata_Beach1.jpg/1920px-Kata_Beach1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Radek Kucharski",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 390110,
+    "sha256": "ed1c646e08ab394ce0bee62a3f15d87423a6201715e56ca9dda4dd0f2e5a4f72",
+    "uso": [
+      "Cidade: Phuket",
+      "Atração: Praias de Kata e Karon (foto principal) — #atr-kata",
+      "Dia 27 (20/01) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "pk-phiphi",
+    "src": "img/phi-phi-maya-bay.webp",
+    "width": 1600,
+    "height": 986,
+    "alt": "Barcos de cauda longa com fitas coloridas na areia, diante de paredões de calcário.",
+    "titulo": "Maya Bay, em Ko Phi Phi Leh (foto de 2013)",
+    "foco": "50% 55%",
+    "papel": "principal",
+    "local": "Maya Bay, Ko Phi Phi Leh (Tailândia). Foto de 2013, anterior às regras atuais de visitação.",
+    "variants": [
+      {
+        "src": "img/phi-phi-maya-bay-800.webp",
+        "width": 800,
+        "height": 493
+      }
+    ],
+    "credit": "Foto: Diego Delso · CC BY-SA 3.0",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Playa_Maya,_Ko_Phi_Phi,_Tailandia,_2013-08-19,_DD_13.JPG",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Playa_Maya%2C_Ko_Phi_Phi%2C_Tailandia%2C_2013-08-19%2C_DD_13.JPG/1920px-Playa_Maya%2C_Ko_Phi_Phi%2C_Tailandia%2C_2013-08-19%2C_DD_13.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Diego Delso",
+    "author_url": "https://www.wikidata.org/wiki/Q28147777",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 287172,
+    "sha256": "8f4cb533c25604e5f422183b3988b4cce93a29cc3a007446df39d24e81ef7c2a",
+    "uso": [
+      "Atração: Phi Phi, Maya Bay e Bamboo Island (foto principal) — #atr-phi-phi",
+      "Destaque da visão geral: Phi Phi, Maya Bay e Bamboo Island",
+      "Dia 25 (18/01) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  },
+  {
+    "id": "pk-phangnga",
+    "src": "img/phang-nga.webp",
+    "width": 1600,
+    "height": 1067,
+    "alt": "Rochedo estreito de calcário erguendo-se da água verde entre ilhas maiores.",
+    "titulo": "Ko Tapu, na baía de Phang Nga",
+    "foco": "35% 50%",
+    "papel": "principal",
+    "local": "Ko Tapu e Khao Phing Kan, baía de Phang Nga (Tailândia)",
+    "variants": [
+      {
+        "src": "img/phang-nga-800.webp",
+        "width": 800,
+        "height": 533
+      }
+    ],
+    "credit": "Foto: Vyacheslav Argenberg · CC BY 4.0",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Phang_Nga_Bay,_Koh_Tapu,_Thailand.jpg",
+    "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Phang_Nga_Bay%2C_Koh_Tapu%2C_Thailand.jpg/1920px-Phang_Nga_Bay%2C_Koh_Tapu%2C_Thailand.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Vyacheslav Argenberg",
+    "author_url": "https://commons.wikimedia.org/wiki/User:Argenberg",
+    "retrieved": "2026-11-15",
+    "origin": "commons",
+    "modifications": "Redimensionada para 1600 px de largura (e 800 px), convertida para WebP e sem metadados EXIF.",
+    "rights_status": "Licença verificada na página do arquivo no Wikimedia Commons",
+    "bytes": 246164,
+    "sha256": "dde86b8f3433b4e94289540c190ac838822e2bb9839d450e320eb45b438d3634",
+    "uso": [
+      "Atração: Baía de Phang Nga e James Bond Island (foto principal) — #atr-phang-nga",
+      "Dia 26 (19/01) — detalhes do dia",
+      "Acervo visual (Países e cidades)"
+    ]
+  }
+]
